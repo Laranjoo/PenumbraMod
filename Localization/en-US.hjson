@@ -281,6 +281,46 @@ Mods: {
 					[c/ff6bf5:Old man curse:] 5% decreased critical chance
 					'''
 			}
+
+			AzuriteForce: {
+				DisplayName: Azurite Force
+				Description: Mods.PenumbraMod.Buffs.AzuriteForce.Description
+			}
+
+			DiamondForce: {
+				DisplayName: Diamond Force
+				Description: Mods.PenumbraMod.Buffs.DiamondForce.Description
+			}
+
+			EmeraldForce: {
+				DisplayName: Emerald Force
+				Description: Mods.PenumbraMod.Buffs.EmeraldForce.Description
+			}
+
+			PrimeyeForce: {
+				DisplayName: Primeye Force
+				Description: Mods.PenumbraMod.Buffs.PrimeyeForce.Description
+			}
+
+			PrimeyeForceCooldown: {
+				DisplayName: Primeye Force Cooldown
+				Description: Mods.PenumbraMod.Buffs.PrimeyeForceCooldown.Description
+			}
+
+			RubyForce: {
+				DisplayName: Ruby Force
+				Description: Mods.PenumbraMod.Buffs.RubyForce.Description
+			}
+
+			SapphireForce: {
+				DisplayName: Sapphire Force
+				Description: Mods.PenumbraMod.Buffs.SapphireForce.Description
+			}
+
+			TopazForce: {
+				DisplayName: Topaz Force
+				Description: Mods.PenumbraMod.Buffs.TopazForce.Description
+			}
 		}
 
 		Projectiles: {
@@ -1902,6 +1942,16 @@ Mods: {
 					Gives scythes a chance to shoot skulls
 					[c/ff6bf5:Old man curse:] 5% decreased critical chance
 					'''
+			}
+
+			AzuriteCrystal: {
+				DisplayName: Azurite Crystal
+				Tooltip: ""
+			}
+
+			ThePrimeyeCrystal: {
+				DisplayName: The Primeye Crystal
+				Tooltip: ""
 			}
 		}
 

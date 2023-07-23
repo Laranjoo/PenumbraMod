@@ -195,6 +195,7 @@ namespace PenumbraMod.Content.DamageClasses
                 diamcryst = false;
                 topcryst = false;
                 azucryst = false;
+                pricryst = false;
             }
 
             // ------------
