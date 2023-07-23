@@ -1,0 +1,40 @@
+[Mod in Development]
+
+Penumbra Mod is a content mod that adds new stuff to the game, such as expanding biomes content with a lot of items and changes, and reworking much vanilla items with new mechanics and behaviours, and including a lot of references of various games (Real gamers will get the reference),  And a brand new class! (The Reaper Class).
+
+>> What is the reaper class? <<
+The reaper class is entirely based on scythes, when you hold a scythe, you get the reaper energy mechanic. 
+
+>> How the reaper class works? <<
+If you start dealing damage, the bar increases, when it gets to the final, each scythe uses its own special ability [By clicking your set keybind], they variate to buffs/debuffs, projectiles, and even throwing your scythe!
+
+>> What about the special abilities? <<
+Every scythe has its own special ability, they will have the description telling to you for what the scythe will do, so be strategic on using them!
+
+>> But scythes aren't melee weapons? <<
+Its your choice to decide if it is a class/subclass, this was made for entertaining purposes, so don't judge.
+
+Mod by: Laranjoo, Srplayertube, Birbhimself, Vhcm, Sawi, ZENZÃO, Kaii909, Nakamura, Reapermen, KaneBlitz, Mr.Thing.
+Coder: Laranjoo, Birbhimself.
+Spriter: Srplayertube, Sawi, Mr.Thing.
+Musicians and SFX: ZENZÃO, Kai909, KaneBlitz.
+Brainstormers: Srplayertube, Vhcm, Mr.Thing.
+Credits to: Nekki for the Composite Sword SFX and some weapons inpirations.
+
+A vast description that Penumbra mod currently adds:
+
++ 168 Items.
++ 3 Ores
++ 17 Tiles
++ 7 Pieces of Furniture
++ 30 buffs/debuffs.
++ 6 NPCs
++ 1 Boss
++ Changes to vanilla drops and mechanics
++ A whole new class! (The Reaper Class)
+
+Thanks for choosing our mod! :)
+
+
+Changelogs:
+-0.1v = Mod first Release.

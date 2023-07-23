@@ -1,0 +1,1992 @@
+# The possible languages are: English ("en-US"), German ("de-DE"), Italian ("it-IT"), French ("fr-FR"), Spanish ("es-ES"), Russian ("ru-RU"), Chinese ("zh-Hans"), Portuguese ("pt-BR"), and Polish ("pl-PL")
+Mods: {
+	PenumbraMod: {
+		Config: {
+			PenumbraConfig.Label: Configurações de Penumbra Mod
+			Header: "[i:4001]Visuais"
+
+			HitEffect: {
+				Label: Habilite ou desabilite o efeito de dano
+				Tooltip: Habilita ou desabilita o efeito de dano ao acertar um NPC
+			}
+
+			HitEffectCount.Label: Mude a quantia do efeito de dano para aparecer
+			HitEffectColor.Label: Mude a cor do efeito de dano
+			HitEffectVelocity.Label: Mude a velocidade do efeito de dano
+			UITEXT.Label: Habilite ou desabilite o texto da barra de energia ceifadora
+			Header2: "[i:4]Jogador"
+			VanillaChanges.Label: Habilite ou desabilite mudanças dos itens base do jogo
+
+			UseTurn: {
+				Label: Habilite ou desabilite a rotação de item em uso
+				Tooltip: Depende da direção de movimendo do jogador
+			}
+
+			Autouse.Label: Habilite ou desabilite o uso automatico de itens
+		}
+
+		DamageClasses.ReaperClass.DisplayName: danos por ataque ceifador
+
+		NPCs: {
+			vhcmnpc: {
+				// DisplayName: Vhcm
+
+				TownNPCMood: {
+					Content: Me sinto bem na vibe agora, o Cemitério é demais pra me deixar pensar em estar em casa...
+					NoHome: Eu morava em um lugar escuro, mas eu tinha uma casa, sabe?
+					LoveSpace: Estar em um lugar grande é legal sair pensando em algo...
+					FarFromHome: Ah, estou longe de casa, você poderia me ajudar a chegar nela? ou eu preciso esperar até a noite chegar?
+					DislikeCrowded: Esse monte de gente me deixa desconfortável...
+					HateCrowded: Serio que esse TANTO de gente curte ficar nesse lugar? eu queria tar sozinho com alguem em especifico...
+					LikeBiome: Eu gosto da floresta, a vista das arvores me traz uma vibe legal...
+					LoveBiome: Eu amo o Cemitério, adoro a vibe que ele me trás, porfavor não destrua as lápides.
+					DislikeBiome: Não gosto de lugares frios, isso me deixa desconfortável...
+					HateBiome: Meu deus! isso era pra ser um sonho de criança? Me tire daqui!!!
+					LikeNPC: Eu gosto do {NPCName} por causa das infomações que ele trás, e tambem pelo chapéu dele, é engraçado...
+					LoveNPC: Eu meio que gosto de como {NPCName} se veste, é muito estiloso...
+					DislikeNPC: Porque que {NPCName} está tão feliz toda hora? eu não entendo isso...
+					HateNPC: Porfavor, deixe {NPCName} longe de mim, ele não para de ficar me fazendo promoções de um pozinho amarelo estúpido.
+					// LikeNPC_Princess: I like {NPCName}.
+					// Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+
+			// BuritiBoss.DisplayName: Buriti
+			// EnergyConductorMinion.DisplayName: Energy Conductor Protector
+			// EnergyConductorMinion2.DisplayName: Energy Conductor Shooter
+			// Eyeofthestorm.DisplayName: Eye of the Storm
+			// MarshmellowSlime.DisplayName: Marshmellow Slime
+			// MeltedSkeleton.DisplayName: Melted Skeleton
+			// EnergyConductorMinionNonSound.DisplayName: Energy Conductor Minion
+			// Oni.DisplayName: Oni
+			// MarbleStatue.DisplayName: Marble Statue
+			// OniZombie.DisplayName: Zombie
+		}
+
+		Bestiary.vhcmnpc: Ele veio de uma cidade misteriosa... não sabemos porque ele gosta de viver em lugares escuros, ele gosta de vibes escuras e chuva, que estranho...
+
+		Dialogue: {
+			vhcmnpc: {
+				Rainoutside: Tá chovendo... gosto da chuva, mas não quando eu estou molhado, isso me faz sentir-me estranho...
+				Standart: Você está me perturbando?
+				Standart2: Estou sendindo que você gosta de falar comigo, quer uma lápide? vendo um monte de graça!
+				Standart3: Ei, as vezes, uma lápide pode servir bem para decoração para este lugar!
+				Rainoutsidehome: Gosto do som de chuva, sinto uma vibe legal com isso...
+				TalkALot: Estou me perguntando se você precisa de alguma coisa, se não, vai embora, to tentando me concertar emocionalmente, cê sabe?
+			}
+		}
+
+		GameTips.Tip: Há muito tempo, um ser incompreensivel apareceu no mundo, gerando a penumbra...
+
+		Buffs: {
+			BlackLungs1: {
+				// DisplayName: Black Lungs
+				// Description: You've been smoking a lot!
+			}
+
+			ComfortablyProtected: {
+				// DisplayName: Comfortably Protected
+				/* Description:
+					'''
+					You feel comfortably protected...
+					Defense Increased by 4
+					''' */
+			}
+
+			DarkMatter: {
+				// DisplayName: Dark Matter
+				// Description: This is halving your soul...
+			}
+
+			DeathSpeed: {
+				// DisplayName: Death Speed
+				/* Description:
+					'''
+					You feel like the scythe is very light
+					Scythe speed increased by 85%
+					''' */
+			}
+
+			ElementalCooldown: {
+				// DisplayName: Elemental Cooldown
+				// Description: Let your sword recharge their energies, You can't use Elemental Shots!
+			}
+
+			EnergyConductor: {
+				// DisplayName: Energy Conductor
+				// Description: The Energy Conductor eill fight for you
+			}
+
+			GoldSpeed: {
+				// DisplayName: Gold Speed
+				/* Description:
+					'''
+					You feel like the scythe is light
+					Scythe speed increased by 70%
+					''' */
+			}
+
+			HighVoltage: {
+				// DisplayName: High Voltage
+				// Description: You are recieving high voltage energy!
+			}
+
+			hitef: {
+				// DisplayName: Hit Effect
+				// Description: Hit Effect
+			}
+
+			HotSlime1: {
+				// DisplayName: Hot Slime
+				// Description: This slime is too hot
+			}
+
+			IceSpeed: {
+				// DisplayName: Ice Speed
+				/* Description:
+					'''
+					You feel like the scythe is very light
+					Scythe speed increased by 50%
+					''' */
+			}
+
+			JumpVelBuff: {
+				// DisplayName: Frog Force
+				// Description: Your movement speed and jump are increased
+			}
+
+			LeadForce: {
+				// DisplayName: Lead Force
+				/* Description:
+					'''
+					'You feel much resistent!'
+					Damage reduction increased by 45% until next attack
+					''' */
+			}
+
+			LowVoltage: {
+				// DisplayName: Low Voltage
+				// Description: You are recieving low voltage energy!
+			}
+
+			MediumVoltage: {
+				// DisplayName: Medium Voltage
+				// Description: You are recieving medium voltage energy!
+			}
+
+			MeltedCooldown: {
+				// DisplayName: Melted Cooldown
+				// Description: You can't activate your melted ability!
+			}
+
+			MeltedEx: {
+				// DisplayName: Melted Explosion
+				// Description: BOOM!
+			}
+
+			MeltedForce: {
+				// DisplayName: Melted Force
+				/* Description:
+					'''
+					The hell acomplishes you
+					Movement speed increased by 15%
+					Reaper attack speed increased by 25%
+					Damage increased by 5%
+					You damage enemies when hit
+					''' */
+			}
+
+			Melting: {
+				// DisplayName: Melting
+				// Description: You are melting!
+			}
+
+			NotProtected: {
+				// DisplayName: Comfortably Protected Cooldown
+				// Description: You can't feel comfortable again :(
+			}
+
+			PrismAura2: {
+				// DisplayName: Prismatic Aura
+				// Description: You have a protective aura around you
+			}
+
+			PrismLightning: {
+				// DisplayName: Prismatic Lighting
+				// Description: This slime is too hot
+			}
+
+			PrismThorns: {
+				// DisplayName: Prismatic Weak Protection
+				// Description: You feel weak, but still can damage enemies when hit
+			}
+
+			ShieldCooldown: {
+				// DisplayName: Shield Cooldown
+				// Description: You can't shoot your shield!
+			}
+
+			SpikeStunned: {
+				// DisplayName: Spike Stunned
+				// Description: The spikes hurt...
+			}
+
+			StunnedNPC: {
+				// DisplayName: Stunned
+				// Description: You are stuck!
+			}
+
+			ReaperControl: {
+				// DisplayName: Reaper Control
+				// Description: Reaper ability activated!
+			}
+
+			ReaperControlDust: {
+				// DisplayName: Reaper Control Dust
+				// Description: Dust
+			}
+
+			MeltedDemonicBatBuff: {
+				// DisplayName: Melted Demonic Bat Buff
+				// Description: A melted bat is fighting for you.
+			}
+
+			Bleeding: {
+				// DisplayName: Bleeding
+				// Description: You are bleeding!
+			}
+
+			Corrosion: {
+				// DisplayName: Corrosion
+				// Description: You are melting in corrosion!
+			}
+
+			TemporaryBuff: {
+				// DisplayName: Temporary Buff
+				// Description: Reaper energy at max!
+			}
+
+			AmethystForce: {
+				// DisplayName: Amethyst Force
+				// Description: 15% Increased reaper weapons size
+			}
+
+			MagicForce: {
+				// DisplayName: Old man's Force
+				/* Description:
+					'''
+					5% increased reaper damage
+					10% increased reaper use time speed
+					Gives scythes a chance to shoot skulls
+					[c/ff6bf5:Old man curse:] 5% decreased critical chance
+					''' */
+			}
+		}
+
+		Projectiles: {
+			// ProjectileSnacther.DisplayName: Snacther Elemental
+			// SlimeSpike.DisplayName: Slime Spike
+			// AerogelBallProjectile.DisplayName: Aerogel Ball
+			// AerogelBulletProjectile.DisplayName: Aerogel Bullet
+			// Eyeglow.DisplayName: Eye glow
+			// PrismAura.DisplayName: Prismatic Aura
+			// BeamSwordProj.DisplayName: Beam Sword
+			// BeamSwordShield.DisplayName: Beam Sword Shield
+			// BloodBall.DisplayName: Blood Ball
+			// BloodReaperHold.DisplayName: Blood Reaper
+			// BloodReaperProj.DisplayName: Blood Reaper
+			// BloodShot.DisplayName: Blood Shot
+			// BloodThirstyArrow.DisplayName: Blood Thirsty Arrow
+			// BrightnessFULL.DisplayName: BRIGHTNESS
+			// BrightnessPlayer.DisplayName: Brightness
+			// CompositeSwordHold.DisplayName: Composite Sword
+			// CompositeSwordProj.DisplayName: Composite Sword
+			// CopperScytheProj.DisplayName: Copper Scythe
+			// DarkExplosion.DisplayName: Dark Matter
+			// DarkGlowP.DisplayName: Dark Matter Sword
+			// DarkMatterLanceProj.DisplayName: Dark Matter Spear
+			// DarkMatterPickSwing.DisplayName: Dark Matter Pickaxe
+			// DarkMatterSwordProj.DisplayName: Dark Matter Sword
+			// DarkRest.DisplayName: Dark Matter Sword
+			// DarkRest2.DisplayName: Dark Matter Sword
+			// DarkSpheres.DisplayName: Dark Spheres
+			// DTHEX.DisplayName: Death Explosion
+			// EbonwoodSpike.DisplayName: Ebonwood Spike
+			// EletricalBall.DisplayName: Eletrical Ray
+			// ElizabethIVProj.DisplayName: Elizabeth IV
+			// ElizabethIVSwing.DisplayName: Elizabeth IV
+			// ElizabethIVSwing2.DisplayName: Elizabeth IV
+			// EMPTY.DisplayName: EMPTY
+			// EnchantedShot.DisplayName: EnchantedShot
+			// EnergyConductorM.DisplayName: Energy Conductor
+			// EnergyConductorP.DisplayName: Energy Conductor
+			// FinnBladeSwing.DisplayName: Finn Blade
+			// FinnBladeSwing2.DisplayName: Finn Blade
+			// FinnBladeSwing3.DisplayName: Finn Blade
+			// FlyingGumeProj.DisplayName: Flying Gume
+			// FPJ.DisplayName: Magical Foil
+			// GladiusRework.DisplayName: Gladius
+			// GladiusReworkAlt.DisplayName: Gladius
+			// GoldScytheProj.DisplayName: Gold Scythe
+			// GreenfireSkull.DisplayName: Greenfire Skull
+			// HammerProj.DisplayName: Laranjoo's Ancient Penumbratic Hammer
+			// HellShot.DisplayName: Hell Shot
+			// HitEffectProj.DisplayName: Hit Effect
+			// HotSlimeShot.DisplayName: Hot Slime
+			// IceSickle.DisplayName: Ice Sickle
+			// IceSpike.DisplayName: Ice Spike
+			// IcyShot.DisplayName: Icy Shot
+			// IronScytheSwing.DisplayName: Iron Scythe
+			// IronScytheProj.DisplayName: Iron Scythe
+			// JotapCosmicBullet.DisplayName: Cosmic Bullet
+			// JotapCosmicBulletMini.DisplayName: Cosmic Bullet
+			// KusarigamaHold.DisplayName: Kusarigama
+			// KusarigamaProj.DisplayName: Kusarigama
+			// MagicalFoilProjectile.DisplayName: Magical Foil
+			// MarshmellowKnifeProjectile.DisplayName: Small Marshmellow on a stick
+			// MarshmellowProjectile.DisplayName: Marshmellow Shot
+			// MarshBall.DisplayName: Marshmellow Ball
+			// MarshGround.DisplayName: Marshmellow Blob
+			// MarshmellowShortswordProjectile.DisplayName: Marshmellow Shortsword
+			// MarshmellowSlowProjectile.DisplayName: Heavy Marshmellow
+			// MBEx.DisplayName: The Mageblade
+			// Charging.DisplayName: Charging Mode
+			// GunMode.DisplayName: Gun Mode
+			// MeltedBlasterProj.DisplayName: Melted Blaster
+			// MeltedBlasterProj2.DisplayName: Melted Blaster
+			// MeltedFire.DisplayName: Melted fire
+			// MeltedTrident.DisplayName: Melted Trident
+			// MeltedTrident2.DisplayName: Melted Trident
+			// MeltedTrident3.DisplayName: Melted Trident
+			// MeltedTrident4.DisplayName: Melted Trident
+			// MeltedTrident5.DisplayName: Melted Trident
+			// MeltedTridentHostile.DisplayName: Melted Trident
+			// OVERCHARGING.DisplayName: OVERCHARGING
+			// MeltedFireball.DisplayName: Melted Fireball
+			// MeltedKnifeProj.DisplayName: Melted Knife
+			// MeltedScytheSwing.DisplayName: Melted Scythe
+			// MeltedShot.DisplayName: Melted Shot
+			// MeltedShotEx.DisplayName: Melted Shot
+			// NatureBeam.DisplayName: Nature Beam
+			// NatureBeam2.DisplayName: Nature Beam
+			// NightBeam.DisplayName: Night Beam
+			// PhantomDarkMatter.DisplayName: Phantom DarkMatter
+			// PhantomsPenumbraticDarkmatterScytheSwing.DisplayName: Phantom's Penumbratic Darkmatter Scythe
+			// PhantomsPenumbraticDarkmatterScytheSwing2.DisplayName: Phantom's Penumbratic Darkmatter Scythe
+			// PhantomsPenumbraticDarkmatterScytheProj.DisplayName: Phantom's Penumbratic Darkmatter Scythe
+			// PlatinumScytheProj.DisplayName: Platinum Scythe
+			// PrismaBlasterGlow.DisplayName: Prisma Cystal
+			// PrismaBlasterProj.DisplayName: Prisma Blaster
+			// PrismaCrystal.DisplayName: Prisma Cystal
+			// PrismCrystalWhite.DisplayName: Prisma Cystal
+			// PrismGlow.DisplayName: Prisma Cystal
+			// PrismShard.DisplayName: Prism Shard
+			// PrismShardGlow.DisplayName: Prism Shard
+			// PrismShardWhite.DisplayName: Prism Shard
+			// PrismaRepeaterProj.DisplayName: Prisma Repeater
+			// PrismShot.DisplayName: Prisma Bullet
+			// PrismShotGlow.DisplayName: Prisma Bullet
+			// PrismShotWhite.DisplayName: Prisma Bullet
+			// ProjectileCorruption.DisplayName: Corruption Elemental
+			// ProjectileIce.DisplayName: ProjectileIce
+			// ProjectileShockwave.DisplayName: Shockwave
+			// ProjectileShockwave2.DisplayName: Shockwave
+			// RichMahoganyProj.DisplayName: Rich Mahogany Scythe
+			// ShadowHellBullets.DisplayName: Shadow Hell Bullets
+			// SilverScytheProj.DisplayName: Silver Scythe
+			// SlimeHomingProj.DisplayName: Slime Saw
+			// SlimeSquirt.DisplayName: Slime Squirt
+			// SnowBall.DisplayName: SnowBall
+			// Spark.DisplayName: Lightning Arrow
+			// SporeProj.DisplayName: Spore
+			// SwordBeam.DisplayName: Death Beam
+			// TheMagebladeExplosion.DisplayName: The Mageblade Explosion
+			// TheMagebladeSwing.DisplayName: The Mageblade
+			// TheStarsProj.DisplayName: The Stars Caller Scythe
+			// TinTrash.DisplayName: Tin Trash
+			// TungstenSpike.DisplayName: Tungsten Spike
+			// TwistedRazorblade.DisplayName: Penumbratic Razorblade
+			// TwistedSwing.DisplayName: Spaghettini's Penumbratic Twisted Blade
+			// Wakizashi1.DisplayName: Wakizashi
+			// WakizashiSwing.DisplayName: Wakizashi
+			// BuritiFinger.DisplayName: Buriti Finger
+			// BuritiFinger2.DisplayName: Buriti Finger
+			// BuritiFinger3.DisplayName: Buriti Finger
+			// Arrows.DisplayName: Arrows
+			// Brightness.DisplayName: Brightness
+			// Brightness10.DisplayName: Brightness
+			// Brightness2.DisplayName: Brightness
+			// Brightness2Death.DisplayName: Brightness
+			// Brightness3.DisplayName: Brightness
+			// Brightness4.DisplayName: Brightness
+			// Brightness5.DisplayName: Brightness
+			// Brightness6.DisplayName: Brightness
+			// Brightness7.DisplayName: Brightness
+			// Brightness8.DisplayName: Brightness
+			// Brightness9.DisplayName: Brightness
+			// BrightnessDeath.DisplayName: Brightness
+			// BrightnessP2.DisplayName: Brightness
+			// BrightnessP22.DisplayName: Brightness
+			// EXBEAM.DisplayName: Explosion Warning
+			// EXBEAMHIT.DisplayName: Explosion
+			// ExplosionDeath.DisplayName: Explosion
+			// Eyeproj.DisplayName: Storm Bolt
+			// Eyeproj2.DisplayName: Storm Bolt
+			// Eyeproj3.DisplayName: Storm Bolt
+			// Eyeproj4.DisplayName: Storm Bolt
+			// EyeprojEmpty.DisplayName: Storm Bolt
+			// EyeprojGlow.DisplayName: Storm Bolt
+			// EyeprojGlow2.DisplayName: Storm Bolt
+			// EyeprojKill.DisplayName: Storm Bolt
+			// LazerBeam.DisplayName: Storm Beam
+			// LazerBeam2.DisplayName: Storm Beam
+			// LazerBeam3.DisplayName: Storm Laser
+			// LazerBeam4.DisplayName: Storm Beam
+			// LightningA.DisplayName: Lightning Beam
+			// LightningB.DisplayName: Lightning Beam
+			// LightningC.DisplayName: Lightning Beam
+			// LightningD.DisplayName: Lightning Beam
+			// LightningE.DisplayName: Lightning Beam
+			// Line3.DisplayName: Storm Beam
+			// Line4.DisplayName: Storm Beam
+			// Line5.DisplayName: Storm Beam
+			// Line6.DisplayName: Storm Beam
+			// Warning.DisplayName: Beams Warning
+			// Line.DisplayName: Line
+			// Line2.DisplayName: Line
+			// not.DisplayName: Buriti Finger
+			// knifeproj.DisplayName: Strange Knife
+			// MarshmellowGold.DisplayName: Marshmellow Gold
+			// PhantomDarkmatterEffect.DisplayName: Phantom Darkmatter Effect
+			// LoopSoundProj.DisplayName: Loop Sound
+			// None.DisplayName: None
+			// MarshmellowBladeProj.DisplayName: Marshmellow Blade
+			// ShadowFlameProj.DisplayName: Shadow Flame
+			// a2.DisplayName: a2
+			// MeltedDemonicBat.DisplayName: Melted Demonic Bat
+			// IcyBoom.DisplayName: Icy Boom
+			// NeutronReactorLaser.DisplayName: Neutron Reactor Laser
+			// NeutronReactorRay.DisplayName: Neutron Reactor Ray
+			// SoulStrikeKnife.DisplayName: Soul Strike Knife
+			// SoulStrikeKnifeHeal.DisplayName: Soul Strike Knife Heal
+			// ConductorProj.DisplayName: Conductor Beam
+			// ScorpionStingerProj.DisplayName: Scorpion Stinger
+			// CorrosiveGlaiveProj.DisplayName: Corrosive Glaive
+			// ScorpionHunterBubble.DisplayName: Venomous Bubble
+			// CorrosiveKnifeProj.DisplayName: Corrosive Knife
+			// CorrosiveShot.DisplayName: Corrosive Shot
+			// CorrosiveScytheHold.DisplayName: Corrosive Scythe
+			// CorrosiveScytheSwing.DisplayName: Corrosive Scythe
+			// CorrosiveScytheSwing2.DisplayName: Corrosive Scythe
+			// CorrosionCannonProj.DisplayName: Corrosion Cannon
+			// CorrosiveExplosion.DisplayName: Corrosive Explosion
+			// CorrosiveClaymoreS.DisplayName: Corrosive Claymore
+			// NeutronReactorHeld.DisplayName: Neutron Reactor
+			// PrismaScytheBeams.DisplayName: Prismatic beam
+			// PrismaScytheEf.DisplayName: Prismatic Glow
+			// PrismaScytheProj.DisplayName: Prismatic Scythe
+			// PrismaScytheS.DisplayName: Prismatic Scythe
+			// PrismaScytheEf2.DisplayName: Prismatic Glow
+			// PrismaScytheEf3.DisplayName: Prisma Scythe Ef3
+			// PrismaScytheProjShot.DisplayName: Prismatic Scythe Beam
+			// GoreProjectile.DisplayName: Gore Projectile
+			// PrismaGlow.DisplayName: Prisma Glow
+			// PrismaGlow2.DisplayName: Prisma Glow
+			// PrismaGlow3.DisplayName: Prisma Glow
+			// PrismaticScytheGore1.DisplayName: Prismatic Scythe Piece
+			// PrismaticScytheGore2.DisplayName: Prismatic Scythe Piece
+			// PrismaticScytheGore3.DisplayName: Prismatic Scythe Piece
+			// PrismaticScytheGore4.DisplayName: Prismatic Scythe Piece
+			// PrismaGlobeProj.DisplayName: Prisma Rays
+			// PrismaticKnifeProj.DisplayName: Prismatic Knife
+			// PrismaticKnifeProjSpecial.DisplayName: Prismatic Knife
+			// BloodEelProjHead.DisplayName: Blood Eel
+		}
+
+		Items: {
+			AbsoluteZero: {
+				// DisplayName: Absolute Zero
+				/* Tooltip:
+					'''
+					This blade is so heavy and cold that makes your hands shake...
+					 It fires an icy shot that explodes in 8 pieces
+					''' */
+			}
+
+			AerogelBoots: {
+				// DisplayName: Aerogel Boots
+				/* Tooltip:
+					'''
+					8% increased movement speed
+					Grants you to jump higher and fast fall
+					''' */
+			}
+
+			AerogelShield: {
+				// DisplayName: Aerogel Shield
+				/* Tooltip:
+					'''
+					This slimy shield protects you from the slimes and keep them friendly
+					Grants immunity to slimed debuff
+					Spawns Slime Spikes when moving
+					''You feel like the king!''
+					''' */
+			}
+
+			BunnysPaw: {
+				// DisplayName: Lucky Bunny Foot
+				/* Tooltip:
+					'''
+					5% Increased Critical strike chance
+					Increases your luck by a tiny bit
+					''You are so mean!''
+					''' */
+			}
+
+			ExoSkeleton: {
+				// DisplayName: Exo Skeleton
+				/* Tooltip:
+					'''
+					Both Frog, Ninja gears, and Mechanical glove effects
+					12% increased melee damage
+					6% increased movement speed
+					8% increased damage.
+					The gear need 30 seconds to load a special mechanism
+					It gives you holy protection for 10 seconds, granting you the ability to dodge the next attack
+					''You feel like a real ninja!''
+					''' */
+			}
+
+			ReaperEmblem: {
+				// DisplayName: Reaper Emblem
+				// Tooltip: 15% increased reaper damage
+			}
+
+			AerogelAxe: {
+				// DisplayName: Aerogel Axe
+				// Tooltip: ""
+			}
+
+			AerogelBall: {
+				// DisplayName: Aerogel Ball
+				/* Tooltip:
+					'''
+					Shoots an bouncy ball
+					Inflicts slimed on enemies
+					''Time to do some basketball guys!''
+					''' */
+			}
+
+			AerogelBlade: {
+				// DisplayName: Aerogel Blade
+				/* Tooltip:
+					'''
+					'Those slimes are addicted to that blade!'
+					Inflicts hot slime on enemies, making them suffer on slime!
+					''' */
+			}
+
+			AerogelHammer: {
+				// DisplayName: Aerogel Hammer
+				// Tooltip: ""
+			}
+
+			AerogelPickaxe: {
+				// DisplayName: Aerogel Pickaxe
+				// Tooltip: ""
+			}
+
+			AerogelScythe: {
+				// DisplayName: Aerogel Scythe
+				/* Tooltip:
+					'''
+					This sticky scythe fires three hot slimes
+					Those hot slimes inflicts the hot slime debuff
+					[c/0066ff:Special ability:] When used, the scythe fires a quick homing slime saw, dealing high damage on enemies
+					''' */
+			}
+
+			BloodystoneBreastplate: {
+				// DisplayName: Bloodystone Breastplate
+				/* Tooltip:
+					'''
+					7% Increased damage
+					Grants you immunity to 'On Fire!' and Bleeding
+					''' */
+			}
+
+			BloodystoneCape: {
+				// DisplayName: Bloodystone Cape
+				/* Tooltip:
+					'''
+					12% Increased Magical damage
+					6% reduced mana usage
+					20+ Max mana
+					Grants you immunity to 'On Fire!' and Bleeding
+					''' */
+			}
+
+			BloodystoneHeadgear: {
+				// DisplayName: Bloodystone Headgear
+				// Tooltip: Increases summon damage by 15%
+			}
+
+			BloodystoneHelm: {
+				// DisplayName: Bloodystone Helm
+				// Tooltip: Increases damage by 4%
+			}
+
+			BloodystoneHelmet: {
+				// DisplayName: Bloodystone Helmet
+				// Tooltip: 7% Increased damage
+			}
+
+			BloodystoneHood: {
+				// DisplayName: Bloodystone Hood
+				/* Tooltip:
+					'''
+					Increases magic damage by 6%
+					Increases mana regen
+					''' */
+			}
+
+			BloodystoneLeggings: {
+				// DisplayName: Bloodystone Leggings
+				/* Tooltip:
+					'''
+					3% Increased damage
+					12% increased movement speed
+					''' */
+			}
+
+			MarshmellowBody: {
+				// DisplayName: Marshmellow Body
+				/* Tooltip:
+					'''
+					1% Increased damage
+					'Makes you feel comfortable!'
+					''' */
+			}
+
+			MarshmellowHelm: {
+				// DisplayName: Marshmellow Helm
+				/* Tooltip:
+					'''
+					Increases damage by 2%
+					'Its so fluffy!'
+					''' */
+			}
+
+			MarshmellowLeggings: {
+				// DisplayName: Marshmellow Leggings
+				/* Tooltip:
+					'''
+					2% increased movement speed
+					'Makes your legs feel fluffy'
+					''' */
+			}
+
+			MeltedBreastplate: {
+				// DisplayName: Melted Breastplate
+				/* Tooltip:
+					'''
+					10% Increased reaper damage
+					Grants you immunity to 'On Fire!' and lava
+					''' */
+			}
+
+			MeltedHelmet: {
+				// DisplayName: Melted Helmet
+				// Tooltip: Increases damage by 3%
+			}
+
+			MeltedLeggings: {
+				// DisplayName: Melted Leggings
+				// Tooltip: 7% Increased movement speed
+			}
+
+			OldBloodystoneBreastplate: {
+				// DisplayName: Old Bloodystone Breastplate
+				// Tooltip: 3% Increased damage
+			}
+
+			OldBloodystoneHelmet: {
+				// DisplayName: Old Bloodystone Helmet
+				// Tooltip: 3% Increased damage
+			}
+
+			OldBloodystoneLeggings: {
+				// DisplayName: Old Bloodystone Leggings
+				// Tooltip: 3% Increased damage
+			}
+
+			PrismArmor: {
+				// DisplayName: Prism Breastplate
+				// Tooltip: 5% Increased reaper damage
+			}
+
+			PrismHelm: {
+				// DisplayName: Prism Helm
+				/* Tooltip:
+					'''
+					Critical strike chance increased by 10%
+					Reaper damage increased by 10%
+					''' */
+			}
+
+			PrismLeggings: {
+				// DisplayName: Prism Leggings
+				// Tooltip: 8% Increased movement speed
+			}
+
+			Julliette: {
+				// DisplayName: Julliette
+				// Tooltip: ""
+			}
+
+			BloodCoagulator: {
+				// DisplayName: Blood Coagulator
+				// Tooltip: Fires 3 Blood Shots that inflicts ichor on enemies
+			}
+
+			BloodReaper: {
+				// DisplayName: Blood Reaper
+				/* Tooltip:
+					'''
+					A bloody scythe made for enemy suffering...
+					                                   Makes enemies bleed!
+					[c/b4202a:Special ability:] When used, more scythes are swung in all directions and you dash at the mouse direction
+					''' */
+			}
+
+			BloodrootPickaxe: {
+				// DisplayName: Bloodroot Pickaxe
+				// Tooltip: ""
+			}
+
+			BorealWoodScythe: {
+				// DisplayName: Borealwood Scythe
+				// Tooltip: "[c/7a6251:Special ability:] When used, the scythe fires a huge snowball"
+			}
+
+			BrightnessLantern: {
+				// DisplayName: Brighness Lantern
+				/* Tooltip:
+					'''
+					AHHHHHHHHHH ITS SO BRIGHT
+					IT SHOULD KILL YOUR EYES!
+					YOU CANT EVEN SEE YOURSELF!!!
+					''' */
+			}
+
+			BrokenWoodyThing: {
+				// DisplayName: Broken Woody Thing
+				// Tooltip: This thing has an strange format...
+			}
+
+			Buriti: {
+				// DisplayName: Buriti
+				/* Tooltip:
+					'''
+					Buriti
+					Buriti
+					Buriti
+					Buriti
+					Buriti
+					Its Buriti
+					''' */
+			}
+
+			Carabina: {
+				// DisplayName: Carabina
+				/* Tooltip:
+					'''
+					A very slow and powerful rifle that can easily destroy enemies
+					''Boom headshot!''
+					''' */
+			}
+
+			ChargeGun: {
+				// DisplayName: Eletrical Conductor
+				// Tooltip: Fires a Eletrical Ray
+			}
+
+			CompositeSword: {
+				// DisplayName: Composite Sword
+				/* Tooltip:
+					'''
+					A very old blacksmith forged this legendary blade...
+					This sword can break apart and reach long distances, causing mass destruction.
+					''' */
+			}
+
+			AerogelBullet: {
+				// DisplayName: Aerogel Bullet
+				// Tooltip: ""
+			}
+
+			BuritiS: {
+				// DisplayName: Sussy Bird
+				/* Tooltip:
+					'''
+					Summons something
+					'its wet...'
+					''' */
+			}
+
+			CreamyBun: {
+				// DisplayName: Creamy Bun
+				/* Tooltip:
+					'''
+					{$CommonItemTooltip.MediumStats}
+					'The king favourite snack!'
+					''' */
+			}
+
+			EmptyStarterBag: {
+				// DisplayName: Empty starter bag
+				// Tooltip: Empty, but gorgeous!
+			}
+
+			EyestormBag: {
+				// DisplayName: Eye of the Storm Treasure Bag
+				/* Tooltip:
+					'''
+					The storm rests...
+					{$CommonItemTooltip.RightClickToOpen}
+					''' */
+			}
+
+			EyestormSummon: {
+				// DisplayName: Electrified Compass
+				/* Tooltip:
+					'''
+					Summons Eye of the storm
+					'Watch your way!!'
+					''' */
+			}
+
+			GuaranaJesus: {
+				// DisplayName: Guarana Jesus
+				/* Tooltip:
+					'''
+					2 Dollars each
+					'Tastes like gum!'
+					Grants a bunch of buffs
+					''' */
+			}
+
+			JumpVelPotion: {
+				// DisplayName: Frog Potion
+				// Tooltip: Increases your speed and jump
+			}
+
+			Marshmellow: {
+				// DisplayName: Marshmellow
+				// Tooltip: ""
+			}
+
+			MysticalStrawberry: {
+				// DisplayName: Mystical Strawberry
+				/* Tooltip:
+					'''
+					{$CommonItemTooltip.MediumStats}
+					'An Mystic Strawberry that grown up in a Mountain...'
+					''' */
+			}
+
+			PinkCupcake: {
+				// DisplayName: Pink Cupcake
+				/* Tooltip:
+					'''
+					{$CommonItemTooltip.MediumStats}
+					'The king favourite cupcake!'
+					''' */
+			}
+
+			StarterBag: {
+				// DisplayName: Starter Bag
+				/* Tooltip:
+					'''
+					Your adventure begins...
+					{$CommonItemTooltip.RightClickToOpen}
+					''' */
+			}
+
+			StickOnMarshmellow: {
+				// DisplayName: Stick On Marshmellow
+				// Tooltip: ""
+			}
+
+			CopperScythe: {
+				// DisplayName: Copper Scythe
+				// Tooltip: "[c/964316:Special ability:] When used, the player throws 1 copper scythe"
+			}
+
+			DarkMatterItem: {
+				// DisplayName: Dark Matter
+				/* Tooltip:
+					'''
+					The darkest thing in universe
+					Your feel powerful on looking at it
+					''Maybe if i...''
+					''' */
+			}
+
+			DarkMatterLance: {
+				// DisplayName: Dark Matter Spear
+				/* Tooltip:
+					'''
+					This dark spear is terrifying powerful
+					Throws a very fast lance that explodes on enemy hit, creating dark matter spheres, inflicting dark matter debuff on them
+					'Dark entities are watching...'
+					''' */
+			}
+
+			DarkMatterPick: {
+				// DisplayName: Dark Matter Pickaxe
+				/* Tooltip:
+					'''
+					Its so fast that can destroy the world
+					It create copies of itself for mass destruction
+					Right Click for normal swing
+					[c/ff0000:WARNING:] Can destroy your world, so bre careful!!
+					''' */
+			}
+
+			DarkMatterPickUse: {
+				// DisplayName: Dark Matter Pickaxe
+				/* Tooltip:
+					'''
+					Its so fast that can destroy the world
+					It create copies of itself for mass destruction
+					Right Click for normal swing
+					''' */
+			}
+
+			DarkMatterSword: {
+				// DisplayName: Dark Matter Blade
+				/* Tooltip:
+					'''
+					This dark sword drains the enemies souls
+					Throws the sword that follows the cursor, inflicting dark matter on foes
+					'Dark entities are watching...'
+					''' */
+			}
+
+			DeathstrandingScythe: {
+				// DisplayName: Deathstranding Scythe
+				// Tooltip: "[c/5e5e5e:Special ability:] When used, the scythe makes a blue explosion, damaging monsters nearby, and also gives 5+ defense for 5 seconds"
+			}
+
+			DiamondSword: {
+				// DisplayName: Diamond Sword
+				// Tooltip: "''OMG, Mom! i found diamonds!!!!''"
+			}
+
+			DiscordServer: {
+				// DisplayName: Discord Server
+				// Tooltip: Use this to join the official Penumbra Mod discord server!
+			}
+
+			EbonwoodScythe: {
+				// DisplayName: Ebonwood Scythe
+				// Tooltip: "[c/47435e:Special ability:] When used, the scythe shoots 3 Ebonwood spikes."
+			}
+
+			ElementaryWoodSword: {
+				// DisplayName: Elementary Wood Sword
+				/* Tooltip:
+					'''
+					An old elementary sword
+					Fires an [c/00ffff:Enchanted Shot]
+					[c/00ff00:By right clicking], the blade will fire 3 Differents Elemental Shots! [c/cf8484:(With a 15 sec cooldown)]
+					[c/cc00ff:Corruption]: Shoots a Eater of souls like projectile that slowly homes into enemies, dealing normal damage
+					[c/1e90ff:Ice]: Shoots a ice crystal that deals high damage
+					[c/adff2f:Jungle]: Shoots a Snacther like Projectile that quickly homes into enemies, dealing lower damage
+					''' */
+			}
+
+			ElizabethIV: {
+				// DisplayName: Elizabeth IV
+				/* Tooltip:
+					'''
+					[c/e3aaff:Elizabeth IV is the legendary talking hilt of the heroes]
+					[c/e3aaff:''A masked kid probably lost it''...]
+					''' */
+			}
+
+			EmptyBag: {
+				// DisplayName: Empty Bag
+				// Tooltip: "'Why would you need that bag?...'"
+			}
+
+			FinnBlade: {
+				// DisplayName: Finn Blade
+				/* Tooltip:
+					'''
+					[c/cbecf8:'This blade has a long history...']
+					[c/76b6cb:''A long time ago this sword was used by a hero, Called ''Finn''] 
+					[c/76b6cb:He sacrified his alternate reality by transforming himself into this legendary blade...'']
+					[c/6198aa:Take care of it, its still watching you...]
+					''' */
+			}
+
+			FirstShardOfTheMageblade: {
+				// DisplayName: First Shard Of The Mageblade
+				// Tooltip: The First piece of an ancient powerful blade...
+			}
+
+			FlyingGume: {
+				// DisplayName: Flying Gume
+				/* Tooltip:
+					'''
+					Can be only used on 2 directions
+					''This sword can fly!''
+					''' */
+			}
+
+			FourthShardOfTheMageblade: {
+				// DisplayName: Fourth Shard Of The Mageblade
+				// Tooltip: The Fourth and last piece of an ancient powerful blade...
+			}
+
+			Glock17: {
+				// DisplayName: Glock-17
+				/* Tooltip:
+					'''
+					This pistol was used by bad guys!
+					''Commonly used by terrorists''
+					''' */
+			}
+
+			Glock18HellFire: {
+				// DisplayName: Glock18 - HellFire
+				/* Tooltip:
+					'''
+					'This looks fire...'
+					'BANG BANG POW POW HAHAHAHA!'
+					''' */
+			}
+
+			GoldenScythe: {
+				// DisplayName: Golden Scythe
+				/* Tooltip:
+					'''
+					It material makes it heavy but beaultiful...
+					[c/bc9d14:Special ability:] When used, the player throws 4 golden scythes.
+					''' */
+			}
+
+			GoldenSickle: {
+				// DisplayName: Golden Sickle
+				/* Tooltip:
+					'''
+					This sickle can extract hay from the grass
+					It has a small chance to inflict a buff that makes enemies drop more cash.
+					[c/f9c720:Special ability:] When used, the scythe swing faster for 5 seconds, at cost of reaper energy will not increase.
+					''' */
+			}
+
+			HellFire: {
+				// DisplayName: Hell Fire
+				// Tooltip: Its too hot that is melting...
+			}
+
+			InconsistentJelly: {
+				// DisplayName: Inconsistent Jelly
+				// Tooltip: "'This jelly looks strange...'"
+			}
+
+			IronScythe: {
+				// DisplayName: Iron Scythe
+				/* Tooltip:
+					'''
+					Big and sharp!
+					Spins the scythe through player
+					[c/d1d8d9:Special ability:] When used, The player throws 2 Iron scythes
+					''' */
+			}
+
+			JotapsPenumbraticCosmicRifle: {
+				// DisplayName: Jotap's Penumbratic Cosmic Rifle
+				/* Tooltip:
+					'''
+					[c/ad08cd:The rifle of Penumbra]
+					[c/75efff:This rifle converts elements into cosmic energy]
+					[c/75efff:These cosmic energies deletes enemies from existence]
+					[c/75efff:Fires cosmic bullets that explodes in additional fragments, dealing insane damage on foes.]
+					[c/ff0000:''Look into the sky'']
+					[c/00FF00:-Developer Item-]
+					''' */
+			}
+
+			JungleScythe: {
+				// DisplayName: Jungle Scythe
+				/* Tooltip:
+					'''
+					If you hit an enemy with that scythe, vines attaches to them dealing damage over time.
+					[c/e99131:Special ability:] When used, the scythe fires spores that follows enemies
+					''' */
+			}
+
+			Kusarigama: {
+				// DisplayName: Kusarigama
+				/* Tooltip:
+					'''
+					A big scythe that can reach high distances
+					[c/d49d59:Special ability:] When used, more scythes are swung
+					''' */
+			}
+
+			LaranjoosAncientPenumbraticHammer: {
+				// DisplayName: Laranjoo's Ancient Penumbratic Hammer
+				/* Tooltip:
+					'''
+					[c/ad08cd:The hammer of Penumbra]
+					[c/75efff:Laranjoo's Ancient hammer is cappable of destroying the enemies souls...]
+					[c/75efff:It force, It strengh, everything is cappable of destroying almost everything...]
+					[c/75efff:This is the proof that you are worth enough to wield this mythic hammer]
+					[c/75efff:Throws an hyper fast hammer]
+					[c/ff0000:''Are you liking this?'']
+					[c/00FF00:-Developer Item-]
+					''' */
+			}
+
+			LeadScythe: {
+				// DisplayName: Lead Scythe
+				/* Tooltip:
+					'''
+					Strong enough to cut your finger!
+					[c/3e5272:Special ability:] When used, you get 45% damage reduction on next monster attack.
+					''' */
+			}
+
+			MagicalFoil: {
+				// DisplayName: Magical Foil
+				/* Tooltip:
+					'''
+					This fast foil can penetrate almost everything!
+					'Oh glory!'
+					[c/ffc0cb:Ages ago, this blade was used by someone special, someone that forged it with mythical powers...]
+					[c/ffc0cb:But when the war ended, he disappeared, leaving his legacy as a hero, and leaving his blade behind]
+					[c/ffc0cb:So that someday someone could lift it up again, and inherit his old powers...]
+					''' */
+			}
+
+			MarshmellowBlade: {
+				// DisplayName: Marshmellow Blade
+				// Tooltip: This fluffy sharp blade makes your enemies fear!
+			}
+
+			MarshmellowCannon: {
+				// DisplayName: Marshmellow Cannon
+				// Tooltip: This cannon puts fear in others!
+			}
+
+			MarshmellowKnife: {
+				// DisplayName: Small Marshmellow on a stick
+				// Tooltip: Fires a 3 fast stick burst
+			}
+
+			MarshmellowLauncher: {
+				// DisplayName: Marshmellow Launcher
+				// Tooltip: Fires fast yummy marshmellows
+			}
+
+			MarshmellowPickaxe: {
+				// DisplayName: Marshmellow Pickaxe
+				// Tooltip: This fluffy pickaxe is somehow strong
+			}
+
+			MarshmellowScythe: {
+				// DisplayName: Marshmellow Scythe
+				/* Tooltip:
+					'''
+					Fluffy enough for mass mob killing!
+					Spins the scythe through player
+					[c/d1d8d9:Special ability:] When used, The scythe fires 2 marshmellow balls that sticks into the ground
+					''' */
+			}
+
+			MarshmellowShortsword: {
+				// DisplayName: Marshmellow Shortsword
+				// Tooltip: "[c/ffe5d9:'Small but have the power of being fluffy!']"
+			}
+
+			MarshmellowStaff: {
+				// DisplayName: Marshmellow Staff
+				/* Tooltip:
+					'''
+					Fires a heavy marshmellow that makes enemies slow
+					'Please, don't eat the cable...'
+					''' */
+			}
+
+			MeltedBlaster: {
+				// DisplayName: Melted Blaster
+				/* Tooltip:
+					'''
+					This gun has 2 modes:
+					[c/ffde38:First Mode:] Hold the gun to charge it up to 5 times
+					It shoots Melted Tridents that inflicts 'On Fire!'
+					1th to 3rd charge scales the trident damage, 4th charge makes the trident pass through tiles
+					The 5th charge shoots a high velocity trident that explodes on enemies hit, inflicting the Melted debuff
+					But be careful in holding the 5th charge too much, the gun will start to get [c/740038:Overcharged]
+					When [c/740038:Overcharged], the gun explodes, inflicting damage on the player plus the melted debuff
+					You can't use the gun when melting
+					[c/ff6a00:Second Mode:] The gun will shoot fire, inflicting 'On Fire!'
+					The fire velocity depends on cursor position
+					[c/793a80:'Grand things requer grand responsability']
+					''' */
+			}
+
+			MeltedEmber: {
+				// DisplayName: Melted Bones
+				// Tooltip: This is hot...
+			}
+
+			MeltedKnife: {
+				// DisplayName: Melted Knife
+				// Tooltip: Fires a high speed knife that explodes on enemy hits
+			}
+
+			MeltedScythe: {
+				// DisplayName: Melted Scythe
+				/* Tooltip:
+					'''
+					Hot and explosive!
+					When you get a critical strike, the scythe does an explosion on enemies
+					[c/ff4100:Special ability:] When used, the player spins the scythe and shoots fireballs
+					''' */
+			}
+
+			MeltedStaff: {
+				// DisplayName: Melted Staff
+				/* Tooltip:
+					'''
+					Fires a fireball
+					The fireball explodes in 3 additional fragments
+					''' */
+			}
+
+			MeltedSword: {
+				// DisplayName: Melted Blade
+				/* Tooltip:
+					'''
+					This blade is so hot that your enemies will melt on it
+					On critical hits, enemies explode, doing additional damage
+					Ignites enemies on hit
+					''' */
+			}
+
+			MirrorFragment: {
+				// DisplayName: Mirror Fragment
+				// Tooltip: "'You can barely see your soul inside...'"
+			}
+
+			Mossberg12: {
+				// DisplayName: Mossberg-12
+				/* Tooltip:
+					'''
+					Fires a lot of bullets dealing a lot of damage
+					'This is for those who can't aim...'
+					''' */
+			}
+
+			NatureGrass: {
+				// DisplayName: Nature Grass
+				/* Tooltip:
+					'''
+					From the pure nature...
+					Fires a Nature Beam that pushes enemies far
+					''' */
+			}
+
+			OmniStaff: {
+				// DisplayName: Omni Staff
+				/* Tooltip:
+					'''
+					Some of the gods most used weapon
+					Fires a huge lightning that inflicts high voltage on enemies
+					''' */
+			}
+
+			PalmwoodScythe: {
+				// DisplayName: Palmwood Scythe
+				// Tooltip: ""
+			}
+
+			PearlWoodScythe: {
+				// DisplayName: Pearlwood Scythe
+				// Tooltip: ""
+			}
+
+			PenumbraticShard: {
+				// DisplayName: Penumbratic Shard
+				/* Tooltip:
+					'''
+					The core of Penumbra
+					Your eyes brightens just to seeing it
+					''My precious...''
+					''' */
+			}
+
+			PhantomsPenumbraticDarkmatterScythe: {
+				// DisplayName: Phantom's Penumbratic Darkmatter Scythe
+				/* Tooltip:
+					'''
+					[c/ad08cd:The scythe of Penumbra]
+					[c/75efff:This scythe makes enemies feel regret about their past...]
+					[c/75efff:What they did, how they did it, will be resolved now.]
+					[c/75efff:They won't like it]
+					[c/75efff:Swings and spins the scythe around the player]
+					[c/75efff:Shoots dark matter debris]
+					[c/75efff:They inflicts Dark matter]
+					[c/75efff:Hitting enemies also give Dark matter]
+					[c/75efff:Dark matter drains enemies souls...]
+					[c/e33ed7:Special ability:] [c/fff864:Throws the scythe and it follows the cursor, exploding dark matter debris and dealing massive damage to foes]
+					[c/ff0000:''It is strong enough for you?'']
+					[c/00FF00:-Developer Item-]
+					''' */
+			}
+
+			AerogelBar: {
+				// DisplayName: Aerogel Bar
+				// Tooltip: This sticky bar looks tasty!
+			}
+
+			BloodyfleshBlock: {
+				// DisplayName: Bloodyflesh Block
+				// Tooltip: ""
+			}
+
+			BloodystoneBar: {
+				// DisplayName: Bloodystone Bar
+				// Tooltip: Your hands feel Bloody...
+			}
+
+			BloodystoneOre: {
+				// DisplayName: Bloodystone Ore
+				// Tooltip: ""
+			}
+
+			BoomBox: {
+				// DisplayName: Boom Box
+				// Tooltip: AOOOOBA
+			}
+
+			MarshmellowChair: {
+				// DisplayName: Marshmellow Chair
+				// Tooltip: Sitting on this comforts you...
+			}
+
+			MarshmellowDoor: {
+				// DisplayName: Marshmellow Door
+				// Tooltip: ""
+			}
+
+			MarshmellowPlatform: {
+				// DisplayName: Marshmellow Platform
+				// Tooltip: ""
+			}
+
+			MarshmellowTable: {
+				// DisplayName: Marshmellow Table
+				// Tooltip: Makes your homies comfortable
+			}
+
+			MarshmellowWall: {
+				// DisplayName: Marshmellow Wall
+				// Tooltip: ""
+			}
+
+			MarshmellowWorkbench: {
+				// DisplayName: Marshmellow Work Bench
+				// Tooltip: ""
+			}
+
+			Narga: {
+				// DisplayName: Narga
+				/* Tooltip:
+					'''
+					If you use it...
+					You shall enter in the world of craziness!!
+					Its cool...
+					''' */
+			}
+
+			InfectedBar: {
+				// DisplayName: Infected Bar
+				// Tooltip: "''This thing looks strange!''"
+			}
+
+			InfectedOre: {
+				// DisplayName: Infected Ore
+				// Tooltip: ""
+			}
+
+			PlatinumScythe: {
+				// DisplayName: Platinum Scythe
+				/* Tooltip:
+					'''
+					Pointy and shiny!
+					[c/f6d8eb:Special ability:] When used, the player throws a platinum scythe that sticks into ground/enemies, dealing damage in them
+					''' */
+			}
+
+			PrismaBlaster: {
+				// DisplayName: Prisma Blaster
+				/* Tooltip:
+					'''
+					Hold the gun to fire a huge crystal that in a certain time it explodes in 5 additional fragments
+					The fragments explodes on the direction of the mouse, the further the mouse is, the faster they go
+					'I love prisma!'
+					''' */
+			}
+
+			PrismaRepeater: {
+				// DisplayName: Prisma Repeater
+				/* Tooltip:
+					'''
+					Quickly shots homing prisma bullets
+					The gun needs to be loaded to start shooting
+					'Is this some sort of minigun?'
+					''' */
+			}
+
+			RedTape: {
+				// DisplayName: Red Tape
+				// Tooltip: "'I guess you won't need it anymore...'"
+			}
+
+			RichMahoganyScythe: {
+				// DisplayName: Rich Mahogany Scythe
+				// Tooltip: "[c/9b5459:Special ability:] When used, the player throws the scythe at high speed and then it comes back to the player"
+			}
+
+			RustyBroadsword: {
+				// DisplayName: Rusty Broadsword
+				// Tooltip: "'This sword was lost by someone in the caves...'"
+			}
+
+			RustyCopperSword: {
+				// DisplayName: Rusty Copper Sword
+				/* Tooltip:
+					'''
+					[c/808080:Ancients said that this blade was made for the true adventurers...]
+					[c/696969:'You feel a good thing, it is you...']
+					''' */
+			}
+
+			SecondShardOfTheMageblade: {
+				// DisplayName: Second Shard Of The Mageblade
+				// Tooltip: The Second piece of an ancient powerful blade...
+			}
+
+			ShadewoodScythe: {
+				// DisplayName: Shadewood Scythe
+				// Tooltip: ""
+			}
+
+			ShadowBlaster: {
+				// DisplayName: Srplayertube's Penumbratic Shadow Blaster
+				/* Tooltip:
+					'''
+					[c/ad08cd:The blaster of Penumbra]
+					[c/75efff:This gun is cappable to turn light into burning shadows...]
+					[c/75efff:Those burning shadows follows foes, letting them with no choice then accept the fate...]
+					[c/75efff:Fires a burst of 3 Shadow Hell Bullets, inflicting Shadow Flame to enemies.]
+					[c/ff0000:''Can you see the shadows?'']
+					[c/00FF00:-Developer Item-]
+					''' */
+			}
+
+			ShadowKeyper: {
+				// DisplayName: Shadow Keyper
+				/* Tooltip:
+					'''
+					All the 5 elemental swords were combinated...
+					You now have the power of the shadows
+					''' */
+			}
+
+			ShockWave: {
+				// DisplayName: Shock Wave
+				/* Tooltip:
+					'''
+					Emits a briliant shockwave
+					Inflicts Low Voltage
+					''' */
+			}
+
+			SilverScythe: {
+				// DisplayName: Silver Scythe
+				/* Tooltip:
+					'''
+					''Big as hell!''
+					[c/969aa1:Special ability:] When used, the player throws 3 silver scythes.
+					''' */
+			}
+
+			SpaghettinisPenumbraticTwistedBlade: {
+				// DisplayName: Spaghettini's Penumbratic Twisted Blade
+				/* Tooltip:
+					'''
+					[c/ad08cd:The blade of Penumbra]
+					[c/75efff:This sword was known to be used in the holy warfare.]
+					[c/75efff:It makes enemies afraid to approach you]
+					[c/75efff:But they will feel the pain this blade causes...]
+					[c/75efff:Shoots an Penumbratic razorblade]
+					[c/75efff:Hitting enemies will struck them with Super Star Slash.]
+					[c/75efff:Right click to be able to teleport the player into cursor.]
+					[c/75efff:It will do a huge super star slash to destroy enemies]
+					[c/75efff:It gives chaos state for 5 seconds ]
+					[c/ff0000:''Shall you destroy?'']
+					[c/00FF00:-Developer Item-]
+					''' */
+			}
+
+			SparkBow: {
+				// DisplayName: Spark Bow
+				/* Tooltip:
+					'''
+					Converts Wooden Arrows into lightning arrows, they inflict low voltage shock into enemies
+					''Good for zapping people!''
+					''' */
+			}
+
+			StaffofEnergy: {
+				// DisplayName: Staff of Energy
+				// Tooltip: Summons an Energy Conductor to fight for you
+			}
+
+			StayledBlood: {
+				// DisplayName: Stayled Blood
+				// Tooltip: This bloody blade was made by your strong effort and bloodshed, fires a Blood Ball
+			}
+
+			Stigmata: {
+				// DisplayName: Stigmata
+				/* Tooltip:
+					'''
+					You shouldn't have done this...
+					Only fools use this
+					Permanently increases damage by 10%
+					But it can be only used in a special way, and once...
+					''' */
+			}
+
+			TerroristsKnife: {
+				// DisplayName: Terrorist's Knife
+				// Tooltip: This small knife was used by terrorists...
+			}
+
+			TheMageblade: {
+				// DisplayName: The Mageblade
+				/* Tooltip:
+					'''
+					[c/00ffff:An ancient sword used by an old hero...]
+					[c/00ffff:This blade is the powerful combination of the 4 legendary shards]
+					[c/00ffff:This hero was brave to save his world from the darkness and corruption]
+					[c/00ffff:Nobody knew his name, but they will remember who saved them from the evil...]
+					Throws a floating blade that follows the cursor and explodes in a bunch of parts.
+					''' */
+			}
+
+			TheStarsCaller: {
+				// DisplayName: The Stars Caller
+				/* Tooltip:
+					'''
+					This scythe is from the sky!... literally!
+					Throws the scythe that penetrates enemies, but gets reduced damage every hit
+					[c/9f83d9:Special ability:] When used, the scythe spawns stars from the sky!
+					''' */
+			}
+
+			ThirdShardOfTheMageblade: {
+				// DisplayName: Third Shard Of The Mageblade
+				// Tooltip: The Third piece of an ancient powerful blade...
+			}
+
+			ThirstOfBloodBow: {
+				// DisplayName: Thirst Of Blood Bow
+				/* Tooltip:
+					'''
+					Converts Unholy Arrows into BloodThirsty Arrows
+					''Caution! It bites...''
+					''' */
+			}
+
+			Thombizon: {
+				// DisplayName: Thombizon
+				/* Tooltip:
+					'''
+					Five round burst
+					Only the first shot consumes ammo
+					''Made with love!''
+					''' */
+			}
+
+			TinScythe: {
+				// DisplayName: Tin Scythe
+				/* Tooltip:
+					'''
+					May be useful
+					[c/817d5d:Special ability:] When used, it spawns tin trash to rotate around the player.
+					''' */
+			}
+
+			TrueSlimeGun: {
+				// DisplayName: True Slime Gun
+				/* Tooltip:
+					'''
+					Now it hurts!
+					Now its useful!
+					Consumes gel as ammo
+					''' */
+			}
+
+			TungstenScythe: {
+				// DisplayName: Tungsten Scythe
+				/* Tooltip:
+					'''
+					You may like it
+					[c/38594c:Special ability:] When used, it spawns tungsten spikes on the ground
+					''' */
+			}
+
+			Wakizashi: {
+				// DisplayName: Wakizashi
+				// Tooltip: Ancient ones used that
+			}
+
+			Witcherster: {
+				// DisplayName: Witcherster
+				/* Tooltip:
+					'''
+					This big gun its terrifying!
+					Shoots an slow Greenfire Skull that speeds up in the time, inflicting poison on enemies.
+					''' */
+			}
+
+			WoodenScythe: {
+				// DisplayName: Wooden Scythe
+				/* Tooltip:
+					'''
+					[c/808080:This scythe is the proof of your courage by choosing a new path]
+					[c/808080:You're full of courage by holding this]
+					[c/9b611b:Special ability:] When used, the scythe grows and stuns enemies.
+					''' */
+			}
+
+			vhcmknife: {
+				// DisplayName: Strange knife
+				/* Tooltip:
+					'''
+					This knife has a strange green toxic liquid on inside...
+					''Why'd you got this?''
+					''' */
+			}
+
+			MarshmellowBlock: {
+				// DisplayName: Marshmellow Block
+				// Tooltip: Fluffy and delicious!
+			}
+
+			MarshmellowRepeater: {
+				// DisplayName: Marshmellow Repeater
+				// Tooltip: ""
+			}
+
+			ScorpionShell: {
+				// DisplayName: Scorpion Shell
+				// Tooltip: ""
+			}
+
+			MeltedDemonicBatStaff: {
+				// DisplayName: Melted Demonic Bat Staff
+				// Tooltip: Summons a melted bat to fight for you.
+			}
+
+			SandHunterArmor: {
+				// DisplayName: Sand Hunter Armor
+				/* Tooltip:
+					'''
+					8% Increased critical strike chance
+					5% Increased reaper damage
+					''' */
+			}
+
+			SandHunterBoots: {
+				// DisplayName: Sand Hunter Boots
+				/* Tooltip:
+					'''
+					13% Increased move speed
+					3% Increased reaper damage
+					''' */
+			}
+
+			SandHunterHelmet: {
+				// DisplayName: Sand Hunter Helmet
+				// Tooltip: 8% Increased reaper damage
+			}
+
+			CosmicBeet: {
+				// DisplayName: Cosmic Beet
+				/* Tooltip:
+					'''
+					Increases max life by 5
+					Can't consume when life fruits aren't maxed out.
+					''' */
+			}
+
+			PrismaGlobe: {
+				// DisplayName: Prisma Globe
+				/* Tooltip:
+					'''
+					When at daytime, you shoot slightly faster
+					"Act like the empress!"
+					''' */
+			}
+
+			NeutronReactor: {
+				// DisplayName: Birb's Penumbratic Neutron Reactor
+				/* Tooltip:
+					'''
+					[c/ad08cd:The reactor of Penumbra]
+					[c/75efff:A strong reactor that transforms neutrons into a cosmic laser]
+					[c/75efff:Its so strong that can get past everything!]
+					[c/75efff:Fires a giant laser that grows over time]
+					[c/ff0000:''Be careful to not burn your hands!'']
+					[c/00FF00:-Developer Item-]
+					''' */
+			}
+
+			SoulStrikeKnifes: {
+				// DisplayName: Soul Strike Knifes
+				// Tooltip: Fires various knifes that steals a small amount of mana
+			}
+
+			BloodyHibiscus: {
+				// DisplayName: Bloody Hibiscus
+				// Tooltip: "''This might do something...''"
+			}
+
+			EyestormRelic: {
+				// DisplayName: Eye of the Storm Relic
+				// Tooltip: ""
+			}
+
+			ScorpionStinger: {
+				// DisplayName: Scorpion Stinger
+				// Tooltip: ""
+			}
+
+			ScorpionHunterScythe: {
+				// Tooltip: "[c/827393:Special ability:] When used, the scythe fires a lot of venomous bubbles"
+				// DisplayName: Scorpion Hunter Scythe
+			}
+
+			CorrosiveGlaive: {
+				// Tooltip: "''It spins so much that make me go crazy!''"
+				// DisplayName: Corrosive Glaive
+			}
+
+			CorrosiveKnife: {
+				// Tooltip: Throws a flying knife that comes back to its owner after a certain time
+				// DisplayName: Corrosive Knife
+			}
+
+			CorrosiveShard: {
+				// Tooltip: It emits a strange corrosive light...
+				// DisplayName: Corrosive Shard
+			}
+
+			CorrosiveScythe: {
+				// DisplayName: Corrosive Scythe
+				/* Tooltip:
+					'''
+					"This scythe its bigger than you expect!"
+					Sometimes, The scythe inflicts corrosion on enemies, making them suffer in acid
+					[c/32c941:Special ability:] When used, an acid rain occurs for some seconds, and the owner dashes at the cursor position.
+					''' */
+			}
+
+			CorrosionCannon: {
+				// DisplayName: Corrosion Cannon
+				/* Tooltip:
+					'''
+					Hold to charge a huge corrosive explosion
+					"A bio-weapon to surpass Metal Gear"
+					''' */
+			}
+
+			CorrosiveClaymore: {
+				// DisplayName: Corrosive Claymore
+				// Tooltip: "''Emits a big corrosive light!''"
+			}
+
+			PrismaScythe: {
+				// DisplayName: Prisma Scythe
+				/* Tooltip:
+					'''
+					Shoots a enourmous beam to destroy your enemies!
+					"Very fancy scythe to light your way!"
+					[c/f871eb:Special ability:] When used, the owner throws the scythe, and it explodes in a lot of beams.
+					''' */
+			}
+
+			PrismaticKnife: {
+				// DisplayName: Prismatic Knife
+				/* Tooltip:
+					'''
+					Throws 8 prismatic knives one by one that follows the cursor
+					When all knifes are in, they move faster
+					[c/f871eb:Special ability:] When used, many knifes appear arround the player, press your reaper ability keybind to shoot them!
+					''' */
+			}
+
+			ATemporaryItem: {
+				// DisplayName: A Temporary Item
+				// Tooltip: ""
+			}
+
+			CorrodedStaff: {
+				// DisplayName: Corroded Staff
+				// Tooltip: ""
+			}
+
+			BloodEelBow: {
+				// DisplayName: Blood Eel Bow
+				// Tooltip: Shoots an entire blood eel!
+			}
+
+			AmythestCrystal: {
+				// DisplayName: Amethyst Crystal
+				// Tooltip: +15% increased size of reaper weapons
+			}
+
+			DiamondCrystal: {
+				// DisplayName: Diamond Crystal
+				// Tooltip: +3 increased damage for reaper weapons
+			}
+
+			EmeraldCrystal: {
+				// DisplayName: Emerald Crystal
+				// Tooltip: +3 armor penetration for reaper weapons
+			}
+
+			RubyCrystal: {
+				// DisplayName: Ruby Crystal
+				// Tooltip: +15% increased critical chance for reaper weapons
+			}
+
+			SapphireCrystal: {
+				// DisplayName: Sapphire Crystal
+				// Tooltip: +15% increased knockback for reaper weapons
+			}
+
+			TopazCrystal: {
+				// DisplayName: Topaz Crystal
+				// Tooltip: +10% increased speed for reaper weapons
+			}
+
+			MagicCrystal: {
+				// DisplayName: Old man's Crystal
+				/* Tooltip:
+					'''
+					"A lost crystal that was held by the old man"
+					5% increased reaper damage
+					10% increased reaper use time speed
+					Gives scythes a chance to shoot skulls
+					[c/ff6bf5:Old man curse:] 5% decreased critical chance
+					''' */
+			}
+		}
+
+		Tiles: {
+			// BloodystoneOre.MapEntry: Bloodystone Ore
+			// BoomBoxTile.MapEntry: Boom Box
+			// InfectedOre.MapEntry: Infected Ore
+			// MarshmellowDoorClosed.MapEntry: Marshmellow Door
+			// MarshmellowDoorOpen.MapEntry: Marshmellow Door
+			// MarshmellowTable.MapEntry: Marshmellow Table
+			// MarshmellowWorkbench.MapEntry: Marshmellow Work Bench
+		}
+
+		Keybinds: {
+			"Comfortably Protected Buff.DisplayName": Bonus da armadura de marshmellow
+			"Melted Armor Ability.DisplayName": Bonus da armadura derretida
+			"Reaper energy hability.DisplayName": Habilidade da energia ceifadora
+		}
+
+		Configs: {
+			PenumbraConfig: {
+				Autouse: {
+					// Tooltip: ""
+					// Label: "{$Mods.PenumbraMod.Config.Autouse.Label}"
+				}
+
+				UseTurn: {
+					// Tooltip: "{$Mods.PenumbraMod.Config.UseTurn.Tooltip}"
+					// Label: "{$Mods.PenumbraMod.Config.UseTurn.Label}"
+				}
+
+				VanillaChanges: {
+					// Tooltip: ""
+					// Label: "{$Mods.PenumbraMod.Config.VanillaChanges.Label}"
+				}
+
+				UITEXT: {
+					// Tooltip: ""
+					// Label: "{$Mods.PenumbraMod.Config.UITEXT.Label}"
+				}
+
+				HitEffectVelocity: {
+					// Tooltip: ""
+					// Label: "{$Mods.PenumbraMod.Config.HitEffectVelocity.Label}"
+				}
+
+				HitEffectColor: {
+					// Tooltip: ""
+					// Label: "{$Mods.PenumbraMod.Config.HitEffectColor.Label}"
+				}
+
+				HitEffectCount: {
+					// Tooltip: ""
+					// Label: "{$Mods.PenumbraMod.Config.HitEffectCount.Label}"
+				}
+
+				HitEffect: {
+					// Tooltip: "{$Mods.PenumbraMod.Config.HitEffect.Tooltip}"
+					// Label: "{$Mods.PenumbraMod.Config.HitEffect.Label}"
+				}
+
+				// DisplayName: "{$Mods.PenumbraMod.Config.PenumbraConfig.Label}"
+			}
+		}
+
+		Biomes: {
+			GraveyardBiome: {
+				// DisplayName: Graveyard Biome
+				// TownNPCDialogueName: the Graveyard Biome
+			}
+
+			MarbleBiome: {
+				// DisplayName: Marble Biome
+				// TownNPCDialogueName: the Marble Biome
+			}
+
+			AkuBiome: {
+				// DisplayName: Aku Biome
+				// TownNPCDialogueName: the Aku Biome
+			}
+
+			MarbleBiomeChange: {
+				// DisplayName: Marble Biome
+				// TownNPCDialogueName: the Marble Biome
+			}
+		}
+	}
+}
