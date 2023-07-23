@@ -76,6 +76,8 @@ namespace PenumbraMod.Content.DamageClasses
         public bool saphcryst = false;
         public bool diamcryst = false;
         public bool topcryst = false;
+        public bool azucryst = false;
+        public bool pricryst = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -85,6 +87,8 @@ namespace PenumbraMod.Content.DamageClasses
         public bool saphcryst2 = false;
         public bool diamcryst2 = false;
         public bool topcryst2 = false;
+        public bool azucryst2 = false;
+        public bool pricryst2 = false;
         #endregion
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -144,23 +148,53 @@ namespace PenumbraMod.Content.DamageClasses
                     Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 10);
                     SoundEngine.PlaySound(SoundID.Item73, Player.position);
                 }
-
                 if (bar.amycryst)
                 {
                     amycryst = true;
                 }
-                   
-
                 if (bar.magcryst)
                 {
                     magcryst = true;
                 }
-                         
+                if (bar.azucryst)
+                {
+                    azucryst = true;
+                }
+                if (bar.pricryst)
+                {
+                    pricryst = true;
+                }
+                if (bar.emecryst)
+                {
+                    emecryst = true;
+                }
+                if (bar.diamcryst)
+                {
+                    diamcryst = true;
+                }
+                if (bar.topcryst)
+                {
+                    topcryst = true;
+                }
+                if (bar.saphcryst)
+                {
+                    saphcryst = true;
+                }
+                if (bar.rubycryst)
+                {
+                    rubycryst = true;
+                }
             }
             else
             {
                 amycryst = false;
+                emecryst = false;
                 magcryst = false;
+                rubycryst = false;
+                saphcryst = false;
+                diamcryst = false;
+                topcryst = false;
+                azucryst = false;
             }
 
             // ------------
@@ -177,18 +211,51 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     amycryst2 = true;
                 }
-
-
                 if (bar.magcryst2)
                 {
                     magcryst2 = true;
                 }
-                  
+                if (bar.azucryst2)
+                {
+                    azucryst2 = true;
+                }
+                if (bar.pricryst2)
+                {
+                    pricryst2 = true;
+                }
+                if (bar.emecryst2)
+                {
+                    emecryst2 = true;
+                }
+                if (bar.diamcryst2)
+                {
+                    diamcryst2 = true;
+                }
+                if (bar.topcryst2)
+                {
+                    topcryst2 = true;
+                }
+                if (bar.saphcryst2)
+                {
+                    saphcryst2 = true;
+                }
+                if (bar.rubycryst2)
+                {
+                    rubycryst2 = true;
+                }
+
             }
             else
             {
                 amycryst2 = false;
+                emecryst2 = false;
                 magcryst2 = false;
+                rubycryst2 = false;
+                saphcryst2 = false;
+                diamcryst2 = false;
+                topcryst2 = false;
+                azucryst2 = false;
+                pricryst2 = false;
             }
 
 
@@ -230,6 +297,120 @@ namespace PenumbraMod.Content.DamageClasses
             if (magcryst2)
             {
                 Player.AddBuff(BuffType<MagicForce>(), 10);
+            }
+            else
+            {
+            }
+
+            // ------------
+
+            if (emecryst)
+            {
+                Player.AddBuff(BuffType<EmeraldForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (emecryst2)
+            {
+                Player.AddBuff(BuffType<EmeraldForce>(), 10);
+            }
+            else
+            {
+            }
+
+            // ------------
+
+            if (pricryst)
+            {
+                Player.AddBuff(BuffType<PrimeyeForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (pricryst2)
+            {
+                Player.AddBuff(BuffType<PrimeyeForce>(), 10);
+            }
+            else
+            {
+            }
+
+            // ------------
+
+            if (diamcryst)
+            {
+                Player.AddBuff(BuffType<DiamondForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (diamcryst2)
+            {
+                Player.AddBuff(BuffType<DiamondForce>(), 10);
+            }
+            else
+            {
+            }
+
+            // ------------
+
+            if (saphcryst)
+            {
+                Player.AddBuff(BuffType<SapphireForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (saphcryst2)
+            {
+                Player.AddBuff(BuffType<SapphireForce>(), 10);
+            }
+            else
+            {
+            }
+
+            // ------------
+
+            if (topcryst)
+            {
+                Player.AddBuff(BuffType<TopazForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (topcryst2)
+            {
+                Player.AddBuff(BuffType<TopazForce>(), 10);
+            }
+            else
+            {
+            }
+
+            // ------------
+
+            if (rubycryst)
+            {
+                Player.AddBuff(BuffType<RubyForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (rubycryst2)
+            {
+                Player.AddBuff(BuffType<RubyForce>(), 10);
             }
             else
             {

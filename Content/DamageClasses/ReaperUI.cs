@@ -49,6 +49,12 @@ namespace PenumbraMod.Content.DamageClasses
         private UIImage MagicCrystal;
         private UIImage MagicCrystalSlot2;
 
+        private UIImage AzuriteCrystal;
+        private UIImage AzuriteCrystalSlot2;
+
+        private UIImage PrimeyeCrystal;
+        private UIImage PrimeyeCrystalSlot2;
+
         #endregion 
         private UIImage barSlots;
         private UIImage barSlots2;
@@ -157,6 +163,22 @@ namespace PenumbraMod.Content.DamageClasses
             MagicCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/MagicCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             MagicCrystalSlot2.SetPadding(0);
             SetRectangle(MagicCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
+
+            AzuriteCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AzuriteCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AzuriteCrystal.SetPadding(0);
+            SetRectangle(AzuriteCrystal, left: 22, top: 9, width: 10, height: 12);
+
+            AzuriteCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AzuriteCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AzuriteCrystalSlot2.SetPadding(0);
+            SetRectangle(AzuriteCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
+
+            PrimeyeCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/ThePrimeyeCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            PrimeyeCrystal.SetPadding(0);
+            SetRectangle(PrimeyeCrystal, left: 22, top: 9, width: 10, height: 12);
+
+            PrimeyeCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/ThePrimeyeCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            PrimeyeCrystalSlot2.SetPadding(0);
+            SetRectangle(PrimeyeCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
             #endregion
 
             text = new UIText("", 0.8f); // text to show stat
@@ -205,6 +227,10 @@ namespace PenumbraMod.Content.DamageClasses
             panel.Append(DiamondCrystalSlot2);
             panel.Append(MagicCrystal);
             panel.Append(MagicCrystalSlot2);
+            panel.Append(AzuriteCrystal);
+            panel.Append(AzuriteCrystalSlot2);
+            panel.Append(PrimeyeCrystal);
+            panel.Append(PrimeyeCrystalSlot2);
             #endregion
             Append(panel);
         }
@@ -239,6 +265,8 @@ namespace PenumbraMod.Content.DamageClasses
         public bool saphcryst = false;
         public bool diamcryst = false;
         public bool topcryst = false;
+        public bool azucryst = false;
+        public bool pricryst = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -248,6 +276,8 @@ namespace PenumbraMod.Content.DamageClasses
         public bool saphcryst2 = false;
         public bool diamcryst2 = false;
         public bool topcryst2 = false;
+        public bool azucryst2 = false;
+        public bool pricryst2 = false;
         #endregion
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -323,86 +353,126 @@ namespace PenumbraMod.Content.DamageClasses
 
             if (item.Item.type == ItemType<TopazCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().topcryst = true;
+                topcryst = true;
                 SetRectangle(TopazCrystal, left: 22, top: 9, width: 10, height: 12);
             }
             else
             {
+                topcryst = false;
                 SetRectangle(TopazCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<TopazCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().topcryst2 = true;
+                topcryst2 = true;
                 SetRectangle(TopazCrystalSlot2, left: 60, top: 9, width: 10, height: 12);
             }
             else
             {
+                topcryst2 = false;
                 SetRectangle(TopazCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
 
             if (item.Item.type == ItemType<SapphireCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().saphcryst = true;
+                saphcryst = true;
                 SetRectangle(SapphireCrystal, left: 22, top: 9, width: 10, height: 12);
             }
             else
             {
+                saphcryst = false;
                 SetRectangle(SapphireCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<SapphireCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().saphcryst2 = true;
+                saphcryst2 = true;
                 SetRectangle(SapphireCrystalSlot2, left: 60, top: 9, width: 10, height: 12);
             }
             else
             {
+                saphcryst2 = false;
                 SetRectangle(SapphireCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
 
             if (item.Item.type == ItemType<EmeraldCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().emecryst = true;
+                emecryst = true;
                 SetRectangle(EmeraldCrystal, left: 22, top: 9, width: 10, height: 12);
             }
             else
             {
+                emecryst = false;
                 SetRectangle(EmeraldCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<EmeraldCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().emecryst2 = true;
+                emecryst2 = true;
                 SetRectangle(EmeraldCrystalSlot2, left: 60, top: 9, width: 10, height: 12);
             }
             else
             {
+                emecryst2 = false;
                 SetRectangle(EmeraldCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
 
             if (item.Item.type == ItemType<RubyCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().rubycryst = true;
+                rubycryst = true;
                 SetRectangle(RubyCrystal, left: 22, top: 9, width: 10, height: 12);
             }
             else
             {
+                rubycryst = false;
                 SetRectangle(RubyCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<RubyCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().rubycryst2 = true;
+                rubycryst2 = true;
                 SetRectangle(RubyCrystalSlot2, left: 60, top: 9, width: 10, height: 12);
             }
             else
             {
+                rubycryst2 = false;
                 SetRectangle(RubyCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
 
             if (item.Item.type == ItemType<DiamondCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().diamcryst = true;
+                diamcryst = true;
                 SetRectangle(DiamondCrystal, left: 22, top: 9, width: 10, height: 12);
             }
             else
             {
+                diamcryst = false;
                 SetRectangle(DiamondCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<DiamondCrystal>())
             {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().diamcryst2 = true;
+                diamcryst2 = true;
                 SetRectangle(DiamondCrystalSlot2, left: 60, top: 9, width: 10, height: 12);
             }
             else
             {
+                diamcryst2 = false;
                 SetRectangle(DiamondCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
 
@@ -429,6 +499,56 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 magcryst2 = false;
                 SetRectangle(MagicCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item.Item.type == ItemType<AzuriteCrystal>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().azucryst = true;
+                azucryst = true;
+                SetRectangle(AzuriteCrystal, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                azucryst = false;
+                SetRectangle(AzuriteCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+            if (item2.Item.type == ItemType<AzuriteCrystal>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().azucryst2 = true;
+                azucryst2 = true;
+                SetRectangle(AzuriteCrystalSlot2, left: 58, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                azucryst2 = false;
+                SetRectangle(AzuriteCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item.Item.type == ItemType<ThePrimeyeCrystal>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().pricryst = true;
+                pricryst = true;
+                SetRectangle(PrimeyeCrystal, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                pricryst = false;
+                SetRectangle(PrimeyeCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+            if (item2.Item.type == ItemType<ThePrimeyeCrystal>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().pricryst2 = true;
+                pricryst2 = true;
+                SetRectangle(PrimeyeCrystalSlot2, left: 58, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                pricryst2 = false;
+                SetRectangle(PrimeyeCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             #endregion
             base.Draw(spriteBatch);

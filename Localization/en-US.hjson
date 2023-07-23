@@ -1869,7 +1869,7 @@ Mods: {
 
 			DiamondCrystal: {
 				DisplayName: Diamond Crystal
-				Tooltip: +3 increased damage for reaper weapons
+				Tooltip: +3 increased flat damage for reaper weapons
 			}
 
 			EmeraldCrystal: {
