@@ -243,7 +243,7 @@ namespace PenumbraMod.Content.DamageClasses
         }
         private void ButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
-            if (clickedagain && !Main.playerInventory)
+            if (clickedagain)
             {
                 SoundEngine.PlaySound(SoundID.MenuClose);
                 clickedagain = false;
@@ -589,15 +589,8 @@ namespace PenumbraMod.Content.DamageClasses
 
             // Setting the text per tick to update and show our resource values.
             float b = (float)ReaperClassPlayer.ReaperEnergy / 20f;
-            if (!clickedagain)
-            {
                 if (GetInstance<PenumbraConfig>().UITEXT)
                     text.SetText($"Reaper Energy {ReaperClassPlayer.ReaperEnergy} / {ReaperClassPlayer.ReaperEnergyMax}");
-            }
-            else
-            {
-                text.SetText("");
-            }
             base.Update(gameTime);
         }
     }

@@ -14,7 +14,7 @@ namespace PenumbraMod.Content.Buffs
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            player.accRunSpeed += 0.35f;
+            player.moveSpeed += 0.35f;
             player.GetAttackSpeed(ModContent.GetInstance<ReaperClass>()) += 0.35f;
         }
 
