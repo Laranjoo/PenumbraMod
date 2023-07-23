@@ -148,14 +148,12 @@ namespace PenumbraMod.Content.DamageClasses
                 if (bar.amycryst)
                 {
                     amycryst = true;
-                    Main.NewText("Activated!");
                 }
                    
 
                 if (bar.magcryst)
                 {
                     magcryst = true;
-                    Main.NewText("Activated!");
                 }
                          
             }
