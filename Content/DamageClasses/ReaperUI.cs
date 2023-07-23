@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.ExpertAccessorySlot;
 using PenumbraMod.Content.Items.ReaperCrystals;
@@ -335,6 +336,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+              //  Main.LocalPlayer.ClearBuff(BuffType<AmethystForce>());
                 amycryst = false;
                 SetRectangle(AmethystCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -347,6 +349,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+              //  Main.LocalPlayer.ClearBuff(BuffType<AmethystForce>());
                 amycryst2 = false;
                 SetRectangle(AmethystCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -360,6 +363,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<TopazForce>());
                 topcryst = false;
                 SetRectangle(TopazCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -372,6 +376,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                //Main.LocalPlayer.ClearBuff(BuffType<TopazForce>());
                 topcryst2 = false;
                 SetRectangle(TopazCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -385,6 +390,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+              //  Main.LocalPlayer.ClearBuff(BuffType<SapphireForce>());
                 saphcryst = false;
                 SetRectangle(SapphireCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -397,6 +403,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+             //   Main.LocalPlayer.ClearBuff(BuffType<SapphireForce>());
                 saphcryst2 = false;
                 SetRectangle(SapphireCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -410,6 +417,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                //Main.LocalPlayer.ClearBuff(BuffType<EmeraldForce>());
                 emecryst = false;
                 SetRectangle(EmeraldCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -422,6 +430,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<EmeraldForce>());
                 emecryst2 = false;
                 SetRectangle(EmeraldCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -435,6 +444,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<RubyForce>());
                 rubycryst = false;
                 SetRectangle(RubyCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -447,6 +457,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<RubyForce>());
                 rubycryst2 = false;
                 SetRectangle(RubyCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -460,6 +471,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<DiamondForce>());
                 diamcryst = false;
                 SetRectangle(DiamondCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -472,6 +484,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                //Main.LocalPlayer.ClearBuff(BuffType<DiamondForce>());
                 diamcryst2 = false;
                 SetRectangle(DiamondCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -485,6 +498,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<MagicForce>());
                 magcryst = false;
                 SetRectangle(MagicCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -497,6 +511,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<MagicForce>());
                 magcryst2 = false;
                 SetRectangle(MagicCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -510,6 +525,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+               // Main.LocalPlayer.ClearBuff(BuffType<AzuriteForce>());
                 azucryst = false;
                 SetRectangle(AzuriteCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -522,6 +538,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                //Main.LocalPlayer.ClearBuff(BuffType<AzuriteForce>());
                 azucryst2 = false;
                 SetRectangle(AzuriteCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -535,6 +552,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                //Main.LocalPlayer.ClearBuff(BuffType<PrimeyeForce>());
                 pricryst = false;
                 SetRectangle(PrimeyeCrystal, left: 1235451, top: 13455143, width: 10, height: 12);
             }
@@ -547,6 +565,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                //Main.LocalPlayer.ClearBuff(BuffType<PrimeyeForce>());
                 pricryst2 = false;
                 SetRectangle(PrimeyeCrystalSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
