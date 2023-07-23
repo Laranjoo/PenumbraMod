@@ -274,6 +274,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<AmethystForce>());
             }
 
 
@@ -283,6 +284,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<AmethystForce>());
             }
 
             // ------------
@@ -293,6 +295,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<MagicForce>());
             }
 
             if (magcryst2)
@@ -301,6 +304,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<MagicForce>());
             }
 
             // ------------
@@ -311,6 +315,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<EmeraldForce>());
             }
 
 
@@ -320,6 +325,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<EmeraldForce>());
             }
 
             // ------------
@@ -330,6 +336,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<PrimeyeForce>());
             }
 
 
@@ -339,6 +346,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<PrimeyeForce>());
             }
 
             // ------------
@@ -349,6 +357,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<DiamondForce>());
             }
 
 
@@ -358,6 +367,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<DiamondForce>());
             }
 
             // ------------
@@ -368,6 +378,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<SapphireForce>());
             }
 
 
@@ -377,6 +388,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<SapphireForce>());
             }
 
             // ------------
@@ -387,6 +399,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<TopazForce>());
             }
 
 
@@ -396,6 +409,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<TopazForce>());
             }
 
             // ------------
@@ -406,6 +420,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<RubyForce>());
             }
 
 
@@ -415,6 +430,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+                Player.ClearBuff(BuffType<RubyForce>());
             }
 
             // ------------
