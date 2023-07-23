@@ -284,42 +284,42 @@ Mods: {
 
 			AzuriteForce: {
 				// DisplayName: Azurite Force
-				// Description: Mods.PenumbraMod.Buffs.AzuriteForce.Description
+				// Description: Reaper weapons have a chance to shoot lightning!
 			}
 
 			DiamondForce: {
 				// DisplayName: Diamond Force
-				// Description: Mods.PenumbraMod.Buffs.DiamondForce.Description
+				// Description: +3 increased flat damage for reaper weapons
 			}
 
 			EmeraldForce: {
 				// DisplayName: Emerald Force
-				// Description: Mods.PenumbraMod.Buffs.EmeraldForce.Description
+				// Description: +3 armor penetration for reaper weapons
 			}
 
 			PrimeyeForce: {
 				// DisplayName: Primeye Force
-				// Description: Mods.PenumbraMod.Buffs.PrimeyeForce.Description
+				// Description: 35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
 			}
 
 			PrimeyeForceCooldown: {
 				// DisplayName: Primeye Force Cooldown
-				// Description: Mods.PenumbraMod.Buffs.PrimeyeForceCooldown.Description
+				// Description: Primeye can't be activated now!
 			}
 
 			RubyForce: {
 				// DisplayName: Ruby Force
-				// Description: Mods.PenumbraMod.Buffs.RubyForce.Description
+				// Description: +15% increased critical chance for reaper weapons
 			}
 
 			SapphireForce: {
 				// DisplayName: Sapphire Force
-				// Description: Mods.PenumbraMod.Buffs.SapphireForce.Description
+				// Description: +15% increased knockback for reaper weapons
 			}
 
 			TopazForce: {
 				// DisplayName: Topaz Force
-				// Description: Mods.PenumbraMod.Buffs.TopazForce.Description
+				// Description: +10% increased speed for reaper weapons
 			}
 		}
 
@@ -1946,12 +1946,16 @@ Mods: {
 
 			AzuriteCrystal: {
 				// DisplayName: Azurite Crystal
-				// Tooltip: ""
+				// Tooltip: Gives reaper weapons a chance to shoot lightning!
 			}
 
 			ThePrimeyeCrystal: {
 				// DisplayName: The Primeye Crystal
-				// Tooltip: ""
+				/* Tooltip:
+					'''
+					[c/f12459:Special Crystal]
+					35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
+					''' */
 			}
 		}
 

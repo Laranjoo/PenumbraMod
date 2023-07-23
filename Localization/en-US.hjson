@@ -1946,16 +1946,16 @@ Mods: {
 
 			AzuriteCrystal: {
 				DisplayName: Azurite Crystal
-				Tooltip: "Gives reaper weapons a chance to shoot lightning!"
+				Tooltip: Gives reaper weapons a chance to shoot lightning!
 			}
 
 			ThePrimeyeCrystal: {
 				DisplayName: The Primeye Crystal
-				Tooltip: 
-'''
-[c/f12459:Special Crystal]
-35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
-'''
+				Tooltip:
+					'''
+					[c/f12459:Special Crystal]
+					35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
+					'''
 			}
 		}
 
