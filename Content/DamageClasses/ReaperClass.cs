@@ -429,7 +429,6 @@ namespace PenumbraMod.Content.DamageClasses
         {
             #region CrystalsEffects
 
-
             if (Player.HasBuff(BuffType<MagicForce>()) && item.DamageType == GetInstance<ReaperClass>())
             {
                 if (Main.rand.NextBool(4))

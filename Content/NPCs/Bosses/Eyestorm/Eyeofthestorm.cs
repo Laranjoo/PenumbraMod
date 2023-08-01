@@ -19,6 +19,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.CameraModifiers;
 using Terraria.ID;
 using Terraria.ModLoader;
+using PenumbraMod.Content.Items.ReaperCrystals;
 
 namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
 {
@@ -2481,6 +2482,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<SparkBow>(), 3, 1));
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<StaffofEnergy>(), 3, 1));
             notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<ChargeGun>(), 3, 1));
+            notExpertRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<AzuriteCrystal>(), 3, 1));
 
             npcLoot.Add(notExpertRule);
             if (NPC.type == NPCID.MoonLordCore && NPC.downedMoonlord)

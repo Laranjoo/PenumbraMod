@@ -1,4 +1,4 @@
-using PenumbraMod.Content.DamageClasses;
+﻿using PenumbraMod.Content.DamageClasses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 namespace PenumbraMod.Content.Items.ReaperCrystals
 {
     /// <summary>
-    /// All the Reaper Crystals of the mod!
+    /// All the Reaper Jewels of the mod!
     /// </summary>
-    public class Crystals
+    public class Crystals // Nothing there because ¯\_(ツ)_/¯
     {
     }
     public class AmythestCrystal : ModItem
