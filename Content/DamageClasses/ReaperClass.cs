@@ -416,7 +416,6 @@ namespace PenumbraMod.Content.DamageClasses
             else
             {
             }
-
             // ------------
 
             #endregion

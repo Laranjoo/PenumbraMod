@@ -1903,40 +1903,40 @@ Mods: {
 			}
 
 			AmythestCrystal: {
-				// DisplayName: Amethyst Crystal
+				// DisplayName: Amethyst Jewel
 				// Tooltip: +15% increased size of reaper weapons
 			}
 
 			DiamondCrystal: {
-				// DisplayName: Diamond Crystal
+				// DisplayName: Diamond Jewel
 				// Tooltip: +3 increased flat damage for reaper weapons
 			}
 
 			EmeraldCrystal: {
-				// DisplayName: Emerald Crystal
+				// DisplayName: Emerald Jewel
 				// Tooltip: +3 armor penetration for reaper weapons
 			}
 
 			RubyCrystal: {
-				// DisplayName: Ruby Crystal
+				// DisplayName: Ruby Jewel
 				// Tooltip: +15% increased critical chance for reaper weapons
 			}
 
 			SapphireCrystal: {
-				// DisplayName: Sapphire Crystal
+				// DisplayName: Sapphire Jewel
 				// Tooltip: +15% increased knockback for reaper weapons
 			}
 
 			TopazCrystal: {
-				// DisplayName: Topaz Crystal
+				// DisplayName: Topaz Jewel
 				// Tooltip: +10% increased speed for reaper weapons
 			}
 
 			MagicCrystal: {
-				// DisplayName: Old man's Crystal
+				// DisplayName: Old man's Jewel
 				/* Tooltip:
 					'''
-					"A lost crystal that was held by the old man"
+					"A lost Jewel that was held by the old man"
 					5% increased reaper damage
 					10% increased reaper use time speed
 					Gives scythes a chance to shoot skulls
@@ -1945,12 +1945,12 @@ Mods: {
 			}
 
 			AzuriteCrystal: {
-				// DisplayName: Azurite Crystal
+				// DisplayName: Azurite Jewel
 				// Tooltip: Gives reaper weapons a chance to shoot lightning!
 			}
 
 			ThePrimeyeCrystal: {
-				// DisplayName: The Primeye Crystal
+				// DisplayName: The Primeye Jewel
 				/* Tooltip:
 					'''
 					[c/f12459:Special Crystal]
