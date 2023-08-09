@@ -79,6 +79,11 @@ namespace PenumbraMod.Common
             if (sandhuntereff)
                 if (Main.LocalPlayer.HeldItem.DamageType == GetInstance<ReaperClass>())
                     target.AddBuff(BuffID.Venom, 120);
+            if (Main.LocalPlayer.HasBuff(BuffType<BloodstainedForce>()))
+            {
+                Main.LocalPlayer.Heal(1);
+                Main.LocalPlayer.HealEffect(1);
+            }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {

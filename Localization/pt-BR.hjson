@@ -330,6 +330,31 @@ Mods: {
 				// DisplayName: Topaz Force
 				// Description: +10% increased speed for reaper weapons
 			}
+
+			BloodstainedForce: {
+				// DisplayName: Bloodstained Force
+				// Description: Mods.PenumbraMod.Buffs.BloodstainedForce.Description
+			}
+
+			DarkenedForce: {
+				// DisplayName: Darkened Force
+				// Description: Mods.PenumbraMod.Buffs.DarkenedForce.Description
+			}
+
+			SlimyForce: {
+				// DisplayName: Slimy Force
+				// Description: Mods.PenumbraMod.Buffs.SlimyForce.Description
+			}
+
+			SlimyForce2: {
+				// DisplayName: Slimy Force2
+				// Description: Mods.PenumbraMod.Buffs.SlimyForce2.Description
+			}
+
+			TerraForce: {
+				// DisplayName: Terra Force
+				// Description: Mods.PenumbraMod.Buffs.TerraForce.Description
+			}
 		}
 
 		Projectiles: {
@@ -1983,33 +2008,50 @@ Mods: {
 			}
 
 			AblazedCrystal: {
-				// DisplayName: Ablazed Crystal
-				// Tooltip: ""
+				// DisplayName: Ablazed Jewel
+				/* Tooltip:
+					'''
+					Knockback and reaper weapon speed increased by 7%
+					Reaper attacks inflict hellfire
+					''' */
 			}
 
 			BloodstainedCrystal: {
-				// DisplayName: Bloodstained Crystal
-				// Tooltip: ""
+				// DisplayName: Bloodstained Jewel
+				/* Tooltip:
+					'''
+					Increases reaper damage by +2 and armor penetration by +4
+					You have very subtle lifesteal agenst enemies
+					''' */
 			}
 
 			DarkenedCrystal: {
-				// DisplayName: Darkened Crystal
-				// Tooltip: ""
+				// DisplayName: Darkened Jewel
+				/* Tooltip:
+					'''
+					Increases reaper weapon crit by 5% and speed by 15%
+					You unleash tiny eaters
+					''' */
 			}
 
 			SlimyCrystal: {
-				// DisplayName: Slimy Crystal
-				// Tooltip: ""
+				// DisplayName: Slimy Jewel
+				/* Tooltip:
+					'''
+					Gives +1/3 flat reaper damage
+					Gives +10/15% reaper weapon speed
+					But, you will have -10% acceleration/turnaround traction
+					''' */
 			}
 
 			TerraCrystal: {
-				// DisplayName: Terra Crystal
-				// Tooltip: ""
+				// DisplayName: Terra Jewel
+				// Tooltip: Gives reaper weapons +20% size, +15% speed, +15% knockback, +5 armor penetration, +15% crit, and +20% damage
 			}
 
 			RuneBlade: {
 				// DisplayName: Rune Blade
-				// Tooltip: ""
+				// Tooltip: "'This sword was lost by someone in the caves...' TODO: color mechanics"
 			}
 		}
 

@@ -30,6 +30,7 @@ namespace PenumbraMod.Content.Items
             Projectile.light = 0.5f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 7;
+            Projectile.netImportant = true;
         }
         Vector2 dir = Vector2.Zero;
         Vector2 hlende = Vector2.Zero;
@@ -196,6 +197,7 @@ namespace PenumbraMod.Content.Items
             Projectile.light = 0.5f;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 7;
+            Projectile.netImportant = true;
         }
         Vector2 dir = Vector2.Zero;
         Vector2 hlende = Vector2.Zero;
