@@ -64,6 +64,7 @@ namespace PenumbraMod
             if (Main.netMode != NetmodeID.Server)
             {
                 SkyManager.Instance["PenumbraMod:StormSky"] = new StormSky();
+                SkyManager.Instance["PenumbraMod:StormSky2"] = new StormSky2();
             }
 
         }

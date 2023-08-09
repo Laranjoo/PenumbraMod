@@ -54,7 +54,16 @@ Mods: {
 			// BuritiBoss.DisplayName: Buriti
 			// EnergyConductorMinion.DisplayName: Energy Conductor Protector
 			// EnergyConductorMinion2.DisplayName: Energy Conductor Shooter
-			// Eyeofthestorm.DisplayName: Eye of the Storm
+
+			Eyeofthestorm: {
+				// DisplayName: Eye of the Storm
+
+				BossChecklistIntegration: {
+					// SpawnInfo: Use a [i:8093] to rage the wind and wake the ancient Eye of the Storm.
+					// DespawnMessage: The Eye of the Storm flew away for the storms...
+				}
+			}
+
 			// MarshmellowSlime.DisplayName: Marshmellow Slime
 			// MeltedSkeleton.DisplayName: Melted Skeleton
 			// EnergyConductorMinionNonSound.DisplayName: Energy Conductor Minion
@@ -1957,6 +1966,51 @@ Mods: {
 					35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
 					''' */
 			}
+
+			RozeQuartz: {
+				// DisplayName: Roze Quartz
+				// Tooltip: ""
+			}
+
+			Aquamarine: {
+				// DisplayName: Aquamarine
+				// Tooltip: ""
+			}
+
+			Peridot: {
+				// DisplayName: Peridot
+				// Tooltip: ""
+			}
+
+			AblazedCrystal: {
+				// DisplayName: Ablazed Crystal
+				// Tooltip: ""
+			}
+
+			BloodstainedCrystal: {
+				// DisplayName: Bloodstained Crystal
+				// Tooltip: ""
+			}
+
+			DarkenedCrystal: {
+				// DisplayName: Darkened Crystal
+				// Tooltip: ""
+			}
+
+			SlimyCrystal: {
+				// DisplayName: Slimy Crystal
+				// Tooltip: ""
+			}
+
+			TerraCrystal: {
+				// DisplayName: Terra Crystal
+				// Tooltip: ""
+			}
+
+			RuneBlade: {
+				// DisplayName: Rune Blade
+				// Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -1967,6 +2021,9 @@ Mods: {
 			// MarshmellowDoorOpen.MapEntry: Marshmellow Door
 			// MarshmellowTable.MapEntry: Marshmellow Table
 			// MarshmellowWorkbench.MapEntry: Marshmellow Work Bench
+			// RozeQuartz.MapEntry: Roze Quartz
+			// Aquamarine.MapEntry: Aquamarine
+			// Peridot.MapEntry: Peridot
 		}
 
 		Keybinds: {

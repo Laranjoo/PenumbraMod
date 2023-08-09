@@ -54,7 +54,16 @@ Mods: {
 			BuritiBoss.DisplayName: Buriti
 			EnergyConductorMinion.DisplayName: Energy Conductor Protector
 			EnergyConductorMinion2.DisplayName: Energy Conductor Shooter
-			Eyeofthestorm.DisplayName: Eye of the Storm
+
+			Eyeofthestorm: {
+				DisplayName: Eye of the Storm
+
+				BossChecklistIntegration: {
+					SpawnInfo: Use a [i:8093] to rage the wind and wake the ancient Eye of the Storm.
+					DespawnMessage: The Eye of the Storm flew away for the storms...
+				}
+			}
+
 			MarshmellowSlime.DisplayName: Marshmellow Slime
 			MeltedSkeleton.DisplayName: Melted Skeleton
 			EnergyConductorMinionNonSound.DisplayName: Energy Conductor Minion
@@ -1957,6 +1966,58 @@ Mods: {
 					35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
 					'''
 			}
+
+			RozeQuartz: {
+				DisplayName: Roze Quartz
+				Tooltip: ""
+			}
+
+			Aquamarine: {
+				DisplayName: Aquamarine
+				Tooltip: ""
+			}
+
+			Peridot: {
+				DisplayName: Peridot
+				Tooltip: ""
+			}
+
+			AblazedCrystal: {
+				DisplayName: Ablazed Jewel
+				Tooltip: '''Knockback and reaper weapon speed increased by 7%
+Reaper attacks inflict hellfire'''
+			}
+
+			BloodstainedCrystal: {
+				DisplayName: Bloodstained Jewel
+				Tooltip: '''Increases damage by +2 and armor penetration by +4
+You have very subtle lifesteal agenst enemies'''
+			}
+
+			DarkenedCrystal: {
+				DisplayName: Darkened Jewel
+				Tooltip: '''Increases crit by 5% and weapon speed by 15%
+You unleash tiny eaters
+'''
+			}
+
+			SlimyCrystal: {
+				DisplayName: Slimy Jewel
+				Tooltip: '''Gives +1/3 flat reaper damage
+Gives +10/15% reaper weapon speed
+But, you will have -10% acceleration/turnaround traction'''
+			}
+
+			TerraCrystal: {
+				DisplayName: Terra Jewel
+				Tooltip: "Gives reaper weapons +20% size, +15% speed, +15% knockback, +5 armor penetration, +15% crit, and +20% damage"
+
+			}
+
+			RuneBlade: {
+				DisplayName: Rune Blade
+				Tooltip: "'This sword was lost by someone in the caves...' TODO: color mechanics"
+			}
 		}
 
 		Tiles: {
@@ -1967,6 +2028,9 @@ Mods: {
 			MarshmellowDoorOpen.MapEntry: Marshmellow Door
 			MarshmellowTable.MapEntry: Marshmellow Table
 			MarshmellowWorkbench.MapEntry: Marshmellow Work Bench
+			RozeQuartz.MapEntry: Roze Quartz
+			Aquamarine.MapEntry: Aquamarine
+			Peridot.MapEntry: Peridot
 		}
 
 		Keybinds: {

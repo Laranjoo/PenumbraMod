@@ -9,11 +9,11 @@ namespace PenumbraMod.Content
 {
     public class PenumbraModMenu : ModMenu
     {
-        public override Asset<Texture2D> Logo => base.Logo;
+        public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>("PenumbraMod/Content/PenumbraLogo");
         public override void Update(bool isOnTitleScreen)
         {
             Main.dayTime = false;
-            Main.time = 40001;
+            Main.time = 26000;
         }
         // Inspired from stars above
         float MousePositionFloatX;

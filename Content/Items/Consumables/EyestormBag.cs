@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
+using PenumbraMod.Content.Items.ReaperCrystals;
 
 namespace PenumbraMod.Content.Items.Consumables
 {
@@ -38,6 +39,7 @@ namespace PenumbraMod.Content.Items.Consumables
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<SparkBow>(), 3, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<StaffofEnergy>(), 3, 1));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<ChargeGun>(), 3, 1));
+            itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<AzuriteCrystal>(), 3, 1));
             itemLoot.Add(ItemDropRule.Common(ItemID.SandBoots, 7, 1));
             itemLoot.Add(ItemDropRule.Common(ItemID.SandBlock, 1, 15, 30));
             itemLoot.Add(ItemDropRule.Common(ItemID.GoldBar, 1, 5, 15));
