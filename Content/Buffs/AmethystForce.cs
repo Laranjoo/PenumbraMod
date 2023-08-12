@@ -19,8 +19,8 @@ namespace PenumbraMod.Content.Buffs
             {
 
             }
-        }
 
+        }
     }
 
     

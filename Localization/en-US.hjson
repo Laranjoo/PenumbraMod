@@ -575,6 +575,7 @@ Mods: {
 			PrismaticKnifeProj.DisplayName: Prismatic Knife
 			PrismaticKnifeProjSpecial.DisplayName: Prismatic Knife
 			BloodEelProjHead.DisplayName: Blood Eel
+			CorrosivePickaxeS.DisplayName: Corrosive Pickaxe S
 		}
 
 		Items: {
@@ -2052,6 +2053,11 @@ Mods: {
 			RuneBlade: {
 				DisplayName: Rune Blade
 				Tooltip: "'This sword was lost by someone in the caves...' TODO: color mechanics"
+			}
+
+			CorrosivePickaxe: {
+				DisplayName: Corrosive Pickaxe
+				Tooltip: ""
 			}
 		}
 

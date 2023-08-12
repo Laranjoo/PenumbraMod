@@ -625,7 +625,7 @@ namespace PenumbraMod.Content.DamageClasses
             _context = context;
             _scale = scale;
             Item = new Item();
-            Item.SetDefaults(0);
+            Item.SetDefaults();
             Width.Set(52, 0f);
             Height.Set(150, 0f);
         }      

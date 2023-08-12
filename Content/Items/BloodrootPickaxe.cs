@@ -29,7 +29,7 @@ namespace PenumbraMod.Content.Items
 			Item.rare = 3;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.pick = 205;
+			Item.pick = 195;
 			Item.tileBoost += 1;
 			Item.crit = 9;
 
