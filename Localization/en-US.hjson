@@ -561,7 +561,7 @@ Mods: {
 			PrismaScytheProj.DisplayName: Prismatic Scythe
 			PrismaScytheS.DisplayName: Prismatic Scythe
 			PrismaScytheEf2.DisplayName: Prismatic Glow
-			PrismaScytheEf3.DisplayName: Prisma Scythe Ef3
+			PrismaScytheEf3.DisplayName: Prisma Scythe
 			PrismaScytheProjShot.DisplayName: Prismatic Scythe Beam
 			GoreProjectile.DisplayName: Gore Projectile
 			PrismaGlow.DisplayName: Prisma Glow
@@ -575,7 +575,7 @@ Mods: {
 			PrismaticKnifeProj.DisplayName: Prismatic Knife
 			PrismaticKnifeProjSpecial.DisplayName: Prismatic Knife
 			BloodEelProjHead.DisplayName: Blood Eel
-			CorrosivePickaxeS.DisplayName: Corrosive Pickaxe S
+			CorrosivePickaxeS.DisplayName: Corrosive Pickaxe
 		}
 
 		Items: {
@@ -804,7 +804,7 @@ Mods: {
 				DisplayName: Prism Helm
 				Tooltip:
 					'''
-					Critical strike chance increased by 10%
+					Critical strike chance increased by 15%
 					Reaper damage increased by 10%
 					'''
 			}
@@ -2057,7 +2057,37 @@ Mods: {
 
 			CorrosivePickaxe: {
 				DisplayName: Corrosive Pickaxe
+				Tooltip: A special pickaxe for experienced miners!
+			}
+
+			CorrodedPlating: {
+				DisplayName: Corroded Plating
+				Tooltip: A corrosive metal that can create special items
+			}
+
+			CorrosiveHamaxe: {
+				DisplayName: Corrosive Hamaxe
 				Tooltip: ""
+			}
+
+			InfectionClaws: {
+				DisplayName: Infection Claws
+				Tooltip: ""
+			}
+
+			MeltedPickaxe: {
+				DisplayName: Melted Pickaxe
+				Tooltip: ""
+			}
+
+			BottledShimmer: {
+				DisplayName: Bottled Shimmer
+				Tooltip:
+					'''
+					Restores 80 to 150 life
+					Higher the regeneration, higher the sickness time, but, you will get a random buff
+					Has a low chance to become shimmered!
+					'''
 			}
 		}
 

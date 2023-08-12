@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.Items;
+using PenumbraMod.Content.Items.Consumables;
 using PenumbraMod.Content.Items.ReaperCrystals;
 using System.Collections.Generic;
 using Terraria;
@@ -132,6 +133,7 @@ namespace PenumbraMod.Common
         /// Useful to check if item hit NPC
         /// </summary>
         public bool ItemhitNPC;
+
         public override void SetDefaults(Item item)
         {
             ItemhitNPC = false;
@@ -141,6 +143,10 @@ namespace PenumbraMod.Common
                 item.useAnimation = 22;
                 item.useTime = 22;
                 item.shootSpeed = 11f;
+            }
+            if (item.type == ItemID.BottledWater)
+            {
+                ItemID.Sets.ShimmerTransformToItem[ItemID.BottledWater] = ItemType<BottledShimmer>(); 
             }
             if (item.type == ItemID.BeamSword)
             {

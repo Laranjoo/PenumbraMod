@@ -38,6 +38,8 @@ namespace PenumbraMod.Content.Items
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<CorrosiveShard>(), 13)
+                 .AddIngredient(ModContent.ItemType<CorrodedPlating>(), 9)
+
                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

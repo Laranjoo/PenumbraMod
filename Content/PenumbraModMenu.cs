@@ -12,7 +12,7 @@ namespace PenumbraMod.Content
         public override Asset<Texture2D> Logo => ModContent.Request<Texture2D>("PenumbraMod/Content/PenumbraLogo");
         public override void Update(bool isOnTitleScreen)
         {
-            Main.dayTime = false;
+            Main.dayTime = true;
             Main.time = 26000;
         }
         // Inspired from stars above

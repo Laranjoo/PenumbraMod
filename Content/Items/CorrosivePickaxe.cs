@@ -39,24 +39,30 @@ namespace PenumbraMod.Content.Items
         bool notboollol = true;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int basic = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            if (notboollol == true)
+            if (player.ownedProjectileCounts[type] < 1)
             {
-                Main.projectile[basic].ai[1] = -1;
-                notboollol = false;
+                int basic = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+                if (notboollol == true)
+                {
+                    Main.projectile[basic].ai[1] = -1;
+                    notboollol = false;
+                }
+                else
+                {
+                    Main.projectile[basic].ai[1] = 1;
+                    notboollol = true;
+                }
+                Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
             }
-            else
-            {
-                Main.projectile[basic].ai[1] = 1;
-                notboollol = true;
-            }
-            Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
+               
             return false;
         }
         public override void AddRecipes()
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<CorrosiveShard>(), 12)
+                 .AddIngredient(ModContent.ItemType<CorrodedPlating>(), 10)
+
                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
@@ -117,7 +123,7 @@ namespace PenumbraMod.Content.Items
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
-            float scaleFactor = 90f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
+            float scaleFactor = 60f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
             float widthMultiplier = 23f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
             float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
 
@@ -153,19 +159,18 @@ namespace PenumbraMod.Content.Items
                 dir = Main.MouseWorld;
                 Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
             }
-            //FadeInAndOut();
-            Projectile.Center = Main.player[Projectile.owner].Center;
-            Projectile.ai[0]++;
-            a++;
             Player player = Main.player[Projectile.owner];
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+            Projectile.Center = Main.player[Projectile.owner].Center;
+            Projectile.ai[0] += 1f;
+            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((30 - Projectile.ai[0])));
+            a++;
             if (Projectile.ai[0] >= 2 && Projectile.ai[0] <= 4)
                 Projectile.scale += 0.06f;
             if (Projectile.ai[0] >= 5 && Projectile.ai[0] <= 6)
                 Projectile.scale -= 0.06f;
             if (a == 5)
                 SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
-            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((10 - Projectile.ai[0])));
             Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 0.5f);
         }
     }

@@ -44,7 +44,9 @@ namespace PenumbraMod.Content.Items
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<CorrosiveShard>(), 10)
+                .AddIngredient(ModContent.ItemType<CorrosiveShard>(), 15)
+                 .AddIngredient(ModContent.ItemType<CorrodedPlating>(), 20)
+
                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }

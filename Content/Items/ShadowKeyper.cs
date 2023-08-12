@@ -45,6 +45,16 @@ namespace PenumbraMod.Content.Items
 			recipe.AddIngredient(ItemID.SoulofNight, 12);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
-		}
+
+            Recipe recipe2 = CreateRecipe();
+            recipe2.AddIngredient(ModContent.ItemType<HellFire>(), 1);
+            recipe2.AddIngredient(ModContent.ItemType<AbsoluteZero>(), 1);
+            recipe2.AddIngredient(ModContent.ItemType<NatureGrass>(), 1);
+            recipe2.AddIngredient(ModContent.ItemType<InfectionClaws>(), 1);
+            recipe2.AddIngredient(ItemID.Keybrand, 1);
+            recipe2.AddIngredient(ItemID.SoulofNight, 12);
+            recipe2.AddTile(TileID.MythrilAnvil);
+            recipe2.Register();
+        }
 	}
 }

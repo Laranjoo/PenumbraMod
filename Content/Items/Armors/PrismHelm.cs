@@ -52,7 +52,7 @@ namespace PenumbraMod.Content.Items.Armors
         }
         public override void UpdateEquip(Player player)
         {
-            player.GetCritChance(DamageClass.Generic) += 0.10f;
+            player.GetCritChance(DamageClass.Generic) += 0.15f;
             player.GetDamage<ReaperClass>() += 0.10f;
         }
         public override bool CanUseItem(Player player)

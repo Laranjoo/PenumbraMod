@@ -27,13 +27,13 @@ namespace PenumbraMod.Content.Items
 			Item.useAnimation = 26;
 			Item.useStyle = 1;
 			Item.knockBack = 6;
-			Item.value = 1000;
+			Item.value = 23000;
 			Item.rare = ModContent.RarityType<StayledBloodRarity>();
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<BloodBall>();
 			Item.shootSpeed = 8f;
-			
+			Item.crit = 32;
 		}
        
         public override void AddRecipes()
