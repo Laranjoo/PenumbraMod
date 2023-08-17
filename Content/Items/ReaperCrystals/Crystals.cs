@@ -169,6 +169,26 @@ namespace PenumbraMod.Content.Items.ReaperCrystals
             recipe.Register();
         }
     }
+    public class SpectreCrystal : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.height = 24;
+            Item.width = 14;
+            Item.value = 14000;
+            Item.rare = ItemRarityID.Cyan;
+            Item.DamageType = ModContent.GetInstance<ReaperClass>();
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<AerogelBar>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<RubyCrystal>(), 1);
+            recipe.AddTile(TileID.Anvils);
+            recipe.Register();
+        }
+    }
     public class TerraCrystal : ModItem
     {
         public override void SetDefaults()

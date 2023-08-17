@@ -38,7 +38,7 @@ namespace PenumbraMod.Content.Items.Consumables
         {
             int heal = Main.rand.Next(80, 150);
             player.Heal(heal);
-            player.AddBuff(BuffID.PotionSickness, heal * 30);
+            player.AddBuff(BuffID.PotionSickness, heal * 25);
 
             if (Main.rand.NextBool(12))
             {

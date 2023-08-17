@@ -70,6 +70,7 @@ Mods: {
 			// Oni.DisplayName: Oni
 			// MarbleStatue.DisplayName: Marble Statue
 			// OniZombie.DisplayName: Zombie
+			// CorrosiveSlime.DisplayName: Corrosive Slime
 		}
 
 		Bestiary.vhcmnpc: Ele veio de uma cidade misteriosa... não sabemos porque ele gosta de viver em lugares escuros, ele gosta de vibes escuras e chuva, que estranho...
@@ -1398,7 +1399,7 @@ Mods: {
 			}
 
 			PenumbraticShard: {
-				// DisplayName: Penumbratic Shard
+				// DisplayName: Penumbra Fragment
 				/* Tooltip:
 					'''
 					The core of Penumbra
@@ -2088,6 +2089,11 @@ Mods: {
 					Higher the regeneration, higher the sickness time, but, you will get a random buff
 					Has a low chance to become shimmered!
 					''' */
+			}
+
+			SpectreCrystal: {
+				// DisplayName: Spectre Crystal
+				// Tooltip: ""
 			}
 		}
 

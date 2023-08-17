@@ -24,8 +24,8 @@ namespace PenumbraMod.Content.Items
         public override void SetDefaults()
         {
             Projectile.damage = 50;
-            Projectile.width = 40;
-            Projectile.height = 40;
+            Projectile.width = 52;
+            Projectile.height = 44;
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.hostile = false;
@@ -33,7 +33,8 @@ namespace PenumbraMod.Content.Items
             Projectile.timeLeft = 80;
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = true;
+            Projectile.tileCollide = false;
+            Projectile.ownerHitCheck = true;
             Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
