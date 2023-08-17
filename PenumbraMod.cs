@@ -56,6 +56,12 @@ namespace PenumbraMod
                     GetTexturePremultiplied(ref brightness7);
                     Texture2D lightaccessory = Request<Texture2D>("PenumbraMod/Content/ExpertAccessorySlot/LightUnlocked", AssetRequestMode.ImmediateLoad).Value;
                     GetTexturePremultiplied(ref lightaccessory);
+                    Texture2D WeakGlow = Request<Texture2D>("PenumbraMod/Assets/Textures/WeakGlow", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref WeakGlow);
+                    Texture2D MediumGlow = Request<Texture2D>("PenumbraMod/Assets/Textures/MediumGlow", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref MediumGlow);
+                    Texture2D StrongGlow = Request<Texture2D>("PenumbraMod/Assets/Textures/StrongGlow", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref StrongGlow);
                 });
                 Main.instance.LoadItem(ItemID.CursedFlames);
                 TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>("PenumbraMod/Content/Items/CursedFlame");
