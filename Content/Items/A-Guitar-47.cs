@@ -87,38 +87,67 @@ namespace PenumbraMod.Content.Items
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.scale = 0.5f;
+            Projectile.penetrate = -1;
         }
         public static float easeInOutQuad(float x)
         {
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
+        bool c = false;
+        float x;
+        float y;
         public override void AI()
         {
             Projectile.ai[0]++;
+            Projectile.ai[1]++;
+            Projectile.ai[2]++;
             if (Projectile.ai[0] == 1 || Projectile.ai[0] == 20)
                 Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BlackHoleEffect>(), 0, Projectile.knockBack, Projectile.owner);
+
+            if (Projectile.ai[2] == 15)
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<BlackHoleEffect2>(), 0, Projectile.knockBack, Projectile.owner);
+
+            if (Projectile.ai[1] >= 1 && Projectile.ai[1] <= 10)
+            {
+                x += 0.1f;
+                y += 0.1f;
+            }
+            if (Projectile.ai[1] >= 11 && Projectile.ai[1] <= 20)
+            {
+                x -= 0.1f;
+                y -= 0.1f;
+            }
+            if (Projectile.ai[1] == 29)
+                Projectile.ai[1] = 0;
 
             if (Projectile.ai[0] == 30)
                 Projectile.ai[0] = 0;
 
-            Projectile.scale += 0.1f;
+            Projectile.scale += 0.05f;
             if (Projectile.scale > 1.5f)
+            {
                 Projectile.scale = 1.5f;
+                c = true;
+            }
+
             Projectile.rotation += 0.1f;
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
-                npc.velocity = npc.DirectionTo(Projectile.Center) * 4f;
+                if (!npc.friendly)
+                    if (npc.Distance(Projectile.Center) < 300f)
+                        npc.velocity = npc.DirectionTo(Projectile.Center) * 5f;
             }
-           
+
         }
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Assets/Textures/StrongGlow").Value;
             Texture2D proj = TextureAssets.Projectile[Projectile.type].Value;
-            
+            if (!c)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 if (Projectile.oldPos[i] == Vector2.Zero)
@@ -138,11 +167,11 @@ namespace PenumbraMod.Content.Items
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
                     float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
-
-                    if (Projectile.scale == 1.5f)
+                    Color finalColor = Projectile.GetAlpha(Color.Black) * (1 - ((float)i / (float)Projectile.oldPos.Length));
+                    if (c)
                     {
-                        Main.EntitySpriteDraw(texture, lerpedPos, null, Color.Black * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
-                        Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.Black, 0, texture.Size() / 2, 3, SpriteEffects.None, 0);
+                        Main.EntitySpriteDraw(texture, lerpedPos + new Vector2(x, y), null, finalColor, lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
+                        Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, finalColor, 0, texture.Size() / 2, 3, SpriteEffects.None, 0);
                     }
                     Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
                 }
@@ -179,6 +208,28 @@ namespace PenumbraMod.Content.Items
         {
             Projectile.width = 50;
             Projectile.height = 50;
+            Projectile.timeLeft = 60;
+            Projectile.friendly = false;
+            Projectile.tileCollide = false;
+            Projectile.hostile = false;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.Black * Projectile.Opacity;
+        }
+        public override void AI()
+        {
+            Projectile.scale += 0.1f;
+            Projectile.alpha += 20;
+        }
+    }
+    public class BlackHoleEffect2 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/StrongGlow-big";
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
             Projectile.timeLeft = 60;
             Projectile.friendly = false;
             Projectile.tileCollide = false;

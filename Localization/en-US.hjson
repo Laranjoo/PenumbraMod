@@ -579,6 +579,7 @@ Mods: {
 			CorrosivePickaxeS.DisplayName: Corrosive Pickaxe
 			AguitarBlackHole.DisplayName: Aguitar Black Hole
 			BlackHoleEffect.DisplayName: Black Hole Effect
+			BlackHoleEffect2.DisplayName: Black Hole Effect2
 		}
 
 		Items: {
