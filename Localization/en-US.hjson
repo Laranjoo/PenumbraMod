@@ -580,6 +580,12 @@ Mods: {
 			AguitarBlackHole.DisplayName: Aguitar Black Hole
 			BlackHoleEffect.DisplayName: Black Hole Effect
 			BlackHoleEffect2.DisplayName: Black Hole Effect2
+			BlackHoleEffect3.DisplayName: Black Hole Effect3
+			BlackHoleEffect4.DisplayName: Black Hole Effect4
+			AguitarNoteEx.DisplayName: Aguitar Note Ex
+			AguitarNoteHoming.DisplayName: Aguitar Note Homing
+			AguitarNotePierce.DisplayName: Aguitar Note Pierce
+			AguitarNoteWeak.DisplayName: Aguitar Note Weak
 		}
 
 		Items: {
@@ -2106,6 +2112,7 @@ Mods: {
 					Shoots different styled music notes
 					Each of them have different behaviour
 					Right click to shoot a slow-moving Black Whole
+					The Black Whole sucks enemies inside of it (Except bosses)
 					[c/00ff17:-Dedicated Content-] 
 					'''
 			}

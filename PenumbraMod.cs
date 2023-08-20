@@ -62,10 +62,19 @@ namespace PenumbraMod
                     GetTexturePremultiplied(ref MediumGlow);
                     Texture2D StrongGlow = Request<Texture2D>("PenumbraMod/Assets/Textures/StrongGlow", AssetRequestMode.ImmediateLoad).Value;
                     GetTexturePremultiplied(ref StrongGlow);
+                    Texture2D WeakGlowb = Request<Texture2D>("PenumbraMod/Assets/Textures/WeakGlow-big", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref WeakGlow);
+                    Texture2D MediumGlowb = Request<Texture2D>("PenumbraMod/Assets/Textures/MediumGlow-big", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref MediumGlow);
+                    Texture2D StrongGlowb = Request<Texture2D>("PenumbraMod/Assets/Textures/StrongGlow-big", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref StrongGlow);
+                    Texture2D StrongGlowbg = Request<Texture2D>("PenumbraMod/Assets/Textures/StrongGlowBG", AssetRequestMode.ImmediateLoad).Value;
+                    GetTexturePremultiplied(ref StrongGlow);
                 });
                 Main.instance.LoadItem(ItemID.CursedFlames);
-                TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>("PenumbraMod/Content/Items/CursedFlame");
-
+                Main.instance.LoadItem(ItemID.IceSickle);
+                TextureAssets.Item[ItemID.IceSickle] = Request<Texture2D>("PenumbraMod/Content/Items/IceSickleResprite");
+                TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>("PenumbraMod/Content/Items/CursedFlameInv");
             }
             if (Main.netMode != NetmodeID.Server)
             {
@@ -92,6 +101,7 @@ namespace PenumbraMod
         public override void Unload()
         {
             TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>($"Terraria/Images/Item_519");
+            TextureAssets.Item[ItemID.IceSickle] = Request<Texture2D>($"Terraria/Images/Item_1306");
         }
         /// <summary>
         /// Eye of the storm glomask effect
@@ -191,7 +201,7 @@ namespace PenumbraMod
             for (int chestIndex = 0; chestIndex < 1000; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
-                if (chest != null && Main.tile[chest.x, chest.y].TileType == TileID.Containers && Main.tile[chest.x, chest.y].TileFrameX == 51 * 36)
+                if (chest != null && Main.tile[chest.x, chest.y].TileType == TileID.Containers && Main.tile[chest.x, chest.y].TileFrameX == 50 * 36)
                 {
                     for (int inventoryIndex = 0; inventoryIndex < 40; inventoryIndex++)
                     {
