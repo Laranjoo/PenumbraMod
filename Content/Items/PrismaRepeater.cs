@@ -56,25 +56,17 @@ namespace PenumbraMod.Content.Items
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float launchSpeed = 120f;
             float launchSpeed2 = 0f;
-            float launchSpeed3 = 0f;
-
             Vector2 mousePosition = Main.MouseWorld;
             Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
             Vector2 Gun = direction * launchSpeed2;
-            Vector2 Disk = direction * launchSpeed3;
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 60f;
             position = new Vector2(position.X, position.Y);
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {
                 position += muzzleOffset;
             }
-
             Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, Gun.X, Gun.Y, ModContent.ProjectileType<PrismaRepeaterProj>(), 0, knockback, player.whoAmI);
-
-
-
             return false; // return false to stop vanilla from calling Projectile.NewProjectile.
         }
     }

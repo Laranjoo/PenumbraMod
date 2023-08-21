@@ -226,7 +226,10 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Projectile.type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.direction == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            else
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipVertically);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 if (Projectile.oldPos[i] == Vector2.Zero)
@@ -295,7 +298,10 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Projectile.type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.direction == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            else
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipVertically);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 if (Projectile.oldPos[i] == Vector2.Zero)
@@ -364,7 +370,10 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Projectile.type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.direction == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            else
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipVertically);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 if (Projectile.oldPos[i] == Vector2.Zero)
@@ -428,7 +437,7 @@ namespace PenumbraMod.Content.Items
             Projectile.width = 16;
             Projectile.height = 24;
             Projectile.aiStyle = 0;
-            Projectile.friendly = true;
+            Projectile.friendly = false;
             Projectile.hostile = false;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 180;
@@ -445,7 +454,10 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Projectile.type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.direction == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            else
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipVertically);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 if (Projectile.oldPos[i] == Vector2.Zero)
@@ -496,6 +508,7 @@ namespace PenumbraMod.Content.Items
             // Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
             if (Projectile.ai[0] > 20f)
             {
+                Projectile.friendly = true;
                 Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, rotTarget, rotMax)) - Utils.ToRotation(Projectile.velocity)));
             }
 
