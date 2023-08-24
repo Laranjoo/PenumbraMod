@@ -308,7 +308,7 @@ namespace PenumbraMod.Content.Items
                 }
             }
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-            MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
+            MiscShaderData miscShaderData = GameShaders.Misc["MagicMissile"];
             int num = 1;
             int num2 = 0;
             int num3 = 0;
@@ -334,7 +334,7 @@ namespace PenumbraMod.Content.Items
 
         private float StripWidth(float progressOnStrip)
         {        
-            return 15f;
+            return 18f;
         }
         public override void AI()
         {

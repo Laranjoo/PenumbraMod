@@ -2120,6 +2120,21 @@ Mods: {
 					Deals contact damage, but it only explodes when its static
 					''' */
 			}
+
+			CrimsonScythe: {
+				// DisplayName: Crimson Scythe
+				// Tooltip: ""
+			}
+
+			DemoniteScythe: {
+				// DisplayName: Demonite Scythe
+				// Tooltip: ""
+			}
+
+			HellfireScythe: {
+				// DisplayName: Hellfire Scythe
+				// Tooltip: ""
+			}
 		}
 
 		Tiles: {
