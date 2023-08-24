@@ -277,12 +277,13 @@ namespace PenumbraMod.Content.Items
         {
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
+        private static VertexStrip _vertexStrip = new VertexStrip();
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
-            Draw(Projectile);
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
             Texture2D texture2 = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/PrismShotEf").Value;
+            Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
                 if (Projectile.oldPos[i] == Vector2.Zero)
@@ -301,22 +302,12 @@ namespace PenumbraMod.Content.Items
                         lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[i], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, Main.DiscoColor * 0.7f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
-                    Main.EntitySpriteDraw(texture2, lerpedPos, null, Color.White * 0.7f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
+                    float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
+                    Main.EntitySpriteDraw(texture, lerpedPos, null, Main.DiscoColor * 0.7f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
+                    Main.EntitySpriteDraw(texture2, lerpedPos, null, Color.White * 0.7f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
                 }
             }
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-            return false;
-        }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            Projectile.timeLeft = 0;
-            Projectile.Kill();
-        }
-        private static VertexStrip _vertexStrip = new VertexStrip();
-        public void Draw(Projectile proj)
-        {
-            _ = proj.ai[1];
             MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
             int num = 1;
             int num2 = 0;
@@ -324,21 +315,26 @@ namespace PenumbraMod.Content.Items
             float w = 0.6f;
             miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
             miscShaderData.Apply();
-            _vertexStrip.PrepareStrip(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f, proj.oldPos.Length, includeBacksides: true);
+            _vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY), (int?)(Projectile.oldPos.Length * -3.4f), includeBacksides: false);
             _vertexStrip.DrawTrail();
-            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
-        }
 
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+            return false;
+        }
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            Projectile.timeLeft = 0;
+            Projectile.Kill();
+        }
         private Color StripColors(float progressOnStrip)
         {
             Color result = Color.Lerp(Main.DiscoColor, Main.DiscoColor, Utils.GetLerpValue(0f, 0.7f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
-            result.A /= 2;
             return result;
         }
 
         private float StripWidth(float progressOnStrip)
         {        
-            return 26f;
+            return 15f;
         }
         public override void AI()
         {

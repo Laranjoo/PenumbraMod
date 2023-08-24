@@ -484,9 +484,6 @@ Mods: {
 			// TwistedSwing.DisplayName: Spaghettini's Penumbratic Twisted Blade
 			// Wakizashi1.DisplayName: Wakizashi
 			// WakizashiSwing.DisplayName: Wakizashi
-			// BuritiFinger.DisplayName: Buriti Finger
-			// BuritiFinger2.DisplayName: Buriti Finger
-			// BuritiFinger3.DisplayName: Buriti Finger
 			// Arrows.DisplayName: Arrows
 			// Brightness.DisplayName: Brightness
 			// Brightness10.DisplayName: Brightness
@@ -529,15 +526,13 @@ Mods: {
 			// Warning.DisplayName: Beams Warning
 			// Line.DisplayName: Line
 			// Line2.DisplayName: Line
-			// not.DisplayName: Buriti Finger
 			// knifeproj.DisplayName: Strange Knife
-			// MarshmellowGold.DisplayName: Marshmellow Gold
+			// MarshmellowGold.DisplayName: Golden Marshmellow
 			// PhantomDarkmatterEffect.DisplayName: Phantom Darkmatter Effect
 			// LoopSoundProj.DisplayName: Loop Sound
 			// None.DisplayName: None
 			// MarshmellowBladeProj.DisplayName: Marshmellow Blade
-			// ShadowFlameProj.DisplayName: Shadow Flame
-			// a2.DisplayName: a2
+			// ShadowFlameProj.DisplayName: Shadow Flam
 			// MeltedDemonicBat.DisplayName: Melted Demonic Bat
 			// IcyBoom.DisplayName: Icy Boom
 			// NeutronReactorLaser.DisplayName: Neutron Reactor Laser
@@ -577,15 +572,20 @@ Mods: {
 			// PrismaticKnifeProjSpecial.DisplayName: Prismatic Knife
 			// BloodEelProjHead.DisplayName: Blood Eel
 			// CorrosivePickaxeS.DisplayName: Corrosive Pickaxe
-			// AguitarBlackHole.DisplayName: Aguitar Black Hole
-			// BlackHoleEffect.DisplayName: Black Hole Effect
-			// BlackHoleEffect2.DisplayName: Black Hole Effect2
-			// BlackHoleEffect3.DisplayName: Black Hole Effect3
-			// BlackHoleEffect4.DisplayName: Black Hole Effect4
-			// AguitarNoteEx.DisplayName: Aguitar Note Ex
-			// AguitarNoteHoming.DisplayName: Aguitar Note Homing
-			// AguitarNotePierce.DisplayName: Aguitar Note Pierce
-			// AguitarNoteWeak.DisplayName: Aguitar Note Weak
+			// AguitarBlackHole.DisplayName: Black Hole
+			// BlackHoleEffect.DisplayName: Black Hole
+			// BlackHoleEffect2.DisplayName: Black Hole
+			// BlackHoleEffect3.DisplayName: Black Hole
+			// BlackHoleEffect4.DisplayName: Black Hole
+			// AguitarNoteEx.DisplayName: Aguitar Note Explosive
+			// AguitarNoteHoming.DisplayName: Note Homing
+			// AguitarNotePierce.DisplayName: Note Pierce
+			// AguitarNoteWeak.DisplayName: Note Weak
+			// ShroonadeEx.DisplayName: Shroonade
+			// ShroonadeThrown.DisplayName: Shroonade
+			// ShroonadeSpore.DisplayName: Mushroom Spore
+			// ShroonadeFX.DisplayName: Shroonade F X
+			// ShroonadeFX2.DisplayName: Shroonade F X2
 		}
 
 		Items: {
@@ -1392,7 +1392,7 @@ Mods: {
 				// DisplayName: Omni Staff
 				/* Tooltip:
 					'''
-					Some of the gods most used weapon
+					One of the ancient lightning gods most used weapon
 					Fires a huge lightning that inflicts high voltage on enemies
 					''' */
 			}
@@ -1409,12 +1409,7 @@ Mods: {
 
 			PenumbraticShard: {
 				// DisplayName: Penumbra Fragment
-				/* Tooltip:
-					'''
-					The core of Penumbra
-					Your eyes brightens just to seeing it
-					''My precious...''
-					''' */
+				// Tooltip: The core of Penumbra...
 			}
 
 			PhantomsPenumbraticDarkmatterScythe: {
@@ -2114,6 +2109,15 @@ Mods: {
 					Right click to shoot a slow-moving Black Whole
 					The Black Whole sucks enemies inside of it (Except bosses)
 					[c/00ff17:-Dedicated Content-] 
+					''' */
+			}
+
+			Shroonade: {
+				// DisplayName: Shroonade
+				/* Tooltip:
+					'''
+					Throws a mushroom grenade that sometimes on impact with tiles, it leaves spores behind, but gets it velocity reduced
+					Deals contact damage, but it only explodes when its static
 					''' */
 			}
 		}

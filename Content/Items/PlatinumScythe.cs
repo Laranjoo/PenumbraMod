@@ -234,7 +234,6 @@ namespace PenumbraMod.Content.Items
             }
             public override bool OnTileCollide(Vector2 oldVelocity)
             {
-                Vector2 vel = Vector2.Zero;
                 Projectile.velocity = Vector2.Zero;
                 Projectile.rotation += 0f;
                 return false;

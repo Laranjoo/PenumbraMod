@@ -251,7 +251,10 @@ namespace PenumbraMod.Content.Items
                     float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
                     Color finalColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
                     finalColor.A = 0;
-                    Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, new Vector2(proj.Width / 2, proj.Height / 2), size, SpriteEffects.None, 0);
+                    if (Projectile.direction == 1)
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.None, 0);
+                    else
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.FlipVertically, 0);
                 }
             }
             return false;
@@ -323,7 +326,10 @@ namespace PenumbraMod.Content.Items
                     float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
                     Color finalColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
                     finalColor.A = 0;
-                    Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, new Vector2(proj.Width / 2, proj.Height / 2), size, SpriteEffects.None, 0);
+                    if (Projectile.direction == 1)
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.None, 0);
+                    else
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.FlipVertically, 0);
                 }
             }
             return false;
@@ -395,7 +401,10 @@ namespace PenumbraMod.Content.Items
                     float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
                     Color finalColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
                     finalColor.A = 0;
-                    Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, new Vector2(proj.Width / 2, proj.Height / 2), size, SpriteEffects.None, 0);
+                    if (Projectile.direction == 1)
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.None, 0);
+                    else
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.FlipVertically, 0);
                 }
             }
             return false;
@@ -479,7 +488,10 @@ namespace PenumbraMod.Content.Items
                     float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
                     Color finalColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
                     finalColor.A = 0;
-                    Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, new Vector2(proj.Width / 2, proj.Height / 2), size, SpriteEffects.None, 0);
+                    if (Projectile.direction == 1)
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.None, 0);
+                    else
+                        Main.EntitySpriteDraw(proj, lerpedPos, null, finalColor, lerpedAngle, proj.Size() / 2, size, SpriteEffects.FlipVertically, 0);
                 }
             }
             return false;

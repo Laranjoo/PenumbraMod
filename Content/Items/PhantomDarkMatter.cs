@@ -22,15 +22,15 @@ namespace PenumbraMod.Content.Items
             // DisplayName.SetDefault("Phantom DarkMatter"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false;
             Main.projFrames[Projectile.type] = 7;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6; // The length of old position to be recorded
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10; // The length of old position to be recorded
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
 
         public override void SetDefaults()
         {
             Projectile.damage = 400;
-            Projectile.width = 50;
-            Projectile.height = 50;
+            Projectile.width = 40;
+            Projectile.height = 30;
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.hostile = false;
@@ -45,11 +45,16 @@ namespace PenumbraMod.Content.Items
         {
             target.AddBuff(ModContent.BuffType<DarkMatter>(), 180);
         }
+        public static float easeInOutQuad(float x)
+        {
+            return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
+        }
+        private static VertexStrip _vertexStrip = new VertexStrip();
         public override bool PreDraw(ref Color lightColor)
         {
-            Draw(Projectile);
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -59,39 +64,54 @@ namespace PenumbraMod.Content.Items
             Vector2 origin = sourceRectangle.Size() / 2f;
             float offsetX = 20f;
             origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+
             Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
-                Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, color, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
-            }
+                if (Projectile.oldPos[k] == Vector2.Zero)
+                    return false;
+                for (float j = 0; j < 1; j += 0.0625f)
+                {
+                    Vector2 lerpedPos;
+                    if (k > 0)
+                        lerpedPos = Vector2.Lerp(Projectile.oldPos[k - 1], Projectile.oldPos[k], easeInOutQuad(j));
+                    else
+                        lerpedPos = Vector2.Lerp(Projectile.position, Projectile.oldPos[k], easeInOutQuad(j));
+                    float lerpedAngle;
+                    if (k > 0)
+                        lerpedAngle = Utils.AngleLerp(Projectile.oldRot[k - 1], Projectile.oldRot[k], easeInOutQuad(j));
+                    else
+                        lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[k], easeInOutQuad(j));
+                    lerpedPos += Projectile.Size / 2;
+                    lerpedPos -= Main.screenPosition;
+                    Color color = Projectile.GetAlpha(lightColor) * 0.6f * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                    float size = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length);
+                    Main.EntitySpriteDraw(texture, lerpedPos, sourceRectangle, color, lerpedAngle, drawOrigin, size, spriteEffects, 0);
+                }
 
+            }
+            MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
+            int num = 1;
+            int num2 = 0;
+            int num3 = 0;
+            float w = 0.6f;
+            miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
+            miscShaderData.Apply();
+            _vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY), (int?)(Projectile.oldPos.Length * -2.3f) /* / (Projectile.oldPos.Length ) This changes the shader velocity*/, includeBacksides: false);
+            _vertexStrip.DrawTrail();
+
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
             return false;
         }
-        private static VertexStrip _vertexStrip = new VertexStrip();
-
-        public void Draw(Projectile proj)
-        {
-            MiscShaderData miscShaderData = GameShaders.Misc["MagicMissile"];
-            miscShaderData.UseSaturation(1f);
-            miscShaderData.UseOpacity(0.7f);
-            miscShaderData.Apply();
-            _vertexStrip.PrepareStripWithProceduralPadding(proj.oldPos, proj.oldRot, StripColors, StripWidth, -Main.screenPosition + proj.Size / 2f);
-            _vertexStrip.DrawTrail();
-            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
-        }
-
         private Color StripColors(float progressOnStrip)
         {
-            Color result = Color.Lerp(Color.Black, Color.DarkGray, Utils.GetLerpValue(0f, 0.7f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
-            result.A /= 2;
-            return result;
+            Color color = Color.Lerp(Color.Black, Color.Black, Utils.GetLerpValue(0f, 0.9f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
+            return color;
         }
 
         private float StripWidth(float progressOnStrip)
         {
-            return MathHelper.Lerp(26f, 32f, Utils.GetLerpValue(0f, 0.2f, progressOnStrip, clamped: true)) * Utils.GetLerpValue(0f, 0.07f, progressOnStrip, clamped: true);
+            return 21;
         }
         public override void Kill(int timeLeft)
         {

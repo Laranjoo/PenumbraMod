@@ -3,7 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.GameContent;
+using PenumbraMod.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,11 +38,12 @@ namespace PenumbraMod.Content.Items.Armors
         {
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
+        private static VertexStrip _vertexStrip = new VertexStrip();
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-           
+            Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
             // Redraw the projectile with the color not influenced by light
             for (int i = 0; i < Projectile.oldPos.Length; i++)
             {
@@ -63,7 +67,28 @@ namespace PenumbraMod.Content.Items.Armors
                     Main.EntitySpriteDraw(texture, lerpedPos, null, color * 0.5f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), 1, SpriteEffects.None, 0);
                 }
             }
+            MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
+            int num = 1;
+            int num2 = 0;
+            int num3 = 0;
+            float w = 0.6f;
+            miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
+            miscShaderData.Apply();
+            _vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY), (int?)(Projectile.oldPos.Length * -1.8f), includeBacksides: false);
+            _vertexStrip.DrawTrail();
+
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
             return true;
+        }
+        private Color StripColors(float progressOnStrip)
+        {
+            Color result = Color.Lerp(new Color(230, 87, 120, 0), new Color(230, 87, 120, 0), Utils.GetLerpValue(0f, 0.7f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
+            return result;
+        }
+
+        private float StripWidth(float progressOnStrip)
+        {
+            return 6f;
         }
         public override Color? GetAlpha(Color lightColor)
         {

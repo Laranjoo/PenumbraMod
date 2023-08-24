@@ -15,7 +15,7 @@ namespace PenumbraMod.Content.Items
 		
 		public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Death Beam");
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7; // The length of old position to be recorded
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 9; // The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
 
@@ -57,7 +57,10 @@ namespace PenumbraMod.Content.Items
                         lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[k], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, Color.White * 0.5f * (1 - ((float)k / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), 1, SpriteEffects.None, 0);
+                    float size = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length);
+                    Color finalColor = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                    finalColor.A = 0;
+                    Main.EntitySpriteDraw(texture, lerpedPos, null, lightColor, lerpedAngle, texture.Size() / 2, size, SpriteEffects.None, 0);
                 }
             }
             return true;
