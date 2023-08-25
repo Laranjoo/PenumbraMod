@@ -1,9 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PenumbraMod.Effects;
 using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,7 +19,7 @@ namespace PenumbraMod.Content.Items
             // DisplayName.SetDefault("Hell Shot"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false;
             Main.projFrames[Projectile.type] = 9;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 2; // The length of old position to be recorded
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10; // The length of old position to be recorded
             ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
         }
 
@@ -30,57 +32,43 @@ namespace PenumbraMod.Content.Items
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 3;
-            Projectile.timeLeft = 600;
+            Projectile.timeLeft = 280;
             Projectile.light = 0.75f;
             Projectile.ignoreWater = false;
             Projectile.tileCollide = true;
-            Projectile.scale = 1.4f;
-            
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(BuffID.OnFire, 300);
+            target.AddBuff(BuffID.OnFire, 120);
         }
-
+        private static VertexStrip _vertexStrip = new VertexStrip();
+        private float transitToDark;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            transitToDark = Utils.GetLerpValue(0f, 6f, Projectile.localAI[0], clamped: true);
+            MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
+            miscShaderData.UseSaturation(-2f);
+            miscShaderData.UseOpacity(MathHelper.Lerp(4f, 8f, transitToDark));
+            miscShaderData.Apply();
+            _vertexStrip.PrepareStripWithProceduralPadding(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, includeBacksides: true);
+            _vertexStrip.DrawTrail();
+            Main.pixelShader.CurrentTechnique.Passes[0].Apply();
+            return true;
+        }
+        private Color StripColors(float progressOnStrip)
+        {
+            float lerpValue = Utils.GetLerpValue(0f - 0.1f * transitToDark, 0.7f - 0.2f * transitToDark, progressOnStrip, clamped: true);
+            Color result = Color.Lerp(Color.Lerp(Color.White, Color.Orange, transitToDark * 0.5f), Color.Red, lerpValue) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
+            result.A /= 8;
+            return result;
+        }
 
-            SpriteEffects spriteEffects = SpriteEffects.None;
-            if (Projectile.spriteDirection == -1)
-                spriteEffects = SpriteEffects.FlipHorizontally;
-            // Calculating frameHeight and current Y pos dependence of frame
-            // If texture without animation frameHeight is always texture.Height and startY is always 0
-            int frameHeight = texture.Height / Main.projFrames[Projectile.type];
-            int startY = frameHeight * Projectile.frame;
-
-            // Get this frame on texture
-            Rectangle sourceRectangle = new(0, startY, texture.Width, frameHeight);
-
-            // Alternatively, you can skip defining frameHeight and startY and use this:
-
-
-            Vector2 origin = sourceRectangle.Size() / 2f;
-
-            // If image isn't centered or symmetrical you can specify origin of the sprite
-            // (0,0) for the upper-left corner
-            float offsetX = 20f;
-            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
-
-            // If sprite is vertical
-            // float offsetY = 20f;
-            //  origin.Y = (float)(Projectile.spriteDirection == 1 ? sourceRectangle.Height - offsetY : offsetY);
-
-            Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
-            for (int k = 0; k < Projectile.oldPos.Length; k++)
-            {
-                Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, color, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
-            }
-
-            return false;
+        private float StripWidth(float progressOnStrip)
+        {
+            float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
+            lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
+            return MathHelper.Lerp(12f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override void Kill(int timeLeft)
         {
@@ -102,6 +90,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.rotation += MathHelper.Pi;
                 // For vertical sprites use MathHelper.PiOver2
             }
+            Projectile.direction = 1;
 
             if (++Projectile.frameCounter >= 5)
             {

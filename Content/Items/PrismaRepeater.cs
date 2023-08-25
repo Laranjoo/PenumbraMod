@@ -278,6 +278,7 @@ namespace PenumbraMod.Content.Items
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
         private static VertexStrip _vertexStrip = new VertexStrip();
+        private float transitToDark;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
@@ -308,16 +309,13 @@ namespace PenumbraMod.Content.Items
                 }
             }
             Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-            MiscShaderData miscShaderData = GameShaders.Misc["MagicMissile"];
-            int num = 1;
-            int num2 = 0;
-            int num3 = 0;
-            float w = 0.6f;
-            miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
+            transitToDark = Utils.GetLerpValue(0f, 6f, Projectile.localAI[0], clamped: true);
+            MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
+            miscShaderData.UseSaturation(-2f);
+            miscShaderData.UseOpacity(MathHelper.Lerp(4f, 8f, transitToDark));
             miscShaderData.Apply();
-            _vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY), (int?)(Projectile.oldPos.Length * -3.4f), includeBacksides: false);
+            _vertexStrip.PrepareStripWithProceduralPadding(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, includeBacksides: true);
             _vertexStrip.DrawTrail();
-
             Main.pixelShader.CurrentTechnique.Passes[0].Apply();
             return false;
         }
@@ -328,13 +326,16 @@ namespace PenumbraMod.Content.Items
         }
         private Color StripColors(float progressOnStrip)
         {
-            Color result = Color.Lerp(Main.DiscoColor, Main.DiscoColor, Utils.GetLerpValue(0f, 0.7f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
+            float lerpValue = Utils.GetLerpValue(0f - 0.1f * transitToDark, 0.7f - 0.2f * transitToDark, progressOnStrip, clamped: true);
+            Color result = Color.Lerp(Color.Lerp(Color.Red, Main.DiscoColor, transitToDark * 0.5f), Color.White, lerpValue) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
             return result;
         }
 
         private float StripWidth(float progressOnStrip)
-        {        
-            return 18f;
+        {
+            float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
+            lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
+            return MathHelper.Lerp(12f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override void AI()
         {

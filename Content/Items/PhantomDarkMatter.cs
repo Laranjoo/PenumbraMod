@@ -50,6 +50,8 @@ namespace PenumbraMod.Content.Items
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
         private static VertexStrip _vertexStrip = new VertexStrip();
+        private float transitToDark;
+
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
@@ -85,33 +87,33 @@ namespace PenumbraMod.Content.Items
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
                     Color color = Projectile.GetAlpha(lightColor) * 0.6f * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                    float size = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length);
+                    float size = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.1f);
                     Main.EntitySpriteDraw(texture, lerpedPos, sourceRectangle, color, lerpedAngle, drawOrigin, size, spriteEffects, 0);
                 }
 
             }
+            transitToDark = Utils.GetLerpValue(0f, 6f, Projectile.localAI[0], clamped: true);
             MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
-            int num = 1;
-            int num2 = 0;
-            int num3 = 0;
-            float w = 0.6f;
-            miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
+            miscShaderData.UseSaturation(-2f);
+            miscShaderData.UseOpacity(MathHelper.Lerp(4f, 8f, transitToDark));
             miscShaderData.Apply();
-            _vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY), (int?)(Projectile.oldPos.Length * -2.3f) /* / (Projectile.oldPos.Length ) This changes the shader velocity*/, includeBacksides: false);
+            _vertexStrip.PrepareStripWithProceduralPadding(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, includeBacksides: true);
             _vertexStrip.DrawTrail();
-
             Main.pixelShader.CurrentTechnique.Passes[0].Apply();
             return false;
         }
         private Color StripColors(float progressOnStrip)
         {
-            Color color = Color.Lerp(Color.Black, Color.Black, Utils.GetLerpValue(0f, 0.9f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
-            return color;
+            float lerpValue = Utils.GetLerpValue(0f - 0.1f * transitToDark, 0.7f - 0.2f * transitToDark, progressOnStrip, clamped: true);
+            Color result = Color.Lerp(Color.Lerp(new Color(17, 0, 36), new Color(9, 0, 19), transitToDark * 0.5f), Color.Black, lerpValue) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
+            return result;
         }
 
         private float StripWidth(float progressOnStrip)
         {
-            return 21;
+            float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
+            lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
+            return MathHelper.Lerp(24f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override void Kill(int timeLeft)
         {
@@ -128,8 +130,8 @@ namespace PenumbraMod.Content.Items
         {
             Projectile.ai[0] += 1f;
 
-            FadeInAndOut(); 
-            Projectile.direction = Projectile.spriteDirection = (Projectile.velocity.X > 0f) ? 1 : -1;
+            FadeInAndOut();
+            Projectile.direction = 1;
 
             Projectile.rotation = Projectile.velocity.ToRotation();
             // Since our sprite has an orientation, we need to adjust rotation to compensate for the draw flipping

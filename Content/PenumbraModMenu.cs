@@ -13,7 +13,7 @@ namespace PenumbraMod.Content
         public override void Update(bool isOnTitleScreen)
         {
             Main.dayTime = true;
-            Main.time = 26000;
+            Main.time = 40000;
         }
         // Inspired from stars above
         float MousePositionFloatX;
@@ -53,6 +53,7 @@ namespace PenumbraMod.Content
                     zero.Y -= ((float)MenuBG.Height * width - (float)Main.screenHeight) * 0.5f;
                 }
             }
+
             spriteBatch.Draw(
                 MenuBG, // texture
                 new Vector2(zero.X + MathHelper.Lerp(-98, -82, MousePositionFloatX), zero.Y + MathHelper.Lerp(-50, -47, MousePositionFloatY)), // position

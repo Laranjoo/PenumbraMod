@@ -2135,6 +2135,11 @@ Mods: {
 				// DisplayName: Hellfire Scythe
 				// Tooltip: ""
 			}
+
+			BloodystoneScythe: {
+				// DisplayName: Bloodystone Scythe
+				// Tooltip: ""
+			}
 		}
 
 		Tiles: {

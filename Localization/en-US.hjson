@@ -2116,7 +2116,7 @@ Mods: {
 				DisplayName: Shroonade
 				Tooltip:
 					'''
-					Throws a mushroom grenade that sometimes on impact with tiles, it leaves spores behind, but gets it velocity reduced
+					Throws a mushroom grenade that on impact with tiles, sometimes it leaves spores behind and gets it velocity reduced
 					Deals contact damage, but it only explodes when its static
 					'''
 			}
@@ -2127,12 +2127,17 @@ Mods: {
 			}
 
 			DemoniteScythe: {
-				DisplayName: Demonite Scythe
+				DisplayName: Demon Scythe
 				Tooltip: ""
 			}
 
 			HellfireScythe: {
 				DisplayName: Hellfire Scythe
+				Tooltip: ""
+			}
+
+			BloodystoneScythe: {
+				DisplayName: Bloodlust
 				Tooltip: ""
 			}
 		}

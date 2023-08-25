@@ -39,6 +39,7 @@ namespace PenumbraMod.Content.Items.Armors
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
         private static VertexStrip _vertexStrip = new VertexStrip();
+        private float transitToDark;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
@@ -64,31 +65,32 @@ namespace PenumbraMod.Content.Items.Armors
                         lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[i], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, color * 0.5f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), 1, SpriteEffects.None, 0);
+                    float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length * 1.05f);
+                    Main.EntitySpriteDraw(texture, lerpedPos, null, color * 0.5f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
                 }
             }
+            transitToDark = Utils.GetLerpValue(0f, 6f, Projectile.localAI[0], clamped: true);
             MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
-            int num = 1;
-            int num2 = 0;
-            int num3 = 0;
-            float w = 0.6f;
-            miscShaderData.UseShaderSpecificData(new Vector4(num, num2, num3, w));
+            miscShaderData.UseSaturation(-2f);
+            miscShaderData.UseOpacity(MathHelper.Lerp(4f, 8f, transitToDark));
             miscShaderData.Apply();
-            _vertexStrip.PrepareStrip(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY), (int?)(Projectile.oldPos.Length * -1.8f), includeBacksides: false);
+            _vertexStrip.PrepareStripWithProceduralPadding(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, includeBacksides: true);
             _vertexStrip.DrawTrail();
-
             Main.pixelShader.CurrentTechnique.Passes[0].Apply();
             return true;
         }
         private Color StripColors(float progressOnStrip)
         {
-            Color result = Color.Lerp(new Color(230, 87, 120, 0), new Color(230, 87, 120, 0), Utils.GetLerpValue(0f, 0.7f, progressOnStrip, clamped: true)) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip, clamped: true));
+            float lerpValue = Utils.GetLerpValue(0f - 0.1f * transitToDark, 0.7f - 0.2f * transitToDark, progressOnStrip, clamped: true);
+            Color result = Color.Lerp(Color.Lerp(new Color(230, 87, 120, 0), new Color(230, 87, 120, 0), transitToDark * 0.5f), new Color(230, 87, 120, 0), lerpValue) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
             return result;
         }
 
         private float StripWidth(float progressOnStrip)
         {
-            return 6f;
+            float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
+            lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
+            return MathHelper.Lerp(7f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override Color? GetAlpha(Color lightColor)
         {
