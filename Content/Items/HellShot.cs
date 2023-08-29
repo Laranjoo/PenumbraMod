@@ -90,7 +90,6 @@ namespace PenumbraMod.Content.Items
                 Projectile.rotation += MathHelper.Pi;
                 // For vertical sprites use MathHelper.PiOver2
             }
-            Projectile.direction = 1;
 
             if (++Projectile.frameCounter >= 5)
             {
@@ -99,11 +98,14 @@ namespace PenumbraMod.Content.Items
                 if (++Projectile.frame >= Main.projFrames[Projectile.type])
                     Projectile.frame = 0;
             }
-
-            int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LavaMoss, 1f, 0f, 0, Color.Yellow, 1);
-            Main.dust[dust].noGravity = false;
-            Main.dust[dust].velocity *= 3f;
-            Main.dust[dust].scale = (float) Main.rand.Next(80, 140) * 0.008f;
+            for (int k = 0; k < 3; k++)
+            {
+                int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.LavaMoss, 1f, 0f, 0, Color.Yellow, 1);
+                Main.dust[dust].noGravity = false;
+                Main.dust[dust].velocity *= 3f;
+                Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
+            }
+        
 
             Lighting.AddLight(Projectile.Center, Color.Orange.ToVector3() * 0.78f);
         }

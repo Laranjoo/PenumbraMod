@@ -119,9 +119,13 @@ namespace PenumbraMod.Content.Items
 
             return true;
         }
+        float a = 1f;
+        float progress;
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
+            Texture2D tex = ModContent.Request<Texture2D>("PenumbraMod/Content/ExpertAccessorySlot/LightUnlocked").Value;
+           
             if (Main.itemAnimations[Item.type] != null)
             {
                 // In case this item is animated, this picks the correct frame
@@ -148,8 +152,39 @@ namespace PenumbraMod.Content.Items
                 float radians = (i + timer) * MathHelper.TwoPi;
                 spriteBatch.Draw(texture, position + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(93, 31, 216, 70), 0, origin, scale, SpriteEffects.None, 0);
             }
+            spriteBatch.Draw(TextureAssets.Item[Item.type].Value, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0);
+            if (Main.LocalPlayer.HeldItem.type == Item.type)
+            {
+                progress += 1f;
+                if (progress >= 1 && progress <= 20)
+                {
+                    a += 0.1f;
+                    if (a > 1f)
+                        a = 1f;
+                }
+                if (progress >= 40 && progress <= 60)
+                {
+                    a -= 0.1f;
+                    if (a < 0f)
+                        a = 0f;
+                }
+                if (progress > 70)
+                    progress = 0;
 
-            return true;
+                Color baseColor = new Color(238, 0, 255, 0);
+                Color lightColor = Item.GetAlpha(baseColor);
+                baseColor.A = 0;
+                float k = (lightColor.R / 255f + lightColor.G / 255f + lightColor.B / 255f) / 2f;
+                spriteBatch.Draw(tex, position, null, lightColor * k * a, 0, tex.Size() / 2, scale * 1.2f, SpriteEffects.None, 0);
+            }
+            else
+            {
+                a -= 0.1f;
+                if (a < 0f)
+                    a = 0f;
+            }
+
+            return false;
         }
         public override void AddRecipes()
         {

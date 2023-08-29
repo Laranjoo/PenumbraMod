@@ -356,6 +356,11 @@ Mods: {
 				// DisplayName: Terra Force
 				// Description: Mods.PenumbraMod.Buffs.TerraForce.Description
 			}
+
+			TungstenShield: {
+				// Description: Defense increased by +4
+				// DisplayName: Tungsten Shield
+			}
 		}
 
 		Projectiles: {
@@ -479,7 +484,6 @@ Mods: {
 			// TheMagebladeSwing.DisplayName: The Mageblade
 			// TheStarsProj.DisplayName: The Stars Caller Scythe
 			// TinTrash.DisplayName: Tin Trash
-			// TungstenSpike.DisplayName: Tungsten Spike
 			// TwistedRazorblade.DisplayName: Penumbratic Razorblade
 			// TwistedSwing.DisplayName: Spaghettini's Penumbratic Twisted Blade
 			// Wakizashi1.DisplayName: Wakizashi
@@ -586,6 +590,15 @@ Mods: {
 			// ShroonadeSpore.DisplayName: Mushroom Spore
 			// ShroonadeFX.DisplayName: Shroonade F X
 			// ShroonadeFX2.DisplayName: Shroonade F X2
+			// LunarBombProj.DisplayName: Lunar Bomb
+			// Explosion1.DisplayName: Lunar Explosion
+			// Explosion2.DisplayName: Lunar Explosion
+			// Explosion2up.DisplayName: Lunar Explosion
+			// Explosion3.DisplayName: Lunar Explosion
+			// ExplosionFX.DisplayName: Lunar Explosion
+			// Explosion3up.DisplayName: Lunar Explosion
+			// Explosion3down.DisplayName: Lunar Explosion
+			// ShadewoodScytheProj.DisplayName: Shadewood Spike
 		}
 
 		Items: {
@@ -1566,19 +1579,10 @@ Mods: {
 
 			ShadewoodScythe: {
 				// DisplayName: Shadewood Scythe
-				// Tooltip: ""
-			}
-
-			ShadowBlaster: {
-				// DisplayName: Srplayertube's Penumbratic Shadow Blaster
 				/* Tooltip:
 					'''
-					[c/ad08cd:The blaster of Penumbra]
-					[c/75efff:This gun is cappable to turn light into burning shadows...]
-					[c/75efff:Those burning shadows follows foes, letting them with no choice then accept the fate...]
-					[c/75efff:Fires a burst of 3 Shadow Hell Bullets, inflicting Shadow Flame to enemies.]
-					[c/ff0000:''Can you see the shadows?'']
-					[c/00FF00:-Developer Item-]
+					''A scythe made of the wood of a bloody land''
+					[c/687986:Special ability:] When used, the scythe shoots several spikes.
 					''' */
 			}
 
@@ -1731,14 +1735,14 @@ Mods: {
 				// DisplayName: Tungsten Scythe
 				/* Tooltip:
 					'''
-					You may like it
-					[c/38594c:Special ability:] When used, it spawns tungsten spikes on the ground
+					"Seems useful"
+					[c/38594c:Special ability:] Gives the owner +4 defense for 1m
 					''' */
 			}
 
 			Wakizashi: {
 				// DisplayName: Wakizashi
-				// Tooltip: Ancient ones used that
+				// Tooltip: An ancient samurai lost wakizashi...
 			}
 
 			Witcherster: {
@@ -2116,7 +2120,7 @@ Mods: {
 				// DisplayName: Shroonade
 				/* Tooltip:
 					'''
-					Throws a mushroom grenade that sometimes on impact with tiles, it leaves spores behind, but gets it velocity reduced
+					Throws a mushroom grenade that on impact with tiles, sometimes it leaves spores behind and gets it velocity reduced
 					Deals contact damage, but it only explodes when its static
 					''' */
 			}
@@ -2127,7 +2131,7 @@ Mods: {
 			}
 
 			DemoniteScythe: {
-				// DisplayName: Demonite Scythe
+				// DisplayName: Demon Scythe
 				// Tooltip: ""
 			}
 
@@ -2137,8 +2141,23 @@ Mods: {
 			}
 
 			BloodystoneScythe: {
-				// DisplayName: Bloodystone Scythe
+				// DisplayName: Bloodlust
 				// Tooltip: ""
+			}
+
+			SrplayertubesPenumbraticLunarBomb: {
+				// DisplayName: Srplayertube's Penumbratic Lunar Bomb
+				/* Tooltip:
+					'''
+					[c/ad08cd:The bomb of Penumbra]
+					[c/75efff:This bomb is known by old bomb wielders...]
+					[c/75efff:Its also known by its massive damage]
+					[c/75efff:Puts a static bomb at the wielder position, exploding in a "+" form]
+					[c/75efff:It can be only used 3 times at once before they explode]
+					[c/75efff:But, the bomb also damages its owner]
+					[c/ff0000:''SEE, I CAN CRACK THE EARTH! FEEL MY POWER, ...'']
+					[c/00FF00:-Developer Item-]
+					''' */
 			}
 		}
 

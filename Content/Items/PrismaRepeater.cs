@@ -303,7 +303,7 @@ namespace PenumbraMod.Content.Items
                         lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[i], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
-                    float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length);
+                    float size = Projectile.scale * (Projectile.oldPos.Length - i) / (Projectile.oldPos.Length * 1.05f);
                     Main.EntitySpriteDraw(texture, lerpedPos, null, Main.DiscoColor * 0.7f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
                     Main.EntitySpriteDraw(texture2, lerpedPos, null, Color.White * 0.7f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), size, SpriteEffects.None, 0);
                 }
@@ -327,7 +327,7 @@ namespace PenumbraMod.Content.Items
         private Color StripColors(float progressOnStrip)
         {
             float lerpValue = Utils.GetLerpValue(0f - 0.1f * transitToDark, 0.7f - 0.2f * transitToDark, progressOnStrip, clamped: true);
-            Color result = Color.Lerp(Color.Lerp(Color.Red, Main.DiscoColor, transitToDark * 0.5f), Color.White, lerpValue) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
+            Color result = Color.Lerp(Color.Lerp(Color.White, Main.DiscoColor, transitToDark * 0.5f), Color.White, lerpValue) * (1f - Utils.GetLerpValue(0f, 0.98f, progressOnStrip));
             return result;
         }
 

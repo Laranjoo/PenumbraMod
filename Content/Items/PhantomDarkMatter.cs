@@ -131,7 +131,6 @@ namespace PenumbraMod.Content.Items
             Projectile.ai[0] += 1f;
 
             FadeInAndOut();
-            Projectile.direction = 1;
 
             Projectile.rotation = Projectile.velocity.ToRotation();
             // Since our sprite has an orientation, we need to adjust rotation to compensate for the draw flipping

@@ -61,9 +61,6 @@ namespace PenumbraMod.Content.Items
 
                     // Create a projectile.
                     Projectile.NewProjectileDirect(source, position, newVelocity, type, damage, knockback, player.whoAmI);
-                    type = ModContent.ProjectileType<BloodShot>();
-                    damage = 39;
-
            }
               return true;
            

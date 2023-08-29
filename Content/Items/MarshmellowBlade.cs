@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using PenumbraMod.Content.Items.Consumables;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -35,8 +36,23 @@ namespace PenumbraMod.Content.Items
             Item.noUseGraphic = true; // Stops the item from drawing in your hands, for the aforementioned reason
             Item.channel = true; // Important as the projectile checks if the player channels
         }
-
-		public override void AddRecipes()
+        bool notboollol = true;
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            int basic = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            if (notboollol == true)
+            {
+                Main.projectile[basic].ai[1] = -1;
+                notboollol = false;
+            }
+            else
+            {
+                Main.projectile[basic].ai[1] = 1;
+                notboollol = true;
+            }
+            return false;
+        }
+        public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<Marshmellow>(), 10);

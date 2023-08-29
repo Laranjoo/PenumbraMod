@@ -39,6 +39,35 @@ namespace PenumbraMod.Content.Items
             Item.shoot = ModContent.ProjectileType<MeltedFireball>();
             Item.shootSpeed = 14f;
         }
+        float r;
+        float a = 1f;
+        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D tex = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/MeltedFireball").Value;
+            Texture2D tex2 = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/MeltedFireballef2").Value;
+            if (Main.LocalPlayer.HeldItem.type == Item.type)
+            {
+                r += 0.1f;
+                a -= 0.1f;
+                spriteBatch.Draw(tex, position + new Vector2(12, -11), null, Color.White, r, tex.Size() / 2, scale * 1.07f, SpriteEffects.None, 0);
+                spriteBatch.Draw(tex2, position + new Vector2(12, -11), null, Color.White * a, r, tex.Size() / 2, scale * 1.07f, SpriteEffects.None, 0);
+            }
+            else
+            {
+                a = 1f;
+            }
+           
+            return true;
+        }
+        public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        {
+            Vector2 muzzleOffset = Vector2.Normalize(velocity) * 60f;
+
+            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
+            {
+                position += muzzleOffset;
+            }
+        }
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
