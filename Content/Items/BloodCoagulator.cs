@@ -31,8 +31,8 @@ namespace PenumbraMod.Content.Items
 			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 8;
-			Item.value = 1000;
-			Item.rare = ItemRarityID.Green;
+			Item.value = 12000;
+			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item8;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<BloodShot>();

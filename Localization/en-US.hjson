@@ -609,6 +609,7 @@ Mods: {
 			Explosion3up.DisplayName: Lunar Explosion
 			Explosion3down.DisplayName: Lunar Explosion
 			ShadewoodScytheProj.DisplayName: Shadewood Spike
+			InfectedWorm.DisplayName: Infected Worm
 		}
 
 		Items: {
@@ -2177,6 +2178,21 @@ Mods: {
 			PerishedRobe: {
 				DisplayName: Perished Robe
 				Tooltip: 5% Increased reaper attack speed
+			}
+
+			InfectedGun: {
+				DisplayName: Infected Gun
+				Tooltip: "Converts musket bullets into infected worms!"
+			}
+
+			InfectedPickaxe: {
+				DisplayName: Infected Pickaxe
+				Tooltip: ""
+			}
+
+			InfectedScythe: {
+				DisplayName: Infected Scythe
+				Tooltip: ""
 			}
 		}
 

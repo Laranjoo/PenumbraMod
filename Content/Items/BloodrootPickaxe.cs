@@ -25,8 +25,8 @@ namespace PenumbraMod.Content.Items
 			Item.useAnimation = 8;
 			Item.useStyle = 1;
 			Item.knockBack = 4;
-			Item.value = 1000;
-			Item.rare = 3;
+			Item.value = 23000;
+			Item.rare = ItemRarityID.LightRed;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.pick = 195;

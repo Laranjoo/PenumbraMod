@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.Buffs;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -247,6 +249,8 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             Projectile.Center = playerCenter; // Centers the projectile on the player. Projectile.velocity will be added to this in later Terraria code causing the projectile to be held away from the player at a set distance.
             Projectile.rotation = Projectile.velocity.ToRotation();
             owner.itemRotation = (Projectile.velocity * Projectile.direction).ToRotation();
+
+            // FROM HERE IS OLD CODE I DID, ITS BAD BUT ITS FUNCTIONAL, IM LAZY TO FIX ;P
             if (boom == true)
             {
                 for (int k = 0; k < 25; k++)
@@ -278,7 +282,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             }
             owner.ChangeDir(Main.MouseWorld.X > owner.Center.X ? 1 : -1);
 
-            if (counter > 30 && !owner.channel || owner.CCed)
+            if (counter > 29 && !owner.channel || owner.CCed)
             {
                 int basic = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, owner.DirectionTo(Main.MouseWorld) * 8f, ModContent.ProjectileType<MeltedTrident>(), 40, 0, owner.whoAmI);
                 SoundEngine.PlaySound(SoundID.Item92);
@@ -291,7 +295,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             {
                 boom = false;
             }
-            if (counter > 70 && !owner.channel || owner.CCed)
+            if (counter > 69 && !owner.channel || owner.CCed)
             {
                 int basic = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, owner.DirectionTo(Main.MouseWorld) * 10f, ModContent.ProjectileType<MeltedTrident2>(), 50, 0, owner.whoAmI);
                 SoundEngine.PlaySound(SoundID.Item92);
@@ -305,7 +309,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             {
                 boom = false;
             }
-            if (counter > 110 && !owner.channel || owner.CCed)
+            if (counter > 109 && !owner.channel || owner.CCed)
             {
                 int basic = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, owner.DirectionTo(Main.MouseWorld) * 14f, ModContent.ProjectileType<MeltedTrident3>(), 60, 0, owner.whoAmI);
                 SoundEngine.PlaySound(SoundID.Item92);
@@ -318,7 +322,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             {
                 boom = false;
             }
-            if (counter > 150 && !owner.channel || owner.CCed)
+            if (counter > 149 && !owner.channel || owner.CCed)
             {
                 int basic = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, owner.DirectionTo(Main.MouseWorld) * 18f, ModContent.ProjectileType<MeltedTrident4>(), 80, 0, owner.whoAmI);
                 SoundEngine.PlaySound(SoundID.Item92);
@@ -332,7 +336,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             {
                 boom = false;
             }
-            if (counter > 190 && !owner.channel || owner.CCed)
+            if (counter > 189 && !owner.channel || owner.CCed)
             {
                 int basic = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, owner.DirectionTo(Main.MouseWorld) * 22f, ModContent.ProjectileType<MeltedTrident5>(), 100, 0, owner.whoAmI);
                 SoundEngine.PlaySound(SoundID.Item92);

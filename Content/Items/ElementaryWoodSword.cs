@@ -43,25 +43,13 @@ namespace PenumbraMod.Content.Items
 		    
 			
 		}
-		public override void MeleeEffects(Player player, Rectangle hitbox)
-        {
-            if (Main.rand.NextBool(1))
-            {
-                
-                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Enchanted_Pink);
-				
-            }
-        }
-		
 		public override bool AltFunctionUse(Player player)
 		{
-			return true;
+			if (!player.HasBuff(ModContent.BuffType<ElementalCooldown>()))
+				return true;
+			return false;
 		}
 
-		public override bool CanUseItem(Player player)
-		{
-			return (!player.HasBuff(ModContent.BuffType<ElementalCooldown>()));
-		}
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
             if (player.altFunctionUse == 2)

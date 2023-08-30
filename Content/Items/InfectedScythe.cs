@@ -8,19 +8,19 @@ using Terraria.ModLoader;
 
 namespace PenumbraMod.Content.Items
 {
-    public class BloodystoneScythe : ModItem
+    public class InfectedScythe : ModItem
     {
         public override void SetDefaults()
         {
-            Item.damage = 109;
+            Item.damage = 91;
             Item.DamageType = ModContent.GetInstance<ReaperClass>();
-            Item.width = 64;
-            Item.height = 54;
-            Item.useTime = 22;
-            Item.useAnimation = 22;
+            Item.width = 56;
+            Item.height = 50;
+            Item.useTime = 18;
+            Item.useAnimation = 16;
             Item.useStyle = 1;
             Item.knockBack = 5;
-            Item.value = 20170;
+            Item.value = 17800;
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item1;
             Item.shoot = ModContent.ProjectileType<EMPTY>();
@@ -35,9 +35,9 @@ namespace PenumbraMod.Content.Items
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<CrimsonScythe>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<BloodystoneBar>(), 17);
-            recipe.AddIngredient(ItemID.TissueSample, 14);
+            recipe.AddIngredient(ModContent.ItemType<DemoniteScythe>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<InfectedBar>(), 13);
+            recipe.AddIngredient(ItemID.ShadowScale, 12);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

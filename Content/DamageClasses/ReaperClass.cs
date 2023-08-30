@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using PenumbraMod.Common.Systems;
 using PenumbraMod.Content.Buffs;
+using PenumbraMod.Content.Items.Armors;
 using PenumbraMod.Content.Items.ReaperCrystals;
 using Terraria;
 using Terraria.Audio;
@@ -455,8 +456,7 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
                     {
-                        if (Main.LocalPlayer.HeldItem.DamageType == ModContent.GetInstance<ReaperClass>())
-                            ReaperEnergy += (int)(Main.LocalPlayer.HeldItem.useTime * (ReaperEnergyMult + 2));
+                        ReaperEnergy += 50;
                     }
 
                 }
@@ -484,8 +484,7 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
                     {
-                        if (Main.LocalPlayer.HeldItem.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
-                            ReaperEnergy += (int)(Main.LocalPlayer.HeldItem.useTime * (ReaperEnergyMult + 2));
+                        ReaperEnergy += 50;
                     }
                 }
 
