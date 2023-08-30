@@ -83,6 +83,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
     }
     public class MeltedTrident2 : ModProjectile
     {
+        public override string Texture => "PenumbraMod/Content/Items/MeltedBlaster/MeltedTrident";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted Trident"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -149,6 +150,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
     }
     public class MeltedTrident3 : ModProjectile
     {
+        public override string Texture => "PenumbraMod/Content/Items/MeltedBlaster/MeltedTrident";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted Trident"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -215,6 +217,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
     }
     public class MeltedTrident4 : ModProjectile
     {
+        public override string Texture => "PenumbraMod/Content/Items/MeltedBlaster/MeltedTrident";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted Trident"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -281,6 +284,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
     }
     public class MeltedTrident5 : ModProjectile
     {
+        public override string Texture => "PenumbraMod/Content/Items/MeltedBlaster/MeltedTrident";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted Trident"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -349,6 +353,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
     }
     public class MeltedFire : ModProjectile
     {
+
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted fire"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
@@ -401,6 +406,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
     }
     public class MeltedTridentHostile : ModProjectile
     {
+        public override string Texture => "PenumbraMod/Content/Items/MeltedBlaster/MeltedTrident";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted Trident"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.

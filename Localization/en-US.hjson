@@ -361,6 +361,16 @@ Mods: {
 				Description: Defense increased by +4
 				DisplayName: Tungsten Shield
 			}
+
+			PerishedForce: {
+				DisplayName: Perished Force
+				Description: Mods.PenumbraMod.Buffs.PerishedForce.Description
+			}
+
+			PerishedForceCooldown: {
+				DisplayName: Perished Force Cooldown
+				Description: Mods.PenumbraMod.Buffs.PerishedForceCooldown.Description
+			}
 		}
 
 		Projectiles: {
@@ -2048,9 +2058,8 @@ Mods: {
 				DisplayName: Slimy Jewel
 				Tooltip:
 					'''
-					Gives +1/3 flat reaper damage
-					Gives +10/15% reaper weapon speed
-					But, you will have -10% acceleration/turnaround traction
+					Grants its owner +3 flat reaper damage
+					Increases jump height
 					'''
 			}
 
@@ -2158,6 +2167,16 @@ Mods: {
 					[c/ff0000:''SEE, I CAN CRACK THE EARTH! FEEL MY POWER, ...'']
 					[c/00FF00:-Developer Item-]
 					'''
+			}
+
+			PerishedHood: {
+				DisplayName: Perished Hood
+				Tooltip: 3+ Increased reaper damage
+			}
+
+			PerishedRobe: {
+				DisplayName: Perished Robe
+				Tooltip: 5% Increased reaper attack speed
 			}
 		}
 
