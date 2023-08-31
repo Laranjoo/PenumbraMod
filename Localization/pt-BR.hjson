@@ -2182,7 +2182,7 @@ Mods: {
 
 			InfectedGun: {
 				// DisplayName: Infected Gun
-				// Tooltip: ""
+				// Tooltip: Converts musket bullets into infected worms!
 			}
 
 			InfectedPickaxe: {

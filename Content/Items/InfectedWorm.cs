@@ -33,10 +33,13 @@ namespace PenumbraMod.Content.Items
         public override void AI()
         {
             Projectile.rotation = Projectile.velocity.ToRotation();
-            if (++Projectile.frame >= Main.projFrames[Projectile.type])
+            if (++Projectile.frameCounter >= 5)
             {
-                Projectile.frame = 0;
-            }          
+                Projectile.frameCounter = 0;
+                // Or more compactly Projectile.frame = ++Projectile.frame % Main.projFrames[Projectile.type];
+                if (++Projectile.frame >= Main.projFrames[Projectile.type])
+                    Projectile.frame = 0;
+            }
         }
         public override void Kill(int timeLeft)
         {
