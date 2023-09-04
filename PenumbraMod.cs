@@ -1,12 +1,16 @@
-using Microsoft.CodeAnalysis.Operations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Common.Base;
+using PenumbraMod.Common.Systems;
 using PenumbraMod.Content;
 using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.ExpertAccessorySlot;
 using PenumbraMod.Content.Items;
+using PenumbraMod.Content.Items.Consumables;
+using PenumbraMod.Content.Items.Placeable.Furniture;
+using PenumbraMod.Content.NPCs.Bosses.Eyestorm;
 using ReLogic.Content;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -28,10 +32,7 @@ namespace PenumbraMod
         internal ReaperUI ReaperBarUI;
         internal UserInterface _UnlockedExpertSlotInterface;
         internal UnlockedUI UnlockedUISlot;
-        public PenumbraMod()
-        {
-            Instance = this;
-        }
+        public PenumbraMod() => Instance = this;
         public override void Load()
         {
             if (!Main.dedServ)
@@ -96,8 +97,42 @@ namespace PenumbraMod
         }
         public override void PostSetupContent()
         {
-            Common.Systems.ModIntegrationsSystem.PerformModSupport();
+            if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
+            {
+                #region Eyeofstorm
+                bossChecklist.Call(
+                    "AddBoss", //Entry Type
+                    this, //Mod Instance
+                   "Eye of the Storm", //Boss Name
+                    ModContent.NPCType<Eyeofthestorm>(), //Boss ID
+                    5.5f, //Progression
+                    (Func<bool>)(() => DownedBossSystem.downedEyestormBoss), //Downed boolean
+                    () => true, //Availability
+                    new List<int> {
+                        ItemID.GoldBar,
+                ItemID.SandBoots,
+                ModContent.ItemType<ShockWave>(),
+                ModContent.ItemType<SparkBow>(),
+                ModContent.ItemType<StaffofEnergy>(),
+                ModContent.ItemType<ChargeGun>(),
+                ModContent.ItemType<OmniStaff>(),
+                ModContent.ItemType<EyestormBag>(),
+                ModContent.ItemType<EyestormRelic>() },//Collection
+
+                    ModContent.ItemType<Content.Items.Consumables.EyestormSummon>(), //Spawn Item
+                    "Use a [i:" + ModContent.ItemType<Content.Items.Consumables.EyestormSummon>() + "] to rage the wind and wake the ancient Eye of the Storm.",
+                     "The Eye of the Storm flew away for the storms...",
+                    (SpriteBatch sb, Rectangle rect, Color color) =>
+                    {
+                        Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/NPCs/Bosses/Eyestorm/Eyeofthestorm_Preview").Value;
+                        Vector2 centered = new(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+                        sb.Draw(texture, centered, color);
+                    });
+                #endregion
+            }
+
         }
+
         public override void Unload()
         {
             TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>($"Terraria/Images/Item_519");
@@ -234,9 +269,9 @@ namespace PenumbraMod
             StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordSurface", new Point16(x, y), PenumbraMod.Instance);
 
             int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 405, Main.maxTilesX / 2 + 410);
-            int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 20, (int)Main.rockLayer + 50);               
+            int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 20, (int)Main.rockLayer + 50);
             StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordCavern", new Point16(x2, y2), PenumbraMod.Instance);
-        }        
+        }
     }
     public class MarbleBiome : GenPass
     {

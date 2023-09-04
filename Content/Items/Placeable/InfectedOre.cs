@@ -34,17 +34,16 @@ namespace PenumbraMod.Content.Tiles
     }
     public class InfectedSystem : GlobalNPC
     {
-        //pseudocode
-        //if(!flag && (downedmech3 || prime) && (downedmech2 || skeletron) && (downedmech1 && (retinazer || spaztism)){ 
-        //  flag = true;
-        // spawn bosses
-        public static bool flag = false;
+        public bool AllMechsDefeated(NPC npc)
+        {
+            return NPC.downedMechBoss3 || npc.type == NPCID.SkeletronPrime
+                && NPC.downedMechBoss2 || npc.type == NPCID.TheDestroyer
+                && NPC.downedMechBoss1 || npc.type == NPCID.Spazmatism && npc.type == NPCID.Retinazer;
+        }
         public override void OnKill(NPC npc)
         {
-            if (flag == false && (NPC.downedMechBoss3 || npc.type == NPCID.SkeletronPrime) && (NPC.downedMechBoss2 || npc.type == NPCID.TheDestroyer) 
-                && (NPC.downedMechBoss1 && (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism)))
+            if (AllMechsDefeated(npc))
             {
-                flag = true;
                 Main.NewText("[c/00ffdf:A new stone has appeared on the evil lands!]");
                 for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 7E-05); k++)
                 {

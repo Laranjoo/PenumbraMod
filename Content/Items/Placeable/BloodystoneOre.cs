@@ -35,13 +35,16 @@ namespace PenumbraMod.Content.Tiles
 
     public class BlodySystem : GlobalNPC
     {
-        public static bool flag = false;
+        public bool AllMechsDefeated(NPC npc)
+        {
+            return NPC.downedMechBoss3 || npc.type == NPCID.SkeletronPrime
+                && NPC.downedMechBoss2 || npc.type == NPCID.TheDestroyer
+                && NPC.downedMechBoss1 || npc.type == NPCID.Spazmatism && npc.type == NPCID.Retinazer;
+        }
         public override void OnKill(NPC npc)
         {
-            if (flag == false && (NPC.downedMechBoss3 || npc.type == NPCID.SkeletronPrime) && (NPC.downedMechBoss2 || npc.type == NPCID.TheDestroyer)
-                && (NPC.downedMechBoss1 && (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism)))
+            if (AllMechsDefeated(npc))
             {
-                flag = true;
                 for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 7E-05); k++)
                 {
                     int x = WorldGen.genRand.Next(0, Main.maxTilesX);
