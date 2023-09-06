@@ -1,18 +1,18 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+using System.IO;
 using Terraria;
 using Terraria.ID;
-using Terraria.IO;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
-using PenumbraMod.Content.Items.Placeable;
 
 namespace PenumbraMod.Content.Tiles
 {
     public class InfectedOre : ModTile
     {
-        public override void SetStaticDefaults() {
+        public override void SetStaticDefaults()
+        {
             TileID.Sets.Ore[Type] = true;
             Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
             Main.tileOreFinderPriority[Type] = 410; // Metal Detector value, see https://terraria.gamepedia.com/Metal_Detector
@@ -33,29 +33,23 @@ namespace PenumbraMod.Content.Tiles
         }
     }
     public class InfectedSystem : GlobalNPC
-    {
-        public bool AllMechsDefeated(NPC npc)
-        {
-            return NPC.downedMechBoss3 || npc.type == NPCID.SkeletronPrime
-                && NPC.downedMechBoss2 || npc.type == NPCID.TheDestroyer
-                && NPC.downedMechBoss1 || npc.type == NPCID.Spazmatism && npc.type == NPCID.Retinazer;
-        }
+    {   
         public override void OnKill(NPC npc)
         {
-            if (AllMechsDefeated(npc))
+            if (Main.hardMode || npc.type == NPCID.WallofFlesh)
             {
                 Main.NewText("[c/00ffdf:A new stone has appeared on the evil lands!]");
-                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 7E-05); k++)
+                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 8E-05); k++)
                 {
                     int x = WorldGen.genRand.Next(0, Main.maxTilesX);
                     int y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
                     Tile tile = Framing.GetTileSafely(x, y);
                     if (tile.HasTile && tile.TileType == TileID.Ebonstone)
                     {
-                        WorldGen.TileRunner(x, y, WorldGen.genRand.Next(9, 12), WorldGen.genRand.Next(6, 8), ModContent.TileType<InfectedOre>());
+                        WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 12), WorldGen.genRand.Next(10, 12), ModContent.TileType<InfectedOre>());
                     }
                 }
-            }
+            }   
         }
 
     }

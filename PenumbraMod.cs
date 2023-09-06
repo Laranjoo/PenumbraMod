@@ -95,21 +95,38 @@ namespace PenumbraMod
             }
             texture.SetData(buffer);
         }
+        List<int> collection;
         public override void PostSetupContent()
         {
+            /* Boss checklist tier
+            public const float SlimeKing = 1f;
+            public const float EyeOfCthulhu = 2f;
+            public const float EaterOfWorlds = 3f;
+            public const float QueenBee = 4f;
+            public const float Skeletron = 5f;
+            public const float Deerclops = 6f;
+            public const float WallOfFlesh = 7f;
+            public const float TheTwins = 8f;
+            public const float TheDestroyer = 9f;
+            public const float SkeletronPrime = 10f;
+            public const float Plantera = 11f;
+            public const float Golem = 12f;
+            public const float DukeFishron = 13f;
+            public const float LunaticCultist = 14f;
+            public const float Moonlord = 15f;*/
+
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
                 #region Eyeofstorm
-                bossChecklist.Call(
-                    "AddBoss", //Entry Type
-                    this, //Mod Instance
-                   "Eye of the Storm", //Boss Name
-                    ModContent.NPCType<Eyeofthestorm>(), //Boss ID
-                    5.5f, //Progression
-                    (Func<bool>)(() => DownedBossSystem.downedEyestormBoss), //Downed boolean
-                    () => true, //Availability
-                    new List<int> {
-                        ItemID.GoldBar,
+                var portrait = (SpriteBatch sb, Rectangle rect, Color color) =>
+                {
+                    Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/NPCs/Bosses/Eyestorm/Eyeofthestorm_Preview").Value;
+                    Vector2 centered = new(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
+                    sb.Draw(texture, centered, color);
+                };
+                collection = new List<int>()
+                {
+                  ItemID.GoldBar,
                 ItemID.SandBoots,
                 ModContent.ItemType<ShockWave>(),
                 ModContent.ItemType<SparkBow>(),
@@ -117,17 +134,26 @@ namespace PenumbraMod
                 ModContent.ItemType<ChargeGun>(),
                 ModContent.ItemType<OmniStaff>(),
                 ModContent.ItemType<EyestormBag>(),
-                ModContent.ItemType<EyestormRelic>() },//Collection
+                ModContent.ItemType<EyestormRelic>()
+                };
 
-                    ModContent.ItemType<Content.Items.Consumables.EyestormSummon>(), //Spawn Item
-                    "Use a [i:" + ModContent.ItemType<Content.Items.Consumables.EyestormSummon>() + "] to rage the wind and wake the ancient Eye of the Storm.",
-                     "The Eye of the Storm flew away for the storms...",
-                    (SpriteBatch sb, Rectangle rect, Color color) =>
+                bossChecklist.Call(
+                    "LogBoss",
+                    Instance,
+                    "EyeoftheStorm",
+                    5.5f,
+                    () => DownedBossSystem.downedEyestormBoss,
+                    ModContent.NPCType<Eyeofthestorm>(),
+                    new Dictionary<string, object>()
                     {
-                        Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/NPCs/Bosses/Eyestorm/Eyeofthestorm_Preview").Value;
-                        Vector2 centered = new(rect.X + (rect.Width / 2) - (texture.Width / 2), rect.Y + (rect.Height / 2) - (texture.Height / 2));
-                        sb.Draw(texture, centered, color);
-                    });
+                        ["spawnItems"] = ModContent.ItemType<Content.Items.Consumables.EyestormSummon>(),
+                        ["collectibles"] = collection,
+                        ["customPortrait"] = portrait,
+                        ["spawnInfo"] = "Use a " + ModContent.ItemType<Content.Items.Consumables.EyestormSummon>() + " to rage the wind and wake the ancient Eye of the Storm.",
+                        ["despawnMessage"] = "The Eye of the Storm flew away for the storms..."
+                    }
+                );
+
                 #endregion
             }
 
@@ -264,9 +290,19 @@ namespace PenumbraMod
             // progress.Message is the message shown to the user while the following code is running.
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
             progress.Message = "Hiding a relic...";
-            int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 905, Main.maxTilesX / 2 + 910);
-            int y = WorldGen.genRand.Next((int)Main.worldSurface, (int)Main.rockLayer - 100);
-            StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordSurface", new Point16(x, y), PenumbraMod.Instance);
+            if (!Main.zenithWorld)
+            {
+                int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 905, Main.maxTilesX / 2 + 910);
+                int y = WorldGen.genRand.Next((int)Main.worldSurface, (int)Main.rockLayer - 100);
+                StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordSurface", new Point16(x, y), PenumbraMod.Instance);
+            }
+            else 
+            {
+                int x22 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 405, Main.maxTilesX / 2 + 410);
+                int y22 = WorldGen.genRand.Next((int)Main.rockLayer + 20, (int)Main.rockLayer + 50);
+                StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordCavern", new Point16(x22, y22), PenumbraMod.Instance);
+            }
+               
 
             int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 405, Main.maxTilesX / 2 + 410);
             int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 20, (int)Main.rockLayer + 50);
@@ -283,14 +319,29 @@ namespace PenumbraMod
         {
             // progress.Message is the message shown to the user while the following code is running.
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
-            progress.Message = "Enhancing Marble...";
-            int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
-            int y = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
-            StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
+            if (Main.zenithWorld)
+            {
+                progress.Message = "Enhancing Marble...";
+                int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
+                int y = WorldGen.genRand.Next((int)Main.rockLayer + 10, (int)Main.rockLayer + 30);
+                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
 
-            int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 1200, Main.maxTilesX / 2 - 800);
-            int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
-            StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
+                int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 1200, Main.maxTilesX / 2 - 800);
+                int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 5, (int)Main.rockLayer + 10);
+                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
+            }
+            else
+            {
+                progress.Message = "Enhancing Marble...";
+                int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
+                int y = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
+                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
+
+                int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 1200, Main.maxTilesX / 2 - 800);
+                int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
+                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
+            }
+           
         }
     }
 }

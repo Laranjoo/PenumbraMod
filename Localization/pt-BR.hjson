@@ -71,6 +71,7 @@ Mods: {
 			// MarbleStatue.DisplayName: Marble Statue
 			// OniZombie.DisplayName: Zombie
 			// CorrosiveSlime.DisplayName: Corrosive Slime
+			// selfkillnpc.DisplayName: selfkillnpc
 		}
 
 		Bestiary.vhcmnpc: Ele veio de uma cidade misteriosa... não sabemos porque ele gosta de viver em lugares escuros, ele gosta de vibes escuras e chuva, que estranho...
