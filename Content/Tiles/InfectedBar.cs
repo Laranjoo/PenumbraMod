@@ -1,44 +1,44 @@
-using Terraria.ID;
-using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
 using PenumbraMod.Content.Items.Placeable;
 
-namespace PenumbraMod.Content.Items.Placeable
+namespace PenumbraMod.Content.Tiles
 {
-    public class InfectedBar : ModItem
+    public class InfectedBar : ModTile
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("InfectedBar");
-            // Tooltip.SetDefault("''This thing looks strange!''");
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-            ItemID.Sets.SortingPriorityMaterials[Item.type] = 58;
+            
+            Main.tileShine[Type] = 1100;
+            Main.tileSolid[Type] = true;
+            Main.tileSolidTop[Type] = true;
+            Main.tileFrameImportant[Type] = true;
+
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.LavaDeath = false;
+            TileObjectData.addTile(Type);
+
+            
+            AddMapEntry(new Color(182, 82, 221), Language.GetText("MapObject.InfectedBar")); // localized text for "Metal Bar"
         }
 
-        public override void SetDefaults()
+        public override bool CanDrop(int i, int j)/* tModPorter Note: Removed. Use CanDrop to decide if an item should drop. Use GetItemDrops to decide which item drops. Item drops based on placeStyle are handled automatically now, so this method might be able to be removed altogether. */
         {
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTurn = true;
-            Item.useAnimation = 15;
-            Item.useTime = 10;
-            Item.autoReuse = true;
-            Item.maxStack = 999;
-            Item.consumable = true;
-            Item.createTile = ModContent.TileType<Tiles.InfectedBar>();
-            Item.width = 12;
-            Item.height = 12;
-            Item.value = 3000;
-            Item.rare = 4;
-        }
+            Tile t = Main.tile[i, j];
+            int style = t.TileFrameX / 18;
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.DemoniteBar, 2);
-            recipe.AddIngredient(ModContent.ItemType<Content.Items.Placeable.InfectedOre>(), 4);
-            recipe.AddTile(TileID.AdamantiteForge);
-            recipe.Register();
+            // It can be useful to share a single tile with multiple styles. This code will let you drop the appropriate bar if you had multiple.
+            if (style == 0)
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.InfectedBar>());
+            }
+
+            return base.CanDrop(i, j);
         }
     }
 }

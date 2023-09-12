@@ -1,39 +1,40 @@
 using Microsoft.Xna.Framework;
-using System.IO;
+using PenumbraMod.Content;
+using PenumbraMod.Content.Rarities;
 using Terraria;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
 
-namespace PenumbraMod.Content.Tiles
+namespace PenumbraMod.Content.Items.Placeable
 {
-    public class InfectedOre : ModTile
+    public class InfectedOre : ModItem
     {
         public override void SetStaticDefaults()
         {
-            TileID.Sets.Ore[Type] = true;
-            Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
-            Main.tileOreFinderPriority[Type] = 410; // Metal Detector value, see https://terraria.gamepedia.com/Metal_Detector
-            Main.tileShine2[Type] = true; // Modifies the draw color slightly.
-            Main.tileShine[Type] = 975; // How often tiny dust appear off this tile. Larger is less frequently
-            Main.tileMergeDirt[Type] = true;
-            Main.tileSolid[Type] = true;
-            Main.tileBlockLight[Type] = true;
-
-            LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Infected Ore");
-            AddMapEntry(new Color(183, 82, 221), name);
-
-            DustType = 84;
-            HitSound = SoundID.Tink;
-            MineResist = 4f;
-            MinPick = 200;
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
+            ItemID.Sets.SortingPriorityMaterials[Item.type] = 58;
         }
+        public override void SetDefaults()
+        {
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTurn = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.autoReuse = true;
+            Item.maxStack = 999;
+            Item.consumable = true;
+            Item.createTile = ModContent.TileType<Tiles.InfectedOre>();
+            Item.width = 12;
+            Item.height = 12;
+            Item.value = 3000;
+            Item.rare = 4;
+        }
+
     }
     public class InfectedSystem : GlobalNPC
-    {   
+    {
         public override void OnKill(NPC npc)
         {
             if (Main.hardMode || npc.type == NPCID.WallofFlesh)
@@ -49,8 +50,7 @@ namespace PenumbraMod.Content.Tiles
                         WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 12), WorldGen.genRand.Next(10, 12), ModContent.TileType<InfectedOre>());
                     }
                 }
-            }   
+            }
         }
-
     }
 }

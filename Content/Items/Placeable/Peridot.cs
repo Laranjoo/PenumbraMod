@@ -1,30 +1,29 @@
-using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
+using Terraria.GameContent.Creative;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace PenumbraMod.Content.Tiles
+namespace PenumbraMod.Content.Items.Placeable
 {
-    public class Peridot : ModTile
+    public class Peridot : ModItem
     {
         public override void SetStaticDefaults()
         {
-            TileID.Sets.Ore[Type] = true;
-            Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
-            Main.tileOreFinderPriority[Type] = 410; // Metal Detector value, see https://terraria.gamepedia.com/Metal_Detector
-            Main.tileShine2[Type] = true; // Modifies the draw color slightly.
-            Main.tileMergeDirt[Type] = true;
-            Main.tileSolid[Type] = true;
-            Main.tileBlockLight[Type] = true;
-            LocalizedText name = CreateMapEntryName();
-            AddMapEntry(new Color(127, 178, 21), name);
-            RegisterItemDrop(ModContent.ItemType<Items.Placeable.Peridot>());
-            DustType = DustID.Stone;
-            HitSound = SoundID.Tink;
-            MineResist = 3f;
-            MinPick = 30;
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 50;
+        }
+        public override void SetDefaults()
+        {
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTurn = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.autoReuse = true;
+            Item.maxStack = 999;
+            Item.consumable = true;
+            Item.width = 12;
+            Item.height = 12;
+            Item.value = 3000;
+            Item.rare = 0;
         }
     }
 }

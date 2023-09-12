@@ -1,31 +1,30 @@
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.GameContent.Creative;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace PenumbraMod.Content.Items.Placeable
+namespace PenumbraMod.Content.Tiles
 {
-    public class Aquamarine : ModItem
+    public class Aquamarine : ModTile
     {
         public override void SetStaticDefaults()
         {
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-            ItemID.Sets.SortingPriorityMaterials[Item.type] = 58;
-        }
-
-        public override void SetDefaults()
-        {
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTurn = true;
-            Item.useAnimation = 15;
-            Item.useTime = 10;
-            Item.autoReuse = true;
-            Item.maxStack = 999;
-            Item.consumable = true;
-           // Item.createTile = ModContent.TileType<Tiles.RozeQuartz>();
-            Item.width = 12;
-            Item.height = 12;
-            Item.value = 3000;
-            Item.rare = 0;
+            TileID.Sets.Ore[Type] = true;
+            Main.tileSpelunker[Type] = true; // The tile will be affected by spelunker highlighting
+            Main.tileOreFinderPriority[Type] = 410; // Metal Detector value, see https://terraria.gamepedia.com/Metal_Detector
+            Main.tileShine2[Type] = true; // Modifies the draw color slightly.
+            Main.tileMergeDirt[Type] = true;
+            Main.tileSolid[Type] = true;
+            Main.tileBlockLight[Type] = true;
+            LocalizedText name = CreateMapEntryName();
+            AddMapEntry(new Color(108, 189, 248), name);
+            RegisterItemDrop(ModContent.ItemType<Items.Placeable.Aquamarine>());
+            DustType = DustID.Stone;
+            HitSound = SoundID.Tink;
+            MineResist = 3f;
+            MinPick = 30;
         }
     }
 }

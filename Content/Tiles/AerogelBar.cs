@@ -1,52 +1,44 @@
-using Terraria.ID;
-using Terraria.GameContent.Creative;
-using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
+using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ObjectData;
 using PenumbraMod.Content.Items.Placeable;
 
-namespace PenumbraMod.Content.Items.Placeable
+namespace PenumbraMod.Content.Tiles
 {
-    public class AerogelBar : ModItem
+    public class AerogelBar : ModTile
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("AerogelBar");
-            // Tooltip.SetDefault("This sticky bar looks tasty!");
-            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 100;
-            ItemID.Sets.SortingPriorityMaterials[Item.type] = 58;
+            
+            Main.tileShine[Type] = 1100;
+            Main.tileSolid[Type] = true;
+            Main.tileSolidTop[Type] = true;
+            Main.tileFrameImportant[Type] = true;
+
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
+            TileObjectData.newTile.StyleHorizontal = true;
+            TileObjectData.newTile.LavaDeath = false;
+            TileObjectData.addTile(Type);
+
+            
+            AddMapEntry(new Color(146, 103, 255), Language.GetText("MapObject.AerogelBar")); // localized text for "Metal Bar"
         }
 
-        public override void SetDefaults()
+        public override bool CanDrop(int i, int j)/* tModPorter Note: Removed. Use CanDrop to decide if an item should drop. Use GetItemDrops to decide which item drops. Item drops based on placeStyle are handled automatically now, so this method might be able to be removed altogether. */
         {
-            Item.useStyle = ItemUseStyleID.Swing;
-            Item.useTurn = true;
-            Item.useAnimation = 15;
-            Item.useTime = 10;
-            Item.autoReuse = true;
-            Item.maxStack = 999;
-            Item.consumable = true;
-            Item.createTile = ModContent.TileType<Tiles.AerogelBar>();
-            Item.width = 12;
-            Item.height = 12;
-            Item.value = 3000;
-            Item.rare = ItemRarityID.Green;
-        }
+            Tile t = Main.tile[i, j];
+            int style = t.TileFrameX / 18;
 
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Gel, 15);
-            recipe.AddIngredient(ItemID.GoldBar, 1);
-            recipe.AddIngredient<InconsistentJelly>(2);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            // It can be useful to share a single tile with multiple styles. This code will let you drop the appropriate bar if you had multiple.
+            if (style == 0)
+            {
+                Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.AerogelBar>());
+            }
 
-            Recipe recipe2 = CreateRecipe();
-            recipe2.AddIngredient(ItemID.Gel, 15);
-            recipe2.AddIngredient(ItemID.PlatinumBar, 1);
-            recipe2.AddIngredient<InconsistentJelly>(2);
-            recipe2.AddTile(TileID.Anvils);
-            recipe2.Register();
+            return base.CanDrop(i, j);
         }
     }
 }
