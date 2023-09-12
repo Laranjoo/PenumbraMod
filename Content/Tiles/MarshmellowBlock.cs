@@ -1,13 +1,8 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.Graphics.Renderers;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ObjectData;
-using PenumbraMod.Content.Items.Placeable;
 
-namespace PenumbraMod.Content.Items.Placeable
+namespace PenumbraMod.Content.Tiles
 {
     public class MarshmellowBlock : ModTile
     {
@@ -18,7 +13,7 @@ namespace PenumbraMod.Content.Items.Placeable
             Main.tileBlockLight[Type] = true;
 
             DustType = 1;
-          
+
             AddMapEntry(new Color(235, 235, 235));
         }
 
@@ -27,5 +22,4 @@ namespace PenumbraMod.Content.Items.Placeable
             num = fail ? 1 : 3;
         }
     }
-}  
- 
+}

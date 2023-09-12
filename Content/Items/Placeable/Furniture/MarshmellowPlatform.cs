@@ -29,7 +29,7 @@ namespace PenumbraMod.Content.Items.Placeable.Furniture
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {
 			CreateRecipe(2)
-				.AddIngredient(ModContent.ItemType<Tiles.MarshmellowBlock>(), 2)
+				.AddIngredient(ModContent.ItemType<Placeable.MarshmellowBlock>(), 2)
 				.AddTile(TileID.WorkBenches)
 				.Register();
 		}

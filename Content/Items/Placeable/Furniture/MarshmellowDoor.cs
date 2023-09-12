@@ -2,7 +2,6 @@ using PenumbraMod.Content.Tiles;
 using Terraria.ID;
 using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
-using PenumbraMod.Content.Items.Consumables;
 
 namespace PenumbraMod.Content.Items.Placeable.Furniture
 {
@@ -31,7 +30,7 @@ namespace PenumbraMod.Content.Items.Placeable.Furniture
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
 		public override void AddRecipes() {
 			CreateRecipe()
-				.AddIngredient<Tiles.MarshmellowBlock>(6)
+				.AddIngredient<Placeable.MarshmellowBlock>(6)
 				.AddTile(TileID.WorkBenches)
 				.Register();
 		}
