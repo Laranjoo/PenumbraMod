@@ -24,10 +24,10 @@ namespace PenumbraMod.Content.Items
 		{
 			Item.damage = 18;
 			Item.DamageType = ModContent.GetInstance<ReaperClass>();
-			Item.width = 72;
-			Item.height = 57;
-			Item.useTime = 34;
-			Item.useAnimation = 34;
+			Item.width = 44;
+			Item.height = 38;
+			Item.useTime = 26;
+			Item.useAnimation = 26;
 			Item.useStyle = 1;
 			Item.knockBack = 4;
 			Item.value = 5570;

@@ -1,11 +1,7 @@
-using Microsoft.Xna.Framework;
-using PenumbraMod.Content;
-using PenumbraMod.Content.Rarities;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace PenumbraMod.Content.Items.Placeable
 {

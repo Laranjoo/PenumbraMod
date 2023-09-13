@@ -25,8 +25,8 @@ namespace PenumbraMod.Content.Items
         public override void SetDefaults()
         {
             Projectile.damage = 18;
-            Projectile.width = 72;
-            Projectile.height = 54;
+            Projectile.width = 44;
+            Projectile.height = 38;
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.hostile = false;

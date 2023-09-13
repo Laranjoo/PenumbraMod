@@ -79,6 +79,12 @@ namespace PenumbraMod.Content.DamageClasses
         public bool topcryst = false;
         public bool azucryst = false;
         public bool pricryst = false;
+        public bool blood = false;
+        public bool abla = false;
+        public bool terra = false;
+        public bool spec = false;
+        public bool darke = false;
+        public bool slim = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -90,6 +96,12 @@ namespace PenumbraMod.Content.DamageClasses
         public bool topcryst2 = false;
         public bool azucryst2 = false;
         public bool pricryst2 = false;
+        public bool blood2 = false;
+        public bool abla2 = false;
+        public bool terra2 = false;
+        public bool spec2 = false;
+        public bool darke2 = false;
+        public bool slim2 = false;
         #endregion
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -185,6 +197,30 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     rubycryst = true;
                 }
+                if (bar.abla)
+                {
+                    abla = true;
+                }
+                if (bar.terra)
+                {
+                    terra = true;
+                }
+                if (bar.slim)
+                {
+                    slim = true;
+                }
+                if (bar.blood)
+                {
+                    blood = true;
+                }
+                if (bar.darke)
+                {
+                    darke = true;
+                }
+                if (bar.spec)
+                {
+                    spec = true;
+                }
             }
             else
             {
@@ -197,6 +233,13 @@ namespace PenumbraMod.Content.DamageClasses
                 topcryst = false;
                 azucryst = false;
                 pricryst = false;
+                blood = false;
+                abla = false;
+                terra = false;
+                spec = false;
+                darke = false;
+                slim = false;
+
             }
 
             // ------------
@@ -245,7 +288,30 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     rubycryst2 = true;
                 }
-
+                if (bar.abla2)
+                {
+                    abla2 = true;
+                }
+                if (bar.terra2)
+                {
+                    terra2 = true;
+                }
+                if (bar.slim2)
+                {
+                    slim2 = true;
+                }
+                if (bar.blood2)
+                {
+                    blood2 = true;
+                }
+                if (bar.darke2)
+                {
+                    darke2 = true;
+                }
+                if (bar.spec2)
+                {
+                    spec2 = true;
+                }
             }
             else
             {
@@ -258,6 +324,12 @@ namespace PenumbraMod.Content.DamageClasses
                 topcryst2 = false;
                 azucryst2 = false;
                 pricryst2 = false;
+                blood2 = false;
+                abla2 = false;
+                terra2= false;
+                spec2 = false;
+                darke2 = false;
+                slim2 = false;
             }
 
 
@@ -419,6 +491,79 @@ namespace PenumbraMod.Content.DamageClasses
             }
             // ------------
 
+            if (blood)
+            {
+                Player.AddBuff(BuffType<BloodstainedForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (blood2)
+            {
+                Player.AddBuff(BuffType<BloodstainedForce>(), 10);
+            }
+            else
+            {
+            }
+            // ------------
+
+            if (darke)
+            {
+                Player.AddBuff(BuffType<DarkenedForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (darke2)
+            {
+                Player.AddBuff(BuffType<DarkenedForce>(), 10);
+            }
+            else
+            {
+            }
+            // ------------
+
+            if (terra)
+            {
+                Player.AddBuff(BuffType<TerraForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (terra2)
+            {
+                Player.AddBuff(BuffType<TerraForce>(), 10);
+            }
+            else
+            {
+            }
+            // ------------
+
+            if (slim)
+            {
+                Player.AddBuff(BuffType<SlimyForce>(), 10);
+            }
+            else
+            {
+            }
+
+
+            if (slim2)
+            {
+                Player.AddBuff(BuffType<SlimyForce>(), 10);
+            }
+            else
+            {
+            }
+            // ------------
+
+
             #endregion
 
             if (ReaperEnergy > 0 && ReaperEnergy < (int)(ReaperEnergyMax * 0.95f))
@@ -461,6 +606,14 @@ namespace PenumbraMod.Content.DamageClasses
 
                 }
             }
+            if (item.DamageType.CountsAsClass(GetInstance<ReaperClass>()))
+            {
+                if (Main.LocalPlayer.HasBuff(BuffType<BloodstainedForce>()))
+                {
+                    int random = Main.rand.Next(1, 3);
+                    Main.LocalPlayer.Heal(random);
+                }
+            }
             // no idea why here
             if (ReaperEnergy > 9980)
             {
@@ -488,6 +641,14 @@ namespace PenumbraMod.Content.DamageClasses
                     }
                 }
 
+            }
+            if (proj.DamageType.CountsAsClass(GetInstance<ReaperClass>()))
+            {
+                if (Main.LocalPlayer.HasBuff(BuffType<BloodstainedForce>()))
+                {
+                    int random = Main.rand.Next(1, 3);
+                    Main.LocalPlayer.Heal(random);
+                }
             }
             // no idea 
             if (ReaperEnergy > 9980)

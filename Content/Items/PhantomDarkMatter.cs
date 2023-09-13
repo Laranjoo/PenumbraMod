@@ -56,7 +56,6 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -66,31 +65,12 @@ namespace PenumbraMod.Content.Items
             Vector2 origin = sourceRectangle.Size() / 2f;
             float offsetX = 20f;
             origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
-
             Vector2 drawOrigin = new(texture.Width * 0.5f, Projectile.height * 0.5f);
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
-                if (Projectile.oldPos[k] == Vector2.Zero)
-                    return false;
-                for (float j = 0; j < 1; j += 0.0625f)
-                {
-                    Vector2 lerpedPos;
-                    if (k > 0)
-                        lerpedPos = Vector2.Lerp(Projectile.oldPos[k - 1], Projectile.oldPos[k], easeInOutQuad(j));
-                    else
-                        lerpedPos = Vector2.Lerp(Projectile.position, Projectile.oldPos[k], easeInOutQuad(j));
-                    float lerpedAngle;
-                    if (k > 0)
-                        lerpedAngle = Utils.AngleLerp(Projectile.oldRot[k - 1], Projectile.oldRot[k], easeInOutQuad(j));
-                    else
-                        lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[k], easeInOutQuad(j));
-                    lerpedPos += Projectile.Size / 2;
-                    lerpedPos -= Main.screenPosition;
-                    Color color = Projectile.GetAlpha(lightColor) * 0.6f * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
-                    float size = Projectile.scale * (Projectile.oldPos.Length - k) / (Projectile.oldPos.Length * 1.1f);
-                    Main.EntitySpriteDraw(texture, lerpedPos, sourceRectangle, color, lerpedAngle, drawOrigin, size, spriteEffects, 0);
-                }
-
+                Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, color, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             }
             transitToDark = Utils.GetLerpValue(0f, 6f, Projectile.localAI[0], clamped: true);
             MiscShaderData miscShaderData = GameShaders.Misc["FlameLash"];
@@ -113,7 +93,7 @@ namespace PenumbraMod.Content.Items
         {
             float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
             lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
-            return MathHelper.Lerp(24f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
+            return MathHelper.Lerp(28f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override void Kill(int timeLeft)
         {
@@ -129,9 +109,6 @@ namespace PenumbraMod.Content.Items
         public override void AI()
         {
             Projectile.ai[0] += 1f;
-
-            FadeInAndOut();
-
             Projectile.rotation = Projectile.velocity.ToRotation();
             // Since our sprite has an orientation, we need to adjust rotation to compensate for the draw flipping
             if (Projectile.spriteDirection == -1)
@@ -198,28 +175,5 @@ namespace PenumbraMod.Content.Items
 
             return closestNPC;
         }
-
-        public void FadeInAndOut()
-        {
-            // If last less than 50 ticks — fade in, than more — fade out
-            if (Projectile.ai[0] <= 180f)
-            {
-                // Fade in
-                Projectile.alpha -= 90;
-                // Cap alpha before timer reaches 50 ticks
-                if (Projectile.alpha < 0)
-                    Projectile.alpha = 0;
-
-                return;
-            }
-
-            // Fade out
-            Projectile.alpha += 90;
-            // Cal alpha to the maximum 255(complete transparent)
-            if (Projectile.alpha > 255)
-                Projectile.alpha = 255;
-        }
-
-      
     } 
 }
