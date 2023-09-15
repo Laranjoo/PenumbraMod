@@ -55,7 +55,7 @@ namespace PenumbraMod.Content.Items
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/PhantomDarkMatterEf").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -69,7 +69,7 @@ namespace PenumbraMod.Content.Items
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
                 Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
-                Color color = Projectile.GetAlpha(lightColor) * ((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+                Color color = Projectile.GetAlpha(lightColor) *((Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
                 Main.EntitySpriteDraw(texture, drawPos, sourceRectangle, color, Projectile.rotation, drawOrigin, Projectile.scale, spriteEffects, 0);
             }
             transitToDark = Utils.GetLerpValue(0f, 6f, Projectile.localAI[0], clamped: true);
@@ -80,7 +80,7 @@ namespace PenumbraMod.Content.Items
             _vertexStrip.PrepareStripWithProceduralPadding(Projectile.oldPos, Projectile.oldRot, StripColors, StripWidth, -Main.screenPosition + Projectile.Size / 2f, includeBacksides: true);
             _vertexStrip.DrawTrail();
             Main.pixelShader.CurrentTechnique.Passes[0].Apply();
-            return false;
+            return true;
         }
         private Color StripColors(float progressOnStrip)
         {
@@ -93,7 +93,7 @@ namespace PenumbraMod.Content.Items
         {
             float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
             lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
-            return MathHelper.Lerp(28f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
+            return MathHelper.Lerp(30f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override void Kill(int timeLeft)
         {

@@ -19,7 +19,7 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.CameraModifiers;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PenumbraMod.Content.Items.ReaperCrystals;
+using PenumbraMod.Content.Items.ReaperJewels;
 
 namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
 {

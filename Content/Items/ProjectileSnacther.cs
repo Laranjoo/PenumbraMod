@@ -1,13 +1,10 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PenumbraMod.Content.Buffs
+namespace PenumbraMod.Content.Items
 {
     public class ProjectileSnacther : ModProjectile
     {
@@ -44,23 +41,23 @@ namespace PenumbraMod.Content.Buffs
             }
             float maxDetectRadius = 100f; // The maximum radius at which a projectile can detect a target
             float projSpeed = 7f; // The speed at which the projectile moves towards the target
-            
+
             int dust = Dust.NewDust(Projectile.Center, 1, 1, DustID.Clentaminator_Green, 0f, 0f, 0);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 0.8f;
-            Main.dust[dust].scale = (float) Main.rand.Next(100, 135) * 0.011f;
-            
+            Main.dust[dust].scale = (float)Main.rand.Next(100, 135) * 0.011f;
+
             // Trying to find NPC closest to the projectile
             NPC closestNPC = FindClosestNPC(maxDetectRadius);
             if (closestNPC == null)
                 return;
-            
+
             // If found, change the velocity of the projectile and turn it in the direction of the target
             // Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
             Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
-            
-            
-            
+
+
+
         }
 
         // Finding the closest NPC to attack within maxDetectDistance range
@@ -113,5 +110,5 @@ namespace PenumbraMod.Content.Buffs
 
 
 
-    } 
+    }
 }

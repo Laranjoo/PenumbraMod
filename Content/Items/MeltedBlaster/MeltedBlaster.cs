@@ -139,7 +139,8 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
                 }
                 //Item.shoot = TwistedStyle + 120;
                 Vector2 velocity = new Vector2(0, 0);
-                int basic = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, velocity, ModContent.ProjectileType<GunMode>(), 0, 0, player.whoAmI);
+               // int basic = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, velocity, ModContent.ProjectileType<GunMode>(), 0, 0, player.whoAmI);
+                CombatText.NewText(player.getRect(), Color.White, "Gun Mode");
                 SoundEngine.PlaySound(SoundID.Item149);
                 player.itemAnimation = 0;
                 player.itemTime = 0;
@@ -151,7 +152,8 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
                     TwistedStyle = 0;
                     Vector2 velocity = new Vector2(0, 0);
-                    int basic = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, velocity, ModContent.ProjectileType<Charging>(), 0, 0, player.whoAmI);
+                    //int basic = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, velocity, ModContent.ProjectileType<Charging>(), 0, 0, player.whoAmI);
+                    CombatText.NewText(player.getRect(), Color.White, "Charging Mode");
                     SoundEngine.PlaySound(SoundID.Item149);
                     player.itemAnimation = 0;
                     player.itemTime = 0;
@@ -277,7 +279,8 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             if (text == true)
             {
                 Vector2 velocity9 = (Main.MouseWorld - Projectile.Center) / 99f;
-                int basic23456 = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, velocity9, ModContent.ProjectileType<OVERCHARGING>(), 0, 0, owner.whoAmI);
+                CombatText.NewText(owner.getRect(), Color.Red, "OVERCHARGING!");
+                // int basic23456 = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, velocity9, ModContent.ProjectileType<OVERCHARGING>(), 0, 0, owner.whoAmI);
                 SoundEngine.PlaySound(new SoundStyle("PenumbraMod/Assets/Sounds/Items/bop"));
             }
             owner.ChangeDir(Main.MouseWorld.X > owner.Center.X ? 1 : -1);

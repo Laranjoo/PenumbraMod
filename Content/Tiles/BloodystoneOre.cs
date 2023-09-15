@@ -27,7 +27,7 @@ namespace PenumbraMod.Content.Tiles
             DustType = 84;
             HitSound = SoundID.Tink;
             MineResist = 4f;
-            MinPick = 200;
+            MinPick = 190;
         }
     }
 

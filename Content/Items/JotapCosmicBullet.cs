@@ -30,12 +30,11 @@ namespace PenumbraMod.Content.Items
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.hostile = false;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 1;
             Projectile.timeLeft = 180;
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
-            Projectile.scale = 1.2f;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -95,23 +94,19 @@ namespace PenumbraMod.Content.Items
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 0.8f;
             Main.dust[dust].scale = (float)Main.rand.Next(100, 135) * 0.011f;
-
-            float maxDetectRadius = 200f; // The maximum radius at which a projectile can detect a target
-            float projSpeed = 18f; // The speed at which the projectile moves towards the target
-
-
+            float maxDetectRadius = 300f; // The maximum radius at which a projectile can detect a target
+            Projectile.ai[0] += 1f;
 
             // Trying to find NPC closest to the projectile
             NPC closestNPC = FindClosestNPC(maxDetectRadius);
             if (closestNPC == null)
                 return;
+            float rotTarget = Utils.ToRotation(closestNPC.Center - Projectile.Center);
+            float rotCur = Utils.ToRotation(Projectile.velocity);
+            float rotMax = MathHelper.ToRadians(5f);
 
             // If found, change the velocity of the projectile and turn it in the direction of the target
-            // Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
-            Projectile.velocity = (closestNPC.Center - Projectile.Center).SafeNormalize(Vector2.Zero) * projSpeed;
-
-
-
+            Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, rotTarget, rotMax)) - Utils.ToRotation(Projectile.velocity)));
         }
        
         // Finding the closest NPC to attack within maxDetectDistance range

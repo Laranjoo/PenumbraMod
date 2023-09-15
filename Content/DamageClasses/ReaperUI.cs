@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.ExpertAccessorySlot;
-using PenumbraMod.Content.Items.ReaperCrystals;
+using PenumbraMod.Content.Items.ReaperJewels;
 using ReLogic.Content;
 using System;
 using Terraria;
@@ -56,6 +56,8 @@ namespace PenumbraMod.Content.DamageClasses
         private UIImage Ablazed;
         private UIImage AblazedSlot2;
 
+        // simpler
+
         private UIImage Slimy;
         private UIImage SlimySlot2;
 
@@ -70,6 +72,11 @@ namespace PenumbraMod.Content.DamageClasses
 
         private UIImage Spectre;
         private UIImage SpectreSlot2;
+
+        // way simpler
+
+        private UIImage Corr;
+        private UIImage Corr2;
 
         #endregion 
         private UIImage barSlots;
@@ -89,6 +96,10 @@ namespace PenumbraMod.Content.DamageClasses
         {
             // Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
             // UIElement is invisible and has no padding. You can use a UIPanel if you wish for a background.
+
+            // This is one of the most painful code ever
+
+
             panel = new DraggableUI();
             panel.SetPadding(0);
             SetRectangle(panel, left: 800, top: 30, width: 92, height: 23);
@@ -124,125 +135,133 @@ namespace PenumbraMod.Content.DamageClasses
             SetRectangle(barDrawing, left: 0, top: 0, width: 86, height: 12);
 
             #region Crystalss
-            AmethystCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AmethystCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AmethystCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AmethystCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             AmethystCrystal.SetPadding(0);
             SetRectangle(AmethystCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            AmethystCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AmethystCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AmethystCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AmethystCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             AmethystCrystalSlot2.SetPadding(0);
             SetRectangle(AmethystCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            TopazCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/TopazCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            TopazCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/TopazCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             TopazCrystal.SetPadding(0);
             SetRectangle(TopazCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            TopazCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/TopazCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            TopazCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/TopazCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             TopazCrystalSlot2.SetPadding(0);
             SetRectangle(TopazCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            SapphireCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/SapphireCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            SapphireCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/SapphireCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             SapphireCrystal.SetPadding(0);
             SetRectangle(SapphireCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            SapphireCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/SapphireCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            SapphireCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/SapphireCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             SapphireCrystalSlot2.SetPadding(0);
             SetRectangle(SapphireCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            EmeraldCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/EmeraldCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            EmeraldCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/EmeraldCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             EmeraldCrystal.SetPadding(0);
             SetRectangle(EmeraldCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            EmeraldCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/EmeraldCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            EmeraldCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/EmeraldCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             EmeraldCrystalSlot2.SetPadding(0);
             SetRectangle(EmeraldCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            RubyCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/RubyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            RubyCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/RubyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             EmeraldCrystal.SetPadding(0);
             SetRectangle(EmeraldCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            RubyCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/RubyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            RubyCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/RubyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             RubyCrystalSlot2.SetPadding(0);
             SetRectangle(RubyCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            DiamondCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/DiamondCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            DiamondCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/DiamondCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             DiamondCrystal.SetPadding(0);
             SetRectangle(DiamondCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            DiamondCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/DiamondCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            DiamondCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/DiamondCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             DiamondCrystalSlot2.SetPadding(0);
             SetRectangle(DiamondCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            MagicCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/MagicCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            MagicCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/MagicCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             MagicCrystal.SetPadding(0);
             SetRectangle(MagicCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            MagicCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/MagicCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            MagicCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/MagicCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             MagicCrystalSlot2.SetPadding(0);
             SetRectangle(MagicCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            AzuriteCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AzuriteCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AzuriteCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AzuriteCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             AzuriteCrystal.SetPadding(0);
             SetRectangle(AzuriteCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            AzuriteCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AzuriteCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AzuriteCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AzuriteCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             AzuriteCrystalSlot2.SetPadding(0);
             SetRectangle(AzuriteCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            PrimeyeCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/ThePrimeyeCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            PrimeyeCrystal = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/ThePrimeyeCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             PrimeyeCrystal.SetPadding(0);
             SetRectangle(PrimeyeCrystal, left: 22, top: 9, width: 10, height: 12);
 
-            PrimeyeCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/ThePrimeyeCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            PrimeyeCrystalSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/ThePrimeyeCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             PrimeyeCrystalSlot2.SetPadding(0);
             SetRectangle(PrimeyeCrystalSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            Ablazed = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AblazedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Ablazed = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AblazedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Ablazed.SetPadding(0);
             SetRectangle(Ablazed, left: 22, top: 9, width: 10, height: 12);
 
-            AblazedSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/AblazedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            AblazedSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AblazedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             AblazedSlot2.SetPadding(0);
             SetRectangle(AblazedSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            Slimy = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/SlimyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Slimy = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/SlimyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Slimy.SetPadding(0);
             SetRectangle(Slimy, left: 22, top: 9, width: 10, height: 12);
 
-            SlimySlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/SlimyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            SlimySlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/SlimyCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             SlimySlot2.SetPadding(0);
             SetRectangle(SlimySlot2, left: 61, top: 9, width: 10, height: 12);
 
-            Terra = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/TerraCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Terra = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/TerraCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Terra.SetPadding(0);
             SetRectangle(Terra, left: 22, top: 9, width: 10, height: 12);
 
-            TerraSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/TerraCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            TerraSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/TerraCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             TerraSlot2.SetPadding(0);
             SetRectangle(TerraSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            Bloodstained = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/BloodstainedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Bloodstained = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/BloodstainedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Bloodstained.SetPadding(0);
             SetRectangle(Bloodstained, left: 22, top: 9, width: 10, height: 12);
 
-            BloodstainedSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/BloodstainedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            BloodstainedSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/BloodstainedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             BloodstainedSlot2.SetPadding(0);
             SetRectangle(BloodstainedSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            Darkened = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/DarkenedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Darkened = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/DarkenedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Darkened.SetPadding(0);
             SetRectangle(Darkened, left: 22, top: 9, width: 10, height: 12);
 
-            DarkenedSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/DarkenedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            DarkenedSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/DarkenedCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             DarkenedSlot2.SetPadding(0);
             SetRectangle(DarkenedSlot2, left: 61, top: 9, width: 10, height: 12);
 
-            Spectre = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/SpectreCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Spectre = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/SpectreCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Spectre.SetPadding(0);
             SetRectangle(Spectre, left: 22, top: 9, width: 10, height: 12);
 
-            SpectreSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperCrystals/SpectreCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            SpectreSlot2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/SpectreCrystalMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             SpectreSlot2.SetPadding(0);
             SetRectangle(SpectreSlot2, left: 61, top: 9, width: 10, height: 12);
+
+            Corr = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/CorrosiveJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Corr.SetPadding(0);
+            SetRectangle(Corr, left: 22, top: 9, width: 10, height: 12);
+
+            Corr2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/CorrosiveJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Corr2.SetPadding(0);
+            SetRectangle(Corr2, left: 61, top: 9, width: 10, height: 12);
             #endregion
 
             text = new UIText("", 0.8f); // text to show stat
@@ -307,6 +326,8 @@ namespace PenumbraMod.Content.DamageClasses
             panel.Append(TerraSlot2);
             panel.Append(Ablazed);
             panel.Append(AblazedSlot2);
+            panel.Append(Corr);
+            panel.Append(Corr2);
             #endregion
             Append(panel);
         }
@@ -349,6 +370,7 @@ namespace PenumbraMod.Content.DamageClasses
         public bool spec = false;
         public bool darke = false;
         public bool slim = false;
+        public bool corr = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -366,9 +388,13 @@ namespace PenumbraMod.Content.DamageClasses
         public bool spec2 = false;
         public bool darke2 = false;
         public bool slim2 = false;
+        public bool corr2 = false;
         #endregion
         public override void Draw(SpriteBatch spriteBatch)
         {
+
+            // Another painful part
+
             if (Main.LocalPlayer.HeldItem.DamageType != GetInstance<ReaperClass>())
                 return;
             #region Bar
@@ -402,6 +428,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
             else
             {
+
                 SetRectangle(barSlots3, left: 2145623, top: 1613446, width: 0, height: 0);
             }
             if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type != ItemID.None)
@@ -742,7 +769,7 @@ namespace PenumbraMod.Content.DamageClasses
             else
             {
                 blood = false;
-                SetRectangle(Ablazed, left: 1235451, top: 13455143, width: 10, height: 12);
+                SetRectangle(Bloodstained, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<BloodstainedCrystal>())
             {
@@ -792,6 +819,7 @@ namespace PenumbraMod.Content.DamageClasses
             else
             {
                 spec = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().spec = false;
                 SetRectangle(Spectre, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             if (item2.Item.type == ItemType<SpectreCrystal>())
@@ -804,7 +832,33 @@ namespace PenumbraMod.Content.DamageClasses
             else
             {
                 spec2 = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().spec2 = false;
                 SetRectangle(SpectreSlot2, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item.Item.type == ItemType<CorrosiveJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().corr = true;
+                corr = true;
+                SetRectangle(Corr, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                corr = false;
+                SetRectangle(Corr, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+            if (item2.Item.type == ItemType<CorrosiveJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().corr2 = true;
+                corr2 = true;
+                SetRectangle(Corr2, left: 58, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                corr2 = false;
+                SetRectangle(Corr2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
             #endregion
             base.Draw(spriteBatch);

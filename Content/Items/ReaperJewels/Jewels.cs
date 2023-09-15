@@ -4,12 +4,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PenumbraMod.Content.Items.ReaperCrystals
+namespace PenumbraMod.Content.Items.ReaperJewels
 {
     /// <summary>
     /// All the Reaper Jewels of the mod!
     /// </summary>
-    public class Crystals // Nothing there because ¯\_(ツ)_/¯
+    public class Jewels // Nothing there because ¯\_(ツ)_/¯
     {
     }
     public class AmythestCrystal : ModItem
@@ -175,7 +175,7 @@ namespace PenumbraMod.Content.Items.ReaperCrystals
         {
             Item.height = 24;
             Item.width = 14;
-            Item.value = 14000;
+            Item.value = 34000;
             Item.rare = ItemRarityID.Cyan;
             Item.DamageType = ModContent.GetInstance<ReaperClass>();
         }
@@ -183,9 +183,9 @@ namespace PenumbraMod.Content.Items.ReaperCrystals
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<AerogelBar>(), 15);
-            recipe.AddIngredient(ModContent.ItemType<RubyCrystal>(), 1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.Ectoplasm, 5);
+            recipe.AddIngredient(ItemID.SpectreBar, 10);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }
@@ -291,6 +291,24 @@ namespace PenumbraMod.Content.Items.ReaperCrystals
             recipe.AddIngredient(ItemID.Ruby, 1);
             recipe.AddIngredient(ItemID.HallowedBar, 15);
             recipe.AddTile(TileID.Anvils);
+            recipe.Register();
+        }
+    }
+    public class CorrosiveJewel : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.height = 24;
+            Item.width = 14;
+            Item.value = 43000;
+            Item.rare = ItemRarityID.Lime;
+            Item.DamageType = ModContent.GetInstance<ReaperClass>();
+        }
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient<CorrosiveShard>(15);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
     }

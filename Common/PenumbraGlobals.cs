@@ -4,7 +4,7 @@ using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.Items;
 using PenumbraMod.Content.Items.Consumables;
-using PenumbraMod.Content.Items.ReaperCrystals;
+using PenumbraMod.Content.Items.ReaperJewels;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -35,7 +35,7 @@ namespace PenumbraMod.Common
             base.Load();
             if (item == new Item())
             {
-                item.SetDefaults(ModContent.ItemType<AmythestCrystal>()); // example
+                item.SetDefaults();
             }
         }
 
@@ -78,12 +78,29 @@ namespace PenumbraMod.Common
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (sandhuntereff)
-                if (Main.LocalPlayer.HeldItem.DamageType == GetInstance<ReaperClass>())
+                if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     target.AddBuff(BuffID.Venom, 120);
-            if (Main.LocalPlayer.HasBuff(BuffType<BloodstainedForce>()))
+            if (Player.HasBuff(BuffType<BloodstainedForce>()))
             {
-                Main.LocalPlayer.Heal(1);
-                Main.LocalPlayer.HealEffect(1);
+                Player.Heal(1);
+                Player.HealEffect(1);
+            }
+            if (Player.HasBuff(BuffType<CorrosiveForce>()))
+            {
+                target.AddBuff(BuffType<Corrosion>(), 120);
+            }
+            if (Player.HasBuff<SpectreForce>())
+            {
+                if (Main.rand.NextBool(2))
+                {
+                    CombatText.NewText(Player.getRect(), Color.LightBlue, "Soul Boosted!");
+                    Player.AddBuff(BuffType<SoulBoost>(), 180);
+                }     
+            }
+            if (Player.HasBuff<SoulBoost>())
+            {
+                if (Player.HeldItem.DamageType == ModContent.GetInstance<ReaperClass>())
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 10;
             }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
@@ -344,6 +361,7 @@ namespace PenumbraMod.Common
         }
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
+            // this exists because for some reason if the code on OnHit2() here wasnt working, so i did this lmao.
             OnHit2(target, player);
             ItemhitNPC = true;
         }

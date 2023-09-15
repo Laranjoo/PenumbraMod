@@ -1,3 +1,4 @@
+using PenumbraMod.Common;
 using PenumbraMod.Content.DamageClasses;
 using Terraria;
 using Terraria.ModLoader;

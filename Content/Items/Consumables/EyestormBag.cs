@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using Terraria.GameContent.ItemDropRules;
-using PenumbraMod.Content.Items.ReaperCrystals;
+using PenumbraMod.Content.Items.ReaperJewels;
 
 namespace PenumbraMod.Content.Items.Consumables
 {

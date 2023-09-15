@@ -2,7 +2,7 @@
 using PenumbraMod.Common.Systems;
 using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.Items.Armors;
-using PenumbraMod.Content.Items.ReaperCrystals;
+using PenumbraMod.Content.Items.ReaperJewels;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -85,6 +85,7 @@ namespace PenumbraMod.Content.DamageClasses
         public bool spec = false;
         public bool darke = false;
         public bool slim = false;
+        public bool corr = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -102,6 +103,8 @@ namespace PenumbraMod.Content.DamageClasses
         public bool spec2 = false;
         public bool darke2 = false;
         public bool slim2 = false;
+        public bool corr2 = false;
+
         #endregion
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -162,65 +165,53 @@ namespace PenumbraMod.Content.DamageClasses
                     SoundEngine.PlaySound(SoundID.Item73, Player.position);
                 }
                 if (bar.amycryst)
-                {
                     amycryst = true;
-                }
+                //
                 if (bar.magcryst)
-                {
                     magcryst = true;
-                }
+                //
                 if (bar.azucryst)
-                {
                     azucryst = true;
-                }
+                //
                 if (bar.pricryst)
-                {
                     pricryst = true;
-                }
+                //
                 if (bar.emecryst)
-                {
                     emecryst = true;
-                }
+                //
                 if (bar.diamcryst)
-                {
                     diamcryst = true;
-                }
+                //
                 if (bar.topcryst)
-                {
                     topcryst = true;
-                }
+                //
                 if (bar.saphcryst)
-                {
                     saphcryst = true;
-                }
+                //
                 if (bar.rubycryst)
-                {
                     rubycryst = true;
-                }
+                //
                 if (bar.abla)
-                {
                     abla = true;
-                }
+                //
                 if (bar.terra)
-                {
                     terra = true;
-                }
+                //
                 if (bar.slim)
-                {
                     slim = true;
-                }
+                //
                 if (bar.blood)
-                {
                     blood = true;
-                }
+                //
                 if (bar.darke)
-                {
                     darke = true;
-                }
+                //
                 if (bar.spec)
-                {
                     spec = true;
-                }
+                //
+                if (bar.corr)
+                    corr = true;
+                //
             }
             else
             {
@@ -239,7 +230,7 @@ namespace PenumbraMod.Content.DamageClasses
                 spec = false;
                 darke = false;
                 slim = false;
-
+                corr = false;
             }
 
             // ------------
@@ -253,65 +244,53 @@ namespace PenumbraMod.Content.DamageClasses
                 }
 
                 if (bar.amycryst2)
-                {
                     amycryst2 = true;
-                }
+                //
                 if (bar.magcryst2)
-                {
                     magcryst2 = true;
-                }
+                //
                 if (bar.azucryst2)
-                {
                     azucryst2 = true;
-                }
+                //
                 if (bar.pricryst2)
-                {
                     pricryst2 = true;
-                }
+                //
                 if (bar.emecryst2)
-                {
                     emecryst2 = true;
-                }
+                //
                 if (bar.diamcryst2)
-                {
                     diamcryst2 = true;
-                }
+                //
                 if (bar.topcryst2)
-                {
                     topcryst2 = true;
-                }
+                //
                 if (bar.saphcryst2)
-                {
                     saphcryst2 = true;
-                }
+                //
                 if (bar.rubycryst2)
-                {
                     rubycryst2 = true;
-                }
+                //
                 if (bar.abla2)
-                {
                     abla2 = true;
-                }
+                //
                 if (bar.terra2)
-                {
                     terra2 = true;
-                }
+                //
                 if (bar.slim2)
-                {
                     slim2 = true;
-                }
+                //
                 if (bar.blood2)
-                {
                     blood2 = true;
-                }
+                //
                 if (bar.darke2)
-                {
                     darke2 = true;
-                }
+                //
                 if (bar.spec2)
-                {
                     spec2 = true;
-                }
+                //
+                if (bar.corr2)
+                    corr2 = true;
+                //
             }
             else
             {
@@ -330,6 +309,7 @@ namespace PenumbraMod.Content.DamageClasses
                 spec2 = false;
                 darke2 = false;
                 slim2 = false;
+                corr2 = false;
             }
 
 
@@ -345,17 +325,10 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<AmethystForce>(), 10);
             }
-            else
-            {            
-            }
-
 
             if (amycryst2)
             {
                 Player.AddBuff(BuffType<AmethystForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -364,16 +337,10 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<MagicForce>(), 10);
             }
-            else
-            {
-            }
 
             if (magcryst2)
             {
                 Player.AddBuff(BuffType<MagicForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -382,17 +349,11 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<EmeraldForce>(), 10);
             }
-            else
-            {
-            }
 
 
             if (emecryst2)
             {
                 Player.AddBuff(BuffType<EmeraldForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -401,17 +362,11 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<PrimeyeForce>(), 10);
             }
-            else
-            {
-            }
 
 
             if (pricryst2)
             {
                 Player.AddBuff(BuffType<PrimeyeForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -420,17 +375,10 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<DiamondForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (diamcryst2)
             {
                 Player.AddBuff(BuffType<DiamondForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -439,17 +387,10 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<SapphireForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (saphcryst2)
             {
                 Player.AddBuff(BuffType<SapphireForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -458,17 +399,10 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<TopazForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (topcryst2)
             {
                 Player.AddBuff(BuffType<TopazForce>(), 10);
-            }
-            else
-            {
             }
 
             // ------------
@@ -477,91 +411,100 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<RubyForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (rubycryst2)
             {
                 Player.AddBuff(BuffType<RubyForce>(), 10);
             }
-            else
-            {
-            }
+ 
             // ------------
 
             if (blood)
             {
                 Player.AddBuff(BuffType<BloodstainedForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (blood2)
             {
                 Player.AddBuff(BuffType<BloodstainedForce>(), 10);
             }
-            else
-            {
-            }
+
             // ------------
 
             if (darke)
             {
                 Player.AddBuff(BuffType<DarkenedForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (darke2)
             {
                 Player.AddBuff(BuffType<DarkenedForce>(), 10);
             }
-            else
-            {
-            }
+
             // ------------
 
             if (terra)
             {
                 Player.AddBuff(BuffType<TerraForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (terra2)
             {
                 Player.AddBuff(BuffType<TerraForce>(), 10);
             }
-            else
-            {
-            }
+
             // ------------
 
             if (slim)
             {
                 Player.AddBuff(BuffType<SlimyForce>(), 10);
             }
-            else
-            {
-            }
-
 
             if (slim2)
             {
                 Player.AddBuff(BuffType<SlimyForce>(), 10);
             }
-            else
-            {
-            }
+
             // ------------
+
+
+            if (abla)
+            {
+                Player.AddBuff(BuffType<AblazedForce>(), 10);
+            }
+
+            if (abla2)
+            {
+                Player.AddBuff(BuffType<AblazedForce>(), 10);
+            }
+
+            // ------------
+
+
+            if (corr)
+            {
+                Player.AddBuff(BuffType<CorrosiveForce>(), 10);
+            }
+
+            if (corr2)
+            {
+                Player.AddBuff(BuffType<CorrosiveForce>(), 10);
+            }
+
+            // ------------
+
+            if (spec)
+            {
+                Player.AddBuff(BuffType<SpectreForce>(), 10);
+            }
+
+            if (spec2)
+            {
+                Player.AddBuff(BuffType<SpectreForce>(), 10);
+            }
+
+            // ------------
+
 
 
             #endregion

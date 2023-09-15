@@ -38,6 +38,14 @@ namespace PenumbraMod.Content.Items
             {//Equip animation.
                 int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<CorrosiveScytheHold>(), 0, 0, player.whoAmI, 0f);
             }
+            if (player.HasBuff(ModContent.BuffType<CorrosiveForce>()))
+            {
+                Item.damage = 110;
+            }
+            else
+            {
+                Item.damage = 82;
+            }
         }
         bool notboollol = true;
         public override bool CanUseItem(Player player)

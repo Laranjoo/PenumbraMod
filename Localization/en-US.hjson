@@ -372,17 +372,38 @@ Mods: {
 
 			PerishedForce: {
 				DisplayName: Perished Force
-				Description: Mods.PenumbraMod.Buffs.PerishedForce.Description
+				Description: Reaper damage increased by 3
 			}
 
 			PerishedForceCooldown: {
 				DisplayName: Perished Force Cooldown
-				Description: Mods.PenumbraMod.Buffs.PerishedForceCooldown.Description
+				Description: You can't perish yet!
 			}
 
 			AblazedForce: {
-				Description: Mods.PenumbraMod.Buffs.AblazedForce.Description
+				Description: Reaper weapon knockback increased by 7%, speed increased by 10% and burns enemies!
 				DisplayName: Ablazed Force
+			}
+
+			CorrosiveForce: {
+				DisplayName: Corrosive Force
+				Description:
+					'''
+					Reaper weapons inflicts corrosion
+					Grants you immunity to corrosion
+					Reaper weapons increased by 5
+					The corrosive scythe is now stronger!
+					'''
+			}
+
+			SoulBoost: {
+				DisplayName: Soul Boost
+				Description: Mods.PenumbraMod.Buffs.SoulBoost.Description
+			}
+
+			SpectreForce: {
+				DisplayName: Spectre Force
+				Description: Mods.PenumbraMod.Buffs.SpectreForce.Description
 			}
 		}
 
@@ -2121,7 +2142,11 @@ Mods: {
 
 			SpectreCrystal: {
 				DisplayName: Spectre Jewel
-				Tooltip: ""
+				Tooltip:
+					'''
+					When hitting enemies, grants you a 50% chance of getting a soul boost for 3 seconds
+					The soul boost grants you 10% reaper energy boost when hitting an enemy
+					'''
 			}
 
 			AGuitar47: {
@@ -2175,7 +2200,7 @@ Mods: {
 					[c/75efff:Puts a static bomb at the wielder position, exploding in a "+" form]
 					[c/75efff:It can be only used 3 times at once before they explode]
 					[c/75efff:But, the bomb also damages its owner]
-					[c/ff0000:''SEE, I CAN CRACK THE EARTH! FEEL MY POWER, ...'']
+					[c/ff0000:''SEE, I CAN CRACK THE EARTH! FEEL MY POWER...'']
 					[c/00FF00:-Developer Item-]
 					'''
 			}
@@ -2218,6 +2243,22 @@ Mods: {
 			ManiaCoat: {
 				Tooltip: ""
 				DisplayName: Mania Coat
+			}
+
+			CorrosiveJewel: {
+				DisplayName: Corrosive Jewel
+				Tooltip:
+					'''
+					Grants reaper weapons to inflict corrosion
+					Grants you immunity to corrosion
+					Increases armor penetration on reaper weapons by 5
+					Makes the corrosive scythe stronger
+					'''
+			}
+
+			TheDesertShiver: {
+				DisplayName: The Desert Shiver
+				Tooltip: ""
 			}
 		}
 
