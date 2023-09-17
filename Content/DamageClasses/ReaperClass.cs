@@ -86,6 +86,7 @@ namespace PenumbraMod.Content.DamageClasses
         public bool darke = false;
         public bool slim = false;
         public bool corr = false;
+        public bool ony = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -104,6 +105,7 @@ namespace PenumbraMod.Content.DamageClasses
         public bool darke2 = false;
         public bool slim2 = false;
         public bool corr2 = false;
+        public bool ony2 = false;
 
         #endregion
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -212,6 +214,9 @@ namespace PenumbraMod.Content.DamageClasses
                 if (bar.corr)
                     corr = true;
                 //
+                if (bar.ony)
+                    ony = true;
+                //
             }
             else
             {
@@ -231,6 +236,7 @@ namespace PenumbraMod.Content.DamageClasses
                 darke = false;
                 slim = false;
                 corr = false;
+                ony = false;
             }
 
             // ------------
@@ -291,6 +297,9 @@ namespace PenumbraMod.Content.DamageClasses
                 if (bar.corr2)
                     corr2 = true;
                 //
+                if (bar.ony2)
+                    ony2 = true;
+                //
             }
             else
             {
@@ -310,6 +319,7 @@ namespace PenumbraMod.Content.DamageClasses
                 darke2 = false;
                 slim2 = false;
                 corr2 = false;
+                ony2 = false;
             }
 
 
@@ -501,6 +511,18 @@ namespace PenumbraMod.Content.DamageClasses
             if (spec2)
             {
                 Player.AddBuff(BuffType<SpectreForce>(), 10);
+            }
+
+            // ------------
+
+            if (ony)
+            {
+                Player.AddBuff(BuffType<OnyxForce>(), 10);
+            }
+
+            if (ony2)
+            {
+                Player.AddBuff(BuffType<OnyxForce>(), 10);
             }
 
             // ------------

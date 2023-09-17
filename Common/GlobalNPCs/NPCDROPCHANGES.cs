@@ -1,21 +1,21 @@
+using PenumbraMod.Common.DropConditions;
+using PenumbraMod.Content.Buffs;
+using PenumbraMod.Content.Items;
+using PenumbraMod.Content.Items.Accessories;
+using PenumbraMod.Content.Items.Armors;
+using PenumbraMod.Content.Items.Consumables;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PenumbraMod.Common.DropConditions;
-using System.Linq;
-using PenumbraMod.Content.Items.Consumables;
-using PenumbraMod.Content.Items;
-using PenumbraMod.Content.Items.Accessories;
-using PenumbraMod.Content.NPCs.Bosses;
-using PenumbraMod.Content.Items.Armors;
 
 namespace PenumbraMod.Common.GlobalNPCs
 {
-	
-	public class NPCDROPCHANGES : GlobalNPC
-	{
-        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot) {
+
+    public class NPCDROPCHANGES : GlobalNPC
+    {
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
             #region DropConditions
             if (npc.type == NPCID.PirateCaptain)
             {
@@ -59,7 +59,7 @@ namespace PenumbraMod.Common.GlobalNPCs
             #endregion
             #region DropChanges
             if (npc.type == NPCID.KingSlime)
-            { 
+            {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InconsistentJelly>(), 1, 5, 10));
             }
             if (Main.expertMode)
@@ -88,6 +88,7 @@ namespace PenumbraMod.Common.GlobalNPCs
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BrokenWoodyThing>(), 2, 1));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ReaperEmblem>(), 5, 1));
             }
+           
             #region OldBloodyStoneArmorSpamCodeBecauseAAAAAAAAAAAAAAAAAAAAAAAAAAAA
             // I hate this
             if (npc.type == NPCID.FaceMonster)
@@ -194,6 +195,12 @@ namespace PenumbraMod.Common.GlobalNPCs
             }
             #endregion
             #endregion
+        }
+        public override void OnKill(NPC npc)
+        {
+            if (Main.rand.NextBool(4))
+                if (Main.LocalPlayer.GetModPlayer<BuffPlayer>().heartbuff)
+                    Item.NewItem(NPC.InheritSource(npc), npc.getRect(), ItemID.Heart);
         }
     }
 }

@@ -403,7 +403,22 @@ Mods: {
 
 			SpectreForce: {
 				DisplayName: Spectre Force
-				Description: Mods.PenumbraMod.Buffs.SpectreForce.Description
+				Description: 50% chance to get Soul Boosted
+			}
+
+			OnyxForce: {
+				DisplayName: Onyx Force
+				Description: Unleash a dark creature to aid you in fighting
+			}
+
+			PrettyBuff: {
+				DisplayName: Heart Swipe
+				Description: 20% chance to an enemy drop an extra heart when killed
+			}
+
+			SoulHunt: {
+				DisplayName: Soul Hunt
+				Description: 100% increased chance for soul drops
 			}
 		}
 
@@ -625,15 +640,15 @@ Mods: {
 			BlackHoleEffect2.DisplayName: Black Hole
 			BlackHoleEffect3.DisplayName: Black Hole
 			BlackHoleEffect4.DisplayName: Black Hole
-			AguitarNoteEx.DisplayName: Aguitar Note Explosive
+			AguitarNoteEx.DisplayName: Note Explosive
 			AguitarNoteHoming.DisplayName: Note Homing
 			AguitarNotePierce.DisplayName: Note Pierce
 			AguitarNoteWeak.DisplayName: Note Weak
 			ShroonadeEx.DisplayName: Shroonade
 			ShroonadeThrown.DisplayName: Shroonade
 			ShroonadeSpore.DisplayName: Mushroom Spore
-			ShroonadeFX.DisplayName: Shroonade F X
-			ShroonadeFX2.DisplayName: Shroonade F X2
+			ShroonadeFX.DisplayName: Shroonade
+			ShroonadeFX2.DisplayName: Shroonade
 			LunarBombProj.DisplayName: Lunar Bomb
 			Explosion1.DisplayName: Lunar Explosion
 			Explosion2.DisplayName: Lunar Explosion
@@ -2260,6 +2275,26 @@ Mods: {
 				DisplayName: The Desert Shiver
 				Tooltip: ""
 			}
+
+			PrettyPotion: {
+				DisplayName: Pretty Potion
+				Tooltip: Gives 20% chance to slain enemies drop an extra heart
+			}
+
+			SoulHuntPotion: {
+				DisplayName: Soul Hunt Potion
+				Tooltip: Gives 100% extra chance of slain enemies to drop souls
+			}
+
+			EnchantedMushroom: {
+				DisplayName: Enchanted Mushroom
+				Tooltip: ""
+			}
+
+			OnyxJewel: {
+				DisplayName: Onyx Jewel
+				Tooltip: Unleash a dark creature to aid you in fighting
+			}
 		}
 
 		Tiles: {
@@ -2273,6 +2308,7 @@ Mods: {
 			RozeQuartz.MapEntry: Roze Quartz
 			Aquamarine.MapEntry: Aquamarine
 			Peridot.MapEntry: Peridot
+			EnchantedMushroom.MapEntry: Enchanted Mushroom
 		}
 
 		Keybinds: {

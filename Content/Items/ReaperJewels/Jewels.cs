@@ -312,4 +312,25 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             recipe.Register();
         }
     }
+    public class OnyxJewel : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.height = 24;
+            Item.width = 14;
+            Item.value = 35000;
+            Item.rare = ItemRarityID.LightRed;
+            Item.DamageType = ModContent.GetInstance<ReaperClass>();
+        }
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.DarkShard, 2);
+            recipe.AddIngredient(ItemID.LightShard, 2);
+            recipe.AddIngredient(ItemID.SoulofLight, 7);
+            recipe.AddIngredient(ItemID.SoulofNight, 7);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
+        }
+    }
 }

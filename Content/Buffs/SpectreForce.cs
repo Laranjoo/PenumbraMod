@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using PenumbraMod.Content.DamageClasses;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -24,8 +22,9 @@ namespace PenumbraMod.Content.Buffs
         {
             if (Main.rand.NextBool(3))
             {
-                Vector2 pos = player.Center + new Vector2(Main.rand.Next(0, 30), Main.rand.Next(40, 50));
-                Dust.NewDust(pos, 0, 0, DustID.BlueTorch, 0, -8);
+                int d = Dust.NewDust(player.Center, player.width, player.height, DustID.BlueTorch);
+                Main.dust[d].noGravity = true;
+                Main.dust[d].velocity.Y -= 7f;
             }
         }
     }

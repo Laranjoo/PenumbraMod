@@ -91,7 +91,7 @@ namespace PenumbraMod.Common
             }
             if (Player.HasBuff<SpectreForce>())
             {
-                if (Main.rand.NextBool(2))
+                if (Main.rand.NextBool(2) && !Player.HasBuff<SoulBoost>())
                 {
                     CombatText.NewText(Player.getRect(), Color.LightBlue, "Soul Boosted!");
                     Player.AddBuff(BuffType<SoulBoost>(), 180);
@@ -99,7 +99,7 @@ namespace PenumbraMod.Common
             }
             if (Player.HasBuff<SoulBoost>())
             {
-                if (Player.HeldItem.DamageType == ModContent.GetInstance<ReaperClass>())
+                if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 10;
             }
         }
