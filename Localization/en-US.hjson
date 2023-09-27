@@ -2160,7 +2160,7 @@ Mods: {
 				Tooltip:
 					'''
 					When hitting enemies, grants you a 50% chance of getting a soul boost for 3 seconds
-					The soul boost grants you 10% reaper energy boost when hitting an enemy
+					The soul boost grants you 75+ reaper energy when hitting an enemy
 					'''
 			}
 

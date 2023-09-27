@@ -22,9 +22,9 @@ namespace PenumbraMod.Content.Buffs
         {
             if (Main.rand.NextBool(3))
             {
-                int d = Dust.NewDust(player.Center, player.width, player.height, DustID.BlueTorch);
+                int d = Dust.NewDust(player.Center, player.width, player.height, DustID.SpectreStaff);
                 Main.dust[d].noGravity = true;
-                Main.dust[d].velocity.Y -= 7f;
+                Main.dust[d].velocity.Y -= 8f;
             }
         }
     }

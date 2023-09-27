@@ -36,7 +36,7 @@ namespace PenumbraMod.Content.Tiles
     {   
         public override void OnKill(NPC npc)
         {
-            if (Main.hardMode || npc.type == NPCID.WallofFlesh)
+           /* if (Main.hardMode || npc.type == NPCID.WallofFlesh)
             {
                 Main.NewText("[c/00ffdf:A new stone has appeared on the evil lands!]");
                 for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 8E-05); k++)
@@ -49,7 +49,7 @@ namespace PenumbraMod.Content.Tiles
                         WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 12), WorldGen.genRand.Next(10, 12), ModContent.TileType<InfectedOre>());
                     }
                 }
-            }   
+            }   */
         }
 
     }

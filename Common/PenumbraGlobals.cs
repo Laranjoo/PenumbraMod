@@ -100,7 +100,7 @@ namespace PenumbraMod.Common
             if (Player.HasBuff<SoulBoost>())
             {
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
-                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 10;
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 75;
             }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)

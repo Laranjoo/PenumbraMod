@@ -35,7 +35,7 @@ namespace PenumbraMod.Content.Tiles
     {
         public override void OnKill(NPC npc)
         {
-            if (Main.hardMode || npc.type == NPCID.WallofFlesh)
+           /* if (Main.hardMode || npc.type == NPCID.WallofFlesh)
             {
                 for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 8E-05); k++)
                 {
@@ -48,7 +48,7 @@ namespace PenumbraMod.Content.Tiles
                     }
                 }
 
-            }
+            }*/
 
         }
     }
