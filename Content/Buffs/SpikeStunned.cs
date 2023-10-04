@@ -2,12 +2,9 @@ using Microsoft.Xna.Framework;
 using PenumbraMod.Common.Base;
 using PenumbraMod.Content.Dusts;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static PenumbraMod.Common.PenumbraGlobalItem;
 
 namespace PenumbraMod.Content.Buffs
 {
@@ -128,16 +125,9 @@ namespace PenumbraMod.Content.Buffs
 
 
         };
-        public static void AddDebuffImmunity(int npcType, int[] array)
+        public static void AddDebuffImmunity(int npcType, int array)
         {
-            if (!NPCID.Sets.DebuffImmunitySets.TryGetValue(npcType, out var entry) || entry?.SpecificallyImmuneTo is null)
-                return;
-
-            int[] array2 = NPCID.Sets.DebuffImmunitySets[npcType].SpecificallyImmuneTo;
-            NPCID.Sets.DebuffImmunitySets[npcType] = new NPCDebuffImmunityData
-            {
-                SpecificallyImmuneTo = array2.Concat(array).ToArray()
-            };
+            NPCID.Sets.SpecificDebuffImmunity[npcType][array] = true;
         }
         public override void SetStaticDefaults()
         {
@@ -145,10 +135,8 @@ namespace PenumbraMod.Content.Buffs
             {
                 if (Bosses.Contains(i))
                 {
-                    AddDebuffImmunity(i, new int[] {
-                    ModContent.BuffType<StunnedNPC>() });
-
-
+                    AddDebuffImmunity(i,
+                    ModContent.BuffType<StunnedNPC>());
                 }
             }
         }

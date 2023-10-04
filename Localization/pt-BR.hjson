@@ -659,6 +659,7 @@ Mods: {
 			// Explosion3down.DisplayName: Lunar Explosion
 			// ShadewoodScytheProj.DisplayName: Shadewood Spike
 			// InfectedWorm.DisplayName: Infected Worm
+			// PrismaticKnifeProjSpecial2.DisplayName: Prismatic Knife Proj Special2
 		}
 
 		Items: {
@@ -2160,7 +2161,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					When hitting enemies, grants you a 50% chance of getting a soul boost for 3 seconds
-					The soul boost grants you 10% reaper energy boost when hitting an enemy
+					The soul boost grants you 75+ reaper energy when hitting an enemy
 					''' */
 			}
 
@@ -2294,6 +2295,11 @@ Mods: {
 			OnyxJewel: {
 				// DisplayName: Onyx Jewel
 				// Tooltip: Unleash a dark creature to aid you in fighting
+			}
+
+			TestSword: {
+				// DisplayName: Test Sword
+				// Tooltip: ""
 			}
 		}
 

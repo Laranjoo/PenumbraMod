@@ -191,7 +191,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
         {
             return new Color(0, 225, 255, 0) * Projectile.Opacity;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 vel = new Vector2(0, 0);
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, vel, ModContent.ProjectileType<Brightness10>(), 0, 0f, Main.myPlayer);
@@ -289,7 +289,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
         {
             return new Color(0, 225, 255, 0) * Projectile.Opacity;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 vel = new Vector2(0, 0);
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, vel, ModContent.ProjectileType<Brightness10>(), 0, 0f, Main.myPlayer);
@@ -555,7 +555,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
         {
             return new Color(0, 225, 255, 0) * Projectile.Opacity;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 vel = new Vector2(0, 0);
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, vel, ModContent.ProjectileType<Brightness10>(), 0, 0f, Main.myPlayer);
@@ -807,7 +807,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             return true;
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 20; i++)
             {
@@ -2666,7 +2666,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             }
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             if (Style == ActiveSoundShowcaseStyle.LoopedSoundAdvanced)
             {

@@ -76,7 +76,7 @@ namespace PenumbraMod.Content.Items
         {
             Projectile.rotation = Projectile.velocity.ToRotation();
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);

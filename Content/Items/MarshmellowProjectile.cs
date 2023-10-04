@@ -57,7 +57,7 @@ namespace PenumbraMod.Content.Items
             Lighting.AddLight(Projectile.Center, Color.White.ToVector3() * 0.10f);
             Projectile.rotation += 0.4f;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);

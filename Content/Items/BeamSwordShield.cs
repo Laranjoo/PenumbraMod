@@ -58,7 +58,7 @@ namespace PenumbraMod.Content.Items
             if (target.type != NPCID.TargetDummy)
                 player.AddBuff(BuffID.ShadowDodge, 600);
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
             player.AddBuff(ModContent.BuffType<ShieldCooldown>(), 600);

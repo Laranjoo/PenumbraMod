@@ -95,7 +95,7 @@ namespace PenumbraMod.Content.Items
             lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
             return MathHelper.Lerp(30f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 29; k++)
             {

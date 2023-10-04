@@ -14,7 +14,6 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 {
     public class SrplayertubesPenumbraticLunarBomb : ModItem
     {
-
         public override void SetDefaults()
         {
             Item.damage = 3000;
@@ -218,7 +217,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             PunchCameraModifier modifier = new PunchCameraModifier(Projectile.Center, (Main.rand.NextFloat() * ((float)Math.PI * 2f)).ToRotationVector2(), 12f, 6f, 20, 1000f, FullName);
             Main.instance.CameraModifiers.Add(modifier);
@@ -275,6 +274,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 7;
+            ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
         }
 
         public override void SetDefaults()
@@ -315,6 +315,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 7;
+            ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
         }
 
         public override void SetDefaults()
@@ -355,6 +356,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 7;
+            ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
         }
 
         public override void SetDefaults()
@@ -394,6 +396,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 7;
+            ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
         }
 
         public override void SetDefaults()
@@ -440,6 +443,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 7;
+            ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
         }
 
         public override void SetDefaults()
@@ -480,6 +484,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
         public override void SetStaticDefaults()
         {
             Main.projFrames[Type] = 7;
+            ProjectileID.Sets.PlayerHurtDamageIgnoresDifficultyScaling[Type] = true;
         }
 
         public override void SetDefaults()

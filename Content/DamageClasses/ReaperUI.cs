@@ -94,16 +94,15 @@ namespace PenumbraMod.Content.DamageClasses
         private CrystalSlots2 item2;
         public static float position;
         public static float position2;
-        private ExampleUIHoverImageButton CrystalButton;
         public override void OnInitialize()
         {
             // Create a UIElement for all the elements to sit on top of, this simplifies the numbers as nested elements can be positioned relative to the top left corner of this element. 
             // UIElement is invisible and has no padding. You can use a UIPanel if you wish for a background.
 
-            // This is one of the most painful code ever
+            // This is one of the most painful thing to code i ever made (Laranjoo)
 
 
-            panel = new DraggableUI();
+             panel = new DraggableUI();
             panel.SetPadding(0);
             SetRectangle(panel, left: 800, top: 30, width: 92, height: 23);
             panel.BackgroundColor = new Color(0, 0, 0, 255) * 0f;
@@ -135,6 +134,7 @@ namespace PenumbraMod.Content.DamageClasses
 
             barDrawing = new UIImage(Request<Texture2D>("PenumbraMod/EMPTY", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barDrawing.SetPadding(0);
+            barDrawing.Color = new Color(0, 0, 0, 255) * 0f;
             SetRectangle(barDrawing, left: 0, top: 0, width: 86, height: 12);
 
             #region Crystalss
@@ -288,7 +288,7 @@ namespace PenumbraMod.Content.DamageClasses
             SetRectangle(item2, left: 39, top: 50, width: 52, height: 150);
 
             Asset<Texture2D> CrystalButtonn = ModContent.Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarButton");
-            CrystalButton = new ExampleUIHoverImageButton(CrystalButtonn, "Crystals");
+            ExampleUIHoverImageButton CrystalButton = new ExampleUIHoverImageButton(CrystalButtonn, "Jewels");
             SetRectangle(CrystalButton, left: 42, top: 7.5f, width: 10f, height: 13f);
             CrystalButton.OnLeftClick += new MouseEvent(ButtonClicked);
 
@@ -304,8 +304,9 @@ namespace PenumbraMod.Content.DamageClasses
             panel.Append(barSlots2);
             panel.Append(barSlots3);
             panel.Append(barSlots4);
-           // panel.Append(barDrawing);
+            panel.Append(barDrawing);
             panel.Append(CrystalButton);
+            
             #region Crystalsss
             panel.Append(AmethystCrystal);
             panel.Append(AmethystCrystalSlot2);
@@ -940,7 +941,6 @@ namespace PenumbraMod.Content.DamageClasses
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {
             base.DrawSelf(spriteBatch);
-            CrystalButton.hoverText = "Crystals";
 
             var ReaperClassPlayer = Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>();
             // Calculate quotient
@@ -970,7 +970,6 @@ namespace PenumbraMod.Content.DamageClasses
             if (Main.LocalPlayer.HeldItem.DamageType != GetInstance<ReaperClass>())
                 return;
             var ReaperClassPlayer = Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>();
-
             // Setting the text per tick to update and show our resource values.
             float b = (float)ReaperClassPlayer.ReaperEnergy / 20f;
             if (GetInstance<PenumbraConfig>().UITEXT)

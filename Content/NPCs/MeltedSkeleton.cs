@@ -26,19 +26,12 @@ namespace PenumbraMod.Content.NPCs
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 
-			NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-			{
-				SpecificallyImmuneTo = new int[] {
-					BuffID.Poisoned,
-					BuffID.OnFire,
-					BuffID.OnFire3,
-					ModContent.BuffType<MeltedEx>(),
-					BuffID.Confused // Most NPCs have this
-				}
-			};
-			NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
-
-		}
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.OnFire3] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<MeltedEx>()] = true;
+        }
 
 		public override void SetDefaults()
 		{

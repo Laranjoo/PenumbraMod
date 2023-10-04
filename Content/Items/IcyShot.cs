@@ -74,7 +74,7 @@ namespace PenumbraMod.Content.Items
             Main.dust[dust].velocity *= 5.0f;
             Main.dust[dust].scale = (float) Main.rand.Next(100, 150) * 0.012f;  
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 launchVelocity = new Vector2(-5, 1); // Create a velocity moving the left.
             for (int i = 0; i < 8; i++)

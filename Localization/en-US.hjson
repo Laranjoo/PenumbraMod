@@ -659,6 +659,7 @@ Mods: {
 			Explosion3down.DisplayName: Lunar Explosion
 			ShadewoodScytheProj.DisplayName: Shadewood Spike
 			InfectedWorm.DisplayName: Infected Worm
+			PrismaticKnifeProjSpecial2.DisplayName: Prismatic Knife Proj Special2
 		}
 
 		Items: {
@@ -2294,6 +2295,11 @@ Mods: {
 			OnyxJewel: {
 				DisplayName: Onyx Jewel
 				Tooltip: Unleash a dark creature to aid you in fighting
+			}
+
+			TestSword: {
+				DisplayName: Test Sword
+				Tooltip: ""
 			}
 		}
 

@@ -144,7 +144,7 @@ namespace PenumbraMod.Content.Items
                 Main.dust[dust].velocity *= 8f;
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             SoundEngine.PlaySound(SoundID.Item62, Projectile.position);
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);

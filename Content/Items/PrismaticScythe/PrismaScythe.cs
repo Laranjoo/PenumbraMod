@@ -277,7 +277,7 @@ namespace PenumbraMod.Content.Items.PrismaticScythe
             }
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 20; k++)
             {
@@ -343,7 +343,7 @@ namespace PenumbraMod.Content.Items.PrismaticScythe
             }
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 20; k++)
             {
@@ -389,7 +389,7 @@ namespace PenumbraMod.Content.Items.PrismaticScythe
                 // For vertical sprites use MathHelper.PiOver2
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 launchVelocity = new Vector2(-12, 1); // Create a velocity moving the left.
             for (int i = 0; i < 8; i++)
@@ -622,7 +622,7 @@ namespace PenumbraMod.Content.Items.PrismaticScythe
 
             return closestNPC;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 20; k++)
             {

@@ -32,17 +32,11 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             NPCID.Sets.TrailingMode[NPC.type] = 1;
             Main.npcFrameCount[Type] = 10;
 
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<StunnedNPC>()] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<LowVoltage>()] = true;
 
-            NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-            {
-                SpecificallyImmuneTo = new int[] {
-                    BuffID.Poisoned,
-                    ModContent.BuffType<StunnedNPC>(),
-                    ModContent.BuffType<LowVoltage>(),
-                    BuffID.Confused // Most NPCs have this
-				}
-            };
-            NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
             NPCID.Sets.MPAllowedEnemies[Type] = true;
             // Automatically group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);

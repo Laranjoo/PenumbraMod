@@ -169,7 +169,7 @@ namespace PenumbraMod.Content.Items
 
 
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 
             for (int k = 0; k < 50; k++)
@@ -344,7 +344,7 @@ namespace PenumbraMod.Content.Items
             }
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
 
             for (int k = 0; k < 40; k++)

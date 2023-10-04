@@ -54,16 +54,10 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             // Automatically group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            // Specify the debuffs it is immune to
-            NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData {
-                SpecificallyImmuneTo = new int[] {
-                    BuffID.Poisoned,
-                    ModContent.BuffType<StunnedNPC>(),
-                    ModContent.BuffType<LowVoltage>(),
-                    BuffID.Confused // Most NPCs have this
-				}
-            };
-            NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<StunnedNPC>()] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<LowVoltage>()] = true;
 
             // Optional: If you don't want this NPC to show on the bestiary (if there is no reason to show a boss minion separately)
             // Make sure to remove SetBestiary code aswell
@@ -292,17 +286,12 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             // Automatically group with other bosses
             NPCID.Sets.BossBestiaryPriority.Add(Type);
 
-            // Specify the debuffs it is immune to
-            NPCDebuffImmunityData debuffData = new NPCDebuffImmunityData
-            {
-                SpecificallyImmuneTo = new int[] {
-                    BuffID.Poisoned,
-                    ModContent.BuffType<StunnedNPC>(),
-                    ModContent.BuffType<LowVoltage>(),
-                    BuffID.Confused // Most NPCs have this
-				}
-            };
-            NPCID.Sets.DebuffImmunitySets.Add(Type, debuffData);
+
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Confused] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<StunnedNPC>()] = true;
+            NPCID.Sets.SpecificDebuffImmunity[Type][ModContent.BuffType<LowVoltage>()] = true;
+
         }
 
         public override void SetDefaults()

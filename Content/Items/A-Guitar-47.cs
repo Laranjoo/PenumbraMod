@@ -146,7 +146,7 @@ namespace PenumbraMod.Content.Items
             }
 
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center + new Vector2(0, 50), Vector2.Zero, ModContent.ProjectileType<BlackHoleEffect2>(), 0, Projectile.knockBack, Projectile.owner);
             for (int k = 0; k < 20; k++)
@@ -259,7 +259,7 @@ namespace PenumbraMod.Content.Items
             }
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             for (int k = 0; k < 20; k++)
@@ -334,7 +334,7 @@ namespace PenumbraMod.Content.Items
             }
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             for (int k = 0; k < 20; k++)
@@ -409,7 +409,7 @@ namespace PenumbraMod.Content.Items
             }
             return false;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Vector2 launchVelocity = new Vector2(-5, 1); // Create a velocity moving the left.
             for (int i = 0; i < 5; i++)
@@ -562,7 +562,7 @@ namespace PenumbraMod.Content.Items
 
             return closestNPC;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             for (int k = 0; k < 20; k++)

@@ -122,7 +122,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.Kill();
                 return false;
             }
-            public override void Kill(int timeLeft)
+            public override void OnKill(int timeLeft)
             {
                 Vector2 launchVelocity = new Vector2(0, 1); // Create a velocity moving the left.
                 for (int i = 0; i < 1; i++)
@@ -198,7 +198,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.velocity = Vector2.Zero;
                 return false;
             }
-            public override void Kill(int timeLeft)
+            public override void OnKill(int timeLeft)
             {
                 SoundEngine.PlaySound(SoundID.Item111, Projectile.position);
             }

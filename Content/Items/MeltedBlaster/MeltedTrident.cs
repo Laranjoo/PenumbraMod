@@ -69,7 +69,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 50; k++)
             {
@@ -136,7 +136,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 50; k++)
             {
@@ -203,7 +203,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 50; k++)
             {
@@ -270,7 +270,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 50; k++)
             {
@@ -339,7 +339,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 50; k++)
             {
@@ -396,7 +396,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
         }
         
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
            
             // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
@@ -460,7 +460,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
 
             return true;
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 50; k++)
             {

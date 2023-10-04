@@ -106,7 +106,7 @@ namespace PenumbraMod.Content.Items
                 Main.dust[dust].scale = (float)Main.rand.Next(100, 150) * 0.004f;
             }
         }
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
             for (int k = 0; k < 30; k++)
             {
