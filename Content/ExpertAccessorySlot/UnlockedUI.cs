@@ -44,7 +44,6 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             SetRectangle(closeButton, left: 370f, top: 8f, width: 26f, height: 28f);
             closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             closeButton.SetVisibility(1f, 0.9f);
-            closeButton.hoverText = Language.GetTextValue("LegacyInterface.52");
 
             panel.Append(border);
             panel.Append(closeButton);
@@ -63,7 +62,6 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             SoundEngine.PlaySound(SoundID.MenuClose);
             Hideui.hideui = true;
         }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             if (Hideui.hideui)

@@ -28,7 +28,6 @@ namespace PenumbraMod.Common
         Vector2 scrcache;
         public Item item = new(); // initialize a new item so that NullReferenceException doesn't occur when creating a new player / loading a player that doesn't have an item already saved
 
-        // UI updates item from base to something
 
         public override void Load()
         {
