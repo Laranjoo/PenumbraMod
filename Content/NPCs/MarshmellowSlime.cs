@@ -21,7 +21,7 @@ namespace PenumbraMod.Content.NPCs
 			Main.npcFrameCount[Type] = 2;
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
-				Velocity = 0.5f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+				Velocity = 0.1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
 			};
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
 		}

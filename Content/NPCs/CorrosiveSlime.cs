@@ -15,9 +15,10 @@ namespace PenumbraMod.Content.NPCs
             Main.npcFrameCount[Type] = 2;
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             { // Influences how the NPC looks in the Bestiary
-                Velocity = 0.5f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
+                Velocity = 0.1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
             };
             NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, value);
+            NPCID.Sets.SpecificDebuffImmunity[Type][BuffID.Poisoned] = true;
         }
 
         public override void SetDefaults()
@@ -32,7 +33,7 @@ namespace PenumbraMod.Content.NPCs
             NPC.value = 320f;
             NPC.knockBackResist = 0.3f;
             NPC.aiStyle = 1; // Slime AI, important to choose the aiStyle that matches the NPCID that we want to mimic
-            AIType = NPCID.JungleSlime;
+            AIType = NPCID.Crimslime;
             AnimationType = NPCID.CorruptSlime; // Use vanilla zombie's type when executing animation code. Important to also match Main.npcFrameCount[NPC.type] in SetStaticDefaults.
         }
 

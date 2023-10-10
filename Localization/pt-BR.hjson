@@ -72,6 +72,8 @@ Mods: {
 			// OniZombie.DisplayName: Zombie
 			// CorrosiveSlime.DisplayName: Corrosive Slime
 			// selfkillnpc.DisplayName: selfkillnpc
+			// BloodystoneSlime.DisplayName: Bloodystone Slime
+			// InfectedSlime.DisplayName: Infected Slime
 		}
 
 		Bestiary.vhcmnpc: Ele veio de uma cidade misteriosa... não sabemos porque ele gosta de viver em lugares escuros, ele gosta de vibes escuras e chuva, que estranho...
@@ -1109,7 +1111,7 @@ Mods: {
 					Its so fast that can destroy the world
 					It create copies of itself for mass destruction
 					Right Click for normal swing
-					[c/ff0000:WARNING:] Can destroy your world, so bre careful!!
+					[c/ff0000:WARNING:] Can destroy your world, so be careful.
 					''' */
 			}
 
@@ -2299,6 +2301,56 @@ Mods: {
 
 			TestSword: {
 				// DisplayName: Test Sword
+				// Tooltip: ""
+			}
+
+			BluePhaseblade: {
+				// DisplayName: Blue Phaseblade
+				// Tooltip: ""
+			}
+
+			LimePhaseblade: {
+				// DisplayName: Lime Phaseblade
+				// Tooltip: ""
+			}
+
+			PurplePhaseblade: {
+				// DisplayName: Purple Phaseblade
+				// Tooltip: ""
+			}
+
+			IndigoPhaseblade: {
+				// DisplayName: Indigo Phaseblade
+				// Tooltip: ""
+			}
+
+			LimeTorch: {
+				// DisplayName: Lime Torch
+				// Tooltip: ""
+			}
+
+			AquamarineStoneBlock: {
+				// DisplayName: Aquamarine Stone Block
+				// Tooltip: ""
+			}
+
+			IndigoTorch: {
+				// DisplayName: Indigo Torch
+				// Tooltip: ""
+			}
+
+			PurpleTorch: {
+				// DisplayName: Purple Torch
+				// Tooltip: ""
+			}
+
+			PeridotStoneBlock: {
+				// DisplayName: Peridot Stone Block
+				// Tooltip: ""
+			}
+
+			RozeQuartzStoneBlock: {
+				// DisplayName: Roze Quartz Stone Block
 				// Tooltip: ""
 			}
 		}

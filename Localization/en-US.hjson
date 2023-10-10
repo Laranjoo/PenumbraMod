@@ -72,6 +72,8 @@ Mods: {
 			OniZombie.DisplayName: Zombie
 			CorrosiveSlime.DisplayName: Corrosive Slime
 			selfkillnpc.DisplayName: selfkillnpc
+			BloodystoneSlime.DisplayName: Bloodystone Slime
+			InfectedSlime.DisplayName: Infected Slime
 		}
 
 		Bestiary.vhcmnpc: He came from a misterious city... we dont know why he likes living in dark places, he likes dark vibes and rain, such strange...
@@ -2299,6 +2301,56 @@ Mods: {
 
 			TestSword: {
 				DisplayName: Test Sword
+				Tooltip: ""
+			}
+
+			BluePhaseblade: {
+				DisplayName: Blue Phaseblade
+				Tooltip: ""
+			}
+
+			LimePhaseblade: {
+				DisplayName: Lime Phaseblade
+				Tooltip: ""
+			}
+
+			PurplePhaseblade: {
+				DisplayName: Purple Phaseblade
+				Tooltip: ""
+			}
+
+			IndigoPhaseblade: {
+				DisplayName: Indigo Phaseblade
+				Tooltip: ""
+			}
+
+			LimeTorch: {
+				DisplayName: Lime Torch
+				Tooltip: ""
+			}
+
+			AquamarineStoneBlock: {
+				DisplayName: Aquamarine Stone Block
+				Tooltip: ""
+			}
+
+			IndigoTorch: {
+				DisplayName: Indigo Torch
+				Tooltip: ""
+			}
+
+			PurpleTorch: {
+				DisplayName: Purple Torch
+				Tooltip: ""
+			}
+
+			PeridotStoneBlock: {
+				DisplayName: Peridot Stone Block
+				Tooltip: ""
+			}
+
+			RozeQuartzStoneBlock: {
+				DisplayName: Roze Quartz Stone Block
 				Tooltip: ""
 			}
 		}

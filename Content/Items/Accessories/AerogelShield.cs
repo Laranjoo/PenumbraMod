@@ -3,6 +3,7 @@ using PenumbraMod.Content.Dusts;
 using PenumbraMod.Content.Items.Placeable;
 using PenumbraMod.Content.NPCs;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
@@ -36,26 +37,51 @@ namespace PenumbraMod.Content.Items.Accessories
             Item.defense = 2;
             Item.expert = true;
         }
+        public static List<int> Slimes = new()
+        {
+            NPCID.BlueSlime,
+            NPCID.SlimeSpiked,
+            NPCID.GoldenSlime,
+            NPCID.IceSlime,
+            NPCID.SpikedIceSlime,
+            NPCID.SlimeRibbonYellow,
+            NPCID.SlimeRibbonWhite,
+            NPCID.SlimeRibbonRed,
+            NPCID.SlimeRibbonGreen,
+            NPCID.Slimer,
+            NPCID.SlimeMasked,
+            NPCID.RainbowSlime,
+            NPCID.CorruptSlime,
+            NPCID.LavaSlime,
+            NPCID.UmbrellaSlime,
+            NPCID.Crimslime,
+            NPCID.SpikedJungleSlime,
+            NPCID.DungeonSlime,
+            NPCID.IlluminantSlime,
+            NPCID.MotherSlime,
+            NPCID.SandSlime,
+            NPCID.ShimmerSlime,
+            NPCID.Slimer2,
+            NPCID.QueenSlimeMinionBlue,
+            NPCID.QueenSlimeMinionPink,
+            NPCID.QueenSlimeMinionPurple,
+            NPCID.ToxicSludge,
+            NPCID.Gastropod,
+            ModContent.NPCType<MarshmellowSlime>(),
+            ModContent.NPCType<BloodystoneSlime>(),
+            ModContent.NPCType<CorrosiveSlime>(),
+            ModContent.NPCType<InfectedSlime>(),
+        };
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.buffImmune[BuffID.Slimed] = true;
-            player.npcTypeNoAggro[NPCID.BlueSlime] = true;
-            player.npcTypeNoAggro[NPCID.SlimeSpiked] = true;
-            player.npcTypeNoAggro[NPCID.GoldenSlime] = true;
-            player.npcTypeNoAggro[NPCID.IceSlime] = true;
-            player.npcTypeNoAggro[NPCID.SlimeRibbonYellow] = true;
-            player.npcTypeNoAggro[NPCID.SlimeRibbonWhite] = true;
-            player.npcTypeNoAggro[NPCID.SlimeRibbonRed] = true;
-            player.npcTypeNoAggro[NPCID.SlimeRibbonGreen] = true;
-            player.npcTypeNoAggro[NPCID.Slimer] = true;
-            player.npcTypeNoAggro[NPCID.SlimeMasked] = true;
-            player.npcTypeNoAggro[NPCID.RainbowSlime] = true;
-            player.npcTypeNoAggro[NPCID.CorruptSlime] = true;
-            player.npcTypeNoAggro[NPCID.LavaSlime] = true;
-            player.npcTypeNoAggro[NPCID.UmbrellaSlime] = true;
-            player.npcTypeNoAggro[NPCID.Crimslime] = true;
-            player.npcTypeNoAggro[NPCID.SpikedJungleSlime] = true;
-            player.npcTypeNoAggro[ModContent.NPCType<MarshmellowSlime>()] = true;
+            player.buffImmune[BuffID.Slimed] = true;  
+            for (int i = 0; i < NPCLoader.NPCCount; i++)
+            {
+                if (Slimes.Contains(i))
+                {
+                    player.npcTypeNoAggro[i] = true;
+                }
+            }
             if (Math.Abs(player.velocity.X) + Math.Abs(player.velocity.Y) > 1f && !player.rocketFrame)
             {
                 if (Main.rand.NextBool(16))

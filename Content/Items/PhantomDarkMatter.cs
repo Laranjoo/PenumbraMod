@@ -23,7 +23,7 @@ namespace PenumbraMod.Content.Items
             ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false;
             Main.projFrames[Projectile.type] = 7;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 10; // The length of old position to be recorded
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
         }
 
         public override void SetDefaults()
@@ -93,7 +93,7 @@ namespace PenumbraMod.Content.Items
         {
             float lerpValue = Utils.GetLerpValue(0f, 0.06f + transitToDark * 0.01f, progressOnStrip, clamped: true);
             lerpValue = 1f - (1f - lerpValue) * (1f - lerpValue);
-            return MathHelper.Lerp(30f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
+            return MathHelper.Lerp(32f + transitToDark * 16f, 8f, Utils.GetLerpValue(0f, 1f, progressOnStrip, clamped: true)) * lerpValue;
         }
         public override void OnKill(int timeLeft)
         {

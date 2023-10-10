@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using PenumbraMod.Common.Base;
 using PenumbraMod.Content.Dusts;
+using PenumbraMod.Content.NPCs.Bosses.Eyestorm;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -122,7 +123,7 @@ namespace PenumbraMod.Content.Buffs
             NPCID.DD2Betsy,
             NPCID.BloodNautilus,
             636,
-
+            ModContent.NPCType<Eyeofthestorm>(),
 
         };
         public static void AddDebuffImmunity(int npcType, int array)
