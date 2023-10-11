@@ -24,7 +24,7 @@ namespace PenumbraMod.Content.Tiles
             // name.SetDefault("Bloodystone Ore");
             AddMapEntry(new Color(177, 0, 0), name);
 
-            DustType = 84;
+            DustType = DustID.RedMoss;
             HitSound = SoundID.Tink;
             MineResist = 4f;
             MinPick = 190;

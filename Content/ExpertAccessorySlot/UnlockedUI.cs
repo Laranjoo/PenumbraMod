@@ -49,7 +49,7 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             panel.Append(closeButton);
             panel.Append(text);
             Append(panel);
-        }      
+        }
         private void SetRectangle(UIElement uiElement, float left, float top, float width, float height)
         {
             uiElement.Left.Set(left, 0f);

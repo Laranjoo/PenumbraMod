@@ -26,7 +26,7 @@ namespace PenumbraMod.Content.Tiles
             // name.SetDefault("Infected Ore");
             AddMapEntry(new Color(183, 82, 221), name);
 
-            DustType = 84;
+            DustType = DustID.PurpleMoss;
             HitSound = SoundID.Tink;
             MineResist = 4f;
             MinPick = 190;

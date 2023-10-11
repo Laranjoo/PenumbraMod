@@ -662,6 +662,9 @@ Mods: {
 			// ShadewoodScytheProj.DisplayName: Shadewood Spike
 			// InfectedWorm.DisplayName: Infected Worm
 			// PrismaticKnifeProjSpecial2.DisplayName: Prismatic Knife Proj Special2
+			// PeridotHookProjectile.DisplayName: Peridot Hook Projectile
+			// AquamarineHookProjectile.DisplayName: Aquamarine Hook Projectile
+			// RozeQuartzHookProjectile.DisplayName: Roze Quartz Hook Projectile
 		}
 
 		Items: {
@@ -2351,6 +2354,21 @@ Mods: {
 
 			RozeQuartzStoneBlock: {
 				// DisplayName: Roze Quartz Stone Block
+				// Tooltip: ""
+			}
+
+			PeridotHook: {
+				// DisplayName: Peridot Hook
+				// Tooltip: ""
+			}
+
+			AquamarineHook: {
+				// DisplayName: Aquamarine Hook
+				// Tooltip: ""
+			}
+
+			RozeQuartzHook: {
+				// DisplayName: Roze Quartz Hook
 				// Tooltip: ""
 			}
 		}
