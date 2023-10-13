@@ -29,7 +29,7 @@ Mods: {
 
 		NPCs: {
 			vhcmnpc: {
-				// DisplayName: Vhcm
+				// DisplayName: Vhcm ( laranjo have problems )
 
 				TownNPCMood: {
 					Content: Me sinto bem na vibe agora, o Cemitério é demais pra me deixar pensar em estar em casa...
