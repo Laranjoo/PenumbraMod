@@ -9,6 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using Terraria.Audio;
 using Mono.Cecil;
 using static Terraria.ModLoader.PlayerDrawLayer;
+using PenumbraMod.Content.Buffs;
 
 namespace PenumbraMod.Content.Items
 {
@@ -41,8 +42,8 @@ namespace PenumbraMod.Content.Items
 		}
         public override bool CanUseItem(Player player)
         {
-			if (player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 9600)
-			{
+            if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
+            {
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.noUseGraphic = true;
             }
@@ -56,8 +57,8 @@ namespace PenumbraMod.Content.Items
 		}
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			if (player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 9600)
-			{
+            if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
+            {
 		     	const int NumProjectiles = 1;
 
                for (int i = 0; i < NumProjectiles; i++)

@@ -80,7 +80,7 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
                 return;
             if (!Main.playerInventory)
                 return;
-            text.SetText($"You just unlocked a new accessory slot!\nThis is the only slot where you can equip expert\nmode accessories.\n[c/ff0000:Choose well.]");
+            text.SetText(Hideui.Text);
             base.Update(gameTime);
         }
     }
@@ -107,6 +107,12 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
     }
     public class Hideui : ModSystem
     {
+        public static LocalizedText Text { get; private set; }
+        public override void Load()
+        {
+            string category = "UI";
+            Text ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.UnlockedUI"));
+        }
         public static bool hideui = false;
         public override void OnWorldLoad()
         {

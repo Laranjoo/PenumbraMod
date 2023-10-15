@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PenumbraMod.Content.Buffs
 {
@@ -16,10 +17,11 @@ namespace PenumbraMod.Content.Buffs
 			BuffID.Sets.NurseCannotRemoveDebuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;
 		}
-       
-		
-		
-	}
-
-    
+        public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams)
+        {
+			if (Main.LocalPlayer.HasBuff<ComfortablyProtected>())
+				return false;
+			return true;
+        }
+    }
 }

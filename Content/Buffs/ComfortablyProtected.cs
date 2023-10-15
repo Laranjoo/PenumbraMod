@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace PenumbraMod.Content.Buffs
 {
@@ -18,8 +19,6 @@ namespace PenumbraMod.Content.Buffs
             player.statDefense += 4;
             player.GetModPlayer<BuffPlayer>().MarshmellowEffect = true;
         }
-
-
     }
 
     

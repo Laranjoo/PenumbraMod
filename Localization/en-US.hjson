@@ -26,6 +26,13 @@ Mods: {
 		}
 
 		DamageClasses.ReaperClass.DisplayName: reaper damage
+		UI.UnlockedUI:
+			'''
+			You just unlocked a new accessory slot!
+			This is the only slot where you can equip
+			expert mode accessories.
+			[c/ff0000:Choose well.]
+			'''
 
 		NPCs: {
 			vhcmnpc: {
@@ -1779,7 +1786,7 @@ Mods: {
 				Tooltip:
 					'''
 					May be useful
-					[c/817d5d:Special ability:] When used, it spawns tin trash to rotate around the player.
+					[c/817d5d:Special ability:] When used, it spawns tin trash to rotate around its owner, no more than 4 can be spawned.
 					'''
 			}
 
@@ -2369,6 +2376,55 @@ Mods: {
 
 			RozeQuartzHook: {
 				DisplayName: Roze Quartz Hook
+				Tooltip: ""
+			}
+
+			OfflinePeridotGemsparkWall: {
+				DisplayName: Offline Peridot Gemspark Wall
+				Tooltip: ""
+			}
+
+			PeridotGemsparkWall: {
+				DisplayName: Peridot Gemspark Wall
+				Tooltip: ""
+			}
+
+			PeridotGemsparkBlock: {
+				DisplayName: Peridot Gemspark Block
+				Tooltip: ""
+			}
+
+			PeridotStoneWall: {
+				DisplayName: Peridot Stone Wall
+				Tooltip: ""
+			}
+
+			PeridotGemcorn: {
+				DisplayName: Peridot Gemcorn
+				Tooltip: ""
+			}
+
+			AquamarineGemcorn: {
+				DisplayName: Aquamarine Gemcorn
+				Tooltip: ""
+			}
+
+			RozeQuartzGemcorn: {
+				DisplayName: Roze Quartz Gemcorn
+				Tooltip: ""
+			}
+
+			PeridotRobe: {
+				DisplayName: Peridot Robe
+				Tooltip:
+					'''
+					Increases maximum mana by 70
+					Reduces mana usage by 12%
+					'''
+			}
+
+			LimeStainedGlass: {
+				DisplayName: Lime Stained Glass
 				Tooltip: ""
 			}
 		}
