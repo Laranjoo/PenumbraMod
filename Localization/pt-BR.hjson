@@ -275,82 +275,81 @@ Mods: {
                         }
 
 			TemporaryBuff: {
-				// DisplayName: Temporary Buff
-				// Description: Reaper energy at max!
+				 DisplayName: Bônus temporário
+				 Description: Energia da Foice no máximo!
 			}
 
 			AmethystForce: {
-				// DisplayName: Amethyst Force
-				// Description: 15% Increased reaper weapons size
+				 DisplayName: Força Ametista
+				 Description: 15% de aumento no tamanho da foice
 			}
 
 			MagicForce: {
-				// DisplayName: Old man's Force
-				/* Description:
+				 DisplayName: Força do velho Senhor
+				 Description:
 					'''
-					5% increased reaper damage
-					10% increased reaper use time speed
-					Gives scythes a chance to shoot skulls
-					[c/ff6bf5:Old man curse:] 5% decreased critical chance
-					''' */
+					Dano da foice aumentado em 5%
+					Velocidade de uso da foice aumentada em 10%
+					Da a foices a chance de atirar em crânios
+					[c/ff6bf5:Maldição do velho senhor:] 5% de redução de chance crítica
+					''' 
 			}
 
 			AzuriteForce: {
-				// DisplayName: Azurite Force
-				// Description: Reaper weapons have a chance to shoot lightning!
+				 DisplayName: Força Azurita
+				 Description: A foices têm a chance de disparar raios!
 			}
 
 			DiamondForce: {
-				// DisplayName: Diamond Force
-				// Description: +3 increased flat damage for reaper weapons
+				 DisplayName: Força Diamante
+				 Description: +3 de aumento de dano plano para a foice
 			}
 
 			EmeraldForce: {
-				// DisplayName: Emerald Force
-				// Description: +3 armor penetration for reaper weapons
+				 DisplayName: Força Esmeralda
+				 Description: +3 de penetração de armadura para a foice
 			}
 
 			PrimeyeForce: {
-				// DisplayName: Primeye Force
-				// Description: 35% Increased run acceleration and use time for reaper weapons, this has a 30 second cooldown.
+				 DisplayName: Força Primeye
+				 Description: 35% de aumento na aceleração de corrida e tempo de uso para a foice, com um tempo de espera de 30 segundos.
 			}
 
 			PrimeyeForceCooldown: {
-				// DisplayName: Primeye Force Cooldown
-				// Description: Primeye can't be activated now!
+				 DisplayName: Tempo de recarga da Força Primeye
+				 Description: Primeye não pode ser ativado agora! ( se lascou trouxa haha )
 			}
 
 			RubyForce: {
-				// DisplayName: Ruby Force
-				// Description: +15% increased critical chance for reaper weapons
+				 DisplayName: Força Rubi
+				 Description: +15% de aumento de chance crítica para a foice
 			}
 
 			SapphireForce: {
-				// DisplayName: Sapphire Force
-				// Description: +15% increased knockback for reaper weapons
-			}
+				 DisplayName: Força Safira
+				 Description: +15% de aumento de empurrão para a foice 
 
 			TopazForce: {
-				// DisplayName: Topaz Force
-				// Description: +10% increased speed for reaper weapons
+				 DisplayName: Força Topázio
+				 Description: +10% de aumento de velocidade para a foice
 			}
 
 			BloodstainedForce: {
-				// DisplayName: Bloodstained Force
-				/* Description:
+				 DisplayName: Força manchada de sangue
+				 Description:
 					'''
-					Increases reaper damage by 2 and armor penetration by 4
-					You have very subtle lifesteal agenst enemies
-					''' */
+					Aumenta o dano da foices em 2 e a penetração da armadura em 4
+					Você tem um roubo de vida muito sutil contra inimigos
+					''' 
 			}
 
 			DarkenedForce: {
-				// DisplayName: Darkened Force
-				/* Description:
+				 DisplayName: Força Escurecida
+				 Description:
 					'''
-					Increases reaper weapon crit by 5% and speed by 15%
-					You unleash tiny eaters
-					''' */
+					Aumenta o crítico da foice em 5% e a velocidade em 15%
+					Você libera pequenos comedores
+					''' 
 			}
 
 			SlimyForce: {
