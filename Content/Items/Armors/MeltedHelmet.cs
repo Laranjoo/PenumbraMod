@@ -77,6 +77,7 @@ namespace PenumbraMod.Content.Items.Armors
             recipe.AddIngredient(ModContent.ItemType<MeltedEmber>(), 15);
             recipe.AddIngredient(ItemID.Obsidian, 20);
             recipe.AddIngredient(ItemID.SoulofNight, 3);
+            recipe.AddIngredient(ItemID.ObsidianSkull);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

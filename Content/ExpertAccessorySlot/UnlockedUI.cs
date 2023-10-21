@@ -33,7 +33,7 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             border.SetPadding(0);
             SetRectangle(border, left: 0, top: 0, width: 400, height: 170);
 
-            text = new UIText("", 0.93f); // text to show stat
+            text = new UIText("", 0.92f); // text to show stat
             text.Width.Set(100, 0f);
             text.Height.Set(100, 0f);
             text.Top.Set(34, 0f);

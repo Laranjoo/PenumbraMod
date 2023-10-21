@@ -125,24 +125,24 @@ namespace PenumbraMod.Content.Buffs
         {
             if (!Player.dead && !Player.active)
             {
-                if (lifeRegenDebuff)
+                if (lifeRegenDebuff && drawInfo.shadow == 0f)
                 {
                     r = 0.5f;
                     g = 0.5f;
                     b = 0.5f;
 
-                    if (Main.rand.NextBool(3) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(3))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, ModContent.DustType<NargaDust>(), Player.velocity.X * 0f, Player.velocity.Y * -4f);
                         Main.dust[dust].noGravity = true;
                         drawInfo.DustCache.Add(dust);
                     }
                 }
-                if (corrosion)
+                if (corrosion && drawInfo.shadow == 0f)
                 {
                     g = 1f;
 
-                    if (Main.rand.NextBool(10) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(10))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.GreenMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 0f;
@@ -151,10 +151,10 @@ namespace PenumbraMod.Content.Buffs
                         drawInfo.DustCache.Add(dust);
                     }
                 }
-                if (MarshmellowEffect)
+                if (MarshmellowEffect && drawInfo.shadow == 0f)
                 {
 
-                    if (Main.rand.NextBool(8) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(8))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, ModContent.DustType<MarshmellowDust>(), Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 0f;
@@ -162,10 +162,10 @@ namespace PenumbraMod.Content.Buffs
                         drawInfo.DustCache.Add(dust);
                     }
                 }
-                if (bleeding)
+                if (bleeding && drawInfo.shadow == 0f)
                 {
 
-                    if (Main.rand.NextBool(8) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(8))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.RedMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 2f;
@@ -173,9 +173,9 @@ namespace PenumbraMod.Content.Buffs
                         drawInfo.DustCache.Add(dust);
                     }
                 }
-                if (reaperef)
+                if (reaperef && drawInfo.shadow == 0f)
                 {
-                    if (Main.rand.NextBool(2) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(2))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.LavaMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 6f;
@@ -184,9 +184,9 @@ namespace PenumbraMod.Content.Buffs
                         drawInfo.DustCache.Add(dust);
                     }
                 }
-                if (Leadforce)
+                if (Leadforce && drawInfo.shadow == 0f)
                 {
-                    if (Main.rand.NextBool(10) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(10))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lead, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 0f;
@@ -196,21 +196,21 @@ namespace PenumbraMod.Content.Buffs
                     }
 
                 }
-                if (MeltedArmor)
+                if (MeltedArmor && drawInfo.shadow == 0f)
                 {
-                    if (Main.rand.NextBool(5) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(2))
                     {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.LavaMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 0f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.014f;
+                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lava, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                        Main.dust[dust].velocity.Y -= 8f;
+                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
                         Main.dust[dust].noGravity = false;
                         drawInfo.DustCache.Add(dust);
                     }
 
                 }
-                if (melting)
+                if (melting && drawInfo.shadow == 0f)
                 {
-                    if (Main.rand.NextBool(2) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(2))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lava, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 0f;
@@ -220,10 +220,10 @@ namespace PenumbraMod.Content.Buffs
                     }
 
                 }
-                if (hotslime)
+                if (hotslime && drawInfo.shadow == 0f)
                 {
 
-                    if (Main.rand.NextBool(9) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(9))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 1f;
@@ -233,10 +233,10 @@ namespace PenumbraMod.Content.Buffs
                     }
 
                 }
-                if (aura)
+                if (aura && drawInfo.shadow == 0f)
                 {
 
-                    if (Main.rand.NextBool(3) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(3))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.PinkCrystalShard, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 1f;
@@ -246,10 +246,10 @@ namespace PenumbraMod.Content.Buffs
                     }
 
                 }
-                if (l2)
+                if (l2 && drawInfo.shadow == 0f)
                 {
 
-                    if (Main.rand.NextBool(3) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(3))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 1f;
@@ -259,10 +259,10 @@ namespace PenumbraMod.Content.Buffs
                     }
 
                 }
-                if (l3)
+                if (l3 && drawInfo.shadow == 0f)
                 {
 
-                    if (Main.rand.NextBool(3) && drawInfo.shadow == 0f)
+                    if (Main.rand.NextBool(3))
                     {
                         int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
                         Main.dust[dust].velocity *= 2f;
@@ -352,7 +352,7 @@ namespace PenumbraMod.Content.Buffs
             {
 
                 if (damage == 10.0 && hitDirection == 0 && damageSource.SourceOtherIndex == 8)
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + "melted till your bones turned into ashes");
+                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + "melted 'till his bones turned into ashes");
 
                 return true;
             }
@@ -384,7 +384,7 @@ namespace PenumbraMod.Content.Buffs
             {
 
                 if (damage == 10.0 && hitDirection == 0 && damageSource.SourceOtherIndex == 8)
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + "bleed until he turned into a sack of skin");
+                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + "bleed until it turned into a sack of skin");
 
                 return true;
             }
