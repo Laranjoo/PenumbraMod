@@ -7,6 +7,8 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent;
+using static PenumbraMod.Content.Items.Wakizashi;
 
 namespace PenumbraMod.Content.Items
 {
@@ -56,21 +58,7 @@ namespace PenumbraMod.Content.Items
         {
             if (!player.HasBuff(ModContent.BuffType<ReaperControl>()))
             {
-                if (player.velocity.Y > 5)
-                {
-                    if (player.direction == 0)
-                        notboollol = true;
-                    else
-                        notboollol = false;
-                }
-                if (player.velocity.Y < -5)
-                {
-                    if (player.direction != 0)
-                        notboollol = true;
-                    else
-                        notboollol = false;
-                }
-                int basic = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosiveScytheSwing>(), damage, knockback, player.whoAmI);
+                int basic = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
                 if (notboollol == true)
                 {
                     Main.projectile[basic].ai[1] = -1;
@@ -128,7 +116,7 @@ namespace PenumbraMod.Content.Items
                     // Loop these functions 20 times.
                     for (int e = 0; e < 20; e++)
                     {
-                        position = player.Center - Utils.RandomVector2(Main.rand, 1200, 0) * player.direction + new Vector2(0, 600f);
+                        position = player.Center - new Vector2(Main.rand.Next(1200, 1400), 600f) * player.direction;
                         position.Y -= 100 * e;
                         Vector2 heading = target - position;
 
@@ -204,6 +192,8 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/CorrosiveScytheSwingef").Value;
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
                 if (Projectile.oldPos[k] == Vector2.Zero)
@@ -218,10 +208,19 @@ namespace PenumbraMod.Content.Items
                     lerpedPos -= Main.screenPosition;
                     Color finalColor = lightColor * 0.5f * (1 - ((float)k / (float)Projectile.oldPos.Length));
                     finalColor.A = 0;//acts like additive blending without spritebatch stuff
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle, texture.Size() / 2, 1, SpriteEffects.None, 0);
+                    if (Projectile.ai[1] == -1)
+                        Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle - 0.78f, texture.Size() / 2, 1, SpriteEffects.None, 0);
+                    if (Projectile.ai[1] == 1)
+                        Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle - 0.78f, texture.Size() / 2, 1, SpriteEffects.FlipHorizontally, 0);
                 }
             }
-            return true;
+
+            if (Projectile.ai[1] == -1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.ai[1] == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+
+            return false;
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -263,12 +262,11 @@ namespace PenumbraMod.Content.Items
                 dir = Main.MouseWorld;
                 Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
             }
-            //FadeInAndOut();
-            Projectile.Center = Main.player[Projectile.owner].Center;
-            Projectile.ai[0] += 1f;
             Player player = Main.player[Projectile.owner];
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
-            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((20 - Projectile.ai[0])));
+            Projectile.Center = Main.player[Projectile.owner].Center;
+            Projectile.ai[0] += 1f;
+            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((17 - Projectile.ai[0])));
             Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 0.5f);
         }
 

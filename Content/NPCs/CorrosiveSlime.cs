@@ -44,7 +44,7 @@ namespace PenumbraMod.Content.NPCs
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.hardMode)
+            if (NPC.downedPlantBoss)
                 return SpawnCondition.Underground.Chance * 0.5f;
             return 0f;
         }

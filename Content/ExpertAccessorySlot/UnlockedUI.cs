@@ -88,10 +88,14 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
     {
         // Tooltip text that will be shown on hover
         internal string hoverText;
-
+        public static LocalizedText text;
         public ExampleUIHoverImageButton(Asset<Texture2D> texture, string hoverText) : base(texture)
         {
             this.hoverText = hoverText;
+        }
+        public ExampleUIHoverImageButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        {
+            text = Text;
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)

@@ -25,18 +25,16 @@ namespace PenumbraMod.Content.Items
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 50;
 			Item.height = 50;
-			Item.useTime = 42;
-			Item.useAnimation = 42;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 4;
-			Item.value = 3450;
+			Item.value = 30450;
 			Item.rare = ItemRarityID.Cyan;
-			Item.UseSound = SoundID.Item1;
-			Item.autoReuse = false;
+			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<TheMagebladeSwing>();
 			Item.noUseGraphic = true;
 			Item.noMelee = true;
-			Item.shootSpeed = 6f;
 			Item.crit = 25;
             Item.noMelee = true;
             Item.channel = true;
@@ -45,6 +43,23 @@ namespace PenumbraMod.Content.Items
         {
             // Ensures no more than one spear can be thrown out, use this when using autoReuse
             return player.ownedProjectileCounts[Item.shoot] < 1;
+        }
+        bool notboollol = true;
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            int basic = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
+            if (notboollol == true)
+            {
+                Main.projectile[basic].ai[2] = -1;
+                notboollol = false;
+            }
+            else
+            {
+                Main.projectile[basic].ai[2] = 1;
+                notboollol = true;
+            }
+            Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
+            return false;
         }
         public override void PostUpdate()
         {

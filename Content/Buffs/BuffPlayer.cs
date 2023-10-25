@@ -123,157 +123,146 @@ namespace PenumbraMod.Content.Buffs
 
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
-            if (!Player.dead && !Player.active)
+            if (lifeRegenDebuff && drawInfo.shadow == 0f)
             {
-                if (lifeRegenDebuff && drawInfo.shadow == 0f)
+                r = 0.5f;
+                g = 0.5f;
+                b = 0.5f;
+            }
+            if (corrosion && drawInfo.shadow == 0f)
+            {
+                g = 1f;
+
+                if (Main.rand.NextBool(10))
                 {
-                    r = 0.5f;
-                    g = 0.5f;
-                    b = 0.5f;
-
-                    if (Main.rand.NextBool(3))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, ModContent.DustType<NargaDust>(), Player.velocity.X * 0f, Player.velocity.Y * -4f);
-                        Main.dust[dust].noGravity = true;
-                        drawInfo.DustCache.Add(dust);
-                    }
-                }
-                if (corrosion && drawInfo.shadow == 0f)
-                {
-                    g = 1f;
-
-                    if (Main.rand.NextBool(10))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.GreenMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 0f;
-                        Main.dust[dust].noGravity = true;
-                        Main.dust[dust].rotation += 0.1f;
-                        drawInfo.DustCache.Add(dust);
-                    }
-                }
-                if (MarshmellowEffect && drawInfo.shadow == 0f)
-                {
-
-                    if (Main.rand.NextBool(8))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, ModContent.DustType<MarshmellowDust>(), Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 0f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-                }
-                if (bleeding && drawInfo.shadow == 0f)
-                {
-
-                    if (Main.rand.NextBool(8))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.RedMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 2f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-                }
-                if (reaperef && drawInfo.shadow == 0f)
-                {
-                    if (Main.rand.NextBool(2))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.LavaMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 6f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.014f;
-                        Main.dust[dust].noGravity = true;
-                        drawInfo.DustCache.Add(dust);
-                    }
-                }
-                if (Leadforce && drawInfo.shadow == 0f)
-                {
-                    if (Main.rand.NextBool(10))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lead, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 0f;
-
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
-                }
-                if (MeltedArmor && drawInfo.shadow == 0f)
-                {
-                    if (Main.rand.NextBool(2))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lava, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity.Y -= 8f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
-                }
-                if (melting && drawInfo.shadow == 0f)
-                {
-                    if (Main.rand.NextBool(2))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lava, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 0f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.014f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
-                }
-                if (hotslime && drawInfo.shadow == 0f)
-                {
-
-                    if (Main.rand.NextBool(9))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 1f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
-                }
-                if (aura && drawInfo.shadow == 0f)
-                {
-
-                    if (Main.rand.NextBool(3))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.PinkCrystalShard, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 1f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
-                }
-                if (l2 && drawInfo.shadow == 0f)
-                {
-
-                    if (Main.rand.NextBool(3))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 1f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
-                }
-                if (l3 && drawInfo.shadow == 0f)
-                {
-
-                    if (Main.rand.NextBool(3))
-                    {
-                        int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
-                        Main.dust[dust].velocity *= 2f;
-                        Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.012f;
-                        Main.dust[dust].noGravity = false;
-                        drawInfo.DustCache.Add(dust);
-                    }
-
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.GreenTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 0f;
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].rotation += 0.1f;
+                    drawInfo.DustCache.Add(dust);
                 }
             }
+            if (MarshmellowEffect && drawInfo.shadow == 0f)
+            {
 
+                if (Main.rand.NextBool(8))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, ModContent.DustType<MarshmellowDust>(), Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 0f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+            }
+            if (bleeding && drawInfo.shadow == 0f)
+            {
+
+                if (Main.rand.NextBool(8))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.RedMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 2f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+            }
+            if (reaperef && drawInfo.shadow == 0f)
+            {
+                if (Main.rand.NextBool(2))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.LavaMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 6f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.014f;
+                    Main.dust[dust].noGravity = true;
+                    drawInfo.DustCache.Add(dust);
+                }
+            }
+            if (Leadforce && drawInfo.shadow == 0f)
+            {
+                if (Main.rand.NextBool(10))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lead, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 0f;
+
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
+            if (MeltedArmor && drawInfo.shadow == 0f)
+            {
+                if (Main.rand.NextBool(2))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lava, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity.Y -= 8f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
+            if (melting && drawInfo.shadow == 0f)
+            {
+                if (Main.rand.NextBool(2))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.Lava, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 0f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.014f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
+            if (hotslime && drawInfo.shadow == 0f)
+            {
+
+                if (Main.rand.NextBool(9))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueMoss, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
+            if (aura && drawInfo.shadow == 0f)
+            {
+
+                if (Main.rand.NextBool(3))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.PinkCrystalShard, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
+            if (l2 && drawInfo.shadow == 0f)
+            {
+
+                if (Main.rand.NextBool(3))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 1f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
+            if (l3 && drawInfo.shadow == 0f)
+            {
+
+                if (Main.rand.NextBool(3))
+                {
+                    int dust = Dust.NewDust(drawInfo.Position, Player.width, Player.height, DustID.BlueTorch, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 2f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.012f;
+                    Main.dust[dust].noGravity = false;
+                    drawInfo.DustCache.Add(dust);
+                }
+
+            }
         }
 
 
@@ -352,7 +341,7 @@ namespace PenumbraMod.Content.Buffs
             {
 
                 if (damage == 10.0 && hitDirection == 0 && damageSource.SourceOtherIndex == 8)
-                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + "melted 'till his bones turned into ashes");
+                    damageSource = PlayerDeathReason.ByCustomReason(Player.name + "melted until its bones turned into ashes");
 
                 return true;
             }

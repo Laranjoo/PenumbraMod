@@ -25,14 +25,14 @@ namespace PenumbraMod.Content.Buffs
             player.GetAttackSpeed<ReaperClass>() += 0.25f;
             player.GetDamage(DamageClass.Generic) += 0.05f;
             player.GetModPlayer<BuffPlayer>().MeltedArmor = true;
-
-            int dust = Dust.NewDust(player.position, 30, player.height, DustID.LavaMoss, player.velocity.X * 0f, player.velocity.Y * 0f);
-            Main.dust[dust].velocity.Y -= 8f;
-            Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
-            Main.dust[dust].noGravity = false;
-        }
-
-
+            if (Main.rand.NextBool(2))
+            {
+                int dust = Dust.NewDust(player.position, 30, player.height, DustID.LavaMoss, player.velocity.X * 0f, player.velocity.Y * 0f);
+                Main.dust[dust].velocity.Y -= 8f;
+                Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.008f;
+                Main.dust[dust].noGravity = false;
+            }
+        }       
     }
 
     

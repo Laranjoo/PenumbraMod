@@ -27,7 +27,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Amethyst, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -46,7 +46,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Ruby, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
         
@@ -66,7 +66,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Diamond, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -85,7 +85,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Topaz, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -165,7 +165,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             Recipe recipe = CreateRecipe();            
             recipe.AddIngredient(ModContent.ItemType<AerogelBar>(), 15);
             recipe.AddIngredient(ModContent.ItemType<RubyCrystal>(), 1);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -185,7 +185,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Ectoplasm, 5);
             recipe.AddIngredient(ItemID.SpectreBar, 10);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile<Tiles.FireproofJewelMolder>();
             recipe.Register();
         }
     }
@@ -210,7 +210,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             recipe.AddIngredient(ModContent.ItemType<RubyCrystal>(), 1);
             recipe.AddIngredient(ModContent.ItemType<DiamondCrystal>(), 1);
             recipe.AddIngredient(ItemID.BrokenHeroSword, 1);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile<Tiles.FireproofJewelMolder>();
             recipe.Register();
         }
     }
@@ -229,7 +229,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Sapphire, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -248,7 +248,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.Emerald, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -290,7 +290,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             recipe.AddIngredient(ItemID.SoulofFright, 20);
             recipe.AddIngredient(ItemID.Ruby, 1);
             recipe.AddIngredient(ItemID.HallowedBar, 15);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddTile<Tiles.JewelMolder>();
             recipe.Register();
         }
     }
@@ -308,7 +308,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient<CorrosiveShard>(15);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile<Tiles.FireproofJewelMolder>();
             recipe.Register();
         }
     }
@@ -329,7 +329,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             recipe.AddIngredient(ItemID.LightShard, 2);
             recipe.AddIngredient(ItemID.SoulofLight, 7);
             recipe.AddIngredient(ItemID.SoulofNight, 7);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile<Tiles.FireproofJewelMolder>();
             recipe.Register();
         }
     }

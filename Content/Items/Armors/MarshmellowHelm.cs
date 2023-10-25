@@ -65,7 +65,7 @@ namespace PenumbraMod.Content.Items.Armors
             foreach (string key in MarshmellowKeybindSystem.MarshmellowArmorKeybind.GetAssignedKeys())
             {
 
-                player.setBonus = "[c/e0ffff:Press " + key + " To Protect yourself and gain 4+ defense for 30 seconds]\n" +
+                player.setBonus = "[c/e0ffff:Press " + key + " To Protect yourself and gain 4+ defense for 10 seconds]\n" +
                     "[c/c0c0c0:This has a 30 seconds cooldown]\n" +
                     "[c/7fffd4:'You feel so comfortable now!']";
             }
@@ -105,8 +105,8 @@ namespace PenumbraMod.Content.Items.Armors
 
                         else
                         {
-                            Player.AddBuff(ModContent.BuffType<ComfortablyProtected>(), 1800);
-                            Player.AddBuff(ModContent.BuffType<NotProtected>(), 3600);
+                            Player.AddBuff(ModContent.BuffType<ComfortablyProtected>(), 10 * 60);
+                            Player.AddBuff(ModContent.BuffType<NotProtected>(), 70 * 60);
                         }
                     }
 
