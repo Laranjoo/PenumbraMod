@@ -156,14 +156,14 @@ namespace PenumbraMod.Content.Items
                 Main.dust[dust].velocity *= 6.0f;
             }
             Vector2 launchVelocity2 = new Vector2(-10, 1); // Create a velocity moving the left.
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 10; i++)
             {
                 // Every iteration, rotate the newly spawned projectile by the equivalent 1/4th of a circle (MathHelper.PiOver4)
                 // (Remember that all rotation in Terraria is based on Radians, NOT Degrees!)
                 launchVelocity2 = launchVelocity2.RotatedBy(MathHelper.PiOver4);
 
                 // Spawn a new projectile with the newly rotated velocity, belonging to the original projectile owner. The new projectile will inherit the spawning source of this projectile.
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity2, ModContent.ProjectileType<JotapCosmicBulletMini>(), Projectile.damage * 2, Projectile.knockBack, Projectile.owner);
+                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity2, ModContent.ProjectileType<JotapCosmicBulletMini>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
             }
             // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
@@ -188,7 +188,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.friendly = true;
                 Projectile.hostile = false;
                 Projectile.penetrate = -1;
-                Projectile.timeLeft = 600;
+                Projectile.timeLeft = 240;
                 Projectile.light = 0.25f;
                 Projectile.ignoreWater = true;
                 Projectile.tileCollide = false;

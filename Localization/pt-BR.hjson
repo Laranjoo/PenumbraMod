@@ -27,9 +27,27 @@ Mods: {
 
 		DamageClasses.ReaperClass.DisplayName: danos por ataque ceifador
 
+		UI: {
+			UnlockedUI:
+				'''
+				Você desbloqueou um novo slot de acessório!
+				Esse é o único slot onde você pode equipar
+				acessórios do modo perito
+				[c/ff0000:Escolha sabiamente.]
+				'''
+			ReaperBar: Energia ceifadora
+			ReaperBarJewel: Jóias
+			ExpertAccessoryHoverName1: Acessório
+			ExpertAccessoryHoverName2: Social Acessório
+			ExpertAccessoryHoverName3: Tingir
+			ExpertAccessoryHoverName4: Acessório Trancado
+			ExpertAccessoryHoverName5: Social Acessório Trancado
+			ExpertAccessoryHoverName6: Tingir Trancado
+		}
+
 		NPCs: {
 			vhcmnpc: {
-				 DisplayName: Vhcm 
+				DisplayName: Vhcm
 
 				TownNPCMood: {
 					Content: Me sinto bem na vibe agora, o Cemitério é demais pra me deixar pensar em estar em casa...
@@ -46,34 +64,34 @@ Mods: {
 					LoveNPC: Eu meio que gosto de como {NPCName} se veste, é muito estiloso...
 					DislikeNPC: Porque que {NPCName} está tão feliz toda hora? eu não entendo isso...
 					HateNPC: Porfavor, deixe {NPCName} longe de mim, ele não para de ficar me fazendo promoções de um pozinho amarelo estúpido.
-					 LikeNPC_Princess: eu gosto  {NPCName}.
-					 Princess_LovesNPC: eu amo {NPCName}.
+					LikeNPC_Princess: eu gosto  {NPCName}.
+					Princess_LovesNPC: eu amo {NPCName}.
 				}
 			}
 
-			 BuritiBoss.DisplayName: Buriti
-			 EnergyConductorMinion.DisplayName: Protetor Condutor de Energia
-			 EnergyConductorMinion2.DisplayName: Atirador de condutores de energia
+			BuritiBoss.DisplayName: Buriti
+			EnergyConductorMinion.DisplayName: Protetor Condutor de Energia
+			EnergyConductorMinion2.DisplayName: Atirador de condutores de energia
 
 			Eyeofthestorm: {
-				 DisplayName: Eye of the Storm
+				DisplayName: Eye of the Storm
 
 				BossChecklistIntegration: {
-					 SpawnInfo: Use um [i:8093] para atacar o vento e acordar o antigo Eye of the Storm.
-					 DespawnMessage: O Eye of the Storm voou para longe para as tempestades...
+					SpawnInfo: Use um [i:8093] para atacar o vento e acordar o antigo Eye of the Storm.
+					DespawnMessage: O Eye of the Storm voou para longe para as tempestades...
 				}
 			}
 
-			 MarshmellowSlime.DisplayName: Slime de Marshmallow
-			 MeltedSkeleton.DisplayName: Esqueleto Derretido
-			 EnergyConductorMinionNonSound.DisplayName: Minion Condutor de Energia
-			 Oni.DisplayName: Oni
-			 MarbleStatue.DisplayName: Estátua de Mármore
-			 OniZombie.DisplayName: Zumbí
-			 CorrosiveSlime.DisplayName: Slime Corrosivo
-			 selfkillnpc.DisplayName: selfkillnpc
-			 BloodystoneSlime.DisplayName: Slime de Pedra Sangrenta
-			 InfectedSlime.DisplayName: Slime Infectada
+			MarshmellowSlime.DisplayName: Geleia de Marshmallow
+			MeltedSkeleton.DisplayName: Esqueleto Derretido
+			EnergyConductorMinionNonSound.DisplayName: Servo Condutor de Energia
+			Oni.DisplayName: Oni
+			MarbleStatue.DisplayName: Estátua de Mármore
+			OniZombie.DisplayName: Zumbí
+			CorrosiveSlime.DisplayName: Geleia Corrosivo
+			selfkillnpc.DisplayName: selfkillnpc
+			BloodystoneSlime.DisplayName: Geleia de Pedra Sangrenta
+			InfectedSlime.DisplayName: Geleia Infectada
 		}
 
 		Bestiary.vhcmnpc: Ele veio de uma cidade misteriosa... não sabemos porque ele gosta de viver em lugares escuros, ele gosta de vibes escuras e chuva, que estranho... (parece doente mental)
@@ -81,7 +99,7 @@ Mods: {
 		Dialogue: {
 			vhcmnpc: {
 				Rainoutside: Tá chovendo... gosto da chuva, mas não quando eu estou molhado, isso me faz sentir-me estranho...
-				Standart: Você está me perturbando? 
+				Standart: Você está me perturbando?
 				Standart2: Estou sendindo que você gosta de falar comigo, quer uma lápide? vendo um monte de graça!
 				Standart3: Ei, as vezes, uma lápide pode servir bem para decoração para este lugar!
 				Rainoutsidehome: Gosto do som de chuva, sinto uma vibe legal com isso...
@@ -93,263 +111,264 @@ Mods: {
 
 		Buffs: {
 			BlackLungs1: {
-				 DisplayName: Pulmões Negros
-				 Description: Você tem fumado muito!
+				DisplayName: Pulmões Negros
+				Description: Você tem fumado muito!
 			}
 
 			ComfortablyProtected: {
-				 DisplayName: Confortavelmente protegido
-				 Description:
+				DisplayName: Confortavelmente protegido
+				Description:
 					'''
 					Você se sente confortavelmente protegido...
 					Defesa aumentada em 4
-					''' 
+					'''
 			}
 
 			DarkMatter: {
-				 DisplayName: Matéria escura
-				 Description: Isso está cortando sua alma pela metade...
+				DisplayName: Matéria escura
+				Description: Isso está cortando sua alma pela metade...
 			}
 
 			DeathSpeed: {
-				 DisplayName: Velocidade da Morte
-				 Description:
+				DisplayName: Velocidade da Morte
+				Description:
 					'''
 					Você sente que a sua foice esta muito leve
 					Velocidade da foice aumentada em 85%
-					''' 
+					'''
 			}
 
 			ElementalCooldown: {
-				 DisplayName: Tempo Recarga Elemental
-				 Description: Deixe sua espada recarregar suas energias. Você não pode usar Tiros Elementais!
+				DisplayName: Tempo Recarga Elemental
+				Description: Deixe sua espada recarregar suas energias. Você não pode usar Tiros Elementais!
 			}
 
 			EnergyConductor: {
-				 DisplayName: Condutor de Energia
-				 Description: O Condutor de Energia lutará por você
+				DisplayName: Condutor de Energia
+				Description: O Condutor de Energia lutará por você
 			}
 
 			GoldSpeed: {
-				 DisplayName: Velocidade de Ouro
-				 Description:
+				DisplayName: Velocidade de Ouro
+				Description:
 					'''
 					Você sente que a sua foice esta leve
 					Velocidade da foice aumentada em 70%
-					''' 
+					'''
 			}
 
 			HighVoltage: {
-				 DisplayName: Alta voltagem
-				 Description: Você está recebendo energia de alta voltagem!
+				DisplayName: Alta voltagem
+				Description: Você está recebendo energia de alta voltagem!
 			}
 
 			hitef: {
-				 DisplayName: Hit Effect
-				 Description: Hit Effect
+				DisplayName: Hit Effect
+				Description: Hit Effect
 			}
 
 			HotSlime1: {
-				 DisplayName: Slime Quente
-				 Description: Esse Slime esta muito quente
+				DisplayName: Slime Quente
+				Description: Esse Slime esta muito quente
 			}
 
 			IceSpeed: {
-				 DisplayName: Velocidade gelada
-				 Description:
+				DisplayName: Velocidade gelada
+				Description:
 					'''
 					Você sente que a sua foice esta muito leve
 					Velocidade da foice aumentada em 50%
-					''' 
+					'''
 			}
 
 			JumpVelBuff: {
-				 DisplayName: Força de Sapo
-				 Description: Sua velocidade de movimento e salto são aumentados
+				DisplayName: Força de Sapo
+				Description: Sua velocidade de movimento e salto são aumentados
 			}
 
 			LeadForce: {
 				DisplayName: Força de Chumbo
-				 Description:
+				Description:
 					'''
 					'Você se sente muito resistente!'
 					Redução de dano aumentada em 45% até o próximo ataque
-					''' 
+					'''
 			}
 
 			LowVoltage: {
-				 DisplayName: Baixa voltagem
-				 Description: Você está recebendo energia de baixa voltagem!
+				DisplayName: Baixa voltagem
+				Description: Você está recebendo energia de baixa voltagem!
 			}
 
 			MediumVoltage: {
-				 DisplayName: Voltagem média
-				 Description: Você está recebendo energia de média voltagem!
+				DisplayName: Voltagem média
+				Description: Você está recebendo energia de média voltagem!
 			}
 
 			MeltedCooldown: {
-				 DisplayName: Tempo de Recarga Derretido
-				 Description: Você não pode ativar sua habilidade derretida!
+				DisplayName: Tempo de Recarga Derretido
+				Description: Você não pode ativar sua habilidade derretida!
 			}
 
 			MeltedEx: {
-				 DisplayName: Explosão Derretida
-				 Description: BOOM!
+				DisplayName: Explosão Derretida
+				Description: BOOM!
 			}
 
 			MeltedForce: {
-				 DisplayName: Força Derretida
-				 Description:
+				DisplayName: Força Derretida
+				Description:
 					'''
 					O inferno te realiza
 					Velocidade de movimento aumentada em 15%
 					Velocidade de ataque da foice aumentada em 25%
 					Dano aumentado em 5%
 					Você causa dano aos inimigos quando atingido
-					''' 
+					'''
 			}
 
 			Melting: {
-				 DisplayName: Derretendo
-				 Description: Você está derretendo!
+				DisplayName: Derretendo
+				Description: Você está derretendo!
 			}
 
 			NotProtected: {
-				 DisplayName: Tempo de recarga confortavelmente protegido
-				 Description: Você não consegue se sentir confortável de novo :(
+				DisplayName: Tempo de recarga confortavelmente protegido
+				Description: Você não consegue se sentir confortável de novo :(
 			}
 
 			PrismAura2: {
-				 DisplayName: Aura Prismática
-				 Description: Você tem uma aura protetora ao seu redor :)
+				DisplayName: Aura Prismática
+				Description: Você tem uma aura protetora ao seu redor
 			}
 
 			PrismLightning: {
-				 DisplayName: Iluminação Prismática
-				// Description: This slime is too hot
+				DisplayName: Iluminação Prismática
+				Description: Queimando pela luz!
 			}
 
 			PrismThorns: {
-				 DisplayName: Proteção Prismática Fraca
-				 Description: Você se sente fraco, mas ainda pode causar danos aos inimigos quando atingido
+				DisplayName: Proteção Prismática Fraca
+				Description: Você se sente fraco, mas ainda pode causar danos aos inimigos quando atingido
 			}
 
 			ShieldCooldown: {
-				 DisplayName: Tempo de Recarga do Escudo
-				 Description: Você não pode lançar o seu escudo!
+				DisplayName: Tempo de Recarga do Escudo
+				Description: Você não pode lançar o seu escudo!
 			}
 
 			SpikeStunned: {
-				 DisplayName: Atordoado por espinhos
-				 Description: Os espinhos doem...
+				DisplayName: Atordoado por espinhos
+				Description: Os espinhos doem...
 			}
 
 			StunnedNPC: {
-				 DisplayName: Atordoado
-				 Description: Você está atordoado! :'(
+				DisplayName: Atordoado
+				Description: Você está atordoado!
 			}
 
 			ReaperControl: {
-				 DisplayName: Controle do Ceifador
-				 Description: Habilidade da foice ativada!
+				DisplayName: Controle do Ceifador
+				Description: Habilidade da foice ativada!
 			}
 
 			ReaperControlDust: {
-				 DisplayName: Poeira de controle do Ceifador
-				 Description: Poeira '-'
+				DisplayName: Poeira de controle do Ceifador
+				Description: Poeira
 			}
 
 			MeltedDemonicBatBuff: {
-				 DisplayName: Buff de Morcego Demoníaco Derretido
-				 Description: Um morcego derretido está lutando por você.
+				DisplayName: Buff de Morcego Demoníaco Derretido
+				Description: Um morcego derretido está lutando por você.
 			}
 
 			Bleeding: {
-				 DisplayName: sangrando
-				 Description: Você está sangrando!
+				DisplayName: Sangrando
+				Description: Você está sangrando!
 			}
 
 			Corrosion: {
-				 DisplayName: Corrosão
-	 			 Description: Você está derretendo em corrosão!
-                        }
+				DisplayName: Corrosão
+				Description: Você está derretendo em corrosão!
+			}
 
 			TemporaryBuff: {
-				 DisplayName: Bônus temporário
-				 Description: Energia da Foice no máximo!
+				DisplayName: Bônus temporário
+				Description: Energia da Foice no máximo!
 			}
 
 			AmethystForce: {
-				 DisplayName: Força Ametista
-				 Description: 15% de aumento no tamanho da foice
+				DisplayName: Força Ametista
+				Description: 15% de aumento no tamanho da foice
 			}
 
 			MagicForce: {
-				 DisplayName: Força do velho Senhor
-				 Description:
+				DisplayName: Força do velho Senhor
+				Description:
 					'''
 					Dano da foice aumentado em 5%
 					Velocidade de uso da foice aumentada em 10%
 					Da a foices a chance de atirar em crânios
 					[c/ff6bf5:Maldição do velho senhor:] 5% de redução de chance crítica
-					''' 
+					'''
 			}
 
 			AzuriteForce: {
-				 DisplayName: Força Azurita
-				 Description: A foices têm a chance de disparar raios!
+				DisplayName: Força Azurita
+				Description: A foices têm a chance de disparar raios!
 			}
 
 			DiamondForce: {
-				 DisplayName: Força Diamante
-				 Description: +3 de aumento de dano plano para a foice
+				DisplayName: Força Diamante
+				Description: +3 de aumento de dano plano para a foice
 			}
 
 			EmeraldForce: {
-				 DisplayName: Força Esmeralda
-				 Description: +3 de penetração de armadura para a foice
+				DisplayName: Força Esmeralda
+				Description: +3 de penetração de armadura para a foice
 			}
 
 			PrimeyeForce: {
-				 DisplayName: Força Primeye
-				 Description: 35% de aumento na aceleração de corrida e tempo de uso para a foice, com um tempo de espera de 30 segundos.
+				DisplayName: Força Primeye
+				Description: 35% de aumento na aceleração de corrida e tempo de uso para a foice, com um tempo de espera de 30 segundos.
 			}
 
 			PrimeyeForceCooldown: {
-				 DisplayName: Tempo de recarga da Força Primeye
-				 Description: Primeye não pode ser ativado agora! ( se lascou trouxa haha )
+				DisplayName: Tempo de recarga da Força Primeye
+				Description: Primeye não pode ser ativado agora! ( se lascou trouxa haha )
 			}
 
 			RubyForce: {
-				 DisplayName: Força Rubi
-				 Description: +15% de aumento de chance crítica para a foice
+				DisplayName: Força Rubi
+				Description: +15% de aumento de chance crítica para a foice
 			}
 
 			SapphireForce: {
-				 DisplayName: Força Safira
-				 Description: +15% de aumento de empurrão para a foice 
+				DisplayName: Força Safira
+				Description: +15% de aumento de empurrão para a foice
+			}
 
 			TopazForce: {
-				 DisplayName: Força Topázio
-				 Description: +10% de aumento de velocidade para a foice
+				DisplayName: Força Topázio
+				Description: +10% de aumento de velocidade para a foice
 			}
 
 			BloodstainedForce: {
-				 DisplayName: Força manchada de sangue
-				 Description:
+				DisplayName: Força manchada de sangue
+				Description:
 					'''
 					Aumenta o dano da foices em 2 e a penetração da armadura em 4
 					Você tem um roubo de vida muito sutil contra inimigos
-					''' 
+					'''
 			}
 
 			DarkenedForce: {
-				 DisplayName: Força Escurecida
-				 Description:
+				DisplayName: Força Escurecida
+				Description:
 					'''
 					Aumenta o crítico da foice em 5% e a velocidade em 15%
 					Você libera pequenos comedores
-					''' 
+					'''
 			}
 
 			SlimyForce: {
@@ -664,6 +683,7 @@ Mods: {
 			// PeridotHookProjectile.DisplayName: Peridot Hook Projectile
 			// AquamarineHookProjectile.DisplayName: Aquamarine Hook Projectile
 			// RozeQuartzHookProjectile.DisplayName: Roze Quartz Hook Projectile
+			// CorrodedCrystal.DisplayName: Corroded Crystal
 		}
 
 		Items: {
@@ -2419,6 +2439,31 @@ Mods: {
 				// DisplayName: Lime Stained Glass
 				// Tooltip: ""
 			}
+
+			FireproofJewelMolder: {
+				// DisplayName: Fireproof Jewel Molder
+				// Tooltip: ""
+			}
+
+			JewelMolder: {
+				// DisplayName: Jewel Molder
+				// Tooltip: ""
+			}
+
+			IndigoPhasesaber: {
+				// DisplayName: Indigo Phasesaber
+				// Tooltip: ""
+			}
+
+			LimePhasesaber: {
+				// DisplayName: Lime Phasesaber
+				// Tooltip: ""
+			}
+
+			PurplePhasesaber: {
+				// DisplayName: Purple Phasesaber
+				// Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2433,6 +2478,7 @@ Mods: {
 			// Aquamarine.MapEntry: Aquamarine
 			// Peridot.MapEntry: Peridot
 			// EnchantedMushroom.MapEntry: Enchanted Mushroom
+			// JewelMolder.MapEntry: Jewel Molder
 		}
 
 		Keybinds: {

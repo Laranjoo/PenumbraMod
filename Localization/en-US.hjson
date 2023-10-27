@@ -26,13 +26,24 @@ Mods: {
 		}
 
 		DamageClasses.ReaperClass.DisplayName: reaper damage
-		UI.UnlockedUI:
-			'''
-			You just unlocked a new accessory slot!
-			This is the only slot where you can equip
-			expert mode accessories.
-			[c/ff0000:Choose well.]
-			'''
+
+		UI: {
+			UnlockedUI:
+				'''
+				You just unlocked a new accessory slot!
+				This is the only slot where you can equip
+				expert mode accessories.
+				[c/ff0000:Choose well.]
+				'''
+			ReaperBar: Reaper energy
+			ReaperBarJewel: Jewels
+			ExpertAccessoryHoverName1: Accessory
+			ExpertAccessoryHoverName2: Social Accessory
+			ExpertAccessoryHoverName3: Dye
+			ExpertAccessoryHoverName4: Locked Accessory
+			ExpertAccessoryHoverName5: Locked Social Accessory
+			ExpertAccessoryHoverName6: Locked Dye
+		}
 
 		NPCs: {
 			vhcmnpc: {
@@ -233,7 +244,7 @@ Mods: {
 
 			PrismLightning: {
 				DisplayName: Prismatic Lighting
-				Description: This slime is too hot
+				Description: Burning by the lightning!
 			}
 
 			PrismThorns: {
@@ -672,6 +683,7 @@ Mods: {
 			PeridotHookProjectile.DisplayName: Peridot Hook Projectile
 			AquamarineHookProjectile.DisplayName: Aquamarine Hook Projectile
 			RozeQuartzHookProjectile.DisplayName: Roze Quartz Hook Projectile
+			CorrodedCrystal.DisplayName: Corroded Crystal
 		}
 
 		Items: {
@@ -925,7 +937,7 @@ Mods: {
 				Tooltip:
 					'''
 					A bloody scythe made for enemy suffering...
-					                                   Makes enemies bleed!
+					Makes enemies bleed!
 					[c/b4202a:Special ability:] When used, more scythes are swung in all directions and you dash at the mouse direction
 					'''
 			}
@@ -2427,6 +2439,31 @@ Mods: {
 				DisplayName: Lime Stained Glass
 				Tooltip: ""
 			}
+
+			FireproofJewelMolder: {
+				DisplayName: Fireproof Jewel Molder
+				Tooltip: ""
+			}
+
+			JewelMolder: {
+				DisplayName: Jewel Molder
+				Tooltip: ""
+			}
+
+			IndigoPhasesaber: {
+				DisplayName: Indigo Phasesaber
+				Tooltip: ""
+			}
+
+			LimePhasesaber: {
+				DisplayName: Lime Phasesaber
+				Tooltip: ""
+			}
+
+			PurplePhasesaber: {
+				DisplayName: Purple Phasesaber
+				Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2441,6 +2478,7 @@ Mods: {
 			Aquamarine.MapEntry: Aquamarine
 			Peridot.MapEntry: Peridot
 			EnchantedMushroom.MapEntry: Enchanted Mushroom
+			JewelMolder.MapEntry: Jewel Molder
 		}
 
 		Keybinds: {

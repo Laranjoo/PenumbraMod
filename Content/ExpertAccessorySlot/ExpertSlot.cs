@@ -4,6 +4,7 @@ using PenumbraMod.Content.Items;
 using System;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -124,15 +125,15 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = "Accessory";
-                    item.accessory = true; // When hovering into the expert-only slot, make the accessory equippable (read line 192)
+                    Main.hoverItemName = (string)NormalSlotsPrevention.Text;
+                    item.accessory = true; // When hovering into the expert-only slot, make the accessory equippable (read line 214)
                     break;
                 case AccessorySlotType.VanitySlot:
-                    Main.hoverItemName = "Social Accessory"; // When hovering into the expert-only slot, make the accessory equippable (read line 192)
+                    Main.hoverItemName = (string)NormalSlotsPrevention.Text2; // When hovering into the expert-only slot, make the accessory equippable (read line 214)
                     item.accessory = true;
                     break;
                 case AccessorySlotType.DyeSlot:
-                    Main.hoverItemName = "Dye"; // When hovering into the expert-only slot, make the accessory equippable (read line 192)
+                    Main.hoverItemName = (string)NormalSlotsPrevention.Text3; // When hovering into the expert-only slot, make the accessory equippable (read line 214)
                     item.accessory = true;
                     break;
             }
@@ -170,17 +171,17 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
         // Can be used to modify stuff while the Mouse is hovering over the slot.
         public override void OnMouseHover(AccessorySlotType context)
         {
-            // We will modify the hover text while an item is not in the slot, so that it says "Wings".
+
             switch (context)
             {
                 case AccessorySlotType.FunctionalSlot:
-                    Main.hoverItemName = "Locked Accessory";
+                    Main.hoverItemName = (string)NormalSlotsPrevention.Text4;
                     break;
                 case AccessorySlotType.VanitySlot:
-                    Main.hoverItemName = "Locked Social Accessory";
+                    Main.hoverItemName = (string)NormalSlotsPrevention.Text5;
                     break;
                 case AccessorySlotType.DyeSlot:
-                    Main.hoverItemName = "Locked Dye";
+                    Main.hoverItemName = (string)NormalSlotsPrevention.Text6;
                     break;
             }
         }
@@ -190,8 +191,21 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
     //
     class NormalSlotsPrevention : ModSystem
     {
+        public static LocalizedText Text { get; private set; }
+        public static LocalizedText Text2 { get; private set; }
+        public static LocalizedText Text3 { get; private set; }
+        public static LocalizedText Text4 { get; private set; }
+        public static LocalizedText Text5 { get; private set; }
+        public static LocalizedText Text6 { get; private set; }
         public override void Load()
         {
+            string category = "UI";
+            Text ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ExpertAccessoryHoverName1"));
+            Text2 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ExpertAccessoryHoverName2"));
+            Text3 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ExpertAccessoryHoverName3"));
+            Text4 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ExpertAccessoryHoverName4"));
+            Text5 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ExpertAccessoryHoverName5"));
+            Text6 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ExpertAccessoryHoverName6"));
             On_ItemSlot.MouseHover_ItemArray_int_int += On_ItemSlot_MouseHover_ItemArray_int_int;
         }
         public override void Unload()
@@ -216,5 +230,6 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
                 }
             }
         }
+       
     }
 }

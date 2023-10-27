@@ -10,6 +10,7 @@ using Terraria.GameContent;
 using Terraria.GameContent.UI.Elements;
 using Terraria.GameInput;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using static Terraria.ModLoader.ModContent;
@@ -288,7 +289,7 @@ namespace PenumbraMod.Content.DamageClasses
             SetRectangle(item2, left: 39, top: 50, width: 52, height: 150);
 
             Asset<Texture2D> CrystalButtonn = ModContent.Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarButton");
-            ExampleUIHoverImageButton CrystalButton = new ExampleUIHoverImageButton(CrystalButtonn, "Jewels");
+            ExampleUIHoverImageButton CrystalButton = new ExampleUIHoverImageButton(CrystalButtonn, LocalizedTextForReaperBar.Text2);
             SetRectangle(CrystalButton, left: 42, top: 7.5f, width: 10f, height: 13f);
             CrystalButton.OnLeftClick += new MouseEvent(ButtonClicked);
 
@@ -973,8 +974,19 @@ namespace PenumbraMod.Content.DamageClasses
             // Setting the text per tick to update and show our resource values.
             float b = (float)ReaperClassPlayer.ReaperEnergy / 20f;
             if (GetInstance<PenumbraConfig>().UITEXT)
-                text.SetText($"Reaper Energy {ReaperClassPlayer.ReaperEnergy} / {ReaperClassPlayer.ReaperEnergyMax}");
+                text.SetText(LocalizedTextForReaperBar.Text + $" {ReaperClassPlayer.ReaperEnergy} / {ReaperClassPlayer.ReaperEnergyMax}");
             base.Update(gameTime);
+        }
+    }
+    class LocalizedTextForReaperBar : ModSystem
+    {
+        public static LocalizedText Text { get; private set; }
+        public static LocalizedText Text2 { get; private set; }
+        public override void Load()
+        {
+            string category = "UI";
+            Text ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ReaperBar"));
+            Text2 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ReaperBarJewel"));
         }
     }
     internal class CrystalSlots : UIElement

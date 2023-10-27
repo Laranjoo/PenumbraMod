@@ -33,8 +33,11 @@ namespace PenumbraMod.Content.Items
         }
         public override bool? UseItem(Player player) {
 			player.GetModPlayer<HibiscusPlayer>().hibiscusConsumed = true;
-            player.controlInv = true;
-            player.ToggleInv();
+            if (!Main.playerInventory)
+            {
+                player.controlInv = true;
+                player.ToggleInv();
+            }          
 			return true;
 		}
 	}

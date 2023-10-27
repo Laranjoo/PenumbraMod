@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -12,63 +14,98 @@ namespace PenumbraMod.Content.Items
 	{
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("The Mageblade"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            ProjectileID.Sets.CultistIsResistantTo[Projectile.type] = false;
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 7; // The length of old position to be recorded
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
 
         public override void SetDefaults()
         {
-            Projectile.damage = 100;
             Projectile.width = 104;
             Projectile.height = 104;
             Projectile.friendly = true;
-            Projectile.hostile = false;
+            Projectile.timeLeft = 20;
             Projectile.penetrate = -1;
-            Projectile.light = 0.25f;
-            Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Melee;
         }
-        
+        Vector2 dir = Vector2.Zero;
+        Vector2 hlende = Vector2.Zero;
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
+            float scaleFactor = 110f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
+            float widthMultiplier = 30f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
+            float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
 
+            // This Rectangle is the width and height of the Jousting Lance's hitbox which is used for the first step of collision.
+            // You will need to modify the last two numbers if you have a bigger or smaller Jousting Lance.
+            // Vanilla uses (0, 0, 300, 300) which that is quite large for the size of the Jousting Lance.
+            // The size doesn't matter too much because this rectangle is only a basic check for the collision (the hit-line is much more important).
+            Rectangle lanceHitboxBounds = new Rectangle(0, 0, 284, 284);
+
+            // Set the position of the large rectangle.
+            lanceHitboxBounds.X = (int)Projectile.position.X - lanceHitboxBounds.Width / 2;
+            lanceHitboxBounds.Y = (int)Projectile.position.Y - lanceHitboxBounds.Height / 2;
+
+            // This is the back of the hit-line with Projectile.Center being the tip of the Jousting Lance.
+            Vector2 hitLineEnd = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor;
+            Dust.NewDustPerfect(hitLineEnd, DustID.BlueTorch);
+
+            hlende = hitLineEnd;
+            // First check that our large rectangle intersects with the target hitbox.
+            // Then we check to see if a line from the tip of the Jousting Lance to the "end" of the lance intersects with the target hitbox.
+            if (/*lanceHitboxBounds.Intersects(targetHitbox)
+                && */Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd, widthMultiplier, ref collisionPoint))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        int a;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            writer.Write(a);
+        }
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            a = reader.ReadInt32();
+        }
         public override void AI()
         {
-            int dust = Dust.NewDust(Projectile.Center, 0, 0, DustID.BlueTorch, 0f, 0f, 0);
-            Main.dust[dust].noGravity = false;
-            Main.dust[dust].velocity *= 5.0f;
-            Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.010f;
-
-            Projectile.velocity = (Main.MouseWorld - Projectile.Center) / 8;
+            if (dir == Vector2.Zero)
+            {
+                dir = Main.MouseWorld;
+                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[2]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation() + 0.78f;
+            }
+            //FadeInAndOut();
+            Projectile.Center = Main.player[Projectile.owner].Center;
+            a++;
             Player player = Main.player[Projectile.owner];
-            player.heldProj = Projectile.whoAmI;
-            if (!player.channel || player.CCed)
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+            if (Projectile.ai[2] <= 8)
             {
-                Projectile.Kill();
-                Projectile.timeLeft = 0;
-                return;
+                Projectile.ai[0] += 0.1f;
+                Projectile.ai[1] += 0.1f;
             }
-            Projectile.ai[0]++;
-            if (Projectile.ai[0] == 60)
+            else
             {
-                Vector2 launchVelocity = new Vector2(-5, 1); // Create a velocity moving the left.
-                for (int i = 0; i < 1; i++)
-                {
-                    // Every iteration, rotate the newly spawned projectile by the equivalent 1/4th of a circle (MathHelper.PiOver4)
-                    // (Remember that all rotation in Terraria is based on Radians, NOT Degrees!)
-                    launchVelocity = launchVelocity.RotatedByRandom(360);
+                Projectile.ai[0] += 0.2f;
+                Projectile.ai[1] += 0.2f;
+            }
+            if (a >= 9 && a <= 14)
+                Projectile.scale += 0.1f;
+            if (a >= 15 && a <= 20)
+                Projectile.scale -= 0.2f;
 
-                    // Spawn a new projectile with the newly rotated velocity, belonging to the original projectile owner. The new projectile will inherit the spawning source of this projectile.
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<TheMagebladeExplosion>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
-                }
-            }
-            if (Projectile.ai[0] == 90)
-            {
-                Projectile.ai[0] = 20;
-            }
-            Projectile.timeLeft = 2;
-            Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 0.93f);
-            Projectile.rotation += 0.4f;
+            if (a == 10)
+                SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
+
+            if (Projectile.ai[2] == 1)
+                Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((10 - Projectile.ai[0])));
+            if (Projectile.ai[2] == -1)
+                Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((-10 - Projectile.ai[0])));
         }
         public static float easeInOutQuad(float x)
         {
@@ -77,6 +114,7 @@ namespace PenumbraMod.Content.Items
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
             Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/TheMagebladeSwingEf").Value;
             // Redraw the projectile with the color not influenced by light
             for (int i = 0; i < Projectile.oldPos.Length; i++)
@@ -97,34 +135,13 @@ namespace PenumbraMod.Content.Items
                         lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[i], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, Color.White * 0.2f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), Projectile.scale, SpriteEffects.None, 0);
+                    Color c = lightColor;
+                    c.A = 0;
+                    Main.EntitySpriteDraw(texture, lerpedPos, null, c * 0.2f * (1 - ((float)i / (float)Projectile.oldPos.Length)), lerpedAngle - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
                 }
             }
-            return true;
-        }
-        public override void OnKill(int timeLeft)
-        {
-            for (int k = 0; k < 50; k++)
-            {
-                int dust =  Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.BlueTorch, Projectile.oldVelocity.X * 0f, Projectile.oldVelocity.Y * 0f, Scale: 2.9f);
-                Main.dust[dust].velocity *= 6.0f;
-            }
-
-            Vector2 launchVelocity = new Vector2(-5, 1); // Create a velocity moving the left.
-            for (int i = 0; i < 10; i++)
-            {
-                // Every iteration, rotate the newly spawned projectile by the equivalent 1/4th of a circle (MathHelper.PiOver4)
-                // (Remember that all rotation in Terraria is based on Radians, NOT Degrees!)
-                launchVelocity = launchVelocity.RotatedBy(MathHelper.PiOver4);
-
-                // Spawn a new projectile with the newly rotated velocity, belonging to the original projectile owner. The new projectile will inherit the spawning source of this projectile.
-                Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, launchVelocity, ModContent.ProjectileType<TheMagebladeExplosion>(), Projectile.damage / 2, Projectile.knockBack, Projectile.owner);
-
-            }
-          
-            // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
-            Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-            SoundEngine.PlaySound(SoundID.Item109, Projectile.position);
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            return false;
         }
     }
 }

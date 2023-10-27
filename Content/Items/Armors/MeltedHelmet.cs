@@ -63,8 +63,8 @@ namespace PenumbraMod.Content.Items.Armors
             {
 
                 player.setBonus = "[c/ff0000:Press " + key + " To increase your movement speed by 15%]\n" +
-                    "[c/ff0000:Increase your reaper attack speed by 25% and damage by 5%, when you get hit, you explode, dealing damage on enemies]\n" +
-                    "[c/ff0000:This effect has 30 seconds and has a 60 seconds cooldown]\n" +
+                    "[c/ff0000:Increase your reaper attack speed by 25% and damage by 5% for 15 seconds, when you get hit, you explode, dealing damage on enemies]\n" +
+                    "[c/ff0000:This effect has a 60 seconds cooldown]\n" +
                     "[c/ff5b00:'Why obsidian armor when you have this?']";
             }
 
@@ -77,6 +77,7 @@ namespace PenumbraMod.Content.Items.Armors
             recipe.AddIngredient(ModContent.ItemType<MeltedEmber>(), 15);
             recipe.AddIngredient(ItemID.Obsidian, 20);
             recipe.AddIngredient(ItemID.SoulofNight, 3);
+            recipe.AddIngredient(ItemID.ObsidianSkull);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
@@ -105,8 +106,8 @@ namespace PenumbraMod.Content.Items.Armors
 
                     else
                     {
-                        Player.AddBuff(ModContent.BuffType<MeltedForce>(), 1800);
-                        Player.AddBuff(ModContent.BuffType<MeltedCooldown>(), 5400);
+                        Player.AddBuff(ModContent.BuffType<MeltedForce>(), 15 * 60);
+                        Player.AddBuff(ModContent.BuffType<MeltedCooldown>(), 75 * 60);
                     }
                 }
 
