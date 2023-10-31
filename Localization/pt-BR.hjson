@@ -386,34 +386,34 @@ Mods: {
 			}
 
 			TungstenShield: {
-				// Description: Defense increased by 4
-				// DisplayName: Tungsten Shield
+				 Description: Defesa aumentada em 4
+				 DisplayName: Escudo de Tungstênio
 			}
 
 			PerishedForce: {
-				// DisplayName: Perished Force
-				// Description: Reaper damage increased by 3
+				 DisplayName: Força mortal
+				 Description: Dano da foice aumentado em 3
 			}
 
 			PerishedForceCooldown: {
-				// DisplayName: Perished Force Cooldown
-				// Description: You can't perish yet!
+				 DisplayName: Recarga da Força mortal
+				 Description: Você não pode obliterar ainda!
 			}
 
 			AblazedForce: {
-				// Description: Reaper weapon knockback increased by 7%, speed increased by 10% and burns enemies!
-				// DisplayName: Ablazed Force
+				 Description: O empurrão da foice aumentou em 7%, a velocidade aumentou em 10% e queima os inimigos!
+				 DisplayName: Força Flamejante
 			}
 
 			CorrosiveForce: {
-				// DisplayName: Corrosive Force
-				/* Description:
+				 DisplayName: Força Corrosiva
+				 Description:
 					'''
-					Reaper weapons inflicts corrosion
-					Grants you immunity to corrosion
-					Reaper weapons increased by 5
-					The corrosive scythe is now stronger!
-					''' */
+					Armas Reaper infligem corrosão
+                                        Concede imunidade à corrosão
+                                        Armas Reaper aumentadas em 5
+                                        A foice corrosiva agora está mais forte!
+					''' 
 			}
 
 			SoulBoost: {
@@ -422,23 +422,23 @@ Mods: {
 			}
 
 			SpectreForce: {
-				// DisplayName: Spectre Force
-				// Description: 50% chance to get Soul Boosted
+				 DisplayName: Força Espectral
+				 Description: 50% de chance de obter impulso de alma
 			}
 
 			OnyxForce: {
-				// DisplayName: Onyx Force
-				// Description: Unleash a dark creature to aid you in fighting
+				 DisplayName: Força Ônix
+				 Description: Liberte uma criatura sombria para ajudá-lo na luta
 			}
 
 			PrettyBuff: {
-				// DisplayName: Heart Swipe
-				// Description: 20% chance to an enemy drop an extra heart when killed
+				 DisplayName: Coração deslizante
+				 Description: 20% de chance de um inimigo deixar cair um coração extra ao ser morto
 			}
 
 			SoulHunt: {
-				// DisplayName: Soul Hunt
-				// Description: 100% increased chance for soul drops
+				 DisplayName: Caça às Almas
+				 Description: Chance aumentada em 100% de dropar almas
 			}
 		}
 
@@ -968,16 +968,16 @@ Mods: {
 			}
 
 			Buriti: {
-				// DisplayName: Buriti
-				/* Tooltip:
+				 DisplayName: Buriti
+				 Tooltip:
 					'''
 					Buriti
 					Buriti
 					Buriti
 					Buriti
 					Buriti
-					Its Buriti
-					''' */
+					e o Buriti ( e o visionario nao tem jeito ) 
+					''' 
 			}
 
 			Carabina: {
