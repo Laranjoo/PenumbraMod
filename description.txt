@@ -14,21 +14,21 @@ Every scythe has its own special ability, they will have the description telling
 >> But scythes aren't melee weapons? <<
 Its your choice to decide if it is a class/subclass, this was made for entertaining and content purposes, so don't judge.
 
-Mod by: Laranjoo, Srplayertube, Birbhimself, Vhcm, Sawi, ZENZÃO, Kaii909, Nakamura, Reapermen, KaneBlitz, Mr.Thing, Xeno, Lilly, Vaema.
-Coder: Laranjoo, Vaema.
-Spriter: Srplayertube, Sawi, Mr.Thing, Lilly.
+Mod by: Laranjoo, Srplayertube, Birbhimself, Vhcm, Sawi, ZENZÃO, Kaii909, Nakamura, Reapermen, KaneBlitz, Mr.Thing, Xeno, Vaema.
+Coder: Laranjoo, Vaema, Bloodflare.
+Spriter: Srplayertube, Sawi, Mr.Thing, Bloodflare.
 Musicians and SFX: ZENZÃO, Kai909, KaneBlitz, Reapermen, Xeno.
 Brainstormers: Srplayertube, Vhcm, Mr.Thing, Mr.Thing, Xeno.
 Credits to: Nekki for the Composite Sword SFX and some weapons inpirations.
 
 A vast description that Penumbra mod currently adds:
 
-+ 219 Items.
++ 249 Items.
 + 3 Ores
-+ 21 Tiles
++ 30 Tiles
 + 7 Pieces of Furniture
-+ 56 buffs/debuffs.
-+ 10 NPCs
++ 59 buffs/debuffs.
++ 12 NPCs
 + 1 Boss
 + Changes to vanilla drops and mechanics
 + A whole new class! (The Reaper Class)

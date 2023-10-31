@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PenumbraMod.Common.Systems;
 using PenumbraMod.Content.Buffs;
-using PenumbraMod.Content.Items.Armors;
-using PenumbraMod.Content.Items.ReaperJewels;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -50,8 +48,7 @@ namespace PenumbraMod.Content.DamageClasses
 
         public override void SetDefaultStats(Player player)
         {
-            player.GetCritChance<ReaperClass>() += 1;
-            player.GetArmorPenetration<ReaperClass>() += 2;
+            player.GetArmorPenetration<ReaperClass>() += 1;
         }
         // This property lets you decide whether or not your damage class can use standard critical strike calculations.
         // Note that setting it to false will also prevent the critical strike chance tooltip line from being shown.
@@ -87,6 +84,9 @@ namespace PenumbraMod.Content.DamageClasses
         public bool slim = false;
         public bool corr = false;
         public bool ony = false;
+        public bool aqua = false;
+        public bool peri = false;
+        public bool roz = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -106,6 +106,9 @@ namespace PenumbraMod.Content.DamageClasses
         public bool slim2 = false;
         public bool corr2 = false;
         public bool ony2 = false;
+        public bool aqua2 = false;
+        public bool peri2 = false;
+        public bool roz2 = false;
 
         #endregion
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -217,6 +220,15 @@ namespace PenumbraMod.Content.DamageClasses
                 if (bar.ony)
                     ony = true;
                 //
+                if (bar.roz)
+                    roz = true;
+                //
+                if (bar.aqua)
+                    aqua = true;
+                //
+                if (bar.peri)
+                    peri = true;
+                //
             }
             else
             {
@@ -237,6 +249,9 @@ namespace PenumbraMod.Content.DamageClasses
                 slim = false;
                 corr = false;
                 ony = false;
+                peri = false;
+                aqua = false;
+                roz = false;
             }
 
             // ------------
@@ -300,6 +315,15 @@ namespace PenumbraMod.Content.DamageClasses
                 if (bar.ony2)
                     ony2 = true;
                 //
+                if (bar.roz2)
+                    roz2 = true;
+                //
+                if (bar.aqua2)
+                    aqua2 = true;
+                //
+                if (bar.peri2)
+                    peri2 = true;
+                //
             }
             else
             {
@@ -314,12 +338,15 @@ namespace PenumbraMod.Content.DamageClasses
                 pricryst2 = false;
                 blood2 = false;
                 abla2 = false;
-                terra2= false;
+                terra2 = false;
                 spec2 = false;
                 darke2 = false;
                 slim2 = false;
                 corr2 = false;
                 ony2 = false;
+                peri2 = false;
+                ony2 = false;
+                aqua2 = false;
             }
 
 
@@ -426,7 +453,7 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 Player.AddBuff(BuffType<RubyForce>(), 10);
             }
- 
+
             // ------------
 
             if (blood)
@@ -528,7 +555,43 @@ namespace PenumbraMod.Content.DamageClasses
             // ------------
 
 
+            if (roz)
+            {
+                Player.AddBuff(BuffType<RozeQuartzForce>(), 10);
+            }
 
+            if (roz2)
+            {
+                Player.AddBuff(BuffType<RozeQuartzForce>(), 10);
+            }
+
+            // ------------
+
+
+            if (aqua)
+            {
+                Player.AddBuff(BuffType<AquamarineForce>(), 10);
+            }
+
+            if (aqua2)
+            {
+                Player.AddBuff(BuffType<AquamarineForce>(), 10);
+            }
+
+            // ------------
+
+
+            if (peri)
+            {
+                Player.AddBuff(BuffType<PeridotForce>(), 10);
+            }
+
+            if (peri2)
+            {
+                Player.AddBuff(BuffType<PeridotForce>(), 10);
+            }
+
+            // ------------
             #endregion
 
             if (ReaperEnergy > 0 && ReaperEnergy < (int)(ReaperEnergyMax * 0.95f))
@@ -571,14 +634,6 @@ namespace PenumbraMod.Content.DamageClasses
 
                 }
             }
-            if (item.DamageType.CountsAsClass(GetInstance<ReaperClass>()))
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<BloodstainedForce>()))
-                {
-                    int random = Main.rand.Next(1, 3);
-                    Main.LocalPlayer.Heal(random);
-                }
-            }
             // no idea why here
             if (ReaperEnergy > 9980)
             {
@@ -606,14 +661,6 @@ namespace PenumbraMod.Content.DamageClasses
                     }
                 }
 
-            }
-            if (proj.DamageType.CountsAsClass(GetInstance<ReaperClass>()))
-            {
-                if (Main.LocalPlayer.HasBuff(BuffType<BloodstainedForce>()))
-                {
-                    int random = Main.rand.Next(1, 3);
-                    Main.LocalPlayer.Heal(random);
-                }
             }
             // no idea 
             if (ReaperEnergy > 9980)

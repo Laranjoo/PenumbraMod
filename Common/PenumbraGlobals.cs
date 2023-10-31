@@ -5,6 +5,7 @@ using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.Items;
 using PenumbraMod.Content.Items.Consumables;
 using PenumbraMod.Content.Items.ReaperJewels;
+using PenumbraMod.Content.Prefixes;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -74,19 +75,33 @@ namespace PenumbraMod.Common
             }
             base.ModifyScreenPosition();
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (sandhuntereff)
+                if (sandhuntereff)
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     target.AddBuff(BuffID.Venom, 120);
             if (Player.HasBuff(BuffType<BloodstainedForce>()))
             {
-                Player.Heal(1);
-                Player.HealEffect(1);
+                if (Main.rand.NextBool(2))
+                {
+                    Player.Heal(1);
+                    Player.HealEffect(1);
+                }            
             }
             if (Player.HasBuff(BuffType<CorrosiveForce>()))
             {
                 target.AddBuff(BuffType<Corrosion>(), 120);
+            }
+            if (Player.HasBuff(BuffType<PeridotForce>()))
+            {
+                target.AddBuff(BuffID.Poisoned, 180);
+            }
+            if (Player.HasBuff(BuffType<TerraForce>()))
+            {
+                target.AddBuff(BuffID.CursedInferno, 240);
+                if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 10;
             }
             if (Player.HasBuff<SpectreForce>())
             {
@@ -100,6 +115,11 @@ namespace PenumbraMod.Common
             {
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 75;
+            }
+            if (Player.HasBuff<AquamarineForce>())
+            {
+                if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 25;
             }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
@@ -183,9 +203,10 @@ namespace PenumbraMod.Common
             {
                 item.shoot = ProjectileType<ShadowFlameProj>();
                 item.shootSpeed = 27f;
-                item.useTime = 4;
-                item.useAnimation = 16;
-                item.reuseDelay = 8;
+                item.useTime = 6;
+                item.useAnimation = 20;
+                item.reuseDelay = 10;
+                item.mana = 19;
             }
             if (item.type == ItemID.Gladius)
             {
@@ -222,6 +243,11 @@ namespace PenumbraMod.Common
         {
             ItemhitNPC = true;
             target.AddBuff(BuffType<hitef>(), 10);
+            if (item.DamageType == GetInstance<ReaperClass>())
+            {
+                if (item.prefix != PrefixType<DeathlyPrefix>()) // This looks strange but actually works
+                    player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
+            }
         }
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
@@ -267,11 +293,11 @@ namespace PenumbraMod.Common
                     const int NumProjectiles = 3;
                     for (int i = 0; i < NumProjectiles; i++)
                     {
-                        Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(100));
+                        Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(40));
                         // Decrease velocity randomly for nicer visuals.
-                        newVelocity *= 1f - Main.rand.NextFloat(0.1f);
+                        newVelocity *= 1f - Main.rand.NextFloat(0.3f);
                         // Create a projectile.
-                        Projectile.NewProjectileDirect(source, position, newVelocity, ProjectileType<IceSickle>(), damage, knockback, player.whoAmI);
+                        Projectile.NewProjectileDirect(source, position, newVelocity, ProjectileType<IceSickleExplosion>(), damage, knockback, player.whoAmI);
 
                     }
                     return false;

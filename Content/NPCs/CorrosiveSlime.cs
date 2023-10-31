@@ -27,7 +27,7 @@ namespace PenumbraMod.Content.NPCs
             NPC.height = 44;
             NPC.damage = 55;
             NPC.defense = 20;
-            NPC.lifeMax = 170;
+            NPC.lifeMax = 210;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.value = 320f;

@@ -333,4 +333,61 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             recipe.Register();
         }
     }
+    public class PeridotJewel : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.height = 24;
+            Item.width = 14;
+            Item.value = 7300;
+            Item.rare = 2;
+            Item.DamageType = ModContent.GetInstance<ReaperClass>();
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<Peridot>(), 15);
+            recipe.AddTile<Tiles.JewelMolder>();
+            recipe.Register();
+        }
+    }
+    public class AquamarineJewel : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.height = 24;
+            Item.width = 14;
+            Item.value = 6700;
+            Item.rare = 2;
+            Item.DamageType = ModContent.GetInstance<ReaperClass>();
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<Aquamarine>(), 15);
+            recipe.AddTile<Tiles.JewelMolder>();
+            recipe.Register();
+        }
+    }
+    public class RozeQuartzJewel : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.height = 24;
+            Item.width = 14;
+            Item.value = 7000;
+            Item.rare = 2;
+            Item.DamageType = ModContent.GetInstance<ReaperClass>();
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<RozeQuartz>(), 15);
+            recipe.AddTile<Tiles.JewelMolder>();
+            recipe.Register();
+        }
+    }
 }

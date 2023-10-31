@@ -24,6 +24,7 @@ namespace PenumbraMod.Content.Buffs
         public bool l3;
         public bool reaperef;
         public bool heartbuff;
+        public bool liferegen;
         public override void ResetEffects()
         {
             lifeRegenDebuff = false;
@@ -41,9 +42,16 @@ namespace PenumbraMod.Content.Buffs
             bleeding = false;
             corrosion = false;
             heartbuff = false;
+            liferegen = false;
         }
 
-
+        public override void UpdateLifeRegen()
+        {
+            if (liferegen)
+            {
+                Player.lifeRegen += 2;
+            }
+        }
         public override void UpdateBadLifeRegen()
         {
             if (lifeRegenDebuff)

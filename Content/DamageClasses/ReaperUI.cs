@@ -82,6 +82,15 @@ namespace PenumbraMod.Content.DamageClasses
         private UIImage Ony;
         private UIImage Ony2;
 
+        private UIImage Aqua;
+        private UIImage Aqua2;
+
+        private UIImage Peri;
+        private UIImage Peri2;
+
+        private UIImage Roz;
+        private UIImage Roz2;
+
         #endregion 
         private UIImage barSlots;
         private UIImage barSlots2;
@@ -274,6 +283,30 @@ namespace PenumbraMod.Content.DamageClasses
             Ony2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/OnyxJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             Ony2.SetPadding(0);
             SetRectangle(Ony2, left: 61, top: 9, width: 10, height: 12);
+
+            Aqua = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AquamarineJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Aqua.SetPadding(0);
+            SetRectangle(Aqua, left: 22, top: 9, width: 10, height: 12);
+
+            Aqua2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/AquamarineJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Aqua2.SetPadding(0);
+            SetRectangle(Aqua2, left: 61, top: 9, width: 10, height: 12);
+
+            Roz = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/RozeQuartzJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Roz.SetPadding(0);
+            SetRectangle(Ony, left: 22, top: 9, width: 10, height: 12);
+
+            Roz2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/RozeQuartzJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Roz2.SetPadding(0);
+            SetRectangle(Roz2, left: 61, top: 9, width: 10, height: 12);
+
+            Peri = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/PeridotJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Peri.SetPadding(0);
+            SetRectangle(Ony, left: 22, top: 9, width: 10, height: 12);
+
+            Peri2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/Items/ReaperJewels/PeridotJewelMini", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            Peri2.SetPadding(0);
+            SetRectangle(Peri2, left: 61, top: 9, width: 10, height: 12);
             #endregion
 
             text = new UIText("", 0.8f); // text to show stat
@@ -343,6 +376,12 @@ namespace PenumbraMod.Content.DamageClasses
             panel.Append(Corr2);
             panel.Append(Ony);
             panel.Append(Ony2);
+            panel.Append(Peri);
+            panel.Append(Peri2);
+            panel.Append(Aqua);
+            panel.Append(Aqua2);
+            panel.Append(Roz);
+            panel.Append(Roz2);
             #endregion
             Append(panel);
         }
@@ -387,6 +426,9 @@ namespace PenumbraMod.Content.DamageClasses
         public bool slim = false;
         public bool corr = false;
         public bool ony = false;
+        public bool aqua = false;
+        public bool peri = false;
+        public bool roz = false;
 
         //2nd slot
         public bool amycryst2 = false;
@@ -406,6 +448,9 @@ namespace PenumbraMod.Content.DamageClasses
         public bool slim2 = false;
         public bool corr2 = false;
         public bool ony2 = false;
+        public bool aqua2 = false;
+        public bool peri2 = false;
+        public bool roz2 = false;
         #endregion
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -934,6 +979,90 @@ namespace PenumbraMod.Content.DamageClasses
                 ony2 = false;
                 Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ony2 = false;
                 SetRectangle(Ony2, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item.Item.type == ItemType<PeridotJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().peri = true;
+                peri = true;
+                SetRectangle(Peri, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                peri = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().peri = false;
+                SetRectangle(Peri, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item2.Item.type == ItemType<PeridotJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().peri2 = true;
+                peri2 = true;
+                SetRectangle(Peri2, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                peri2 = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().peri2 = false;
+                SetRectangle(Peri2, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item.Item.type == ItemType<AquamarineJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().aqua = true;
+                aqua = true;
+                SetRectangle(Aqua, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                aqua = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().aqua = false;
+                SetRectangle(Aqua, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item2.Item.type == ItemType<AquamarineJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().aqua2 = true;
+                aqua2 = true;
+                SetRectangle(Aqua2, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                aqua2 = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().aqua2 = false;
+                SetRectangle(Aqua2, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item.Item.type == ItemType<RozeQuartzJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 3000)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().roz = true;
+                roz = true;
+                SetRectangle(Roz, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                roz = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().roz = false;
+                SetRectangle(Roz, left: 1235451, top: 13455143, width: 10, height: 12);
+            }
+
+            if (item2.Item.type == ItemType<RozeQuartzJewel>())
+            {
+                if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
+                    Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().roz2 = true;
+                roz2 = true;
+                SetRectangle(Roz2, left: 20, top: 8, width: 10, height: 12);
+            }
+            else
+            {
+                roz2 = false;
+                Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().roz2 = false;
+                SetRectangle(Roz2, left: 1235451, top: 13455143, width: 10, height: 12);
             }
 
             #endregion

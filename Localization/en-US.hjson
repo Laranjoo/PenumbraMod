@@ -382,7 +382,11 @@ Mods: {
 
 			TerraForce: {
 				DisplayName: Terra Force
-				Description: Reaper weapons stats increased by: +20% size, +15% speed, +15% knockback, +5 armor penetration, +15% crit, and +20% damage
+				Description:
+					'''
+					Reaper weapons stats increased by: +20% size, +7% speed, +10% knockback, +3 armor penetration, +9% crit, and +9% damage
+					Grants a subtle life regen, +10 reaper energy and inflicts cursed flames
+					'''
 			}
 
 			TungstenShield: {
@@ -439,6 +443,21 @@ Mods: {
 			SoulHunt: {
 				DisplayName: Soul Hunt
 				Description: 100% increased chance for soul drops
+			}
+
+			AquamarineForce: {
+				DisplayName: Aquamarine Force
+				Description: 25+ Reaper energy when hitting enemies
+			}
+
+			PeridotForce: {
+				DisplayName: Peridot Force
+				Description: Inflicts poison
+			}
+
+			RozeQuartzForce: {
+				DisplayName: Roze Quartz Force
+				Description: Grants a subtle life regeneration
 			}
 		}
 
@@ -679,11 +698,12 @@ Mods: {
 			Explosion3down.DisplayName: Lunar Explosion
 			ShadewoodScytheProj.DisplayName: Shadewood Spike
 			InfectedWorm.DisplayName: Infected Worm
-			PrismaticKnifeProjSpecial2.DisplayName: Prismatic Knife Proj Special2
-			PeridotHookProjectile.DisplayName: Peridot Hook Projectile
-			AquamarineHookProjectile.DisplayName: Aquamarine Hook Projectile
-			RozeQuartzHookProjectile.DisplayName: Roze Quartz Hook Projectile
+			PrismaticKnifeProjSpecial2.DisplayName: Prismatic Knife
+			PeridotHookProjectile.DisplayName: Peridot Hook
+			AquamarineHookProjectile.DisplayName: Aquamarine Hook
+			RozeQuartzHookProjectile.DisplayName: Roze Quartz Hook
 			CorrodedCrystal.DisplayName: Corroded Crystal
+			IceSickleExplosion.DisplayName: Ice Sickle
 		}
 
 		Items: {
@@ -2137,7 +2157,11 @@ Mods: {
 
 			TerraCrystal: {
 				DisplayName: Terra Jewel
-				Tooltip: Gives reaper weapons +20% size, +15% speed, +15% knockback, +5 armor penetration, +15% crit, and +20% damage
+				Tooltip:
+					'''
+					Gives reaper weapons +20% size, +7% speed, +10% knockback, +3 armor penetration, +9% crit, and +9% damage
+					Grants a subtle life regen, +10 reaper energy and inflicts cursed flames
+					'''
 			}
 
 			RuneBlade: {
@@ -2464,6 +2488,25 @@ Mods: {
 				DisplayName: Purple Phasesaber
 				Tooltip: ""
 			}
+
+			AquamarineJewel: {
+				DisplayName: Aquamarine Jewel
+				Tooltip: 25+ Increased reaper energy when hitting enemies
+			}
+
+			PeridotJewel: {
+				DisplayName: Peridot Jewel
+				Tooltip:
+					'''
+					Makes its owner inflict poison 
+					When hitting enemies, they have a chance to spread the poisoning
+					'''
+			}
+
+			RozeQuartzJewel: {
+				DisplayName: Roze Quartz Jewel
+				Tooltip: Grants its owner a subtle life regeneration
+			}
 		}
 
 		Tiles: {
@@ -2554,5 +2597,7 @@ Mods: {
 				TownNPCDialogueName: the Marble Biome
 			}
 		}
+
+		Prefixes.DeathlyPrefixTip.DisplayName: Deathly Prefix Tip
 	}
 }
