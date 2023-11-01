@@ -24,7 +24,7 @@ namespace PenumbraMod.Content.Items
             Projectile.height = 37;
             Projectile.friendly = true;
             Projectile.hostile = false;
-            Projectile.penetrate = -1;
+            Projectile.penetrate = 5;
             Projectile.light = 0.50f;
             Projectile.ignoreWater = false;
             Projectile.tileCollide = true;

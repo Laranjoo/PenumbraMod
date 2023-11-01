@@ -23,7 +23,6 @@ namespace PenumbraMod.Content.Items.Placeable
             Item.createTile = ModContent.TileType<Tiles.PeridotGemsparkBlock>();
             Item.width = 12;
             Item.height = 12;
-            Item.value = 1000;
         }
         public override void AddRecipes()
         {

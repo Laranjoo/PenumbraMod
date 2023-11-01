@@ -65,7 +65,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.hostile = false;
                 Projectile.penetrate = -1;
                 Projectile.tileCollide = false;
-                Projectile.timeLeft = 600;
+                Projectile.timeLeft = 240;
                 Projectile.light = 4f;
             }
             public override Color? GetAlpha(Color lightColor)

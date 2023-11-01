@@ -31,19 +31,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thamy\\.nuget\\packages\\": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Thamy\\OneDrive\\Documentos\\My Games\\Terraria\\tModLoader\\ModSources\\PenumbraMod\\PenumbraMod.csproj",
+      "projectUniqueName": "C:\\Users\\PC\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PenumbraMod\\PenumbraMod.csproj",
       "projectName": "PenumbraMod",
-      "projectPath": "C:\\Users\\Thamy\\OneDrive\\Documentos\\My Games\\Terraria\\tModLoader\\ModSources\\PenumbraMod\\PenumbraMod.csproj",
-      "packagesPath": "C:\\Users\\Thamy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Thamy\\OneDrive\\Documentos\\My Games\\Terraria\\tModLoader\\ModSources\\PenumbraMod\\obj\\",
+      "projectPath": "C:\\Users\\PC\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PenumbraMod\\PenumbraMod.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PC\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PenumbraMod\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Thamy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -90,7 +90,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
