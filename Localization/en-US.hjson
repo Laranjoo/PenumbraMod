@@ -704,6 +704,7 @@ Mods: {
 			RozeQuartzHookProjectile.DisplayName: Roze Quartz Hook
 			CorrodedCrystal.DisplayName: Corroded Crystal
 			IceSickleExplosion.DisplayName: Ice Sickle
+			CorrosiveScytheSpecial.DisplayName: Corrosive Scythe
 		}
 
 		Items: {
@@ -1994,7 +1995,7 @@ Mods: {
 					'''
 					"This scythe its bigger than you expect!"
 					Sometimes, The scythe inflicts corrosion on enemies, making them suffer in acid
-					[c/32c941:Special ability:] When used, an acid rain occurs for some seconds, and the owner dashes at the cursor position.
+					[c/32c941:Special ability:] When used, the scythe expands massively and starts spinning for 3 seconds.
 					'''
 			}
 
@@ -2507,6 +2508,26 @@ Mods: {
 				DisplayName: Roze Quartz Jewel
 				Tooltip: Grants its owner a subtle life regeneration
 			}
+
+			AquamarineRobe: {
+				DisplayName: Aquamarine Robe
+				Tooltip: ""
+			}
+
+			RozeQuartzRobe: {
+				DisplayName: Roze Quartz Robe
+				Tooltip: ""
+			}
+
+			AquamarineGemsparkBlock: {
+				DisplayName: Aquamarine Gemspark Block
+				Tooltip: ""
+			}
+
+			RozeQuartzGemsparkBlock: {
+				DisplayName: Roze Quartz Gemspark Block
+				Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2598,6 +2619,11 @@ Mods: {
 			}
 		}
 
-		Prefixes.DeathlyPrefixTip.DisplayName: Deathly Prefix Tip
+		Prefixes: {
+			DeathlyPrefixTip.DisplayName: Deathly
+			DeathlyPrefix.DisplayName: Deathly
+		}
+
+		PrefixesDescriptions.Deathly: +50 reaper energy
 	}
 }

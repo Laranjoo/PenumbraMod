@@ -55,7 +55,6 @@ namespace PenumbraMod.Content.DamageClasses
         // This prevention will overrule anything set by ShowStatTooltipLine, so be careful!
         public override bool UseStandardCritCalcs => true;
 
-
     }
     public class ReaperClassDPlayer : ModPlayer
     {

@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace PenumbraMod.Content.Items.Placeable
 {
-    public class PeridotGemsparkBlock : ModItem
+    public class AquamarineGemsparkBlock : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -20,7 +20,7 @@ namespace PenumbraMod.Content.Items.Placeable
             Item.autoReuse = true;
             Item.maxStack = 999;
             Item.consumable = true;
-            Item.createTile = ModContent.TileType<Tiles.PeridotGemsparkBlock>();
+            Item.createTile = ModContent.TileType<Tiles.AquamarineGemsparkBlock>();
             Item.width = 12;
             Item.height = 12;
         }
@@ -28,7 +28,7 @@ namespace PenumbraMod.Content.Items.Placeable
         {
             CreateRecipe(20)
                  .AddIngredient(ItemID.Glass, 20)
-                 .AddIngredient<Peridot>()
+                 .AddIngredient<Aquamarine>()
                  .AddTile(TileID.WorkBenches)
                  .Register();
         }

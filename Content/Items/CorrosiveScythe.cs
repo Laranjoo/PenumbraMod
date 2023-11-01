@@ -4,11 +4,11 @@ using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.DamageClasses;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.GameContent;
-using static PenumbraMod.Content.Items.Wakizashi;
 
 namespace PenumbraMod.Content.Items
 {
@@ -16,7 +16,7 @@ namespace PenumbraMod.Content.Items
     {
         public override void SetDefaults()
         {
-            Item.damage = 82;
+            Item.damage = 92;
             Item.DamageType = ModContent.GetInstance<ReaperClass>();
             Item.width = 72;
             Item.height = 60;
@@ -74,72 +74,8 @@ namespace PenumbraMod.Content.Items
 
             if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
             {
-                if (player.velocity.Y > 5)
-                {
-                    if (player.direction == 0)
-                        notboollol = true;
-                    else
-                        notboollol = false;
-                }
-                if (player.velocity.Y < -5)
-                {
-                    if (player.direction != 0)
-                        notboollol = true;
-                    else
-                        notboollol = false;
-                }
-
-                int basic = Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosiveScytheSwing2>(), damage, knockback, player.whoAmI);
-                if (notboollol == true)
-                {
-                    Main.projectile[basic].ai[1] = -1;
-                    notboollol = false;
-                }
-                else
-                {
-                    Main.projectile[basic].ai[1] = 1;
-                    notboollol = true;
-                }
-                Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
-                player.velocity = player.DirectionTo(Main.MouseWorld) * 16f;
-
-                const int NumProjectiles = 2;
-
-                for (int i = 0; i < NumProjectiles; i++)
-                {
-                    Vector2 target = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
-                    float ceilingLimit = target.Y;
-                    if (ceilingLimit > player.Center.Y - 200f)
-                    {
-                        ceilingLimit = player.Center.Y - 200f;
-                    }
-                    // Loop these functions 20 times.
-                    for (int e = 0; e < 20; e++)
-                    {
-                        position = player.Center - new Vector2(Main.rand.Next(1200, 1400), 600f) * player.direction;
-                        position.Y -= 100 * e;
-                        Vector2 heading = target - position;
-
-                        if (heading.Y < 0f)
-                        {
-                            heading.Y *= -1f;
-                        }
-
-                        if (heading.Y < 20f)
-                        {
-                            heading.Y = 20f;
-                        }
-
-                        heading.Normalize();
-                        heading *= velocity.Length();
-                        heading.Y += Main.rand.Next(-40, 45) * 0.02f;
-                        Projectile.NewProjectile(source, position, heading, ModContent.ProjectileType<CorrosiveShot>(), damage * 2, knockback, player.whoAmI, 0f, ceilingLimit);
-                    }
-
-                }
-
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosiveScytheSpecial>(), damage, knockback, player.whoAmI);
             }
-
             return false;
         }
         public override void AddRecipes()
@@ -162,8 +98,8 @@ namespace PenumbraMod.Content.Items
 
         public override void SetDefaults()
         {
-            Projectile.width = 160;
-            Projectile.height = 140;
+            Projectile.width = 150;
+            Projectile.height = 160;
             //Projectile.aiStyle = 1;
             // AIType = ProjectileID.Bullet; // Act exactly like default Bullet
             Projectile.friendly = true;
@@ -206,7 +142,7 @@ namespace PenumbraMod.Content.Items
                     float lerpedAngle = Utils.AngleLerp(oldRotForLerp, Projectile.oldRot[k], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
-                    Color finalColor = lightColor * 0.5f * (1 - ((float)k / (float)Projectile.oldPos.Length));
+                    Color finalColor = lightColor * 0.3f * (1 - ((float)k / (float)Projectile.oldPos.Length));
                     finalColor.A = 0;//acts like additive blending without spritebatch stuff
                     if (Projectile.ai[1] == -1)
                         Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle - 0.78f, texture.Size() / 2, 1, SpriteEffects.None, 0);
@@ -270,153 +206,6 @@ namespace PenumbraMod.Content.Items
             Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 0.5f);
         }
 
-    }
-    public class CorrosiveScytheSwing2 : ModProjectile
-    {
-        public override string Texture => "PenumbraMod/Content/Items/CorrosiveScytheSwing";
-        public override void SetStaticDefaults()
-        {
-            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5; // The length of old position to be recorded
-            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
-        }
-
-        public override void SetDefaults()
-        {
-            Projectile.width = 160;
-            Projectile.height = 140;
-            //Projectile.aiStyle = 1;
-            // AIType = ProjectileID.Bullet; // Act exactly like default Bullet
-            Projectile.friendly = true;
-            //projectile.magic = true;
-            //projectile.extraUpdates = 100;
-            Projectile.timeLeft = 30; // lowered from 300
-            Projectile.penetrate = -1;
-            Projectile.tileCollide = false;
-            Projectile.ownerHitCheck = true;
-            Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
-            Projectile.netImportant = true;
-        }
-        Vector2 dir = Vector2.Zero;
-        Vector2 hlende = Vector2.Zero;
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.AddBuff(ModContent.BuffType<Corrosion>(), 120);
-        }
-        public static float easeInOutQuad(float x)
-        {
-            return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
-        }
-        public override bool PreDraw(ref Color lightColor)
-        {
-            Main.instance.LoadProjectile(Projectile.type);
-            Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/CorrosiveScytheSwingef").Value;
-            for (int k = 0; k < Projectile.oldPos.Length; k++)
-            {
-                if (Projectile.oldPos[k] == Vector2.Zero)
-                    return false;
-                for (float j = 0.0625f; j < 1; j += 0.0625f)//not sure if it will work actually
-                {
-                    Vector2 oldPosForLerp = k > 0 ? Projectile.oldPos[k - 1] : Projectile.position;
-                    Vector2 lerpedPos = Vector2.Lerp(oldPosForLerp, Projectile.oldPos[k], easeInOutQuad(j));
-                    float oldRotForLerp = k > 0 ? Projectile.oldRot[k - 1] : Projectile.rotation;
-                    float lerpedAngle = Utils.AngleLerp(oldRotForLerp, Projectile.oldRot[k], easeInOutQuad(j));
-                    lerpedPos += Projectile.Size / 2;
-                    lerpedPos -= Main.screenPosition;
-                    Color finalColor = lightColor * 0.5f * (1 - ((float)k / (float)Projectile.oldPos.Length));
-                    finalColor.A = 0;//acts like additive blending without spritebatch stuff
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle, texture.Size() / 2, 1, SpriteEffects.None, 0);
-                }
-            }
-            return true;
-        }
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-            float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
-            float scaleFactor = 85f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
-            float widthMultiplier = 23f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
-            float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
-
-            // This Rectangle is the width and height of the Jousting Lance's hitbox which is used for the first step of collision.
-            // You will need to modify the last two numbers if you have a bigger or smaller Jousting Lance.
-            // Vanilla uses (0, 0, 300, 300) which that is quite large for the size of the Jousting Lance.
-            // The size doesn't matter too much because this rectangle is only a basic check for the collision (the hit-line is much more important).
-            Rectangle lanceHitboxBounds = new Rectangle(0, 0, 300, 300);
-
-            // Set the position of the large rectangle.
-            lanceHitboxBounds.X = (int)Projectile.position.X - lanceHitboxBounds.Width / 2;
-            lanceHitboxBounds.Y = (int)Projectile.position.Y - lanceHitboxBounds.Height / 2;
-
-            // This is the back of the hit-line with Projectile.Center being the tip of the Jousting Lance.
-            Vector2 hitLineEnd = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor;
-
-            // The following is for debugging the size of the hit line. This will allow you to easily see where it starts and ends. 
-            // First check that our large rectangle intersects with the target hitbox.
-            // Then we check to see if a line from the tip of the Jousting Lance to the "end" of the lance intersects with the target hitbox.
-            if (/*lanceHitboxBounds.Intersects(targetHitbox)
-                && */Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd, widthMultiplier * Projectile.scale, ref collisionPoint))
-            {
-                return true;
-            }
-            return false;
-        }
-        public override void AI()
-        {
-            // All Projectiles have timers that help to delay certain events
-            // Projectile.ai[0], Projectile.ai[1] � timers that are automatically synchronized on the client and server
-            // Projectile.localAI[0], Projectile.localAI[0] � only on the client
-            // In this example, a timer is used to control the fade in / out and despawn of the Projectile
-            //Projectile.ai[0] += 1f;
-            if (dir == Vector2.Zero)
-            {
-                dir = Main.MouseWorld;
-                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
-            }
-            //FadeInAndOut();
-            Projectile.Center = Main.player[Projectile.owner].Center;
-            Projectile.ai[0] += 1f;
-            Player player = Main.player[Projectile.owner];
-            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
-            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((40 - Projectile.ai[0])));
-            Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 0.5f);
-        }
-
-    }
-    public class CorrosiveShot : ModProjectile
-    {
-        public override string Texture => "PenumbraMod/EMPTY";
-        public override void SetDefaults()
-        {
-            Projectile.damage = 72;
-            Projectile.width = 12;
-            Projectile.height = 12;
-            Projectile.aiStyle = 0;
-            Projectile.friendly = true;
-            Projectile.hostile = false;
-            Projectile.penetrate = 1;
-            Projectile.timeLeft = 6000;
-            Projectile.light = 0.20f;
-            Projectile.ignoreWater = false;
-            Projectile.tileCollide = true;
-            Projectile.extraUpdates = 8;
-        }
-
-        public override void AI()
-        {
-            int dust2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.GreenTorch, 3f, 0f, 0);
-            Main.dust[dust2].noGravity = true;
-            Main.dust[dust2].velocity *= 1.2f;
-            Main.dust[dust2].scale = (float)Main.rand.Next(100, 135) * 0.012f;
-            Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 0.3f);
-        }
-        public override void OnKill(int timeLeft)
-        {
-            // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
-            Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
-        }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.AddBuff(ModContent.BuffType<Corrosion>(), 300);
-        }
     }
     public class CorrosiveScytheHold : ModProjectile
     {
@@ -496,7 +285,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.Kill();
             }
             if (projOwner.ownedProjectileCounts[ModContent.ProjectileType<CorrosiveScytheSwing>()] >= 1
-                || projOwner.ownedProjectileCounts[ModContent.ProjectileType<CorrosiveScytheSwing2>()] >= 1 || projOwner.channel)
+                || projOwner.ownedProjectileCounts[ModContent.ProjectileType<CorrosiveScytheSpecial>()] >= 1 || projOwner.channel)
             {
                 Projectile.alpha = 255;
             }
@@ -507,6 +296,167 @@ namespace PenumbraMod.Content.Items
             //Orient projectile
             Projectile.direction = projOwner.direction;
             Projectile.spriteDirection = projOwner.direction;
+        }
+
+    }
+    public class CorrosiveScytheSpecial : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            ProjectileID.Sets.TrailCacheLength[Projectile.type] = 6; // The length of old position to be recorded
+            ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+
+        }
+        public override void SetDefaults()
+        {
+            Projectile.damage = 92;
+            Projectile.width = 142;
+            Projectile.height = 200;
+            Projectile.aiStyle = -1;
+            Projectile.friendly = false;
+            Projectile.hostile = false;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 999999;
+            Projectile.ignoreWater = false;
+            Projectile.tileCollide = false;
+            Projectile.light = 1f;
+            Projectile.netImportant = true;
+        }
+        public override void AI()
+        {
+            Projectile.ai[0] += 1f;
+            Projectile.ai[1] += 1f;
+            Player player = Main.player[Projectile.owner];
+            player.heldProj = Projectile.whoAmI; // We tell the player that the drill is the held projectile, so it will draw in their hand
+            player.SetDummyItemTime(2); // Make sure the player's item time does not change while the projectile is out
+            if (Projectile.ai[1] < 195)
+            {
+                Projectile.Center = player.Center;
+                if (Projectile.ai[1] <= 15)
+                    Projectile.rotation -= 0.1f;
+                if (Projectile.ai[1] >= 30 && Projectile.ai[1] <= 35 || Projectile.ai[1] >= 181 && Projectile.ai[1] <= 195)
+                {
+                    Projectile.rotation += 0.1f;
+                    Projectile.friendly = true;
+                }
+                if (Projectile.ai[1] >= 35 && Projectile.ai[1] <= 40 || Projectile.ai[1] >= 161 && Projectile.ai[1] <= 180)
+                    Projectile.rotation += 0.2f;
+
+                if (Projectile.ai[1] >= 41 && Projectile.ai[1] <= 160)
+                {
+                    Projectile.rotation += 0.3f;
+                    if (Projectile.ai[0] == 32)
+                        SoundEngine.PlaySound(SoundID.Item7, Projectile.position);
+                    if (Projectile.ai[0] >= 42)
+                        Projectile.ai[0] = 30;
+                }
+                if (Projectile.ai[1] == 162)
+                    Projectile.friendly = false;
+            }
+            else
+                Projectile.Kill();
+            Lighting.AddLight(Projectile.Center, Color.LightGreen.ToVector3() * 1.7f);
+
+
+        }
+        Vector2 dir = Vector2.Zero;
+        Vector2 hlende = Vector2.Zero;
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
+            float scaleFactor = 120f;
+            float scaleFactor2 = -120f;// How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
+            float widthMultiplier = 24f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
+            float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
+
+            // This Rectangle is the width and height of the Jousting Lance's hitbox which is used for the first step of collision.
+            // You will need to modify the last two numbers if you have a bigger or smaller Jousting Lance.
+            // Vanilla uses (0, 0, 300, 300) which that is quite large for the size of the Jousting Lance.
+            // The size doesn't matter too much because this rectangle is only a basic check for the collision (the hit-line is much more important).
+            Rectangle lanceHitboxBounds = new Rectangle(0, 0, 284, 284);
+
+            // Set the position of the large rectangle.
+            lanceHitboxBounds.X = (int)Projectile.position.X - lanceHitboxBounds.Width / 2;
+            lanceHitboxBounds.Y = (int)Projectile.position.Y - lanceHitboxBounds.Height / 2;
+
+            // This is the back of the hit-line with Projectile.Center being the tip of the Jousting Lance.
+            Vector2 hitLineEnd = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor;
+            Vector2 hitLineEnd2 = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor2;
+            if (Projectile.friendly)
+            {
+                if (Main.rand.NextBool(5))
+                {
+                    Dust.NewDust(hitLineEnd, 5, 5, DustID.JungleTorch, Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, 0, default, 0.8f);
+                    Dust.NewDust(hitLineEnd2, 5, 5, DustID.JungleTorch, Projectile.velocity.X * 2f, Projectile.velocity.Y * 2f, 0, default, 0.8f);
+                }
+                hlende = hitLineEnd;
+                // First check that our large rectangle intersects with the target hitbox.
+                // Then we check to see if a line from the tip of the Jousting Lance to the "end" of the lance intersects with the target hitbox.
+                if (/*lanceHitboxBounds.Intersects(targetHitbox)
+                && */Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd, widthMultiplier * Projectile.scale, ref collisionPoint))
+                {
+                    return true;
+                }
+                if (/*lanceHitboxBounds.Intersects(targetHitbox)
+                && */Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd2, widthMultiplier * Projectile.scale, ref collisionPoint))
+                {
+                    return true;
+                }
+            }       
+            return false;
+        }
+
+        public static float easeInOutQuad(float x)
+        {
+            return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
+        }
+        float a = 0.2f;
+        float b;
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/CorrosiveScytheSpecialF").Value;
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            for (int k = 0; k < Projectile.oldPos.Length; k++)
+            {
+                if (Projectile.oldPos[k] == Vector2.Zero)
+                    return false;
+                for (float j = 0.0625f; j < 1; j += 0.0625f)//not sure if it will work actually
+                {
+                    Vector2 oldPosForLerp = k > 0 ? Projectile.oldPos[k - 1] : Projectile.position;
+                    Vector2 lerpedPos = Vector2.Lerp(oldPosForLerp, Projectile.oldPos[k], easeInOutQuad(j));
+                    float oldRotForLerp = k > 0 ? Projectile.oldRot[k - 1] : Projectile.rotation;
+                    float lerpedAngle = Utils.AngleLerp(oldRotForLerp, Projectile.oldRot[k], easeInOutQuad(j));
+                    lerpedPos += Projectile.Size / 2;
+                    lerpedPos -= Main.screenPosition;
+                    Color finalColor = lightColor * b * (1 - ((float)k / (float)Projectile.oldPos.Length));
+                    finalColor.A = 0;//acts like additive blending without spritebatch stuff
+                    Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle, texture.Size() / 2, new Vector2(a, a), SpriteEffects.None, 0);
+                }
+            }
+            if (Projectile.ai[1] < 160)
+            {
+                a += 0.05f;
+                if (a > 1f)
+                    a = 1f;
+
+                b += 0.01f;
+                if (b > 0.3f)
+                    b = 0.3f;
+            }
+            else
+            {
+                a -= 0.006f;
+                if (a < 0f)
+                    a = 0f;
+
+                b -= 0.006f;
+                if (b < 0f)
+                    b = 0f;
+            }
+        
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, new Vector2(a, a), SpriteEffects.None, 0);
+            return false;
         }
 
     }

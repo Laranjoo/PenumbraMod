@@ -243,9 +243,9 @@ namespace PenumbraMod.Common
         {
             ItemhitNPC = true;
             target.AddBuff(BuffType<hitef>(), 10);
-            if (item.DamageType == GetInstance<ReaperClass>())
+            if (hit.DamageType == GetInstance<ReaperClass>())
             {
-                if (item.prefix != PrefixType<DeathlyPrefix>()) // This looks strange but actually works
+                if (player.HeldItem.prefix == PrefixType<DeathlyPrefix>())
                     player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
             }
         }

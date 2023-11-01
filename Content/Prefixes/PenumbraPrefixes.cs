@@ -1,6 +1,7 @@
 using PenumbraMod.Content.DamageClasses;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PenumbraMod.Content.Prefixes
@@ -8,7 +9,7 @@ namespace PenumbraMod.Content.Prefixes
     // This class serves as an example for declaring item 'prefixes', or 'modifiers' in other words.
     public class DeathlyPrefix : ModPrefix
     {
-        public readonly int power;
+        public virtual float power => 1f;
 
         // Change your category this way, defaults to PrefixCategory.Custom. Affects which items can get this prefix.
         public override PrefixCategory Category => PrefixCategory.AnyWeapon;
@@ -19,7 +20,7 @@ namespace PenumbraMod.Content.Prefixes
         // Note: if you use PrefixCategory.Custom, actually use ModItem.ChoosePrefix instead.
         public override float RollChance(Item item)
         {
-            return 4f;
+            return 5f;
         }
 
         // Determines if it can roll at all.
@@ -33,16 +34,16 @@ namespace PenumbraMod.Content.Prefixes
         // Damage Multiplier, Knockback Multiplier, Use Time Multiplier, Scale Multiplier (Size), Shoot Speed Multiplier, Mana Multiplier (Mana cost), Crit Bonus.
         public override void SetStats(ref float damageMult, ref float knockbackMult, ref float useTimeMult, ref float scaleMult, ref float shootSpeedMult, ref float manaMult, ref int critBonus)
         {
-            damageMult *= 1f + 0.10f * power;
+            damageMult *= 1f + 0.12f * power;
             knockbackMult *= 1f + 0.08f * power;
-            useTimeMult *= 1f - 0.08f * power;
-            critBonus += 3;
+            useTimeMult *= 1f - 0.10f * power;
+            critBonus += 4;
         }
 
         // Modify the cost of items with this modifier with this function.
         public override void ModifyValue(ref float valueMult)
         {
-            valueMult *= 1f + 0.07f * power;
+            valueMult *= 1f + 0.09f * power;
         }
 
         // This is used to modify most other stats of items which have this modifier.
@@ -51,10 +52,19 @@ namespace PenumbraMod.Content.Prefixes
         // This prefix doesn't affect any non-standard stats, so these additional tooltiplines aren't actually necessary, but this pattern can be followed for a prefix that does affect other stats.
         public override IEnumerable<TooltipLine> GetTooltipLines(Item item)
         {
-            yield return new TooltipLine(Mod, "Deathly", "+50 Reaper energy")
+            yield return new TooltipLine(Mod, "Deathly", (string)LocalizedDescriptions.Deathly)
             {
-                IsModifier = true, // Sets the color to the positive modifier color.
+                IsModifier = true, // Sets the color to the positive modifier color.              
             };
+        }
+    }
+    class LocalizedDescriptions : ModSystem
+    {
+        public static LocalizedText Deathly { get; private set; }
+        public override void Load()
+        {
+            string category = "PrefixesDescriptions";
+            Deathly ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.Deathly"));
         }
     }
 }

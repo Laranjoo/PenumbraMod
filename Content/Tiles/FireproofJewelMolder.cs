@@ -153,6 +153,11 @@ namespace PenumbraMod.Content.Tiles
                             int dust = Dust.NewDust(new Vector2(i * 16, j * 16), 20, 4, DustID.Smoke);
                             Main.dust[dust].noGravity = true;
                             Main.dust[dust].velocity.Y -= 3f;
+                            Main.dust[dust].velocity.X -= 2f;
+                            int dust2 = Dust.NewDust(new Vector2(i * 16, j * 16), 20, 4, DustID.Smoke);
+                            Main.dust[dust2].noGravity = true;
+                            Main.dust[dust2].velocity.Y -= 3f;
+                            Main.dust[dust2].velocity.X += 2f;
                         }                   
                         dustac = false;
                     }                
