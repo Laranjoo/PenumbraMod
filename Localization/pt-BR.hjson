@@ -278,7 +278,7 @@ Mods: {
 			}
 
 			MeltedDemonicBatBuff: {
-				DisplayName: Buff de Morcego Demoníaco Derretido
+				DisplayName: Morcego Demoníaco Derretido
 				Description: Um morcego derretido está lutando por você.
 			}
 
@@ -303,7 +303,7 @@ Mods: {
 			}
 
 			MagicForce: {
-				DisplayName: Força do velho Senhor
+				DisplayName: Força do Velho Senhor
 				Description:
 					'''
 					Dano da foice aumentado em 5%
@@ -335,7 +335,7 @@ Mods: {
 
 			PrimeyeForceCooldown: {
 				DisplayName: Tempo de recarga da Força Primeye
-				Description: Primeye não pode ser ativado agora! ( se lascou trouxa haha )
+				Description: Primeye não pode ser ativado agora!
 			}
 
 			RubyForce: {
@@ -381,39 +381,44 @@ Mods: {
 			}
 
 			TerraForce: {
-				DisplayName: Força Terrestre
-				Description: Estatísticas da foice aumentadas em: +20% de tamanho, +15% de velocidade, +15% de repulsão, +5 de penetração de armadura, +15% de crítico e +20% de dano
+				DisplayName: Força da Terra
+				Description:
+					'''
+										Estatísticas de armas ceifadoras aumentadas em: +20% tamanho, +7% velocidade, +10% empurrão, +3 penetração de armadura, +9% chance de crítico e +9% dano
+										Garante uma pequena regeneração de vida, +10 energia ceifadora e inflinge Inferno amaldiçoado
+										
+					'''
 			}
 
 			TungstenShield: {
-				 Description: Defesa aumentada em 4
-				 DisplayName: Escudo de Tungstênio
+				Description: Defesa aumentada em 4
+				DisplayName: Escudo de Tungstênio
 			}
 
 			PerishedForce: {
-				 DisplayName: Força mortal
-				 Description: Dano da foice aumentado em 3
+				DisplayName: Força mortal
+				Description: Dano da foice aumentado em 3
 			}
 
 			PerishedForceCooldown: {
-				 DisplayName: Recarga da Força mortal
-				 Description: Você não pode obliterar ainda!
+				DisplayName: Recarga da Força mortal
+				Description: Você não pode obliterar ainda!
 			}
 
 			AblazedForce: {
-				 Description: O empurrão da foice aumentou em 7%, a velocidade aumentou em 10% e queima os inimigos!
-				 DisplayName: Força Flamejante
+				Description: O empurrão da foice aumentou em 7%, a velocidade aumentou em 10% e queima os inimigos!
+				DisplayName: Força Flamejante
 			}
 
 			CorrosiveForce: {
-				 DisplayName: Força Corrosiva
-				 Description:
+				DisplayName: Força Corrosiva
+				Description:
 					'''
 					Armas Reaper infligem corrosão
-                                        Concede imunidade à corrosão
-                                        Armas Reaper aumentadas em 5
-                                        A foice corrosiva agora está mais forte!
-					''' 
+					                                   Concede imunidade à corrosão
+					                                   Armas Reaper aumentadas em 5
+					                                   A foice corrosiva agora está mais forte!
+					'''
 			}
 
 			SoulBoost: {
@@ -422,38 +427,38 @@ Mods: {
 			}
 
 			SpectreForce: {
-				 DisplayName: Força Espectral
-				 Description: 50% de chance de obter impulso de alma
+				DisplayName: Força Espectral
+				Description: 50% de chance de obter impulso de alma
 			}
 
 			OnyxForce: {
-				 DisplayName: Força Ônix
-				 Description: Liberte uma criatura sombria para ajudá-lo na luta
+				DisplayName: Força Ônix
+				Description: Liberte uma criatura sombria para ajudá-lo na luta
 			}
 
 			PrettyBuff: {
-				 DisplayName: Coração deslizante
-				 Description: 20% de chance de um inimigo deixar cair um coração extra ao ser morto
+				DisplayName: Coração deslizante
+				Description: 20% de chance de um inimigo deixar cair um coração extra ao ser morto
 			}
 
 			SoulHunt: {
-				 DisplayName: Caça às Almas
-				 Description: Chance aumentada em 100% de dropar almas
+				DisplayName: Caça às Almas
+				Description: Chance aumentada em 100% de dropar almas
 			}
 
 			AquamarineForce: {
-				// DisplayName: Aquamarine Force
-				// Description: 25+ Reaper energy when hitting enemies
+				DisplayName: Força Aquamarina
+				Description: 25+ energia ceifadora ao dar dano a inimigos
 			}
 
 			PeridotForce: {
-				// DisplayName: Peridot Force
-				// Description: Inflicts poison
+				DisplayName: Força de Peridot
+				Description: Inflinge Envenenamento
 			}
 
 			RozeQuartzForce: {
-				// DisplayName: Roze Quartz Force
-				// Description: Grants a subtle life regeneration
+				DisplayName: Força de Quartzo rosa
+				Description: Grante uma regeneração de vida sutil
 			}
 		}
 
@@ -985,8 +990,8 @@ Mods: {
 			}
 
 			Buriti: {
-				 DisplayName: Buriti
-				 Tooltip:
+				DisplayName: Buriti
+				Tooltip:
 					'''
 					Buriti
 					Buriti
@@ -994,7 +999,7 @@ Mods: {
 					Buriti
 					Buriti
 					e o Buriti ( e o visionario nao tem jeito ) 
-					''' 
+					'''
 			}
 
 			Carabina: {
@@ -2616,10 +2621,13 @@ Mods: {
 		}
 
 		Prefixes: {
-			DeathlyPrefixTip.DisplayName: Mortífero
 			DeathlyPrefix.DisplayName: Mortífero
+			DarkeningPrefix.DisplayName: Sombria
 		}
 
-		PrefixesDescriptions.Deathly: +50 energia ceifadora
+		PrefixesDescriptions: {
+			Deathly: +50 energia ceifadora
+			Darkening: +40 energia ceifadora
+		}
 	}
 }

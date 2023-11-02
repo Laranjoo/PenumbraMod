@@ -2620,10 +2620,13 @@ Mods: {
 		}
 
 		Prefixes: {
-			DeathlyPrefixTip.DisplayName: Deathly
 			DeathlyPrefix.DisplayName: Deathly
+			DarkeningPrefix.DisplayName: Darkening
 		}
 
-		PrefixesDescriptions.Deathly: +50 reaper energy
+		PrefixesDescriptions: {
+			Deathly: +50 reaper energy
+			Darkening: +40 reaper energy
+		}
 	}
 }

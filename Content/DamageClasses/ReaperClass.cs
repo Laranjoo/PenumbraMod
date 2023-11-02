@@ -61,8 +61,10 @@ namespace PenumbraMod.Content.DamageClasses
         public int ReaperEnergy;
         public int ReaperEnergyMax;
         public float ReaperEnergyMult;
+        public float Timer;
         public bool FirstSlotActivate = false;
         public bool SecondSlotActivate = false;
+        public bool Sound;
         private ReaperUI bar;
         #region Crystals
         // 1st slot
@@ -118,7 +120,6 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     SoundEngine.PlaySound(SoundID.Item113, Player.position);
                     Player.controlUseItem = true;
-                    ReaperEnergy = 0;
                 }
             }
         }
@@ -126,23 +127,27 @@ namespace PenumbraMod.Content.DamageClasses
         {
             bar = new ReaperUI();
         }
+        // TODO: Add a buffer so when the player clicks the keybind, the game waits for the item animation to end so ic can use the ability (because if the player uses the ability mid-attack, it will waste it)
+        // TODO: Make the bar wait for the ability to end so it can increase again (if you use the ability, it will decrease, but still can increase if the player attacks)
         public override void PreUpdate()
         {
             if (ReaperEnergy >= ReaperEnergyMax)
             {
                 ReaperEnergy = ReaperEnergyMax;
-
             }
+            if (ReaperEnergy < -1)
+                ReaperEnergy = 0;
+         
             if (ReaperEnergy > 9980)
             {
                 if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
                 {
-                    SoundEngine.PlaySound(SoundID.Item113, Player.position);
                     Player.controlUseItem = true;
-                    ReaperEnergy = 0;
                     Player.AddBuff(ModContent.BuffType<ReaperControl>(), 5);
+                    Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 93);
+                    Timer = 0;
                 }
-
+                Sound = true;
             }
             if (ReaperEnergy >= 3000)
             {
@@ -163,11 +168,6 @@ namespace PenumbraMod.Content.DamageClasses
 
             if (FirstSlotActivate)
             {
-                if (ReaperEnergy <= 3005)
-                {
-                    Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 10);
-                    SoundEngine.PlaySound(SoundID.Item73, Player.position);
-                }
                 if (bar.amycryst)
                     amycryst = true;
                 //
@@ -257,12 +257,6 @@ namespace PenumbraMod.Content.DamageClasses
 
             if (SecondSlotActivate)
             {
-                if (ReaperEnergy <= 7305)
-                {
-                    Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 10);
-                    SoundEngine.PlaySound(SoundID.Item73, Player.position);
-                }
-
                 if (bar.amycryst2)
                     amycryst2 = true;
                 //
@@ -592,9 +586,15 @@ namespace PenumbraMod.Content.DamageClasses
 
             // ------------
             #endregion
+           
+            Timer += 1;
 
-            if (ReaperEnergy > 0 && ReaperEnergy < (int)(ReaperEnergyMax * 0.95f))
-                ReaperEnergy -= 1;
+            if (Timer >= 40)
+            {
+                if (ReaperEnergy > 0 && ReaperEnergy < (int)(ReaperEnergyMax * 0.95f))
+                    ReaperEnergy -= 10;
+            }
+        
 
         }
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
@@ -629,6 +629,7 @@ namespace PenumbraMod.Content.DamageClasses
                     if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
                     {
                         ReaperEnergy += 50;
+                        Timer = 0;
                     }
 
                 }
@@ -639,7 +640,6 @@ namespace PenumbraMod.Content.DamageClasses
                 if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
                 {
                     Player.controlUseItem = true;
-                    ReaperEnergy = 0;
                 }
             }
             if (ReaperEnergy > ReaperEnergyMax)
@@ -657,6 +657,7 @@ namespace PenumbraMod.Content.DamageClasses
                     if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
                     {
                         ReaperEnergy += 50;
+                        Timer = 0;
                     }
                 }
 
@@ -667,7 +668,6 @@ namespace PenumbraMod.Content.DamageClasses
                 if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
                 {
                     Player.controlUseItem = true;
-                    ReaperEnergy = 0;
                 }
             }
             if (ReaperEnergy > ReaperEnergyMax)

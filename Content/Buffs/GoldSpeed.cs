@@ -9,7 +9,8 @@ namespace PenumbraMod.Content.Buffs
 
 	public class GoldSpeed : ModBuff
 	{
-		public override void SetStaticDefaults() {
+        public override string Texture => "PenumbraMod/EMPTY";
+        public override void SetStaticDefaults() {
 			// DisplayName.SetDefault("Gold Speed"); // Buff display name
 			/* Description.SetDefault("You feel like the scythe is light"
                 + "\nScythe speed increased by 70%"); */ // Buff description

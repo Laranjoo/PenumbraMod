@@ -29,6 +29,7 @@ namespace PenumbraMod.Content.Buffs
     }
     public class MeltedEx : ModBuff
     {
+        public override string Texture => "PenumbraMod/EMPTY";
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Melted Explosion"); // Buff display name

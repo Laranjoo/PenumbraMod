@@ -114,7 +114,7 @@ namespace PenumbraMod.Content.DamageClasses
 
              panel = new DraggableUI();
             panel.SetPadding(0);
-            SetRectangle(panel, left: 800, top: 30, width: 92, height: 23);
+            SetRectangle(panel, left: 700, top: 30, width: 92, height: 23);
             panel.BackgroundColor = new Color(0, 0, 0, 255) * 0f;
             panel.BorderColor = new Color(0, 0, 0, 255) * 0f;
 

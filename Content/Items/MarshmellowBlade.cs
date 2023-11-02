@@ -1,8 +1,10 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.Items.Consumables;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -83,6 +85,15 @@ namespace PenumbraMod.Content.Items
             Projectile.hide = true; // Hides the projectile, so it will draw in the player's hand when we set the player's heldProj to this one.
         }
 
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            if (Projectile.ai[1] == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None);
+            if (Projectile.ai[1] == -1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipVertically);
+            return false;
+        }
         // This code is adapted and simplified from aiStyle 20 to use a different dust and more noises. If you want to use aiStyle 20, you do not need to do any of this.
         // It should be noted that this projectile has no effect on mining and is mostly visual.
         public override void AI()

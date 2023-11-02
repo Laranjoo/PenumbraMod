@@ -243,11 +243,16 @@ namespace PenumbraMod.Common
         {
             ItemhitNPC = true;
             target.AddBuff(BuffType<hitef>(), 10);
-            if (hit.DamageType == GetInstance<ReaperClass>())
+            if (target.type != NPCID.TargetDummy)
             {
-                if (player.HeldItem.prefix == PrefixType<DeathlyPrefix>())
-                    player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
-            }
+                if (hit.DamageType == GetInstance<ReaperClass>())
+                {
+                    if (player.HeldItem.prefix == PrefixType<DeathlyPrefix>())
+                        player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
+                    if (player.HeldItem.prefix == PrefixType<DarkeningPrefix>())
+                        player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 40;
+                }
+            }      
         }
         public override void ModifyHitNPC(Item item, Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
