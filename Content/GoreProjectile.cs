@@ -17,15 +17,17 @@ namespace PenumbraMod.Content
             Projectile.ignoreWater = false;
             Projectile.tileCollide = true;
         }
+        bool t;
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Projectile.velocity *= 0.99f;
-            Projectile.rotation = 0f;
+            t = true;
             return false;
         }
         public override void AI()
         {
-            Projectile.rotation += 0.1f;
+            if (!t)
+                Projectile.rotation += 0.1f;
             Projectile.alpha += 2;
             if (Projectile.alpha > 255)
                 Projectile.Kill();

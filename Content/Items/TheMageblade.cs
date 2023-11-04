@@ -48,16 +48,6 @@ namespace PenumbraMod.Content.Items
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int basic = Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
-            if (notboollol == true)
-            {
-                Main.projectile[basic].ai[2] = -1;
-                notboollol = false;
-            }
-            else
-            {
-                Main.projectile[basic].ai[2] = 1;
-                notboollol = true;
-            }
             Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
             return false;
         }

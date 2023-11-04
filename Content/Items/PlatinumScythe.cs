@@ -139,7 +139,7 @@ namespace PenumbraMod.Content.Items
                     NormalAI();
                 }
             }
-
+            bool t;
             private void NormalAI()
             {
                 GravityDelayTimer++; // doesn't make sense.
@@ -156,7 +156,8 @@ namespace PenumbraMod.Content.Items
                 }
 
                 // Offset the rotation by 90 degrees because the sprite is oriented vertiacally.
-                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+                if (!t)
+                    Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
             }
 
             private const int StickTime = 60 * 15; // 15 seconds
@@ -232,10 +233,11 @@ namespace PenumbraMod.Content.Items
                 // Return if the hitboxes intersects, which means the javelin collides or not
                 return projHitbox.Intersects(targetHitbox);
             }
+
             public override bool OnTileCollide(Vector2 oldVelocity)
             {
                 Projectile.velocity = Vector2.Zero;
-                Projectile.rotation += 0f;
+                t = true;
                 return false;
             }
         }

@@ -32,9 +32,17 @@ namespace PenumbraMod.Content.Tiles
         // EXTREMELY LAZY WAY TO MAKE ANIMATION
         public override bool PreDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            if (Lighting.Mode == Terraria.Graphics.Light.LightMode.Color || Lighting.Mode == Terraria.Graphics.Light.LightMode.White)
+            if (Lighting.Mode == Terraria.Graphics.Light.LightMode.Color)
             {
-                if (++FrameCounter > 4)
+                if (++FrameCounter > 12)
+                {
+                    Frame = (Frame + 1) % 15;
+                    FrameCounter = 0;
+                }
+            }
+            if (Lighting.Mode == Terraria.Graphics.Light.LightMode.White)
+            {
+                if (++FrameCounter > 14)
                 {
                     Frame = (Frame + 1) % 15;
                     FrameCounter = 0;
@@ -150,14 +158,14 @@ namespace PenumbraMod.Content.Tiles
                     {
                         for (int ie = 0; ie < 4; ie++)
                         {
-                            int dust = Dust.NewDust(new Vector2(i * 16, j * 16), 20, 4, DustID.Smoke);
-                            Main.dust[dust].noGravity = true;
-                            Main.dust[dust].velocity.Y -= 3f;
-                            Main.dust[dust].velocity.X -= 2f;
-                            int dust2 = Dust.NewDust(new Vector2(i * 16, j * 16), 20, 4, DustID.Smoke);
-                            Main.dust[dust2].noGravity = true;
-                            Main.dust[dust2].velocity.Y -= 3f;
-                            Main.dust[dust2].velocity.X += 2f;
+                            Dust dust = Dust.NewDustPerfect(new Vector2(i * 16, j * 16), DustID.Smoke);
+                            dust.noGravity = true;
+                            dust.velocity.Y -= 3f;
+                            dust.velocity.X -= 4f;
+                            Dust dust2 = Dust.NewDustPerfect(new Vector2(i * 16, j * 16), DustID.Smoke);
+                            dust2.noGravity = true;
+                            dust2.velocity.Y -= 3f;
+                            dust2.velocity.X += 4f;
                         }                   
                         dustac = false;
                     }                

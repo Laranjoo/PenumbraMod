@@ -58,11 +58,52 @@ namespace PenumbraMod.Common.GlobalNPCs
             }
             #endregion
             #region DropChanges
+            #region DeathstrandingScythe
+            if (npc.type == NPCID.BlueArmoredBones)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+            if (npc.type == NPCID.BlueArmoredBonesMace)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+            if (npc.type == NPCID.BlueArmoredBonesNoPants)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+            if (npc.type == NPCID.BlueArmoredBonesSword)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+
+            if (npc.type == NPCID.RustyArmoredBonesAxe)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+            if (npc.type == NPCID.RustyArmoredBonesFlail)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+            if (npc.type == NPCID.RustyArmoredBonesSword)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+            if (npc.type == NPCID.RustyArmoredBonesSwordNoArmor)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 7, 1, 1));
+            }
+
+            if (npc.type == NPCID.BoneLee)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DeathstrandingScythe>(), 5, 1, 1));
+            }
+            #endregion
+
             if (npc.type == NPCID.KingSlime)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InconsistentJelly>(), 1, 5, 10));
             }
-            if (Main.expertMode)
+            if (Main.expertMode || Main.masterMode)
             {
                 if (npc.type == NPCID.EyeofCthulhu)
                 {

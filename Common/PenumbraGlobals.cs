@@ -105,7 +105,7 @@ namespace PenumbraMod.Common
             }
             if (Player.HasBuff<SpectreForce>())
             {
-                if (Main.rand.NextBool(2) && !Player.HasBuff<SoulBoost>())
+                if (Main.rand.NextBool(3) && !Player.HasBuff<SoulBoost>())
                 {
                     CombatText.NewText(Player.getRect(), Color.LightBlue, "Soul Boosted!");
                     Player.AddBuff(BuffType<SoulBoost>(), 180);
@@ -169,7 +169,6 @@ namespace PenumbraMod.Common
         /// Useful to check if item hit NPC
         /// </summary>
         public bool ItemhitNPC;
-
         public override void SetDefaults(Item item)
         {
             ItemhitNPC = false;

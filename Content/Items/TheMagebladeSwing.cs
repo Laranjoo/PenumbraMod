@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PenumbraMod.Content.Items.PrismaticScythe;
 using System;
 using System.IO;
 using Terraria;
@@ -23,7 +24,7 @@ namespace PenumbraMod.Content.Items
             Projectile.width = 104;
             Projectile.height = 104;
             Projectile.friendly = true;
-            Projectile.timeLeft = 20;
+            Projectile.timeLeft = 28;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
@@ -34,15 +35,15 @@ namespace PenumbraMod.Content.Items
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
-            float scaleFactor = 110f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
-            float widthMultiplier = 30f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
+            float scaleFactor = 100f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
+            float widthMultiplier = 23f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
             float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
 
             // This Rectangle is the width and height of the Jousting Lance's hitbox which is used for the first step of collision.
             // You will need to modify the last two numbers if you have a bigger or smaller Jousting Lance.
             // Vanilla uses (0, 0, 300, 300) which that is quite large for the size of the Jousting Lance.
             // The size doesn't matter too much because this rectangle is only a basic check for the collision (the hit-line is much more important).
-            Rectangle lanceHitboxBounds = new Rectangle(0, 0, 284, 284);
+            Rectangle lanceHitboxBounds = new Rectangle(0, 0, 104, 104);
 
             // Set the position of the large rectangle.
             lanceHitboxBounds.X = (int)Projectile.position.X - lanceHitboxBounds.Width / 2;
@@ -62,25 +63,17 @@ namespace PenumbraMod.Content.Items
             }
             return false;
         }
-
         int a;
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(a);
-        }
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            a = reader.ReadInt32();
-        }
         public override void AI()
         {
             if (dir == Vector2.Zero)
             {
                 dir = Main.MouseWorld;
-                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[2]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation() + 0.78f;
+                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
             }
             //FadeInAndOut();
             Projectile.Center = Main.player[Projectile.owner].Center;
+            Projectile.ai[2]++;
             a++;
             Player player = Main.player[Projectile.owner];
             player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
@@ -94,18 +87,17 @@ namespace PenumbraMod.Content.Items
                 Projectile.ai[0] += 0.2f;
                 Projectile.ai[1] += 0.2f;
             }
-            if (a >= 9 && a <= 14)
-                Projectile.scale += 0.1f;
-            if (a >= 15 && a <= 20)
-                Projectile.scale -= 0.2f;
-
-            if (a == 10)
+            if (Projectile.ai[2] >= 9 && Projectile.ai[2] <= 16)
+                Projectile.scale += 0.07f;
+            if (Projectile.ai[2] >= 17 && Projectile.ai[2] <= 21)
+                Projectile.scale -= 0.07f;
+            if (a == 13)
+            {
                 SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
+            }
+            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((10 - Projectile.ai[0])));
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.5f);
 
-            if (Projectile.ai[2] == 1)
-                Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((10 - Projectile.ai[0])));
-            if (Projectile.ai[2] == -1)
-                Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((-10 - Projectile.ai[0])));
         }
         public static float easeInOutQuad(float x)
         {

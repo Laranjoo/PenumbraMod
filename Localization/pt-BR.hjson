@@ -428,7 +428,7 @@ Mods: {
 
 			SpectreForce: {
 				DisplayName: Força Espectral
-				Description: 50% de chance de obter impulso de alma
+				Description: 33% de chance de obter impulso de alma
 			}
 
 			OnyxForce: {
@@ -706,6 +706,23 @@ Mods: {
 			// CorrodedCrystal.DisplayName: Corroded Crystal
 			// IceSickleExplosion.DisplayName: Ice Sickle
 			// CorrosiveScytheSpecial.DisplayName: Corrosive Scythe
+			// DeathExplosion.DisplayName: Death Explosion
+			// DeathStrandingSpecial.DisplayName: Death Stranding Scythe
+			// DeathExplosion2.DisplayName: Death Explosion2
+			// DeathstrandingScytheGore1.DisplayName: Deathstranding Scythe Gore1
+			// DeathstrandingScytheGore2.DisplayName: Deathstranding Scythe Gore2
+			// DeathstrandingScytheGore3.DisplayName: Deathstranding Scythe Gore3
+			// DeathstrandingScytheGore4.DisplayName: Deathstranding Scythe Gore4
+			// EarthreaperScytheBeam.DisplayName: Earthreaper Scythe Beam
+			// EarthreaperScytheSwing.DisplayName: Earthreaper Scythe Swing
+			// EarthreaperScytheSwing2.DisplayName: Earthreaper Scythe Swing2
+			// EarthreaperScytheBeam2.DisplayName: Earthreaper Scythe Beam2
+			// FireRest.DisplayName: Fire Rest
+			// FireRest2.DisplayName: Fire Rest2
+			// FireRest3.DisplayName: Fire Rest3
+			// FireRest4.DisplayName: Fire Rest4
+			// EarthreaperScytheBeam2ef.DisplayName: Earthreaper Scythe Beam2ef
+			// EarthreaperScytheBeam2eff.DisplayName: Earthreaper Scythe Beam2eff
 		}
 
 		Items: {
@@ -1181,7 +1198,7 @@ Mods: {
 
 			DeathstrandingScythe: {
 				// DisplayName: Deathstranding Scythe
-				// Tooltip: "[c/5e5e5e:Special ability:] When used, the scythe makes a blue explosion, damaging monsters nearby, and also gives 5+ defense for 5 seconds"
+				// Tooltip: "[c/5e5e5e:Special ability:] When used, throws the scythe and at a certain ditance, a blue explosion occurs"
 			}
 
 			DiamondSword: {
@@ -2210,7 +2227,7 @@ Mods: {
 				// DisplayName: Spectre Jewel
 				/* Tooltip:
 					'''
-					When hitting enemies, grants you a 50% chance of getting a soul boost for 3 seconds
+					When hitting enemies, grants you a 33% chance of getting a soul boost for 3 seconds
 					The soul boost grants you 75+ reaper energy when hitting an enemy
 					''' */
 			}
@@ -2527,6 +2544,11 @@ Mods: {
 
 			RozeQuartzGemsparkBlock: {
 				// DisplayName: Roze Quartz Gemspark Block
+				// Tooltip: ""
+			}
+
+			EarthreaperScythe: {
+				// DisplayName: Earthreaper Scythe
 				// Tooltip: ""
 			}
 		}

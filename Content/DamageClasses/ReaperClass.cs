@@ -626,7 +626,7 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 if (ReaperEnergy < ReaperEnergyMax)
                 {
-                    if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
+                    if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>())
                     {
                         ReaperEnergy += 50;
                         Timer = 0;
@@ -654,7 +654,7 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 if (ReaperEnergy < ReaperEnergyMax)
                 {
-                    if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()))
+                    if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>())
                     {
                         ReaperEnergy += 50;
                         Timer = 0;
