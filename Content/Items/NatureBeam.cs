@@ -112,8 +112,9 @@ namespace PenumbraMod.Content.Items
                         lerpedAngle = Utils.AngleLerp(Projectile.rotation, Projectile.oldRot[k], easeInOutQuad(j));
                     lerpedPos += Projectile.Size / 2;
                     lerpedPos -= Main.screenPosition;
+                    lightColor.A = 0;
                     if (Projectile.alpha <= 0)
-                        Main.EntitySpriteDraw(texture2, lerpedPos, null, Color.White * 0.1f * (1 - ((float)k / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), 1, SpriteEffects.None, 0);
+                        Main.EntitySpriteDraw(texture2, lerpedPos, null, lightColor * 0.1f * (1 - ((float)k / (float)Projectile.oldPos.Length)), lerpedAngle, new Vector2(texture.Width / 2, texture.Height / 2), 1, SpriteEffects.None, 0);
                 }
             }
 

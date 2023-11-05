@@ -219,20 +219,19 @@ namespace PenumbraMod.Content.Items
             Projectile.aiStyle = 0;
             Projectile.hide = false;
             Projectile.alpha = 0;
+            Projectile.timeLeft = 240;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<DarkMatter>(), 60);
             Projectile.Kill();
         }
-        int f;
         public override void AI()
         {
-            NPC npc = Main.npc[Projectile.owner];
             Projectile.velocity *= 0.95f;
             Projectile.ai[0] += 1f;
             float maxDetectRadius = 400f; // The maximum radius at which a projectile can detect a target
-            float projSpeed = 18f; // The speed at which the projectile moves towards the target
+            float projSpeed = 22f; // The speed at which the projectile moves towards the target
 
             int dust = Dust.NewDust(Projectile.Center, 1, 1, ModContent.DustType<DarkMatter2>(), 0f, 0f, 0);
             Main.dust[dust].noGravity = true;

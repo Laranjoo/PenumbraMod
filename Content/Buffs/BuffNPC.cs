@@ -247,14 +247,10 @@ namespace PenumbraMod.Content.Buffs
             if (bleeding)
             {
                 drawColor = new Color(255, 0, 0);
-                if (Main.rand.NextBool(14))
-                {
-                    int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Blood, 1f, 0f, 0);
-                    Main.dust[dust].noGravity = false;
-                    Main.dust[dust].velocity *= 2f;
-                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.010f;
-                }
-
+                int dust = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.Blood, 1f, 0f, 0);
+                Main.dust[dust].noGravity = false;
+                Main.dust[dust].velocity *= 2f;
+                Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.010f;
             }
             if (DarkMatter)
             {

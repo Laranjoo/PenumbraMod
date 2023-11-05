@@ -128,15 +128,7 @@ namespace PenumbraMod.Content.Items
             }
             
             bool firstSpawn = true;
-            int newOffsetY;
-            float spawnProgress;
-            bool dustSpawn = true;
-
-            float rotationStrength = 0.1f;
             double deg;
-
-            bool startSound = true;
-            bool endSound = false;
 
             public override Color? GetAlpha(Color lightColor)
             {

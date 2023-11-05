@@ -311,6 +311,7 @@ namespace PenumbraMod.Content.Items
             Projectile.scale = 1.6f;
             Projectile.hide = false;
             Projectile.alpha = 0;
+            Projectile.timeLeft = 180;
         }
         int f;
         public override void AI()
@@ -413,6 +414,7 @@ namespace PenumbraMod.Content.Items
             Projectile.scale = 1.6f;
             Projectile.hide = false;
             Projectile.alpha = 0;
+            Projectile.timeLeft = 180;
         }
         int f;
         public override void AI()

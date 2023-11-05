@@ -155,6 +155,17 @@ namespace PenumbraMod.Common
             {
                 tooltips.Add(new(Mod, "", "Right Click to stand a shield in your front, at enemy hits, you will gain holy protection to dodge the next attack and gain 10+ defense"));
             }
+            if (Main.LocalPlayer.HasItem(ModContent.ItemType<FirstShardOfTheMageblade>())
+                   && Main.LocalPlayer.HasItem(ModContent.ItemType<SecondShardOfTheMageblade>())
+                   && Main.LocalPlayer.HasItem(ModContent.ItemType<ThirdShardOfTheMageblade>())
+                   && Main.LocalPlayer.HasItem(ModContent.ItemType<FourthShardOfTheMageblade>()))
+            {
+                if (item.type == ItemType<FourthShardOfTheMageblade>()
+                   || item.type == ItemType<ThirdShardOfTheMageblade>()
+                   || item.type == ItemType<SecondShardOfTheMageblade>()
+                   || item.type == ItemType<FirstShardOfTheMageblade>())
+                    tooltips.Add(new(Mod, "", "[c/178cff:You have all the shards, combine them into a special location.]"));
+            }
         }
     }
 
@@ -476,6 +487,16 @@ namespace PenumbraMod.Common
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
         {
             Player player = Main.player[projectile.owner];
+            if (target.type != NPCID.TargetDummy)
+            {
+                if (hit.DamageType == GetInstance<ReaperClass>())
+                {
+                    if (player.HeldItem.prefix == PrefixType<DeathlyPrefix>())
+                        player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
+                    if (player.HeldItem.prefix == PrefixType<DarkeningPrefix>())
+                        player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 40;
+                }
+            }
             if (player.HeldItem?.type == ItemType<OmniStaff>())
             {
                 if (projectile.type == ProjectileID.CultistBossLightningOrbArc)

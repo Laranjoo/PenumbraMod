@@ -1,3 +1,4 @@
+using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.Items;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -48,7 +49,10 @@ namespace PenumbraMod.Content.NPCs
                 return SpawnCondition.Underground.Chance * 0.5f;
             return 0f;
         }
-
+        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        {
+            target.AddBuff(ModContent.BuffType<Corrosion>(), 120);
+        }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once

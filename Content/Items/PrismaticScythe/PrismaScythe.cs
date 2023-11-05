@@ -131,7 +131,7 @@ namespace PenumbraMod.Content.Items.PrismaticScythe
             // This is the back of the hit-line with Projectile.Center being the tip of the Jousting Lance.
             Vector2 hitLineEnd = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor;
             if (Main.rand.NextBool(3))
-                Dust.NewDust(hitLineEnd, 5, 5, DustID.PinkFairy, rotationFactor, rotationFactor, 0, default, 0.4f);
+                Dust.NewDustPerfect(hitLineEnd, DustID.PinkFairy);
             //Dust.NewDustPerfect(hitLineEnd, DustID.JungleTorch, Projectile.DirectionTo(Main.MouseWorld) * 2f, 0, default, Scale: 0.8f);
             hlende = hitLineEnd;
             // The following is for debugging the size of the hit line. This will allow you to easily see where it starts and ends. 

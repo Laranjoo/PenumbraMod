@@ -86,6 +86,23 @@ namespace PenumbraMod.Content.Items
         }
         // This code is adapted and simplified from aiStyle 20 to use a different dust and more noises. If you want to use aiStyle 20, you do not need to do any of this.
         // It should be noted that this projectile has no effect on mining and is mostly visual.
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            if (Projectile.ai[1] == 1)
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, lightColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.ai[1] == -1)
+                Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, lightColor, Projectile.rotation, drawOrigin, Projectile.scale, SpriteEffects.FlipVertically, 0);
+            return false;
+        }
+        bool notboollol = true;
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
@@ -99,6 +116,16 @@ namespace PenumbraMod.Content.Items
             {
                 SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
                 Projectile.soundDelay = 6;
+                if (notboollol == true)
+                {
+                    Projectile.ai[1] = -1;
+                    notboollol = false;
+                }
+                else
+                {
+                    Projectile.ai[1] = 1;
+                    notboollol = true;
+                }
             }
 
             Vector2 playerCenter = player.RotatedRelativePoint(player.MountedCenter);
@@ -117,7 +144,7 @@ namespace PenumbraMod.Content.Items
                     }
 
                     // Projectile.velocity acts as a holdoutOffset for held projectiles.
-                    Projectile.velocity = holdoutOffset;
+                    Projectile.velocity = holdoutOffset;                
                 }
                 else
                 {

@@ -708,20 +708,22 @@ Mods: {
 			DeathExplosion.DisplayName: Death Explosion
 			DeathStrandingSpecial.DisplayName: Death Stranding Scythe
 			DeathExplosion2.DisplayName: Death Explosion2
-			DeathstrandingScytheGore1.DisplayName: Deathstranding Scythe Gore1
-			DeathstrandingScytheGore2.DisplayName: Deathstranding Scythe Gore2
-			DeathstrandingScytheGore3.DisplayName: Deathstranding Scythe Gore3
-			DeathstrandingScytheGore4.DisplayName: Deathstranding Scythe Gore4
+			DeathstrandingScytheGore1.DisplayName: Deathstranding Scythe Rest
+			DeathstrandingScytheGore2.DisplayName: Deathstranding Scythe Rest
+			DeathstrandingScytheGore3.DisplayName: Deathstranding Scythe Rest
+			DeathstrandingScytheGore4.DisplayName: Deathstranding Scythe Rest
 			EarthreaperScytheBeam.DisplayName: Earthreaper Scythe Beam
-			EarthreaperScytheSwing.DisplayName: Earthreaper Scythe Swing
-			EarthreaperScytheSwing2.DisplayName: Earthreaper Scythe Swing2
-			EarthreaperScytheBeam2.DisplayName: Earthreaper Scythe Beam2
+			EarthreaperScytheSwing.DisplayName: Earthreaper Scythe
+			EarthreaperScytheSwing2.DisplayName: Earthreaper Scythe
+			EarthreaperScytheBeam2.DisplayName: Earthreaper Scythe Beam
 			FireRest.DisplayName: Fire Rest
 			FireRest2.DisplayName: Fire Rest2
 			FireRest3.DisplayName: Fire Rest3
 			FireRest4.DisplayName: Fire Rest4
-			EarthreaperScytheBeam2ef.DisplayName: Earthreaper Scythe Beam2ef
-			EarthreaperScytheBeam2eff.DisplayName: Earthreaper Scythe Beam2eff
+			EarthreaperScytheBeam2ef.DisplayName: Earthreaper Scythe Beam
+			EarthreaperScytheBeam2eff.DisplayName: Earthreaper Scythe Beam
+			SlimyShieldCrown.DisplayName: Slimy Shield Crown
+			FrostSpike.DisplayName: Frost Spike
 		}
 
 		Items: {
@@ -749,6 +751,7 @@ Mods: {
 					'''
 					This slimy shield protects you from the slimes and keep them friendly
 					Grants immunity to slimed debuff
+					Summons a little ghost crown
 					Spawns Slime Spikes when moving
 					''You feel like the king!''
 					'''
@@ -1792,8 +1795,7 @@ Mods: {
 					[c/00ffff:An ancient sword used by an old hero...]
 					[c/00ffff:This blade is the powerful combination of the 4 legendary shards]
 					[c/00ffff:This hero was brave to save his world from the darkness and corruption]
-					[c/00ffff:Nobody knew his name, but they will remember who saved them from the evil...]
-					Throws a floating blade that follows the cursor and explodes in a bunch of parts.
+					[c/00ffff:Nobody knew his name, but they will remember who saved them from the evil...]		
 					'''
 			}
 
@@ -1801,7 +1803,7 @@ Mods: {
 				DisplayName: The Stars Caller
 				Tooltip:
 					'''
-					This scythe is from the sky!... literally!
+					This scythe is from the sky... literally!
 					Throws the scythe that penetrates enemies, but gets reduced damage every hit
 					[c/9f83d9:Special ability:] When used, the scythe spawns stars from the sky!
 					'''
@@ -2548,6 +2550,11 @@ Mods: {
 
 			EarthreaperScythe: {
 				DisplayName: Earthreaper Scythe
+				Tooltip: ""
+			}
+
+			GlacialScepter: {
+				DisplayName: Glacial Scepter
 				Tooltip: ""
 			}
 		}

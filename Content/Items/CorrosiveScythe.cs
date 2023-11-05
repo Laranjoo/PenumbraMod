@@ -38,7 +38,7 @@ namespace PenumbraMod.Content.Items
         {
             if (player.ownedProjectileCounts[ModContent.ProjectileType<CorrosiveScytheHold>()] < 1)
             {//Equip animation.
-                int index = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<CorrosiveScytheHold>(), 0, 0, player.whoAmI, 0f);
+                Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.position.X, player.position.Y, 0, 0, ModContent.ProjectileType<CorrosiveScytheHold>(), 0, 0, player.whoAmI, 0f);
             }
             if (player.HasBuff(ModContent.BuffType<CorrosiveForce>()))
             {

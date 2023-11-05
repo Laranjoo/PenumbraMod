@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PenumbraMod.Content.DamageClasses;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -24,6 +25,7 @@ namespace PenumbraMod.Content.Items
 			Projectile.timeLeft= 120;
 			Projectile.ignoreWater = true;
 			Projectile.tileCollide = false;
+            Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
         }
         public override void AI()
 		{
@@ -76,6 +78,7 @@ namespace PenumbraMod.Content.Items
             Projectile.timeLeft = 120;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
+            Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
         }
         public override void AI()
         {
@@ -147,6 +150,7 @@ namespace PenumbraMod.Content.Items
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
+            Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
         }
         public override void AI()
         {
@@ -197,6 +201,7 @@ namespace PenumbraMod.Content.Items
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
+            Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
         }
         public override void AI()
         {

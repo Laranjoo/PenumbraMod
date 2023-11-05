@@ -294,7 +294,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.78f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 1.2f);
             Projectile.rotation = Projectile.velocity.ToRotation();
             if (++Projectile.frameCounter >= 4)
             {
@@ -308,6 +308,19 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
             }
 
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
+            return false;
         }
     }
     public class Explosion2 : ModProjectile
@@ -335,7 +348,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.78f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 1.2f);
             Projectile.rotation = Projectile.velocity.ToRotation();
             if (++Projectile.frameCounter >= 4)
             {
@@ -349,6 +362,19 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
             }
 
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
+            return false;
         }
     }
     public class Explosion2up : ModProjectile
@@ -376,7 +402,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.78f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 1.2f);
             Projectile.rotation = MathHelper.PiOver2;
             if (++Projectile.frameCounter >= 4)
             {
@@ -389,6 +415,19 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
                 }
 
             }
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
+            return false;
         }
     }
     public class Explosion3 : ModProjectile
@@ -422,7 +461,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
                 Projectile.rotation += MathHelper.Pi;
                 // For vertical sprites use MathHelper.PiOver2
             }
-            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.78f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 1.2f);
             if (++Projectile.frameCounter >= 4)
             {
                 Projectile.frameCounter = 0;
@@ -435,6 +474,19 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
             }
 
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
+            return false;
         }
     }
     public class Explosion3up : ModProjectile
@@ -463,7 +515,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.78f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 1.2f);
             Projectile.rotation = -MathHelper.PiOver2;
             if (++Projectile.frameCounter >= 4)
             {
@@ -476,6 +528,19 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
                 }
 
             }
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
+            return false;
         }
     }
     public class Explosion3down : ModProjectile
@@ -504,7 +569,7 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
 
         public override void AI()
         {
-            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 0.78f);
+            Lighting.AddLight(Projectile.Center, Color.Blue.ToVector3() * 1.2f);
             Projectile.rotation = MathHelper.PiOver2;
             if (++Projectile.frameCounter >= 4)
             {
@@ -517,6 +582,19 @@ namespace PenumbraMod.Content.Items.SrplayerBomb
                 }
 
             }
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+            int frameHeight = tex.Height / Main.projFrames[Projectile.type];
+            int startY = frameHeight * Projectile.frame;
+            Rectangle sourceRectangle = new(0, startY, tex.Width, frameHeight);
+            Vector2 origin = sourceRectangle.Size() / 2f;
+            float offsetX = 20f;
+            origin.X = Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX;
+            Vector2 drawOrigin = new(tex.Width * 0.5f, Projectile.height * 0.5f);
+            Main.EntitySpriteDraw(tex, Projectile.Center - Main.screenPosition, sourceRectangle, Color.White, Projectile.rotation, drawOrigin, Projectile.scale, 0, 0);
+            return false;
         }
     }
     public class ExplosionFX : ModProjectile

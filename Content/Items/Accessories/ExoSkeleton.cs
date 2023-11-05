@@ -1,20 +1,16 @@
 ﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
 using Terraria.GameContent.Creative;
-using PenumbraMod.Content.Items.Placeable;
-using Microsoft.Xna.Framework;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PenumbraMod.Content.Items.Accessories
 {
-	// The AutoloadEquip attribute automatically attaches an equip texture to this item.
-	// Providing the EquipType.Legs value here will result in TML expecting a X_Legs.png file to be placed next to the item's main texture.
-	[AutoloadEquip(EquipType.Body)]
-    
+    [AutoloadEquip(EquipType.Shoes)]
     public class ExoSkeleton : ModItem
-	{
-		public override void SetStaticDefaults() {
-			/* Tooltip.SetDefault("Both Frog, Ninja gears, and Mechanical glove effects" + 
+    {
+        public override void SetStaticDefaults()
+        {
+            /* Tooltip.SetDefault("Both Frog, Ninja gears, and Mechanical glove effects" + 
 				"\n12% increased melee damage" + 
 				"\n6% increased movement speed" + 
 				"\n8% increased damage." +
@@ -22,21 +18,23 @@ namespace PenumbraMod.Content.Items.Accessories
 				"\nIt gives you holy protection for 10 seconds, granting you the ability to dodge the next attack" + 
 				"\n''You feel like a real ninja!''"); */
 
-			CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-		}
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+        }
 
-		public override void SetDefaults() {
-			Item.width = 30; // Width of the item
-			Item.height = 28; // Height of the item
-			Item.value = Item.sellPrice(gold: 22); // How many coins the item is worth
-			Item.rare = ItemRarityID.Purple; // The rarity of the item
-			Item.accessory = true;
-		}		
-		int ti;
-		public override void UpdateEquip(Player player) {
-			ti++;
-			player.moveSpeed += 0.06f;
-			player.GetDamage(DamageClass.Melee) += 0.12f;
+        public override void SetDefaults()
+        {
+            Item.width = 30; // Width of the item
+            Item.height = 28; // Height of the item
+            Item.value = Item.sellPrice(gold: 22); // How many coins the item is worth
+            Item.rare = ItemRarityID.Purple; // The rarity of the item
+            Item.accessory = true;
+        }
+        int ti;
+        public override void UpdateEquip(Player player)
+        {
+            ti++;
+            player.moveSpeed += 0.06f;
+            player.GetDamage(DamageClass.Melee) += 0.12f;
             player.GetAttackSpeed(DamageClass.Melee) += 0.12f;
             player.autoReuseGlove = true;
             player.meleeScaleGlove = true;
@@ -48,19 +46,18 @@ namespace PenumbraMod.Content.Items.Accessories
             player.blackBelt = true;
             player.dashType = 1;
             player.GetDamage(DamageClass.Generic) += 0.08f;
-			if (ti == 1800)
-			{
-				player.AddBuff(BuffID.ShadowDodge, 600);
-			}
-			if (ti == 2400)
-			{
-				ti = 0;
-			}
-            
+            if (ti == 1800)
+            {
+                player.AddBuff(BuffID.ShadowDodge, 600);
+            }
+            if (ti == 2400)
+            {
+                ti = 0;
+            }
         }
-
-		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
-		public override void AddRecipes() {
+        // Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
+        public override void AddRecipes()
+        {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ItemID.MasterNinjaGear, 1);
             recipe.AddIngredient(ItemID.FrogGear, 1);
@@ -69,5 +66,5 @@ namespace PenumbraMod.Content.Items.Accessories
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.Register();
         }
-	}
+    }
 }

@@ -1,10 +1,12 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.Dusts;
 using PenumbraMod.Content.Items.Placeable;
 using PenumbraMod.Content.NPCs;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -62,9 +64,6 @@ namespace PenumbraMod.Content.Items.Accessories
             NPCID.SandSlime,
             NPCID.ShimmerSlime,
             NPCID.Slimer2,
-            NPCID.QueenSlimeMinionBlue,
-            NPCID.QueenSlimeMinionPink,
-            NPCID.QueenSlimeMinionPurple,
             NPCID.ToxicSludge,
             NPCID.Gastropod,
             ModContent.NPCType<MarshmellowSlime>(),
@@ -74,7 +73,7 @@ namespace PenumbraMod.Content.Items.Accessories
         };
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.buffImmune[BuffID.Slimed] = true;  
+            player.buffImmune[BuffID.Slimed] = true;          
             for (int i = 0; i < NPCLoader.NPCCount; i++)
             {
                 if (Slimes.Contains(i))
@@ -88,8 +87,16 @@ namespace PenumbraMod.Content.Items.Accessories
                 {
                     Projectile.NewProjectile(player.GetSource_Accessory(Item), new Vector2(player.position.X + Main.rand.NextFloat(player.width), player.position.Y + Main.rand.NextFloat(player.height)), new Vector2(0f, 0f), ModContent.ProjectileType<SlimeSpike>(), 12, 0, Main.myPlayer);
                 }
-
+              
             }
+            if (!hideVisual)
+            {
+                player.GetModPlayer<HasShield>().HasSlimeShield = true;
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<SlimyShieldCrown>()] < 1)
+                {
+                    Projectile.NewProjectile(player.GetSource_Accessory(Item), player.position, new Vector2(0f, 0f), ModContent.ProjectileType<SlimyShieldCrown>(), 0, 0, Main.myPlayer);
+                }
+            }          
         }
         // Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.
         public override void AddRecipes()
@@ -102,7 +109,16 @@ namespace PenumbraMod.Content.Items.Accessories
                 .Register();
         }
     }
+    public class HasShield : ModPlayer
+    {
+        public bool HasSlimeShield;
 
+        // Always reset the accessory field to its default value here.
+        public override void ResetEffects()
+        {
+            HasSlimeShield = false;
+        }
+    }
     public class SlimeSpike : ModProjectile
     {
         public override void SetDefaults()
@@ -127,7 +143,7 @@ namespace PenumbraMod.Content.Items.Accessories
         {
             Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 0.93f);
 
-            int dust = Dust.NewDust(Projectile.Center, 2, 1, ModContent.DustType<SlimeParticle12>(), 0f, 0f, 0, Color.Blue, 1f);
+            int dust = Dust.NewDust(Projectile.Center, 2, 1, DustID.BlueTorch, 0f, 0f, 0, Color.Blue, 1f);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 1.0f;
             Main.dust[dust].scale = (float)Main.rand.Next(100, 150) * 0.005f;
@@ -136,7 +152,56 @@ namespace PenumbraMod.Content.Items.Accessories
 
     }
 
+    public class SlimyShieldCrown : ModProjectile
+    {
+        public override void SetDefaults()
+        {
+            AIType = 0;
+            Projectile.width = 26;
+            Projectile.height = 14;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 10;
+            // Some math magic to make it smoothly move up and down over time
+            const float TwoPi = (float)Math.PI * 2f;
+            float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 4f);
 
+            if (projOwner.direction == 1)
+                Projectile.Center = projOwner.Top + new Vector2(2, -3f + offset);
+            else
+                Projectile.Center = projOwner.Top + new Vector2(-2, -3f + offset);
+
+            if (projOwner.dead || !projOwner.active)
+            {//Disappear when player dies
+                Projectile.timeLeft = 0;
+                Projectile.Kill();
+                Projectile.alpha = 255;
+            }
+            if (!projOwner.GetModPlayer<HasShield>().HasSlimeShield)
+            {
+                Projectile.Kill();
+            }
+
+            //Orient projectile
+            projOwner.heldProj = Projectile.whoAmI;
+            Projectile.direction = projOwner.direction;
+            Projectile.spriteDirection = projOwner.direction;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            lightColor.A = 0;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+
+    }
 }
 
 
