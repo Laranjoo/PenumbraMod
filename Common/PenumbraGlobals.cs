@@ -5,9 +5,13 @@ using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.Items;
 using PenumbraMod.Content.Items.Consumables;
 using PenumbraMod.Content.Items.ReaperJewels;
+using PenumbraMod.Content.NPCs.Bosses.Eyestorm;
 using PenumbraMod.Content.Prefixes;
+using PenumbraMod.Content.Tiles;
 using System.Collections.Generic;
+using System.Threading;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,6 +29,7 @@ namespace PenumbraMod.Common
     {
         public bool sandhuntereff;
         public bool absolutecamera;
+        public bool MagebladeCutscene;
         public Vector2 absolutepos;
         Vector2 scrcache;
         public Item item = new(); // initialize a new item so that NullReferenceException doesn't occur when creating a new player / loading a player that doesn't have an item already saved
@@ -57,9 +62,73 @@ namespace PenumbraMod.Common
                 mo.Logger.Info(item);
             }
         }
+        public float time;
+        public bool KillFrags;
+        public override void PostUpdate()
+        {
+            #region MagebladeCutscene
+            if (MagebladeCutscene)
+            {
+                time++;
+                if (time == 10)
+                    SoundEngine.PlaySound(new SoundStyle("PenumbraMod/Assets/Music/MagebladeCutscene")
+                    {
+                        Volume = 1f,
+                        MaxInstances = 1,
+                    });
+                if (time <= 119)
+                {
+                    Main.musicVolume -= 0.01f;
+                    if (Main.musicVolume <= 0)
+                        Main.musicVolume = 0;
+                }
+                if (time == 120)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(-150, -150f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
+                }
+                if (time == 180)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene2>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow2>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(-150, 100f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
+                }
+                if (time == 240)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene3>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow3>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(150, -150f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
+                }
+                if (time == 300)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene4>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow4>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(150, 100f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
+                }
+                if (time == 540)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Top + new Vector2(0, -80), Vector2.Zero, ModContent.ProjectileType<PieceGlow5>(), 0, 0, Player.whoAmI);
+                }
+                if (time == 600)
+                {
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Top + new Vector2(0, -80), Vector2.Zero, ModContent.ProjectileType<PieceGlow6>(), 0, 0, Player.whoAmI);
+                    KillFrags = true;
+                    Main.musicVolume = 1;
+                }
+            }
+            else
+            {
+                time = 0;
+                KillFrags = false;
+            }
+            #endregion
+        }
         public override void ResetEffects()
         {
             sandhuntereff = false;
+            MagebladeCutscene = false;
+            KillFrags = false;
         }
         public override void ModifyScreenPosition()
         {
@@ -75,7 +144,6 @@ namespace PenumbraMod.Common
             }
             base.ModifyScreenPosition();
         }
-
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
                 if (sandhuntereff)
@@ -89,6 +157,7 @@ namespace PenumbraMod.Common
                     Player.HealEffect(1);
                 }            
             }
+
             if (Player.HasBuff(BuffType<CorrosiveForce>()))
             {
                 target.AddBuff(BuffType<Corrosion>(), 120);
@@ -237,7 +306,10 @@ namespace PenumbraMod.Common
                     player.AddBuff(BuffType<DeathSpeed>(), 360);
                 }
             }
-            return true;
+            if (player.HasBuff(BuffType<StunnedNPC>()))
+                return false;
+            
+                return true;
         }
         public override void HoldItem(Item item, Player player)
         {

@@ -11,6 +11,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.Drawing;
+using ReLogic.Content;
 
 namespace PenumbraMod.Content.Items
 {
@@ -371,7 +372,6 @@ namespace PenumbraMod.Content.Items
                 Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             if (Projectile.ai[2] == 1)
                 Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
-
             return false;
         }
         int a;

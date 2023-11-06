@@ -11,24 +11,24 @@ using Terraria.ModLoader;
 
 namespace PenumbraMod.Content.Items
 {
-	public class EarthreaperScytheBeam : ModProjectile
-	{
-		public override void SetDefaults()
-		{
-			Projectile.damage = 242;
-			Projectile.width = 60;
-			Projectile.height = 146;
-			Projectile.aiStyle = 0;
-			Projectile.friendly = true;
-			Projectile.hostile = false;
-			Projectile.penetrate = -1;
-			Projectile.timeLeft= 120;
-			Projectile.ignoreWater = true;
-			Projectile.tileCollide = false;
+    public class EarthreaperScytheBeam : ModProjectile
+    {
+        public override void SetDefaults()
+        {
+            Projectile.damage = 242;
+            Projectile.width = 60;
+            Projectile.height = 146;
+            Projectile.aiStyle = 0;
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 120;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
             Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
         }
         public override void AI()
-		{
+        {
             Projectile.rotation = Projectile.velocity.ToRotation();
             // Since our sprite has an orientation, we need to adjust rotation to compensate for the draw flipping
             if (Projectile.spriteDirection == -1)
@@ -38,8 +38,8 @@ namespace PenumbraMod.Content.Items
             }
             Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 1.5f);
             Projectile.alpha += 10;
-			if (Projectile.alpha > 255)
-				Projectile.Kill();
+            if (Projectile.alpha > 255)
+                Projectile.Kill();
             Projectile.velocity *= 0.96f;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -126,12 +126,8 @@ namespace PenumbraMod.Content.Items
             Vector2 position = Projectile.Center - Main.screenPosition;
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             float scale = Projectile.scale;
-         
             Color color = Projectile.GetAlpha(lightColor);
-            if (Projectile.direction == 1)
-                Main.EntitySpriteDraw(texture, position, null, color * Projectile.Opacity, Projectile.rotation, texture.Size() / 2, scale, SpriteEffects.None);
-            if (Projectile.direction == -1)
-                Main.EntitySpriteDraw(texture, position, null, color * Projectile.Opacity, Projectile.rotation, texture.Size() / 2, scale, SpriteEffects.FlipVertically);
+            Main.EntitySpriteDraw(texture, position, null, color * Projectile.Opacity, Projectile.rotation, texture.Size() / 2, scale, SpriteEffects.None);
 
             return false;
         }
@@ -165,7 +161,7 @@ namespace PenumbraMod.Content.Items
             if (Projectile.alpha > 255)
                 Projectile.Kill();
             Projectile.velocity *= 0.96f;
-        }   
+        }
         public override Color? GetAlpha(Color lightColor)
         {
             // return Color.White;
@@ -179,11 +175,7 @@ namespace PenumbraMod.Content.Items
             Texture2D texture = TextureAssets.Projectile[Type].Value;
             float scale = Projectile.scale;
             Color color = Projectile.GetAlpha(lightColor);
-            if (Projectile.direction == 1)
-                Main.EntitySpriteDraw(texture, position, null, color * Projectile.Opacity, Projectile.rotation, texture.Size() / 2, scale, SpriteEffects.None);
-            if (Projectile.direction == -1)
-                Main.EntitySpriteDraw(texture, position, null, color * Projectile.Opacity, Projectile.rotation, texture.Size() / 2, scale, SpriteEffects.FlipVertically);
-
+            Main.EntitySpriteDraw(texture, position, null, color * Projectile.Opacity, Projectile.rotation, texture.Size() / 2, scale, SpriteEffects.None);
             return false;
         }
     }

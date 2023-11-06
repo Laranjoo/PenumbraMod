@@ -1,6 +1,11 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using PenumbraMod.Common;
+using PenumbraMod.Content.Tiles;
+using System;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -21,7 +26,7 @@ namespace PenumbraMod.Content.Items
 
         public override void SetDefaults()
         {
-            Item.damage = 100;
+            Item.damage = 250;
             Item.DamageType = DamageClass.Melee;
             Item.width = 50;
             Item.height = 50;
@@ -54,15 +59,469 @@ namespace PenumbraMod.Content.Items
         {
             Lighting.AddLight(Item.Center, Color.LightBlue.ToVector3() * 0.80f * Main.essScale); // Makes this item glow when thrown out of inventory.
         }
-        public override void AddRecipes()
+    }
+    public class PieceCutscene : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Content/Items/FirstShardOfTheMageblade";
+        public override void SetDefaults()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ModContent.ItemType<FirstShardOfTheMageblade>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<SecondShardOfTheMageblade>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<ThirdShardOfTheMageblade>(), 1);
-            recipe.AddIngredient(ModContent.ItemType<FourthShardOfTheMageblade>(), 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            Projectile.width = 24;
+            Projectile.height = 24;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            Color c = Color.White;
+            return c * Projectile.Opacity;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 1000000;
+            Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 1f);
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 120 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 180)
+                {
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
+                }
+
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(-150, -150f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 1.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+            }
+
+        }
+    }
+    class PieceGlow : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/MediumGlow-bigBG";
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(60, 233, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 100000;
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(-150, -150f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 1.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+            }
+
+        }
+    }
+    public class PieceCutscene2 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Content/Items/SecondShardOfTheMageblade";
+        public override void SetDefaults()
+        {
+            Projectile.width = 16;
+            Projectile.height = 16;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            Color c = Color.White;
+            return c * Projectile.Opacity;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 100000;
+            Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 1f);
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 180 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 240)
+                {
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
+                }
+
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(-150, 100f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+            }
+
+        }
+    }
+    class PieceGlow2 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/MediumGlow-bigBG";
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(60, 233, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 1000000;
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(-150, 100f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+            }
+        }
+    }
+    public class PieceCutscene3 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Content/Items/ThirdShardOfTheMageblade";
+        public override void SetDefaults()
+        {
+            Projectile.width = 30;
+            Projectile.height = 30;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            Color c = Color.White;
+            return c * Projectile.Opacity;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 100000;
+            Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 1f);
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 240 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 300)
+                {
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
+                }
+
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(150, -150f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 1.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+            }
+
+        }
+    }
+    class PieceGlow3 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/MediumGlow-bigBG";
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(60, 233, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 100000;
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(150, -150f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 1.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+            }
+
+        }
+    }
+    public class PieceCutscene4 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Content/Items/FourthShardOfTheMageblade";
+        public override void SetDefaults()
+        {
+            Projectile.width = 18;
+            Projectile.height = 18;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            Color c = Color.White;
+            return c * Projectile.Opacity;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            return false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 10;
+            Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 1f);
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 300 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 360)
+                {
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
+                }
+
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(150, 100f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = projOwner.Center;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                {
+                    Projectile.Kill();
+                    Main.hideUI = false;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = false;
+                    AetheriumBlockModded.cutscene = false;
+                    Item.NewItem(Projectile.GetSource_DropAsItem(), Projectile.getRect(), ModContent.ItemType<TheMageblade>());
+                }
+            }
+
+        }
+    }
+    class PieceGlow4 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/MediumGlow-bigBG";
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(60, 233, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 10;
+            Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 1f);
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time < 400)
+                {
+                    const float TwoPi = (float)Math.PI * 4f;
+                    float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
+                    Projectile.Center = projOwner.Center + new Vector2(150, 100f + offset);
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(0, -80);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = projOwner.Center;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                {
+                    Projectile.Kill();
+                    Main.hideUI = false;
+                    projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = false;
+                    AetheriumBlockModded.cutscene = false;
+                }
+            }
+
+        }
+    }
+    public class PieceGlow5 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/MediumGlow-bigBG";
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(255, 255, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.alpha = 255;
+        }
+        public override void AI()
+        {
+            Player projOwner = Main.player[Projectile.owner];
+            Projectile.timeLeft = 10;
+            Projectile.scale += 0.05f;
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 540)
+            {
+                Projectile.alpha -= 20;
+                if (Projectile.alpha <= 0)
+                    Projectile.alpha = 0;
+            }
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
+                    Projectile.Kill();
+        }
+    }
+    public class PieceGlow6 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Assets/Textures/MediumGlow-bigBG";
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(255, 255, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Projectile.timeLeft = 10;
+            Projectile.scale += 0.1f;
+            Projectile.alpha += 10;
+            if (Projectile.alpha >= 255)
+                Projectile.Kill();
+
         }
     }
 }

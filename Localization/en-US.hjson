@@ -724,6 +724,16 @@ Mods: {
 			EarthreaperScytheBeam2eff.DisplayName: Earthreaper Scythe Beam
 			SlimyShieldCrown.DisplayName: Slimy Shield Crown
 			FrostSpike.DisplayName: Frost Spike
+			PieceCutscene.DisplayName: Piece Cutscene
+			PieceCutscene2.DisplayName: Piece Cutscene
+			PieceCutscene3.DisplayName: Piece Cutscene
+			PieceCutscene4.DisplayName: Piece Cutscene
+			PieceGlow.DisplayName: Piece Glow
+			PieceGlow2.DisplayName: Piece Glow
+			PieceGlow3.DisplayName: Piece Glow
+			PieceGlow4.DisplayName: Piece Glow
+			PieceGlow5.DisplayName: Piece Glow
+			PieceGlow6.DisplayName: Piece Glow
 		}
 
 		Items: {
@@ -1795,7 +1805,7 @@ Mods: {
 					[c/00ffff:An ancient sword used by an old hero...]
 					[c/00ffff:This blade is the powerful combination of the 4 legendary shards]
 					[c/00ffff:This hero was brave to save his world from the darkness and corruption]
-					[c/00ffff:Nobody knew his name, but they will remember who saved them from the evil...]		
+					[c/00ffff:Nobody knew his name, but they will remember who saved them from the evil...]
 					'''
 			}
 
@@ -2555,7 +2565,12 @@ Mods: {
 
 			GlacialScepter: {
 				DisplayName: Glacial Scepter
-				Tooltip: ""
+				Tooltip: Fires a fast icy spike
+			}
+
+			AetheriumBlockModded: {
+				DisplayName: Aetherium Block
+				Tooltip: This block is only for the mageblade cutscene
 			}
 		}
 
@@ -2572,6 +2587,7 @@ Mods: {
 			Peridot.MapEntry: Peridot
 			EnchantedMushroom.MapEntry: Enchanted Mushroom
 			JewelMolder.MapEntry: Jewel Molder
+			AetheriumBlockModded.MapEntry: Aetherium Block
 		}
 
 		Keybinds: {

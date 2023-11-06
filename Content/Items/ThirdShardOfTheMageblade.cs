@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PenumbraMod.Common;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -27,7 +28,11 @@ namespace PenumbraMod.Content.Items
 			Item.value = 2250;
 			Item.rare = ItemRarityID.Cyan;	
 		}
-
+        public override void UpdateInventory(Player player)
+        {
+            if (player.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+                Item.TurnToAir();
+        }
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             Texture2D texture = TextureAssets.Item[Item.type].Value;
