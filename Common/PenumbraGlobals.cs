@@ -70,38 +70,59 @@ namespace PenumbraMod.Common
             if (MagebladeCutscene)
             {
                 time++;
-                if (time == 10)
+                if (time == 2)
+                {
                     SoundEngine.PlaySound(new SoundStyle("PenumbraMod/Assets/Music/MagebladeCutscene")
                     {
                         Volume = 1f,
                         MaxInstances = 1,
                     });
-                if (time <= 119)
+                    Main.soundVolume = 0;
+                }
+
+                if (time >= 3 && time <= 119)
                 {
                     Main.musicVolume -= 0.01f;
                     if (Main.musicVolume <= 0)
                         Main.musicVolume = 0;
+
+                    Main.ambientVolume -= 0.01f;
+                    if (Main.ambientVolume <= 0)
+                        Main.ambientVolume = 0;
+
+                    Main.soundVolume += 0.003f;
+                    if (Main.soundVolume >= 1)
+                        Main.soundVolume = 1;
                 }
                 if (time == 120)
                 {
+                    Main.soundVolume = 1;
+                    SoundEngine.PlaySound(SoundID.Item117, Player.Center);
+                    SoundEngine.PlaySound(SoundID.Item30, Player.Center);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(-150, -150f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
                 }
                 if (time == 180)
                 {
+                    SoundEngine.PlaySound(SoundID.Item117, Player.Center);
+                    SoundEngine.PlaySound(SoundID.Item30, Player.Center);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene2>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow2>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(-150, 100f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
                 }
                 if (time == 240)
                 {
+                    SoundEngine.PlaySound(SoundID.Item117, Player.Center);
+                    SoundEngine.PlaySound(SoundID.Item30, Player.Center);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene3>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow3>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(150, -150f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
                 }
                 if (time == 300)
                 {
+                    SoundEngine.PlaySound(SoundID.Item117, Player.Center);
+                    SoundEngine.PlaySound(SoundID.Item30, Player.Center);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene4>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceGlow4>(), 0, 0, Player.whoAmI);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center + new Vector2(150, 100f), Vector2.Zero, ModContent.ProjectileType<Brightness10>(), 0, 0, Player.whoAmI);
@@ -109,12 +130,17 @@ namespace PenumbraMod.Common
                 if (time == 540)
                 {
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Top + new Vector2(0, -80), Vector2.Zero, ModContent.ProjectileType<PieceGlow5>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Top + new Vector2(0, -80), Vector2.Zero, ModContent.ProjectileType<PieceGlow5>(), 0, 0, Player.whoAmI);
+                    Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Top + new Vector2(0, -80), Vector2.Zero, ModContent.ProjectileType<PieceGlow7>(), 0, 0, Player.whoAmI);
                 }
+              
                 if (time == 600)
                 {
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Top + new Vector2(0, -80), Vector2.Zero, ModContent.ProjectileType<PieceGlow6>(), 0, 0, Player.whoAmI);
                     KillFrags = true;
                     Main.musicVolume = 1;
+                    Main.soundVolume = 1;
+                    Main.ambientVolume = 1;
                 }
             }
             else

@@ -735,6 +735,8 @@ Mods: {
 			// PieceGlow4.DisplayName: Piece Glow
 			// PieceGlow5.DisplayName: Piece Glow
 			// PieceGlow6.DisplayName: Piece Glow
+			// PieceGlow7.DisplayName: Piece Glow7
+			// MagebladeGlowEx.DisplayName: Mageblade Glow Ex
 		}
 
 		Items: {

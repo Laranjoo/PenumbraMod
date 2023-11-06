@@ -4,6 +4,7 @@ using PenumbraMod.Common;
 using PenumbraMod.Content.Tiles;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -78,11 +79,15 @@ namespace PenumbraMod.Content.Items
             Color c = Color.White;
             return c * Projectile.Opacity;
         }
+        float a = 1;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            Player projOwner = Main.player[Projectile.owner];
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time > 540)
+                a++;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White * a, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
         public override void AI()
@@ -105,10 +110,15 @@ namespace PenumbraMod.Content.Items
                     float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
                     Projectile.Center = projOwner.Center + new Vector2(-150, -150f + offset);
                 }
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 539)
                 {
                     Vector2 pos = projOwner.Top + new Vector2(0, -80);
                     Projectile.velocity = Projectile.DirectionTo(pos) * 1.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 520)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(20, -100);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 0.5f;
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
                     Projectile.Kill();
@@ -146,10 +156,15 @@ namespace PenumbraMod.Content.Items
                     float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
                     Projectile.Center = projOwner.Center + new Vector2(-150, -150f + offset);
                 }
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 539)
                 {
                     Vector2 pos = projOwner.Top + new Vector2(0, -80);
                     Projectile.velocity = Projectile.DirectionTo(pos) * 1.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 520)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(20, -100);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 0.5f;
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
                     Projectile.Kill();
@@ -175,11 +190,15 @@ namespace PenumbraMod.Content.Items
             Color c = Color.White;
             return c * Projectile.Opacity;
         }
+        float a = 1;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            Player projOwner = Main.player[Projectile.owner];
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time > 540)
+                a++;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White * a, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
         public override void AI()
@@ -202,10 +221,15 @@ namespace PenumbraMod.Content.Items
                     float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
                     Projectile.Center = projOwner.Center + new Vector2(-150, 100f + offset);
                 }
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 539)
                 {
                     Vector2 pos = projOwner.Top + new Vector2(0, -80);
-                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2.3f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 520)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(-25, -65);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 0.5f;
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
                     Projectile.Kill();
@@ -243,10 +267,15 @@ namespace PenumbraMod.Content.Items
                     float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
                     Projectile.Center = projOwner.Center + new Vector2(-150, 100f + offset);
                 }
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 539)
                 {
                     Vector2 pos = projOwner.Top + new Vector2(0, -80);
-                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2.3f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 520)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(-15, -65);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 0.5f;
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
                     Projectile.Kill();
@@ -271,11 +300,15 @@ namespace PenumbraMod.Content.Items
             Color c = Color.White;
             return c * Projectile.Opacity;
         }
+        float a = 1;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            Player projOwner = Main.player[Projectile.owner];
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time > 540)
+                a++;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White * a, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
         public override void AI()
@@ -368,11 +401,15 @@ namespace PenumbraMod.Content.Items
             Color c = Color.White;
             return c * Projectile.Opacity;
         }
+        float a = 1;
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Type].Value;
-            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            Player projOwner = Main.player[Projectile.owner];
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time > 540)
+                a++;
+            Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, Color.White * a, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
         public override void AI()
@@ -395,12 +432,31 @@ namespace PenumbraMod.Content.Items
                     float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
                     Projectile.Center = projOwner.Center + new Vector2(150, 100f + offset);
                 }
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 539)
                 {
                     Vector2 pos = projOwner.Top + new Vector2(0, -80);
-                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2.3f;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = projOwner.Center;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 520)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(10, -90);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 0.5f;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time == 599)
+                {             
+                    for (int i = 0; i < 15; i++)
+                    {
+                        Vector2 newVelocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(360));
+
+                        // Decrease velocity randomly for nicer visuals.
+                        newVelocity *= 8f - Main.rand.NextFloat(0.4f);
+
+                        Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, newVelocity, ModContent.ProjectileType<MagebladeGlowEx>(), 0, 0, projOwner.whoAmI);
+                    }
+                    SoundEngine.PlaySound(SoundID.Item176, Projectile.Center);
+                    SoundEngine.PlaySound(SoundID.Item4, Projectile.Center);
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
                 {
@@ -446,12 +502,17 @@ namespace PenumbraMod.Content.Items
                     float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 3f);
                     Projectile.Center = projOwner.Center + new Vector2(150, 100f + offset);
                 }
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 401 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 539)
                 {
                     Vector2 pos = projOwner.Top + new Vector2(0, -80);
-                    Projectile.velocity = Projectile.DirectionTo(pos) * 2;
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 2.3f;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = projOwner.Center;
+                }
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 520)
+                {
+                    Vector2 pos = projOwner.Top + new Vector2(5, -85);
+                    Projectile.velocity = Projectile.DirectionTo(pos) * 0.5f;
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
                 {
@@ -494,7 +555,7 @@ namespace PenumbraMod.Content.Items
                     Projectile.alpha = 0;
             }
             if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().KillFrags)
-                    Projectile.Kill();
+                Projectile.Kill();
         }
     }
     public class PieceGlow6 : ModProjectile
@@ -518,6 +579,87 @@ namespace PenumbraMod.Content.Items
         {
             Projectile.timeLeft = 10;
             Projectile.scale += 0.1f;
+            Projectile.alpha += 10;
+            if (Projectile.alpha >= 255)
+                Projectile.Kill();
+
+        }
+    }
+  
+    public class PieceGlow7 : ModProjectile
+    {
+        public override string Texture => "PenumbraMod/Content/Items/JotapCosmicBullet";
+        public override void SetDefaults()
+        {
+            Projectile.width = 100;
+            Projectile.height = 100;
+            Projectile.aiStyle = 0;
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 600;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+            Projectile.alpha = 255;
+        }
+        float x;
+        float y;
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Color color = Projectile.GetAlpha(lightColor);
+            Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, color, Projectile.rotation, texture.Size() / 2, new Vector2(x, y), SpriteEffects.None, 0);
+            return true;
+        }
+        public Color color;
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(255, 255, 255, 0) * Projectile.Opacity;
+        }
+        public override void AI()
+        {
+            x += 0.1f;
+            y += 0.05f;
+            Player projOwner = Main.player[Projectile.owner];
+            // Some math magic to make it smoothly move up and down over time
+            if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
+            {
+                Projectile.alpha -= 20;
+                if (Projectile.alpha <= 0)
+                    Projectile.alpha = 0;
+                Projectile.rotation += 0.1f;
+            }
+            else
+            {
+                Projectile.alpha += 20;
+                if (Projectile.alpha >= 255)
+                    Projectile.Kill();
+                Projectile.rotation += 0.2f;
+            }
+        }
+    }
+    public class MagebladeGlowEx : ModProjectile
+    {
+        public override Color? GetAlpha(Color lightColor)
+        {
+            // return Color.White;
+            return new Color(255, 255, 255, 0) * Projectile.Opacity;
+        }
+        public override void SetDefaults()
+        {
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.penetrate = -1;
+            Projectile.netImportant = true;
+            Projectile.ignoreWater = true;
+            Projectile.tileCollide = false;
+        }
+        public override void AI()
+        {
+            Projectile.timeLeft = 10;
+            Projectile.scale -= 0.01f;
             Projectile.alpha += 10;
             if (Projectile.alpha >= 255)
                 Projectile.Kill();

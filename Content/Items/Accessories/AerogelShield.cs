@@ -194,13 +194,15 @@ namespace PenumbraMod.Content.Items.Accessories
             Projectile.spriteDirection = projOwner.direction;
         }
         public override bool PreDraw(ref Color lightColor)
+        {      
+            return false;
+        }
+        public override void PostDraw(Color lightColor)
         {
             Texture2D proj = TextureAssets.Projectile[Type].Value;
             lightColor.A = 0;
             Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-            return false;
         }
-
     }
 }
 
