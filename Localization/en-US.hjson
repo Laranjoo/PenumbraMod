@@ -1269,7 +1269,7 @@ Mods: {
 			}
 
 			FirstShardOfTheMageblade: {
-				DisplayName: First Shard Of The Mageblade
+				DisplayName: First Shard of The Mageblade
 				Tooltip: The First piece of an ancient powerful blade...
 			}
 
@@ -1283,7 +1283,7 @@ Mods: {
 			}
 
 			FourthShardOfTheMageblade: {
-				DisplayName: Fourth Shard Of The Mageblade
+				DisplayName: Fourth Shard of The Mageblade
 				Tooltip: The Fourth and last piece of an ancient powerful blade...
 			}
 
@@ -1711,7 +1711,7 @@ Mods: {
 			}
 
 			SecondShardOfTheMageblade: {
-				DisplayName: Second Shard Of The Mageblade
+				DisplayName: Second Shard of The Mageblade
 				Tooltip: The Second piece of an ancient powerful blade...
 			}
 
@@ -1822,7 +1822,7 @@ Mods: {
 			}
 
 			ThirdShardOfTheMageblade: {
-				DisplayName: Third Shard Of The Mageblade
+				DisplayName: Third Shard of The Mageblade
 				Tooltip: The Third piece of an ancient powerful blade...
 			}
 

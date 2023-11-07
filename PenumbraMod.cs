@@ -187,7 +187,8 @@ namespace PenumbraMod
         {
             int ShiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Mushrooms"));
             int ShiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-            var ShiniesIndex3 = tasks.FindIndex(genpass => genpass.Name.Equals("Marble"));
+            int ShiniesIndex3 = tasks.FindIndex(genpass => genpass.Name.Equals("Clean Up Dirt"));
+            var ShiniesIndex4 = tasks.FindIndex(genpass => genpass.Name.Equals("Marble"));
 
             if (ShiniesIndex != -1)
             {
@@ -197,9 +198,13 @@ namespace PenumbraMod
             {
                 tasks.Insert(ShiniesIndex2 + 1, new LostSword("Lost Sword", 237.4298f));
             }
-            if (ShiniesIndex3 != -1)
+            if (ShiniesIndex3!= -1)
             {
-                tasks.RemoveAt(ShiniesIndex3);
+                tasks.Insert(ShiniesIndex3 + 1, new ShimmerStructure("Shimmer Altar", 237.4298f));
+            }
+            if (ShiniesIndex4 != -1)
+            {
+                tasks.RemoveAt(ShiniesIndex4);
             }
         }
         public override void UpdateUI(GameTime gameTime)
@@ -289,11 +294,11 @@ namespace PenumbraMod
         {
             // progress.Message is the message shown to the user while the following code is running.
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
-            progress.Message = "Hiding a relic...";
+            progress.Message = "Hiding a relic";
             if (!Main.zenithWorld)
             {
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 905, Main.maxTilesX / 2 + 910);
-                int y = WorldGen.genRand.Next((int)Main.worldSurface, (int)Main.rockLayer - 100);
+                int y = WorldGen.genRand.Next((int)Main.rockLayer - 201, (int)Main.rockLayer - 200);
                 StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordSurface", new Point16(x, y), PenumbraMod.Instance);
             }
             else 
@@ -321,7 +326,7 @@ namespace PenumbraMod
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
             if (Main.zenithWorld)
             {
-                progress.Message = "Enhancing Marble...";
+                progress.Message = "Enhancing Marble";
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer + 10, (int)Main.rockLayer + 30);
                 StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
@@ -332,7 +337,7 @@ namespace PenumbraMod
             }
             else
             {
-                progress.Message = "Enhancing Marble...";
+                progress.Message = "Enhancing Marble";
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
                 StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
@@ -342,6 +347,32 @@ namespace PenumbraMod
                 StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
             }
            
+        }
+    }
+    public class ShimmerStructure : GenPass
+    {
+        public ShimmerStructure(string name, float loadWeight) : base(name, loadWeight)
+        {
+        }
+
+        protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
+        {
+            // progress.Message is the message shown to the user while the following code is running.
+            // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
+            progress.Message = "Making a shimmer altar";
+            if (GenVars.shimmerPosition.X < WorldGen.genRand.Next(-1, 0))
+            {
+                int x = (int)GenVars.shimmerPosition.X - 71;
+                int y = (int)GenVars.shimmerPosition.Y - 18;
+                StructureHelper.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
+            }
+            else
+            {
+                int x = (int)GenVars.shimmerPosition.X + 71;
+                int y = (int)GenVars.shimmerPosition.Y - 18;
+                StructureHelper.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
+            }
+
         }
     }
 }

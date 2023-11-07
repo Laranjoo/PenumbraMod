@@ -446,12 +446,12 @@ namespace PenumbraMod.Content.Items
                 }
                 if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time == 599)
                 {             
-                    for (int i = 0; i < 15; i++)
+                    for (int i = 0; i < 20; i++)
                     {
                         Vector2 newVelocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(360));
 
                         // Decrease velocity randomly for nicer visuals.
-                        newVelocity *= 8f - Main.rand.NextFloat(0.4f);
+                        newVelocity *= 9f - Main.rand.NextFloat(0.6f);
 
                         Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, newVelocity, ModContent.ProjectileType<MagebladeGlowEx>(), 0, 0, projOwner.whoAmI);
                     }

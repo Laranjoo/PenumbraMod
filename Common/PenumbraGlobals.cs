@@ -80,7 +80,7 @@ namespace PenumbraMod.Common
                     Main.soundVolume = 0;
                 }
 
-                if (time >= 3 && time <= 119)
+                if (time >= 3 && time <= 250)
                 {
                     Main.musicVolume -= 0.01f;
                     if (Main.musicVolume <= 0)
@@ -96,7 +96,6 @@ namespace PenumbraMod.Common
                 }
                 if (time == 120)
                 {
-                    Main.soundVolume = 1;
                     SoundEngine.PlaySound(SoundID.Item117, Player.Center);
                     SoundEngine.PlaySound(SoundID.Item30, Player.Center);
                     Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<PieceCutscene>(), 0, 0, Player.whoAmI);
