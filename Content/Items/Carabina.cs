@@ -20,7 +20,7 @@ namespace PenumbraMod.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 355;
+			Item.damage = 385;
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 124;
 			Item.height = 44;
@@ -64,7 +64,7 @@ namespace PenumbraMod.Content.Items
             recipe.AddIngredient(ItemID.Ectoplasm, 5);
             recipe.AddIngredient(ItemID.IllegalGunParts, 1);
             recipe.AddIngredient(ItemID.SniperRifle, 1);
-			recipe.AddIngredient(ModContent.ItemType<MeltedEmber>(), 7);      
+			recipe.AddIngredient(ModContent.ItemType<CorrodedPlating>(), 15);      
 		    recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }

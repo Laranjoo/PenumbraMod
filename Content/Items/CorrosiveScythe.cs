@@ -46,7 +46,7 @@ namespace PenumbraMod.Content.Items
             }
             else
             {
-                Item.damage = 82;
+                Item.damage = 92;
             }
         }
         bool notboollol = true;

@@ -39,10 +39,6 @@ namespace PenumbraMod.Content.DamageClasses
         {
             // This method allows you to make your damage class benefit from and be able to activate other classes' effects (e.g. Spectre bolts, Magma Stone) based on what returns true.
             // Note that unlike our stat inheritance methods up above, you do not need to account for universal bonuses in this method.
-            // For this example, we'll make our class able to activate melee- and magic-specifically effects.
-            if (damageClass == Melee)
-                return true;
-
             return false;
         }
 
@@ -64,7 +60,6 @@ namespace PenumbraMod.Content.DamageClasses
         public float Timer;
         public bool FirstSlotActivate = false;
         public bool SecondSlotActivate = false;
-        public bool Sound;
         private ReaperUI bar;
         #region Crystals
         // 1st slot
@@ -116,19 +111,21 @@ namespace PenumbraMod.Content.DamageClasses
         {
             if (ReaperEnergy > 9980)
             {
-                if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
+                if (Player.HeldItem.CountsAsClass(GetInstance<ReaperClass>()) && !Player.ItemAnimationActive)
                 {
-                    SoundEngine.PlaySound(SoundID.Item113, Player.position);
-                    Player.controlUseItem = true;
+                    if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item113, Player.position);
+                        Player.controlUseItem = true;
+                    }
                 }
+             
             }
         }
         public override void Initialize()
         {
             bar = new ReaperUI();
         }
-        // TODO: Add a buffer so when the player clicks the keybind, the game waits for the item animation to end so ic can use the ability (because if the player uses the ability mid-attack, it will waste it)
-        // TODO: Make the bar wait for the ability to end so it can increase again (if you use the ability, it will decrease, but still can increase if the player attacks)
         public override void PreUpdate()
         {
             if (ReaperEnergy >= ReaperEnergyMax)
@@ -140,14 +137,16 @@ namespace PenumbraMod.Content.DamageClasses
          
             if (ReaperEnergy > 9980)
             {
-                if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
+                if (Player.HeldItem.CountsAsClass(GetInstance<ReaperClass>()) && !Player.ItemAnimationActive)
                 {
-                    Player.controlUseItem = true;
-                    Player.AddBuff(ModContent.BuffType<ReaperControl>(), 5);
-                    Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 93);
-                    Timer = 0;
+                    if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
+                    {
+                        Player.controlUseItem = true;
+                        Player.AddBuff(ModContent.BuffType<ReaperControl>(), 5);
+                        Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 93);
+                        Timer = 0;
+                    }
                 }
-                Sound = true;
             }
             if (ReaperEnergy >= 3000)
             {
@@ -634,14 +633,6 @@ namespace PenumbraMod.Content.DamageClasses
 
                 }
             }
-            // no idea why here
-            if (ReaperEnergy > 9980)
-            {
-                if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
-                {
-                    Player.controlUseItem = true;
-                }
-            }
             if (ReaperEnergy > ReaperEnergyMax)
             {
                 ReaperEnergy = 10000;
@@ -662,18 +653,9 @@ namespace PenumbraMod.Content.DamageClasses
                 }
 
             }
-            // no idea 
-            if (ReaperEnergy > 9980)
-            {
-                if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
-                {
-                    Player.controlUseItem = true;
-                }
-            }
             if (ReaperEnergy > ReaperEnergyMax)
             {
                 ReaperEnergy = 10000;
-
             }
 
         }

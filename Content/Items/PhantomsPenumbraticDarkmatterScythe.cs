@@ -153,8 +153,6 @@ namespace PenumbraMod.Content.Items
             Item.noUseGraphic = true;
             if (TwistedStyle == 0)
             {
-                Item.useTime = 30;
-                Item.useAnimation = 30;
                 if (player.velocity.Y > 5)
                 {
                     if (player.direction == 0)
@@ -204,8 +202,6 @@ namespace PenumbraMod.Content.Items
 
             else if (TwistedStyle == 1)
             {
-                Item.useTime = 20;
-                Item.useAnimation = 20;
                 if (player.velocity.Y > 5)
                 {
                     if (player.direction == 0)
@@ -267,14 +263,6 @@ namespace PenumbraMod.Content.Items
                     Item.noUseGraphic = true;
                 }
             }
-            if (TwistedStyle == 3)
-            {
-                TwistedStyle = 0;
-            }
-            if (TwistedStyle == 4)
-            {
-                TwistedStyle = 0;
-            }
             return false;
         }
         // return false to stop vanilla from calling Projectile.NewProjectile.
@@ -309,29 +297,6 @@ namespace PenumbraMod.Content.Items
                 spriteBatch.Draw(texture, position + new Vector2(0f, 4f).RotatedBy(radians) * time, frame, new Color(93, 31, 216, 70), 0, origin, scale, SpriteEffects.None, 0);
             }
 
-            return true;
-        }
-        int TwistedTimer = 0;
-
-        public override Nullable<bool> UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
-        {
-            if (TwistedStyle == 3)
-            {
-                Item.noUseGraphic = true;
-                TwistedTimer++;
-                TwistedStyle++;
-                if (TwistedStyle > 2)
-                {
-                    TwistedStyle = 2;
-                    TwistedTimer = 0;
-                }
-                //Item.shoot = TwistedStyle + 120;
-                //Main.NewText($"Switching to ItemUseStyleID #{Item.useStyle}");
-            }
-            else
-            {
-                //Main.NewText($"This is ItemUseStyleID #{Item.useStyle}");
-            }
             return true;
         }
         public override void AddRecipes()
@@ -382,17 +347,6 @@ namespace PenumbraMod.Content.Items
             }
             Vector2 dir = Vector2.Zero;
             Vector2 hlende = Vector2.Zero;
-
-            public static float EaseIn(float t)
-            {
-                return t * t;
-            }
-
-            public static float Flip(float x)
-            {
-                return 1 - x;
-            }
-
             public static float easeInOutQuad(float x)
             {
                 return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
@@ -479,6 +433,7 @@ namespace PenumbraMod.Content.Items
                     Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();                 
                 }
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+                player.SetDummyItemTime(2);
                 //FadeInAndOut();
                 Projectile.Center = Main.player[Projectile.owner].Center;
                 Projectile.ai[0] += 1f;
@@ -631,6 +586,7 @@ namespace PenumbraMod.Content.Items
                 Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((40 - Projectile.ai[0])));
                 Player player = Main.player[Projectile.owner];
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+                player.SetDummyItemTime(2);
                 if (player.ownedProjectileCounts[ModContent.ProjectileType<PhantomsPenumbraticDarkmatterScytheProj>()] >= 1)
                 {
                     Projectile.Kill();

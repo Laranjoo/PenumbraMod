@@ -164,46 +164,49 @@ namespace PenumbraMod.Content.Items
                 player.SetDummyItemTime(2);
             // If found, change the velocity of the projectile and turn it in the direction of the target
             // Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
-            if (Projectile.ai[0] > 20f)
-            {               
-                if (player.channel)
+            if (Main.myPlayer == Projectile.owner)
+            {
+                if (Projectile.ai[0] > 20f)
                 {
-                    if (Projectile.ai[2] > 20)
-                        Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, rotTarget, rotMax)) - Utils.ToRotation(Projectile.velocity)));
-                    if (Projectile.ai[2] == 40)
-                        Projectile.ai[2] = 11;
-                    if (player.ownedProjectileCounts[Type] >= 8)
+                    if (player.channel)
                     {
-                        Projectile.extraUpdates = 2;
+                        if (Projectile.ai[2] > 20)
+                            Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, rotTarget, rotMax)) - Utils.ToRotation(Projectile.velocity)));
+                        if (Projectile.ai[2] == 40)
+                            Projectile.ai[2] = 11;
+                        if (player.ownedProjectileCounts[Type] >= 8)
+                        {
+                            Projectile.extraUpdates = 2;
+                        }
+                        else
+                            Projectile.extraUpdates = 1;
                     }
                     else
-                        Projectile.extraUpdates = 1;
+                    {
+
+                        Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, Utils.ToRotation(player.Center - Projectile.Center), rotMax)) - Utils.ToRotation(Projectile.velocity)));
+                        if (Projectile.Distance(player.Center) <= 50)
+                        {
+                            Projectile.Kill();
+                            return;
+                        }
+                    }
+
                 }
                 else
+                    Projectile.velocity = new Vector2(0, -10);
+                if (Projectile.ai[1] == 20f)
                 {
-                    
-                    Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, Utils.ToRotation(player.Center - Projectile.Center), rotMax)) - Utils.ToRotation(Projectile.velocity)));
-                    if (Projectile.Distance(player.Center) <= 50)
+                    SoundEngine.PlaySound(SoundID.Item4, Projectile.Center);
+                    const int Repeats = 20;
+                    for (int i = 0; i < Repeats; ++i)
                     {
-                        Projectile.Kill();
-                        return;
+                        Vector2 position2 = Projectile.Center + new Vector2(radius1, 0).RotatedBy((i * MathHelper.PiOver2 / Repeats) * 4);
+                        int c = Dust.NewDust(position2, 1, 1, DustID.PinkFairy, 0f, 0f, 0, default(Color), 1f);
+                        Main.dust[c].noGravity = true;
+                        Main.dust[c].velocity *= 3f;
+                        Main.dust[c].rotation += 1.1f;
                     }
-                }
-                    
-            }
-            else
-                Projectile.velocity = new Vector2(0, -10);
-            if (Projectile.ai[1] == 20f)
-            {
-                SoundEngine.PlaySound(SoundID.Item4, Projectile.Center);
-                const int Repeats = 20;
-                for (int i = 0; i < Repeats; ++i)
-                {
-                    Vector2 position2 = Projectile.Center + new Vector2(radius1, 0).RotatedBy((i * MathHelper.PiOver2 / Repeats) * 4);
-                    int c = Dust.NewDust(position2, 1, 1, DustID.PinkFairy, 0f, 0f, 0, default(Color), 1f);
-                    Main.dust[c].noGravity = true;
-                    Main.dust[c].velocity *= 3f;
-                    Main.dust[c].rotation += 1.1f;
                 }
             }
         }

@@ -209,7 +209,7 @@ namespace PenumbraMod.Content.Items
             // Some math magic to make it smoothly move up and down over time
             if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
             {
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 180 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 240)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 179 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 240)
                 {
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
@@ -319,7 +319,7 @@ namespace PenumbraMod.Content.Items
             // Some math magic to make it smoothly move up and down over time
             if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
             {
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 240 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 300)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 239 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 300)
                 {
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
@@ -420,7 +420,7 @@ namespace PenumbraMod.Content.Items
             // Some math magic to make it smoothly move up and down over time
             if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().MagebladeCutscene)
             {
-                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 300 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 360)
+                if (projOwner.GetModPlayer<PenumbraGlobalPlayer>().time >= 299 && projOwner.GetModPlayer<PenumbraGlobalPlayer>().time <= 360)
                 {
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = true;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutepos = Projectile.Center;
@@ -463,11 +463,14 @@ namespace PenumbraMod.Content.Items
                     Projectile.Kill();
                     Main.hideUI = false;
                     projOwner.GetModPlayer<PenumbraGlobalPlayer>().absolutecamera = false;
-                    AetheriumBlockModded.cutscene = false;
-                    Item.NewItem(Projectile.GetSource_DropAsItem(), Projectile.getRect(), ModContent.ItemType<TheMageblade>());
+                    AetheriumBlockModded.cutscene = false;                    
                 }
             }
 
+        }
+        public override void OnKill(int timeLeft)
+        {
+            Item.NewItem(Projectile.GetSource_DropAsItem(), Projectile.getRect(), ModContent.ItemType<TheMageblade>());
         }
     }
     class PieceGlow4 : ModProjectile

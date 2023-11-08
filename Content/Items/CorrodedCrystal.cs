@@ -76,8 +76,12 @@ namespace PenumbraMod.Content.Items
                 // For vertical sprites use MathHelper.PiOver2
             }
             Projectile.ai[0]++;
-            if (Projectile.ai[0] <= 2)
-                Projectile.velocity = Projectile.DirectionTo(Main.MouseWorld) * 16f;
+            if (Main.myPlayer == Projectile.owner)
+            {
+                if (Projectile.ai[0] <= 2)
+                    Projectile.velocity = Projectile.DirectionTo(Main.MouseWorld) * 16f;
+            }
+               
         }
 
         public override void OnKill(int timeLeft)

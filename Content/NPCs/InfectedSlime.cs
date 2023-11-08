@@ -43,7 +43,7 @@ namespace PenumbraMod.Content.NPCs
             npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 2, 4));
             npcLoot.Add(ItemDropRule.Common(5091, 1000, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.MeatGrinder, 200, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedOre>(), 1, 2, 9));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedOre>(), 1, 4, 12));
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {

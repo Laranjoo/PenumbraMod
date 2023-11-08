@@ -41,9 +41,10 @@ namespace PenumbraMod.Content.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 2, 4));
+            npcLoot.Add(ItemDropRule.Common(ItemID.Bone, 1, 5, 9));
             npcLoot.Add(ItemDropRule.Common(5091, 1000, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.MeatGrinder, 200, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodystoneOre>(), 1, 2, 9));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BloodystoneOre>(), 1, 4, 12));
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
