@@ -43,22 +43,13 @@ namespace PenumbraMod.Content.Items
         {
             t = reader.ReadInt32();
         }
+        float scaleFactor = -300f;
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float rotationFactor = Projectile.rotation; // The rotation of the Jousting Lance           
-            float scaleFactor = -300f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
             float widthMultiplier = 16f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
             float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
-            if (Projectile.ai[2] >= 60)
-            {
-                scaleFactor = -600f;
-                Projectile.scale = 2f;
-            }
-            if (Projectile.ai[2] >= 120)
-            {
-                scaleFactor = -900f;
-                Projectile.scale = 3f;
-            }
+         
             // This Rectangle is the width and height of the Jousting Lance's hitbox which is used for the first step of collision.
             // You will need to modify the last two numbers if you have a bigger or smaller Jousting Lance.
             // Vanilla uses (0, 0, 300, 300) which that is quite large for the size of the Jousting Lance.
@@ -104,6 +95,16 @@ namespace PenumbraMod.Content.Items
 
                     // Projectile.velocity acts as a holdoutOffset for held projectiles.
                     Projectile.velocity = holdoutOffset;
+                    if (Projectile.ai[2] >= 60)
+                    {
+                        scaleFactor = -600f;
+                        Projectile.scale = 2f;
+                    }
+                    if (Projectile.ai[2] >= 120)
+                    {
+                        scaleFactor = -900f;
+                        Projectile.scale = 3f;
+                    }
                 }
                 else
                 {

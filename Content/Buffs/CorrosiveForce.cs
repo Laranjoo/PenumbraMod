@@ -1,4 +1,5 @@
 using PenumbraMod.Content.DamageClasses;
+using PenumbraMod.Content.Items;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -14,6 +15,8 @@ namespace PenumbraMod.Content.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.GetArmorPenetration<ReaperClass>() += 5;
+            if (player.HeldItem.type == ModContent.ItemType<CorrosiveScythe>())
+                player.GetDamage(ModContent.GetInstance<ReaperClass>()) += 0.10f;
         }
 
     }

@@ -23,6 +23,7 @@ Mods: {
 			}
 
 			Autouse.Label: Enable or disable player to auto reuse items
+			ReaperBarModel.Label: Change the current model of the Reaper Energy bar
 		}
 
 		DamageClasses.ReaperClass.DisplayName: reaper damage
@@ -2641,6 +2642,7 @@ Mods: {
 				}
 
 				DisplayName: "{$Mods.PenumbraMod.Config.PenumbraConfig.Label}"
+				ReaperBarModel.Tooltip: ""
 			}
 		}
 

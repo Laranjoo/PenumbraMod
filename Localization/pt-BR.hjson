@@ -23,6 +23,7 @@ Mods: {
 			}
 
 			Autouse.Label: Habilite ou desabilite o uso automatico de itens
+			// ReaperBarModel.Label: Change the current model of the Reaper Energy bar
 		}
 
 		DamageClasses.ReaperClass.DisplayName: danos por ataque ceifador
@@ -2642,6 +2643,7 @@ Mods: {
 				}
 
 				// DisplayName: "{$Mods.PenumbraMod.Config.PenumbraConfig.Label}"
+				// ReaperBarModel.Tooltip: ""
 			}
 		}
 

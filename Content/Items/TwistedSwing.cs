@@ -88,7 +88,7 @@ namespace PenumbraMod.Content.Items
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
-            float scaleFactor = 150f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
+            float scaleFactor = 155f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
             float widthMultiplier = 23f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
             float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
 
@@ -104,10 +104,6 @@ namespace PenumbraMod.Content.Items
 
             // This is the back of the hit-line with Projectile.Center being the tip of the Jousting Lance.
             Vector2 hitLineEnd = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor;
-
-            // The following is for debugging the size of the hit line. This will allow you to easily see where it starts and ends.
-            //Dust.NewDustPerfect(Projectile.Center, DustID.Pixie, Velocity: Vector2.Zero, 1);
-            Dust.NewDustPerfect(hitLineEnd, DustID.BlueFairy, Velocity: Vector2.Zero, 1, default, Scale: 0.5f);
             hlende = hitLineEnd;
             // First check that our large rectangle intersects with the target hitbox.
             // Then we check to see if a line from the tip of the Jousting Lance to the "end" of the lance intersects with the target hitbox.

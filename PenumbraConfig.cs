@@ -47,6 +47,13 @@ namespace PenumbraMod
         [BackgroundColor(255, 0, 0)]// color
         [DefaultValue(true)] // This sets the configs default value.
         public bool UITEXT { get; set; }
+
+        [LabelKeyAttribute("$Mods.PenumbraMod.Config.ReaperBarModel.Label")]
+        [BackgroundColor(255, 0, 0)]
+        [DefaultValue(typeof(int), "1")]
+        [Range(1, 2)]
+        public int ReaperBarModel;
+
         #endregion
 
         #region Player
@@ -64,12 +71,13 @@ namespace PenumbraMod
         [ReloadRequired]
         public bool UseTurn { get; set; }
 
+        /* Removed since vanilla already adds auto use mechanic
         [LabelKeyAttribute("$Mods.PenumbraMod.Config.Autouse.Label")]
         [BackgroundColor(130, 0, 155)]
         [DefaultValue(true)]
         [ReloadRequired]
-        public bool Autouse { get; set; }
-
+        public bool Autouse { get; set; } 
+        */
 
         #endregion
 

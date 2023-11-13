@@ -359,10 +359,10 @@ namespace PenumbraMod
         {
             // progress.Message is the message shown to the user while the following code is running.
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
-            progress.Message = "Making a shimmer altar";
+            progress.Message = "Making a shiny altar";
             if (GenVars.shimmerPosition.X < Main.maxTilesX / 2)
             {
-                int x = (int)GenVars.shimmerPosition.X - 80;
+                int x = (int)GenVars.shimmerPosition.X - 84;
                 int y = (int)GenVars.shimmerPosition.Y - 18;
                 StructureHelper.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
             }

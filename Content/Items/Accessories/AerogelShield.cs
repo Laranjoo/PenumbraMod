@@ -169,13 +169,17 @@ namespace PenumbraMod.Content.Items.Accessories
             Player projOwner = Main.player[Projectile.owner];
             Projectile.timeLeft = 10;
             // Some math magic to make it smoothly move up and down over time
-            const float TwoPi = (float)Math.PI * 2f;
+            const float TwoPi = (float)Math.PI * 4f;
             float offset = (float)Math.Sin(Main.GlobalTimeWrappedHourly * TwoPi / 4f);
 
-            if (projOwner.direction == 1)
-                Projectile.Center = projOwner.Top + new Vector2(2, -3f + offset);
-            else
-                Projectile.Center = projOwner.Top + new Vector2(-2, -3f + offset);
+            if (Main.myPlayer == Projectile.owner)
+            {
+                if (projOwner.direction == 1)
+                    Projectile.Center = projOwner.Top + new Vector2(2, -3f + offset);
+                else
+                    Projectile.Center = projOwner.Top + new Vector2(-2, -3f + offset);
+            }
+          
 
             if (projOwner.dead || !projOwner.active)
             {//Disappear when player dies

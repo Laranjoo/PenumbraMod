@@ -17,7 +17,7 @@ namespace PenumbraMod.Content.NPCs
 		{
 			// DisplayName.SetDefault("Melted Skeleton");
 
-			Main.npcFrameCount[Type] = 4;
+			Main.npcFrameCount[Type] = 3;
 
 
 			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
@@ -55,7 +55,7 @@ namespace PenumbraMod.Content.NPCs
             // This NPC animates with a simple "go from start frame to final frame, and loop back to start frame" rule
             // In this case: First stage: 0-1-2-0-1-2, Second stage: 3-4-5-3-4-5, 5 being "total frame count - 1"
             int startFrame = 0;
-            int finalFrame = 3;
+            int finalFrame = 2;
             int frameSpeed = 5;
             NPC.frameCounter += 0.5f;
             if (NPC.frameCounter > frameSpeed)

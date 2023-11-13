@@ -48,7 +48,7 @@ namespace PenumbraMod.Content.NPCs
 		}
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            if (spawnInfo.Player.InModBiome(ModContent.GetInstance<MarbleBiomeChange>()))
+            if (spawnInfo.Player.InModBiome(ModContent.GetInstance<MarbleBiomeChange>()) || spawnInfo.Marble)
             {
                 return SpawnCondition.Cavern.Chance * 0.9f;
             }

@@ -39,9 +39,10 @@ namespace PenumbraMod.Content.DamageClasses
         {
             // This method allows you to make your damage class benefit from and be able to activate other classes' effects (e.g. Spectre bolts, Magma Stone) based on what returns true.
             // Note that unlike our stat inheritance methods up above, you do not need to account for universal bonuses in this method.
+            if (damageClass == Melee)
+                return true;
             return false;
         }
-
         public override void SetDefaultStats(Player player)
         {
             player.GetArmorPenetration<ReaperClass>() += 1;
@@ -627,7 +628,10 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>())
                     {
-                        ReaperEnergy += 50;
+                        if (Player.name == "Reapermen" || Player.name == "Reaperman")
+                            ReaperEnergy += 60;
+                        else
+                            ReaperEnergy += 50;
                         Timer = 0;
                     }
 
@@ -647,7 +651,10 @@ namespace PenumbraMod.Content.DamageClasses
                 {
                     if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>())
                     {
-                        ReaperEnergy += 50;
+                        if (Player.name == "Reapermen" || Player.name == "Reaperman")
+                            ReaperEnergy += 60;
+                        else
+                            ReaperEnergy += 50;
                         Timer = 0;
                     }
                 }

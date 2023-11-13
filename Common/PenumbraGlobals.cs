@@ -336,6 +336,44 @@ namespace PenumbraMod.Common
             
                 return true;
         }
+        public List<int> Prefixes = new List<int>
+        {
+            PrefixID.Large,
+            PrefixID.Massive,
+            PrefixID.Dangerous,
+            PrefixID.Savage,
+            PrefixID.Sharp,
+            PrefixID.Pointy,        
+            PrefixID.Tiny,
+            PrefixID.Terrible,
+            PrefixID.Small,
+            PrefixID.Dull,
+            PrefixID.Unhappy,
+            PrefixID.Bulky,
+            PrefixID.Shameful,
+            PrefixID.Heavy,
+            PrefixID.Light,
+            PrefixID.Legendary,
+            PrefixID.Godly,
+            PrefixID.Shoddy,
+            PrefixID.Unpleasant,
+            PrefixID.Shoddy,
+            PrefixID.Damaged,
+            PrefixID.Weak,
+            PrefixID.Keen,
+            PrefixID.Ruthless,
+            PrefixID.Demonic,
+        };
+        public override bool AllowPrefix(Item item, int pre)
+        {
+            if (item.DamageType == GetInstance<ReaperClass>())
+            {
+                for (int i = 0; i < PrefixLoader.PrefixCount; i++)
+                    if (Prefixes.Contains(i))
+                        return false;
+            }
+            return true;
+        }
         public override void HoldItem(Item item, Player player)
         {
             if (player.HasBuff(BuffID.ShadowDodge))
@@ -545,6 +583,7 @@ namespace PenumbraMod.Common
         }
 
     }
+    /* Removed since vanilla already has that option
     public class AutoReuse : GlobalItem
     {
         public override bool InstancePerEntity => true;
@@ -561,7 +600,7 @@ namespace PenumbraMod.Common
 
         }
 
-    }
+    }*/
     public class PenumbraGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

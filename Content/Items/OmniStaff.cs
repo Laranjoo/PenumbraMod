@@ -39,23 +39,12 @@ namespace PenumbraMod.Content.Items
             Item.shoot = ModContent.ProjectileType<Brightness10>();
             Item.shootSpeed = 2f;
         }
-        int radius1 = 120;
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             float ai = Main.rand.Next(100);
             Projectile t = Projectile.NewProjectileDirect(source, player.Center + player.DirectionTo(Main.MouseWorld) * 128, new Vector2(0, 16).RotatedBy(Main.rand.NextFloat(0, MathHelper.TwoPi)), ProjectileID.CultistBossLightningOrbArc, Item.damage, 0f, Main.myPlayer, player.DirectionTo(Main.MouseWorld).ToRotation(), ai);
             t.friendly = true;
-            t.hostile = false;
-            
-            const int Repeats = 180;
-            for (int i = 0; i < Repeats; ++i)
-            {
-                Vector2 position2 = player.Center + new Vector2(radius1, 0).RotatedBy((i * MathHelper.PiOver2 / Repeats) * 4);
-                int r = Dust.NewDust(position2, 1, 1, DustID.BlueTorch, 0f, 0f, 0, default(Color), 1f);
-                Main.dust[r].noGravity = true;
-                Main.dust[r].velocity *= 0.9f;
-                Main.dust[r].rotation += 1.1f;
-            }
+            t.hostile = false;  
             return false; // return false to stop vanilla from calling Projectile.NewProjectile.
         }
         
