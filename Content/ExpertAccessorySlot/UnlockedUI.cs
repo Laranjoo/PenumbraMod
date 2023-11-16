@@ -21,6 +21,7 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
         private UIText text;
         private DraggableUI panel;
         private UIImage border;
+        private HideUIButton closeButton;
         public override void OnInitialize()
         {
             panel = new DraggableUI();
@@ -40,7 +41,7 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             text.Left.Set(19, 0f);
 
             Asset<Texture2D> buttonDeleteTexture = Request<Texture2D>("PenumbraMod/Content/UI/UnlockedAccessorySlotBorderButton");
-            ExampleUIHoverImageButton closeButton = new ExampleUIHoverImageButton(buttonDeleteTexture, Hideui.Text2); // Localized text for "Close"
+            closeButton = new HideUIButton(buttonDeleteTexture, Hideui.Text2); // Localized text for "Close"
             SetRectangle(closeButton, left: 370f, top: 8f, width: 26f, height: 28f);
             closeButton.OnLeftClick += new MouseEvent(CloseButtonClicked);
             closeButton.SetVisibility(1f, 0.9f);
@@ -84,16 +85,16 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             base.Update(gameTime);
         }
     }
-    internal class ExampleUIHoverImageButton : UIImageButton
+    internal class HideUIButton : UIImageButton
     {
         // Tooltip text that will be shown on hover
         internal string hoverText;
         internal static LocalizedText text;
-        public ExampleUIHoverImageButton(Asset<Texture2D> texture, string hoverText) : base(texture)
+        public HideUIButton(Asset<Texture2D> texture, string hoverText) : base(texture)
         {
             this.hoverText = hoverText;
         }
-        public ExampleUIHoverImageButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        public HideUIButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
         {
             text = Text;
         }
@@ -116,12 +117,12 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
     public class Hideui : ModSystem
     {
         public static LocalizedText Text { get; private set; }
-        public static string Text2 { get; private set; }
+        public static LocalizedText Text2 { get; private set; }
         public override void Load()
         {
             string category = "UI";
             Text ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.UnlockedUI"));
-            Text2 ??= Language.GetTextValue("LegacyInterface.52");
+            Text2 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.UnlockedUI.Close"));
         }
         public static bool hideui = false;
         public override void OnWorldLoad()

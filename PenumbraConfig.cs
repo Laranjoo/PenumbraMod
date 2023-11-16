@@ -51,7 +51,7 @@ namespace PenumbraMod
         [LabelKeyAttribute("$Mods.PenumbraMod.Config.ReaperBarModel.Label")]
         [BackgroundColor(255, 0, 0)]
         [DefaultValue(typeof(int), "1")]
-        [Range(1, 2)]
+        [Range(1, 3)]
         public int ReaperBarModel;
 
         #endregion

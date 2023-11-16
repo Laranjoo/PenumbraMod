@@ -28,7 +28,7 @@ namespace PenumbraMod.Content.Items
 			Item.useAnimation = 12;
 			Item.useStyle = 5;
 			Item.knockBack = 6;
-			Item.value = 1000;
+			Item.value = 12400;
 			Item.rare = 4;
 			Item.UseSound = SoundID.Item5;
 			Item.autoReuse = true;

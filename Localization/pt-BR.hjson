@@ -29,13 +29,17 @@ Mods: {
 		DamageClasses.ReaperClass.DisplayName: danos por ataque ceifador
 
 		UI: {
-			UnlockedUI:
-				'''
-				Você desbloqueou um novo slot de acessório!
-				Esse é o único slot onde você pode equipar
-				acessórios do modo perito
-				[c/ff0000:Escolha sabiamente.]
-				'''
+			UnlockedUI: {
+				$parentVal:
+					'''
+					Você desbloqueou um novo slot de acessório!
+					Esse é o único slot onde você pode equipar
+					acessórios do modo perito
+					[c/ff0000:Escolha sabiamente.]
+					'''
+				// Close: Close
+			}
+
 			ReaperBar: Energia ceifadora
 			ReaperBarJewel: Jóias
 			ExpertAccessoryHoverName1: Acessório
@@ -738,6 +742,8 @@ Mods: {
 			// PieceGlow6.DisplayName: Piece Glow
 			// PieceGlow7.DisplayName: Piece Glow7
 			// MagebladeGlowEx.DisplayName: Mageblade Glow Ex
+			// NatureGrassProj.DisplayName: Nature Grass Proj
+			// GlacialArrow.DisplayName: Glacial Arrow
 		}
 
 		Items: {
@@ -1533,12 +1539,8 @@ Mods: {
 			}
 
 			NatureGrass: {
-				// DisplayName: Nature Grass
-				/* Tooltip:
-					'''
-					From the pure nature...
-					Fires a Nature Beam that pushes enemies far
-					''' */
+				// DisplayName: Naturesting
+				// Tooltip: From the pure nature...
 			}
 
 			OmniStaff: {
@@ -2243,7 +2245,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					When hitting enemies, grants you a 33% chance of getting a soul boost for 3 seconds
-					The soul boost grants you 75+ reaper energy when hitting an enemy
+					The soul boost grants you 7+ reaper energy when hitting an enemy
 					''' */
 			}
 
@@ -2525,7 +2527,7 @@ Mods: {
 
 			AquamarineJewel: {
 				// DisplayName: Aquamarine Jewel
-				// Tooltip: 25+ Increased reaper energy when hitting enemies
+				// Tooltip: 5+ Increased reaper energy when hitting enemies
 			}
 
 			PeridotJewel: {
@@ -2575,6 +2577,11 @@ Mods: {
 			AetheriumBlockModded: {
 				// DisplayName: Aetherium Block
 				// Tooltip: This block is only for the mageblade cutscene
+			}
+
+			GlacialBow: {
+				// DisplayName: Glacial Bow
+				// Tooltip: ""
 			}
 		}
 

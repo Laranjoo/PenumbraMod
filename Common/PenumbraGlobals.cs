@@ -195,7 +195,7 @@ namespace PenumbraMod.Common
             {
                 target.AddBuff(BuffID.CursedInferno, 240);
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
-                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 10;
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 100;
             }
             if (Player.HasBuff<SpectreForce>())
             {
@@ -208,12 +208,12 @@ namespace PenumbraMod.Common
             if (Player.HasBuff<SoulBoost>())
             {
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
-                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 75;
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 70;
             }
             if (Player.HasBuff<AquamarineForce>())
             {
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
-                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 25;
+                    Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
             }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
@@ -335,45 +335,7 @@ namespace PenumbraMod.Common
                 return false;
             
                 return true;
-        }
-        public List<int> Prefixes = new List<int>
-        {
-            PrefixID.Large,
-            PrefixID.Massive,
-            PrefixID.Dangerous,
-            PrefixID.Savage,
-            PrefixID.Sharp,
-            PrefixID.Pointy,        
-            PrefixID.Tiny,
-            PrefixID.Terrible,
-            PrefixID.Small,
-            PrefixID.Dull,
-            PrefixID.Unhappy,
-            PrefixID.Bulky,
-            PrefixID.Shameful,
-            PrefixID.Heavy,
-            PrefixID.Light,
-            PrefixID.Legendary,
-            PrefixID.Godly,
-            PrefixID.Shoddy,
-            PrefixID.Unpleasant,
-            PrefixID.Shoddy,
-            PrefixID.Damaged,
-            PrefixID.Weak,
-            PrefixID.Keen,
-            PrefixID.Ruthless,
-            PrefixID.Demonic,
-        };
-        public override bool AllowPrefix(Item item, int pre)
-        {
-            if (item.DamageType == GetInstance<ReaperClass>())
-            {
-                for (int i = 0; i < PrefixLoader.PrefixCount; i++)
-                    if (Prefixes.Contains(i))
-                        return false;
-            }
-            return true;
-        }
+        }       
         public override void HoldItem(Item item, Player player)
         {
             if (player.HasBuff(BuffID.ShadowDodge))

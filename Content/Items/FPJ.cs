@@ -51,7 +51,6 @@ namespace PenumbraMod.Content.Items
        
 
         public override bool ShouldUpdatePosition() => false;
-        public override bool? CanCutTiles() => false;
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, Color.LightPink.ToVector3() * 0.80f);
@@ -70,7 +69,6 @@ namespace PenumbraMod.Content.Items
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.immune[Projectile.owner] = 0;
-            Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
             return;
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -81,7 +79,7 @@ namespace PenumbraMod.Content.Items
         public override bool PreDraw(ref Color lightColor)
         {
             projtexture ??= ModContent.Request<Texture2D>(Texture, AssetRequestMode.ImmediateLoad).Value;
-            itemtexture ??= ModContent.Request<Texture2D>(ModContent.GetInstance<MagicalFoilProjectile>().Texture, AssetRequestMode.ImmediateLoad).Value;
+            itemtexture ??= ModContent.Request<Texture2D>("PenumbraMod/Content/Items/MagicalFoilProjectile", AssetRequestMode.ImmediateLoad).Value;
             DrawProj(Projectile);
             return false;
         }

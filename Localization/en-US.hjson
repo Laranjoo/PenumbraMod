@@ -29,13 +29,17 @@ Mods: {
 		DamageClasses.ReaperClass.DisplayName: reaper damage
 
 		UI: {
-			UnlockedUI:
-				'''
-				You just unlocked a new accessory slot!
-				This is the only slot where you can equip
-				expert mode accessories.
-				[c/ff0000:Choose well.]
-				'''
+			UnlockedUI: {
+				$parentVal:
+					'''
+					You just unlocked a new accessory slot!
+					This is the only slot where you can equip
+					expert mode accessories.
+					[c/ff0000:Choose well.]
+					'''
+				Close: Close
+			}
+
 			ReaperBar: Reaper energy
 			ReaperBarJewel: Jewels
 			ExpertAccessoryHoverName1: Accessory
@@ -448,7 +452,7 @@ Mods: {
 
 			AquamarineForce: {
 				DisplayName: Aquamarine Force
-				Description: 25+ Reaper energy when hitting enemies
+				Description: 5+ Reaper energy when hitting enemies
 			}
 
 			PeridotForce: {
@@ -737,6 +741,8 @@ Mods: {
 			PieceGlow6.DisplayName: Piece Glow
 			PieceGlow7.DisplayName: Piece Glow7
 			MagebladeGlowEx.DisplayName: Mageblade Glow Ex
+			NatureGrassProj.DisplayName: Nature Grass Proj
+			GlacialArrow.DisplayName: Glacial Arrow
 		}
 
 		Items: {
@@ -1532,12 +1538,8 @@ Mods: {
 			}
 
 			NatureGrass: {
-				DisplayName: Nature Grass
-				Tooltip:
-					'''
-					From the pure nature...
-					Fires a Nature Beam that pushes enemies far
-					'''
+				DisplayName: Naturesting
+				Tooltip: From the pure nature...
 			}
 
 			OmniStaff: {
@@ -2242,7 +2244,7 @@ Mods: {
 				Tooltip:
 					'''
 					When hitting enemies, grants you a 33% chance of getting a soul boost for 3 seconds
-					The soul boost grants you 75+ reaper energy when hitting an enemy
+					The soul boost grants you 7+ reaper energy when hitting an enemy
 					'''
 			}
 
@@ -2524,7 +2526,7 @@ Mods: {
 
 			AquamarineJewel: {
 				DisplayName: Aquamarine Jewel
-				Tooltip: 25+ Increased reaper energy when hitting enemies
+				Tooltip: 5+ Increased reaper energy when hitting enemies
 			}
 
 			PeridotJewel: {
@@ -2574,6 +2576,11 @@ Mods: {
 			AetheriumBlockModded: {
 				DisplayName: Aetherium Block
 				Tooltip: This block is only for the mageblade cutscene
+			}
+
+			GlacialBow: {
+				DisplayName: Glacial Bow
+				Tooltip: ""
 			}
 		}
 
@@ -2674,8 +2681,8 @@ Mods: {
 		}
 
 		PrefixesDescriptions: {
-			Deathly: +50 reaper energy
-			Darkening: +40 reaper energy
+			Deathly: +5 reaper energy
+			Darkening: +4 reaper energy
 		}
 	}
 }

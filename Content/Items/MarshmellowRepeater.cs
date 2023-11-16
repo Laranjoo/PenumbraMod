@@ -11,9 +11,6 @@ namespace PenumbraMod.Content.Items
 	{
 		public override void SetStaticDefaults()
 		{
-            // DisplayName.SetDefault("Marshmellow Launcher"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            // Tooltip.SetDefault("Fires fast yummy marshmellows");
-			
 		}
 
 		public override void SetDefaults()
@@ -22,8 +19,8 @@ namespace PenumbraMod.Content.Items
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 58;
 			Item.height = 22;
-			Item.useTime = 26;
-			Item.useAnimation = 26;
+			Item.useTime = 12;
+			Item.useAnimation = 12;
 			Item.useStyle = 5;
 			Item.knockBack = 6;
 			Item.value = 1000;

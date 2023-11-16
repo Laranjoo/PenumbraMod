@@ -27,6 +27,8 @@ namespace PenumbraMod.Content.DamageClasses
         private UIImage barFrameHover;
         private UIImage barFrame2;
         private UIImage barFrameHover2;
+        private UIImage barFrame3;
+        private UIImage barFrameHover3;
         #region Crystals
         // UI
         private UIImage AmethystCrystal;
@@ -95,24 +97,30 @@ namespace PenumbraMod.Content.DamageClasses
 
 
         #endregion 
-        // barSlots with the default model (Model 1)
+
+        // barSlots with model variations
         private UIImage barSlots;
         private UIImage barSlots2;
         private UIImage barSlots3;
-        private UIImage barSlots4;
-        private ExampleUIHoverImageButton CrystalButton;
+        
+        // Buttons with model variations
+        private ReaperButton CrystalButton;
+        private ReaperButton CrystalButton2;
+        private ReaperButton CrystalButton3;
 
-        // barSlots with new models "Bar Slots Model 2"
-        private UIImage barSlotsM1;
-        private UIImage barSlotsM12;
-        private UIImage barSlotsM13;
-        private UIImage barSlotsM14;
-        private ExampleUIHoverImageButton CrystalButton2;
+        // Jewel slots
+        private UIImage barSlotsNoJewel;
+        private UIImage barSlotsJewelRight;
+        private UIImage barSlotsJewelLeft;
 
         private Color gradientA;
         private Color gradientB;
+
         private Color gradientA2;
         private Color gradientB2;
+
+        private Color gradientA3;
+        private Color gradientB3;
 
         private UIImage barDrawing;
         private DraggableUI panel;
@@ -126,13 +134,16 @@ namespace PenumbraMod.Content.DamageClasses
             // UIElement is invisible and has no padding. You can use a UIPanel if you wish for a background.
 
             // This is one of the most painful thing to code i ever made (Laranjoo)
+            // I know its not organizated and has a lot of gimmicks and shenanigans, but hey it works!
 
-
+            // General panel for everything
             panel = new DraggableUI();
             panel.SetPadding(0);
             SetRectangle(panel, left: 700, top: 30, width: 92, height: 23);
             panel.BackgroundColor = new Color(0, 0, 0, 255) * 0f;
             panel.BorderColor = new Color(0, 0, 0, 255) * 0f;
+
+            // The bar sprite (with different models)
 
             barFrame = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBar", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrame.SetPadding(0);
@@ -150,42 +161,45 @@ namespace PenumbraMod.Content.DamageClasses
             barFrameHover2.SetPadding(0);
             SetRectangle(barFrameHover2, left: 0, top: 0, width: 96, height: 24);
 
+            barFrame3 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBar3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrame3.SetPadding(0);
+            SetRectangle(barFrame3, left: 0, top: 0, width: 92, height: 23);
+
+            barFrameHover3 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarHover3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrameHover3.SetPadding(0);
+            SetRectangle(barFrameHover3, left: 0, top: 0, width: 96, height: 24);
+
             #region BarSlots w/Models
 
-            barSlots = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlots", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            // Model 1
+            barSlots = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlots1", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barSlots.SetPadding(0);
             SetRectangle(barSlots, left: 20, top: 39, width: 0, height: 0);
-
-            barSlots2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed1", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            // Model 2
+            barSlots2 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlots2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barSlots2.SetPadding(0);
             SetRectangle(barSlots2, left: 20, top: 39, width: 0, height: 0);
-
-            barSlots3 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            // Model 3
+            barSlots3 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlots3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barSlots3.SetPadding(0);
             SetRectangle(barSlots3, left: 20, top: 39, width: 0, height: 0);
 
-            barSlots4 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
-            barSlots4.SetPadding(0);
-            SetRectangle(barSlots4, left: 20, top: 39, width: 0, height: 0);
+            // Slots Outlines
+            barSlotsNoJewel = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed0", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barSlotsNoJewel.SetPadding(0);
+            SetRectangle(barSlotsNoJewel, left: 20, top: 39, width: 0, height: 0);
 
-            barSlotsM1 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlots2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
-            barSlotsM1.SetPadding(0);
-            SetRectangle(barSlotsM1, left: 20, top: 39, width: 0, height: 0);
+            barSlotsJewelRight = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed1", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barSlotsJewelRight.SetPadding(0);
+            SetRectangle(barSlotsJewelRight, left: 20, top: 39, width: 0, height: 0);
 
-            barSlotsM12 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed1-2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
-            barSlotsM12.SetPadding(0);
-            SetRectangle(barSlotsM12, left: 20, top: 39, width: 0, height: 0);
-
-            barSlotsM13 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed2-2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
-            barSlotsM13.SetPadding(0);
-            SetRectangle(barSlotsM13, left: 20, top: 39, width: 0, height: 0);
-
-            barSlotsM14 = new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed3-2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
-            barSlotsM14.SetPadding(0);
-            SetRectangle(barSlotsM14, left: 20, top: 39, width: 0, height: 0);
+            barSlotsJewelLeft= new UIImage(Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarSlotsUsed2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barSlotsJewelLeft.SetPadding(0);
+            SetRectangle(barSlotsJewelLeft, left: 20, top: 39, width: 0, height: 0);
 
             #endregion
 
+            // For dimensioning the actual bar bein drawn when increasing the energy
             barDrawing = new UIImage(Request<Texture2D>("PenumbraMod/EMPTY", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barDrawing.SetPadding(0);
             barDrawing.Color = new Color(0, 0, 0, 255) * 0f;
@@ -353,58 +367,79 @@ namespace PenumbraMod.Content.DamageClasses
             SetRectangle(Peri2, left: 61, top: 9, width: 10, height: 12);
             #endregion
 
+            // Text, obvious
             text = new UIText("", 0.8f); // text to show stat
             text.Width.Set(46, 0f);
             text.Height.Set(22, 0f);
             text.Top.Set(22, 0f);
             text.Left.Set(-38, 0f);
 
+            // Jewel slots
             item = new CrystalSlots();
             SetRectangle(item, left: 1, top: 50, width: 52, height: 150);
 
             item2 = new CrystalSlots2();
             SetRectangle(item2, left: 39, top: 50, width: 52, height: 150);
 
+            // Buttons
             Asset<Texture2D> CrystalButtonn = ModContent.Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarButton");
-            CrystalButton = new ExampleUIHoverImageButton(CrystalButtonn, LocalizedTextForReaperBar.Text2);
+            CrystalButton = new ReaperButton(CrystalButtonn, LocalizedTextForReaperBar.Text2);
             SetRectangle(CrystalButton, left: 42, top: 7.5f, width: 10f, height: 13f);
             CrystalButton.OnLeftClick += new MouseEvent(ButtonClicked);
 
             Asset<Texture2D> CrystalButtonn2 = ModContent.Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarButton2");
-            CrystalButton2 = new ExampleUIHoverImageButton(CrystalButtonn2, LocalizedTextForReaperBar.Text2);
+            CrystalButton2 = new ReaperButton(CrystalButtonn2, LocalizedTextForReaperBar.Text2);
             SetRectangle(CrystalButton2, left: 42, top: 7.5f, width: 10f, height: 13f);
             CrystalButton2.OnLeftClick += new MouseEvent(ButtonClicked);
 
-            gradientA = new Color(199, 60, 10); // A orange
-            gradientB = new Color(134, 15, 46); // A dark pink
-            gradientA2 = new Color(103, 0, 209); // A purple
-            gradientB2 = new Color(180, 122, 255); // A light purple
+            Asset<Texture2D> CrystalButtonn3 = ModContent.Request<Texture2D>("PenumbraMod/Content/DamageClasses/ReaperClassBarButton3");
+            CrystalButton3 = new ReaperButton(CrystalButtonn3, LocalizedTextForReaperBar.Text2);
+            SetRectangle(CrystalButton3, left: 42, top: 7.5f, width: 10f, height: 13f);
+            CrystalButton3.OnLeftClick += new MouseEvent(ButtonClicked);
 
+            // Model 1
+            gradientA = new Color(199, 60, 10);
+            gradientB = new Color(134, 15, 46);
+            // Model 2
+            gradientA2 = new Color(103, 0, 209);
+            gradientB2 = new Color(184, 60, 219);
+            // Model 3
+            gradientA3 = new Color(200, 159, 46);
+            gradientB3 = new Color(255, 226, 148);
+
+            // Now, for appending!
+
+            // Append text and slots
             panel.Append(item);
             panel.Append(item2);
             panel.Append(text);
 
-            //Bar model 0
-            panel.Append(barFrame);
-            panel.Append(barFrameHover);
+            // The slots below the bar, not the outlined ones
             panel.Append(barSlots);
             panel.Append(barSlots2);
             panel.Append(barSlots3);
-            panel.Append(barSlots4);
 
-            // Bar model 1
+            // Models
+            panel.Append(barFrame);
+            panel.Append(barFrameHover);
             panel.Append(barFrame2);
             panel.Append(barFrameHover2);
-            panel.Append(barSlotsM1);
-            panel.Append(barSlotsM12);
-            panel.Append(barSlotsM13);
-            panel.Append(barSlotsM14);
+            panel.Append(barFrame3);
+            panel.Append(barFrameHover3);
 
+            // Jewel Slots, the outlined ones
+            panel.Append(barSlotsNoJewel);
+            panel.Append(barSlotsJewelRight);
+            panel.Append(barSlotsJewelLeft);
+
+            // Buttons and the bar thingy kljhdfgabkhg nbdzbxhk nbdfk bhjnzvxkbhjldzvhsovgad
             panel.Append(barDrawing);
             panel.Append(CrystalButton);
             panel.Append(CrystalButton2);
+            panel.Append(CrystalButton3);
 
             #region Crystalsss
+            // JEWELS!!!!!!!!!! b
             panel.Append(AmethystCrystal);
             panel.Append(AmethystCrystalSlot2);
             panel.Append(TopazCrystal);
@@ -446,6 +481,8 @@ namespace PenumbraMod.Content.DamageClasses
             panel.Append(Roz);
             panel.Append(Roz2);
             #endregion
+
+            // Append the panel, obviously
             Append(panel);
         }
         private void SetRectangle(UIElement uiElement, float left, float top, float width, float height)
@@ -517,97 +554,97 @@ namespace PenumbraMod.Content.DamageClasses
         #endregion
         public override void Draw(SpriteBatch spriteBatch)
         {
-
             // Another painful part
-
             if (Main.LocalPlayer.HeldItem.DamageType != GetInstance<ReaperClass>())
                 return;
+            int Model = GetInstance<PenumbraConfig>().ReaperBarModel;
             #region Bar
+            #region OutlinedSlots
+            if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type == ItemID.None)
+                SetRectangle(barSlotsNoJewel, left: 20, top: 39, width: 52, height: 42);
+            else
+                SetRectangle(barSlotsNoJewel, left: 2145623, top: 1613446, width: 0, height: 0);
+
+            if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type == ItemID.None)
+                SetRectangle(barSlotsJewelRight, left: 20, top: 39, width: 52, height: 42);
+            else
+                SetRectangle(barSlotsJewelRight, left: 2145623, top: 1613446, width: 0, height: 0);
+
+            if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type != ItemID.None)
+                SetRectangle(barSlotsJewelLeft, left: 20, top: 39, width: 52, height: 42);
+            else
+                SetRectangle(barSlotsJewelLeft, left: 2145623, top: 1613446, width: 0, height: 0);
+
+            if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type != ItemID.None)
+            {
+                SetRectangle(barSlotsNoJewel, left: 2145623, top: 1613446, width: 0, height: 0);
+                SetRectangle(barSlotsJewelLeft, left: 2145623, top: 1613446, width: 0, height: 0);
+                SetRectangle(barSlotsJewelRight, left: 2145623, top: 1613446, width: 0, height: 0);
+            }
+            #endregion
+
             #region Model 1
-            if (GetInstance<PenumbraConfig>().ReaperBarModel == 1)
+            if (Model == 1)
             {
                 SetRectangle(barFrame, left: 0, top: 0, width: 92, height: 23);
                 SetRectangle(CrystalButton, left: 42, top: 7.5f, width: 10f, height: 13f);
-
                 if (panel.IsMouseHovering)
                     SetRectangle(barFrameHover, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover, left: 34663411346, top: 13464631346, width: 92, height: 23);
-
-                if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type == ItemID.None)             
-                    SetRectangle(barSlots, left: 20, top: 39, width: 52, height: 42);              
-                else
-                    SetRectangle(barSlots, left: 2145623, top: 1613446, width: 0, height: 0);
-
-                if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type == ItemID.None)
-                    SetRectangle(barSlots2, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlots2, left: 2145623, top: 1613446, width: 0, height: 0);
-
-                if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type != ItemID.None)
-                    SetRectangle(barSlots3, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlots3, left: 2145623, top: 1613446, width: 0, height: 0);
-
-                if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type != ItemID.None)
-                    SetRectangle(barSlots4, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlots4, left: 2145623, top: 1613446, width: 0, height: 0);
-
             }
             else
             {
                 SetRectangle(barFrame, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton, left: 1235451, top: 13455143, width: 92, height: 23);
-                SetRectangle(barSlots, left: 2145623, top: 1613446, width: 0, height: 0);
-                SetRectangle(barSlots2, left: 2145623, top: 1613446, width: 0, height: 0);
-                SetRectangle(barSlots3, left: 2145623, top: 1613446, width: 0, height: 0);
-                SetRectangle(barSlots4, left: 2145623, top: 1613446, width: 0, height: 0);
                 SetRectangle(barFrameHover, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
+            if (Model == 1 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
+                SetRectangle(barSlots, left: 20, top: 39, width: 0, height: 0);
+            else
+                SetRectangle(barSlots, left: 2145623, top: 1613446, width: 0, height: 0);
             #endregion
             #region Model 2
-            if (GetInstance<PenumbraConfig>().ReaperBarModel == 2)
+            if (Model == 2)
             {
                 SetRectangle(barFrame2, left: 0, top: 0, width: 92, height: 23);
                 SetRectangle(CrystalButton2, left: 42, top: 7.5f, width: 10f, height: 13f);
-
                 if (panel.IsMouseHovering)
                     SetRectangle(barFrameHover2, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover2, left: 34663411346, top: 13464631346, width: 92, height: 23);
-
-                if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type == ItemID.None)
-                    SetRectangle(barSlotsM1, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlotsM1, left: 2145623, top: 1613446, width: 0, height: 0);
-
-                if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type == ItemID.None)
-                    SetRectangle(barSlotsM12, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlotsM12, left: 2145623, top: 1613446, width: 0, height: 0);
-
-                if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type != ItemID.None)
-                    SetRectangle(barSlotsM13, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlotsM13, left: 2145623, top: 1613446, width: 0, height: 0);
-
-                if (clickedagain && Main.playerInventory && item.Item.type != ItemID.None && item2.Item.type != ItemID.None)
-                    SetRectangle(barSlotsM14, left: 20, top: 39, width: 52, height: 42);
-                else
-                    SetRectangle(barSlotsM14, left: 2145623, top: 1613446, width: 0, height: 0);
-
             }
             else
             {
                 SetRectangle(barFrame2, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton2, left: 1235451, top: 13455143, width: 92, height: 23);
-                SetRectangle(barSlotsM1, left: 2145623, top: 1613446, width: 0, height: 0);
-                SetRectangle(barSlotsM12, left: 2145623, top: 1613446, width: 0, height: 0);
-                SetRectangle(barSlotsM13, left: 2145623, top: 1613446, width: 0, height: 0);
-                SetRectangle(barSlotsM14, left: 2145623, top: 1613446, width: 0, height: 0);
                 SetRectangle(barFrameHover2, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
+            if (Model == 2 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
+                SetRectangle(barSlots2, left: 20, top: 39, width: 0, height: 0);
+            else
+                SetRectangle(barSlots2, left: 2145623, top: 1613446, width: 0, height: 0);
+            #endregion
+            #region Model 3
+            if (Model == 3)
+            {
+                SetRectangle(barFrame3, left: 0, top: 0, width: 92, height: 23);
+                SetRectangle(CrystalButton3, left: 42, top: 7.5f, width: 10f, height: 13f);
+                if (panel.IsMouseHovering)
+                    SetRectangle(barFrameHover3, left: -1, top: -1, width: 92, height: 23);
+                else
+                    SetRectangle(barFrameHover3, left: 34663411346, top: 13464631346, width: 92, height: 23);
+            }
+            else
+            {
+                SetRectangle(barFrame3, left: 1235451, top: 13455143, width: 92, height: 23);
+                SetRectangle(CrystalButton3, left: 1235451, top: 13455143, width: 92, height: 23);
+                SetRectangle(barFrameHover3, left: 34663411346, top: 13464631346, width: 92, height: 23);
+            }
+            if (Model == 3 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
+                SetRectangle(barSlots3, left: 20, top: 38, width: 0, height: 0);
+            else
+                SetRectangle(barSlots3, left: 2145623, top: 1613446, width: 0, height: 0);
             #endregion
             #endregion
             #region Crystals
@@ -1080,7 +1117,7 @@ namespace PenumbraMod.Content.DamageClasses
                 if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
                     Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ony2 = true;
                 ony2 = true;
-                SetRectangle(Ony2, left: 20, top: 8, width: 10, height: 12);
+                SetRectangle(Ony2, left: 58, top: 8, width: 10, height: 12);
             }
             else
             {
@@ -1108,7 +1145,7 @@ namespace PenumbraMod.Content.DamageClasses
                 if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
                     Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().peri2 = true;
                 peri2 = true;
-                SetRectangle(Peri2, left: 20, top: 8, width: 10, height: 12);
+                SetRectangle(Peri2, left: 58, top: 8, width: 10, height: 12);
             }
             else
             {
@@ -1136,7 +1173,7 @@ namespace PenumbraMod.Content.DamageClasses
                 if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
                     Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().aqua2 = true;
                 aqua2 = true;
-                SetRectangle(Aqua2, left: 20, top: 8, width: 10, height: 12);
+                SetRectangle(Aqua2, left: 58, top: 8, width: 10, height: 12);
             }
             else
             {
@@ -1164,7 +1201,7 @@ namespace PenumbraMod.Content.DamageClasses
                 if (Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 7300)
                     Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>().roz2 = true;
                 roz2 = true;
-                SetRectangle(Roz2, left: 20, top: 8, width: 10, height: 12);
+                SetRectangle(Roz2, left: 58, top: 8, width: 10, height: 12);
             }
             else
             {
@@ -1205,6 +1242,8 @@ namespace PenumbraMod.Content.DamageClasses
                     spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i + 2, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA, gradientB, percent));
                 if (Model == 2)
                     spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i + 2, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA2, gradientB2, percent));
+                if (Model == 3)
+                    spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(left + i + 2, hitbox.Y, 1, hitbox.Height), Color.Lerp(gradientA3, gradientB3, percent));
             }
         }
         public override void Update(GameTime gameTime)
@@ -1213,9 +1252,8 @@ namespace PenumbraMod.Content.DamageClasses
                 return;
             var ReaperClassPlayer = Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>();
             // Setting the text per tick to update and show our resource values.
-            float b = (float)ReaperClassPlayer.ReaperEnergy / 20f;
             if (GetInstance<PenumbraConfig>().UITEXT)
-                text.SetText(LocalizedTextForReaperBar.Text + $" {ReaperClassPlayer.ReaperEnergy} / {ReaperClassPlayer.ReaperEnergyMax}");
+                text.SetText(LocalizedTextForReaperBar.Text + $" {ReaperClassPlayer.ReaperEnergy / 10f} / {ReaperClassPlayer.ReaperEnergyMax / 10f}");
             base.Update(gameTime);
         }
     }
@@ -1228,6 +1266,35 @@ namespace PenumbraMod.Content.DamageClasses
             string category = "UI";
             Text ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ReaperBar"));
             Text2 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.ReaperBarJewel"));
+        }
+    }
+    internal class ReaperButton : UIImageButton
+    {
+        // Tooltip text that will be shown on hover
+        internal string hoverText;
+        internal static LocalizedText text;
+        public ReaperButton(Asset<Texture2D> texture, string hoverText) : base(texture)
+        {
+            this.hoverText = hoverText;
+        }
+        public ReaperButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        {
+            text = Text;
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            // When you override UIElement methods, don't forget call the base method
+            // This helps to keep the basic behavior of the UIElement
+            base.DrawSelf(spriteBatch);
+
+            // IsMouseHovering becomes true when the mouse hovers over the current UIElement
+            if (IsMouseHovering)
+            {
+                Main.instance.MouseText(hoverText);
+                Main.instance.MouseText((string)text);
+            }
+
         }
     }
     internal class CrystalSlots : UIElement
