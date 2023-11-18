@@ -30,31 +30,30 @@ namespace PenumbraMod.Content.Items
 			Item.DamageType = ModContent.GetInstance<ReaperClass>();
 			Item.width = 92;
 			Item.height = 70;
-			Item.useTime = 28;
-			Item.useAnimation = 28;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
 			Item.useStyle = 1;
 			Item.knockBack = 6;
 			Item.value = 23400;
 			Item.rare = 4;
-			Item.UseSound = SoundID.Item1;
+            Item.channel = true;
 			Item.autoReuse = true;
-			Item.shoot = ModContent.ProjectileType<EMPTY>();
-			Item.shootSpeed = 16f;
+            Item.noUseGraphic = true;
+            Item.noMelee = true;
+            Item.shoot = ModContent.ProjectileType<EMPTY>();
+			Item.shootSpeed = 1f;
 		}
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
 			if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
 			{
-				SoundEngine.PlaySound(SoundID.Item71, player.position);
-                Item.noUseGraphic = true;
-                Item.noMelee = true;
+				SoundEngine.PlaySound(SoundID.Item71, player.position);             
 				// Create a projectile.
-				Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<DeathStrandingSpecial>(), damage, knockback, player.whoAmI);
+				Projectile.NewProjectileDirect(source, position, velocity * 12f, ModContent.ProjectileType<DeathStrandingSpecial>(), damage, knockback, player.whoAmI);
 			}
             else
             {
-                Item.noMelee = false;
-                Item.noUseGraphic = false;
+                Projectile.NewProjectileDirect(source, position, velocity, ModContent.ProjectileType<DeathstrandingScytheS>(), damage, knockback, player.whoAmI);
             }
 
             return true;
@@ -62,6 +61,172 @@ namespace PenumbraMod.Content.Items
         public override bool CanUseItem(Player player)
         {
             return player.ownedProjectileCounts[ModContent.ProjectileType<DeathStrandingSpecial>()] < 1;
+        }
+    }
+    public class DeathstrandingScytheS : ModProjectile
+    {
+        public override void SetStaticDefaults()
+        {
+            //ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+            //ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
+        }
+
+        public override void SetDefaults()
+        {
+            Projectile.width = 140;
+            Projectile.height = 160;
+            Projectile.friendly = true;
+            Projectile.timeLeft = 9999;
+            Projectile.penetrate = -1;
+            Projectile.tileCollide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
+            Projectile.netImportant = true;
+        }
+        Vector2 dir = Vector2.Zero;
+        Vector2 hlende = Vector2.Zero;
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
+            float scaleFactor = 105f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
+            float widthMultiplier = 30f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
+            float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
+
+            // This Rectangle is the width and height of the Jousting Lance's hitbox which is used for the first step of collision.
+            // You will need to modify the last two numbers if you have a bigger or smaller Jousting Lance.
+            // Vanilla uses (0, 0, 300, 300) which that is quite large for the size of the Jousting Lance.
+            // The size doesn't matter too much because this rectangle is only a basic check for the collision (the hit-line is much more important).
+            Rectangle lanceHitboxBounds = new Rectangle(0, 0, 208, 208);
+
+            // Set the position of the large rectangle.
+            lanceHitboxBounds.X = (int)Projectile.position.X - lanceHitboxBounds.Width / 2;
+            lanceHitboxBounds.Y = (int)Projectile.position.Y - lanceHitboxBounds.Height / 2;
+
+            // This is the back of the hit-line with Projectile.Center being the tip of the Jousting Lance.
+            Vector2 hitLineEnd = Projectile.Center + rotationFactor.ToRotationVector2() * -scaleFactor;
+
+            hlende = hitLineEnd;
+            // First check that our large rectangle intersects with the target hitbox.
+            // Then we check to see if a line from the tip of the Jousting Lance to the "end" of the lance intersects with the target hitbox.
+            if (/*lanceHitboxBounds.Intersects(targetHitbox)
+                && */Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd, widthMultiplier, ref collisionPoint))
+            {
+                return true;
+            }
+            return false;
+        }
+        int charge;
+        int a;
+        public override void AI()
+        {
+            Projectile.Center = Main.player[Projectile.owner].Center;
+            Player player = Main.player[Projectile.owner];
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+            player.SetDummyItemTime(2);
+            a++;
+            if (dir == Vector2.Zero)
+            {
+                dir = Main.MouseWorld;
+                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
+            }
+            //FadeInAndOut();
+            if (player.direction == 1)
+                Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((11 - Projectile.ai[0])));
+            if (player.direction == -1)
+                Projectile.rotation -= (Projectile.ai[1] * MathHelper.ToRadians((11 - Projectile.ai[0])));
+
+            if (a <= 10)
+            {
+                Projectile.ai[0] -= 0.03f;
+                Projectile.ai[1] -= 0.03f;
+                Projectile.friendly = false;
+            }
+            else
+            {
+                Projectile.ai[0] -= 0f;
+                Projectile.ai[1] -= 0f;
+            }
+            if (player.channel)
+                Charge(player);
+            else
+                Swing(player);
+        }
+        bool Charge(Player player)
+        {
+            if (charge >= 100)
+            {
+                SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
+                for (int i = 0; i < 20; i++)
+                {
+                    int d = Dust.NewDust(Projectile.position, 0, 0, DustID.BlueTorch);
+                    Main.dust[d].noGravity = true;
+                    Main.dust[d].velocity *= 8f;
+                }
+                return true;
+            }
+            if (charge <= 99 && !player.channel)
+                return true;
+            charge++;
+            if (charge > 50)
+            {
+                if (Main.rand.NextBool(3))
+                {
+                    int d = Dust.NewDust(player.position, 30, player.height, DustID.BlueTorch);
+                    Main.dust[d].noGravity = true;
+                    Main.dust[d].velocity.Y -= 8f;
+                }
+            }
+            return false;
+        }
+        void Swing(Player player)
+        {
+            if (!Charge(player))
+                return;
+            Projectile.ai[2]++;
+            if (Projectile.ai[2] >= 13 && Projectile.ai[2] <= 17)
+            {
+                Projectile.friendly = true;
+                Projectile.ai[0] += 1f;
+                Projectile.ai[1] += 1f;
+                SoundEngine.PlaySound(SoundID.Item71, Projectile.position);
+                if (charge >= 100)
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12f, ModContent.ProjectileType<DeathExplosion>(), Projectile.damage * (int)1.5f, Projectile.knockBack, player.whoAmI);
+            }
+            if (Projectile.ai[2] >= 18 && Projectile.ai[2] <= 20)
+            {
+                Projectile.ai[0] += 0.01f;
+                Projectile.ai[1] += 0.01f;
+            }
+            if (Projectile.ai[2] >= 21 && Projectile.ai[2] <= 25)
+            {
+                Projectile.ai[0] -= 0.01f;
+                Projectile.ai[1] -= 0.01f;
+            }
+            if (Projectile.ai[2] > 26)
+                Projectile.Kill();
+        }
+        public static float easeInOutQuad(float x)
+        {
+            return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
+        }
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Main.instance.LoadProjectile(Projectile.type);
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/DeathstrandingScytheSF").Value;
+            Player player = Main.player[Projectile.owner];
+
+            if (charge > 90 && player.direction == 1)
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+            if (charge > 90 && player.direction == -1)
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+
+            if (player.direction == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+            if (player.direction == -1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+
+            return false;
         }
     }
     public class DeathStrandingSpecial : ModProjectile
