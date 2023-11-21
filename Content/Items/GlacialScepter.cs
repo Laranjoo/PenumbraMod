@@ -24,7 +24,7 @@ namespace PenumbraMod.Content.Items
             Item.useAnimation = 12;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.value = 13000;
-            Item.rare = ItemRarityID.Orange;
+            Item.rare = ItemRarityID.Cyan;
             Item.UseSound = SoundID.Item28;
             Item.autoReuse = true;
             Item.noMelee = true;
@@ -42,9 +42,10 @@ namespace PenumbraMod.Content.Items
         }
         public override void AddRecipes()
         {
-           // Recipe recipe = CreateRecipe();
-          //  recipe.AddTile(TileID.MythrilAnvil);
-            //recipe.Register();
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<GlacialChunk>(), 18);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
         }
     }
 }

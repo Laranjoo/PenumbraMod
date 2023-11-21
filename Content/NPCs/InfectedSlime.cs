@@ -1,4 +1,5 @@
 using PenumbraMod.Content.Items;
+using PenumbraMod.Content.Items.Armors;
 using PenumbraMod.Content.Items.Placeable;
 using Terraria;
 using Terraria.GameContent.Bestiary;
@@ -43,7 +44,7 @@ namespace PenumbraMod.Content.NPCs
             npcLoot.Add(ItemDropRule.Common(ItemID.Gel, 1, 2, 4));
             npcLoot.Add(ItemDropRule.Common(5091, 1000, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.MeatGrinder, 200, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedOre>(), 1, 4, 12));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<InfectedOre>(), 1, 4, 12));      
         }
         public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
         {
@@ -52,8 +53,8 @@ namespace PenumbraMod.Content.NPCs
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.hardMode)
-                return SpawnCondition.Corruption.Chance * 0.3f;
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                return SpawnCondition.Corruption.Chance * 0.5f;
             return 0f;
         }
 

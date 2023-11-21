@@ -32,25 +32,4 @@ namespace PenumbraMod.Content.Tiles
             MinPick = 190;
         }
     }
-    public class InfectedSystem : GlobalNPC
-    {   
-        public override void OnKill(NPC npc)
-        {
-           /* if (Main.hardMode || npc.type == NPCID.WallofFlesh)
-            {
-                Main.NewText("[c/00ffdf:A new stone has appeared on the evil lands!]");
-                for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 8E-05); k++)
-                {
-                    int x = WorldGen.genRand.Next(0, Main.maxTilesX);
-                    int y = WorldGen.genRand.Next((int)GenVars.rockLayer, Main.maxTilesY);
-                    Tile tile = Framing.GetTileSafely(x, y);
-                    if (tile.HasTile && tile.TileType == TileID.Ebonstone)
-                    {
-                        WorldGen.TileRunner(x, y, WorldGen.genRand.Next(10, 12), WorldGen.genRand.Next(10, 12), ModContent.TileType<InfectedOre>());
-                    }
-                }
-            }   */
-        }
-
-    }
 }

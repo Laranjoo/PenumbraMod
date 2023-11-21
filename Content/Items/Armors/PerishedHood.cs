@@ -46,8 +46,7 @@ namespace PenumbraMod.Content.Items.Armors
             player.GetDamage<ReaperClass>().Flat += 2;
             player.GetModPlayer<PerishedDash>().DashAccessoryEquipped = true;
             player.GetModPlayer<PerishedBuff>().perishedbuff = true;
-            player.setBonus = "2+ Increased flat reaper damage\nFor every hit you deal, you gain 50+ extra reaper energy\nDouble tap a direction to perform a slight dash" +
-                "\nThe dash grants you 3+ increased flat reaper damage for 5 seconds\nIt has a 15 seconds cooldown"; // This is the setbonus tooltip
+            player.setBonus = (string)PenumbraLocalization.PerishedArmor;
         }
     }
     public class PerishedBuff : ModPlayer

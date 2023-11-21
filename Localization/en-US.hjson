@@ -50,6 +50,72 @@ Mods: {
 			ExpertAccessoryHoverName6: Locked Dye
 		}
 
+		PostMechsOres.Text: "[c/00ffdf:A new stone has appeared on the evil lands!]"
+
+		PenumbraLocalization: {
+			Bestiary: {
+				MeltedSkeleton: This cursed skeleton fell into the hell and burned, he misteriously survived to the burns, suffering in the hell because of its unknown curse...
+				MarshSlime: Fluffy slime that loves to jump over the world.
+				EyeStormProtector: Protective shield of the stormy eye, their only objective is protect their owner at every cost.
+				EyeStormShooter: Protective shooter of the stormy eye, their only objective is protect his owner at every cost.
+				EyeStorm: Ancient relic used to contain the power of a fallen sorcerer that used his magic to ensure rain in the deserts
+			}
+
+			SetBonuses: {
+				PrismaArmor:
+					'''
+					Grants the ability to change form during day/night
+					When at daytime, your defense is increased by 3, and you have an damaging aura to hurt enemies (Doesn't work on underground), and deal more damage
+					The aura inflict prismatic lightining on enemies, causing extra damage on them, and increases reaper energy for you
+					When at nighttime, you do not gain extra defense/damage, but when you get hit, enemies also get hit
+					[c/b74bda:'By the empress soul...']
+					'''
+				SandHunter: Immunity to venom and poison and reaper attacks inflicts both
+				PerishedArmor:
+					'''
+					2+ Increased flat reaper damage
+					For every hit you deal, you gain 5+ extra reaper energy
+					Double tap a direction to perform a slight dash
+					The dash grants you 3+ increased flat reaper damage for 5 seconds\nIt has a 15 seconds cooldown
+					'''
+				OldBloodystoneArmor: Greatly increased Life Regeneration
+				MeltedArmorWithoutKeybind: Select a keybind for [Melted Armor Ability] in Controls
+				MarshArmorWithoutKeybind: Select a keybind for [Marshmellow Armor Ability] in Controls
+				BloodystoneArmorSummonner: Greately increased Life Regeneration, 15% Increased summon damage and +2 Minion slots
+				BloodystoneArmorMelee: Greately increased Life Regeneration and 15% Melee damage
+				BloodystoneArmorMage:
+					'''
+					Greately increased Life Regeneration and 7% increased magic damage
+					50+ Max mana and 7% reduced mana cost
+					'''
+				BloodystoneArmorRanged: Greately increased Life Regeneration and 15% Ranged damage
+				RobeAqua: 6% increased magic critical strike chance
+				RobePeridot: 10% increased magic critical strike chance
+				RobeRoze: 8% increased magic critical strike chance
+				Peridot: Mods.PenumbraMod.PenumbraLocalization.SetBonuses.Peridot
+			}
+
+			ItemTooltips: {
+				DeathSickle: "[c/3b12d3:Special Ability:] Increases the swing speed of the scythe, shots faster extra projectiles, at cost of reaper energy not increases"
+				BeamSword: Right Click to stand a shield in your front, at enemy hits, you will be granted holy protection to dodge the next attack and gain 10+ defense
+				IceSickle: "[c/00a4ff:Special Ability:] Increases the swing speed of the scythe, and shoots additional ice sickles"
+				MagebladeShards: "[c/178cff:You have all the shards, combine them into a special location.]"
+			}
+
+			CombatTexts: {
+				SoulBoosted: Soul Boosted!
+				MeltedBlasterGunMode: Gun Mode
+				MeltedBlasterChargeMode: Charging Mode
+				MeltedBlasterOvercharge: OVERCHARGING!
+			}
+
+			Structures: {
+				Marble: Enhancing Marble
+				ShimmerStructure: Making a shiny altar
+				LostSword: Hiding a relic
+			}
+		}
+
 		NPCs: {
 			vhcmnpc: {
 				DisplayName: Vhcm
@@ -464,6 +530,16 @@ Mods: {
 				DisplayName: Roze Quartz Force
 				Description: Grants a subtle life regeneration
 			}
+
+			NotADirtBlockGuy: {
+				DisplayName: Not A Dirt Block Guy
+				Description: Mods.PenumbraMod.Buffs.NotADirtBlockGuy.Description
+			}
+
+			OverpoweredDirt: {
+				DisplayName: Overpowered Dirt
+				Description: Mods.PenumbraMod.Buffs.OverpoweredDirt.Description
+			}
 		}
 
 		Projectiles: {
@@ -741,9 +817,11 @@ Mods: {
 			PieceGlow6.DisplayName: Piece Glow
 			PieceGlow7.DisplayName: Piece Glow7
 			MagebladeGlowEx.DisplayName: Mageblade Glow Ex
-			NatureGrassProj.DisplayName: Nature Grass Proj
+			NatureGrassProj.DisplayName: Nature Grass
 			GlacialArrow.DisplayName: Glacial Arrow
-			DeathstrandingScytheS.DisplayName: Deathstranding Scythe S
+			DeathstrandingScytheS.DisplayName: Deathstranding Scythe
+			NotADirtBlockMan.DisplayName: Not A Dirt Block Man
+			OverpoweredDirtPet.DisplayName: Overpowered Dirt Pet
 		}
 
 		Items: {
@@ -919,6 +997,12 @@ Mods: {
 					Increases damage by 2%
 					'Its so fluffy!'
 					'''
+				SetBonus:
+					'''
+					[c/e0ffff:Press {0} To Protect yourself and gain 4+ defense for 10 seconds]
+					[c/c0c0c0:This has a 30 seconds cooldown]
+					[c/7fffd4:'You feel so comfortable now!']
+					'''
 			}
 
 			MarshmellowLeggings: {
@@ -942,6 +1026,13 @@ Mods: {
 			MeltedHelmet: {
 				DisplayName: Melted Helmet
 				Tooltip: Increases damage by 3%
+				SetBonus:
+					'''
+					[c/ff0000:Press {0} To increase your movement speed by 15%]
+					[c/ff0000:Increase your reaper attack speed by 25% and damage by 5% for 15 seconds, when you get hit, you explode, dealing damage on enemies]
+					[c/ff0000:This effect has a 60 seconds cooldown]
+					[c/ff5b00:'Why obsidian armor when you have this?']
+					'''
 			}
 
 			MeltedLeggings: {
@@ -2576,11 +2667,21 @@ Mods: {
 
 			AetheriumBlockModded: {
 				DisplayName: Aetherium Block
-				Tooltip: This block is only for the mageblade cutscene
+				Tooltip: This block is only for the mageblade cutscene and Aetherial archangel
 			}
 
 			GlacialBow: {
 				DisplayName: Glacial Bow
+				Tooltip: Converts Wooden arrowns into Glacial arrows
+			}
+
+			OverpoweredDirtBlock: {
+				DisplayName: Overpowered Dirt Block
+				Tooltip: ""
+			}
+
+			GlacialChunk: {
+				DisplayName: Glacial Chunk
 				Tooltip: ""
 			}
 		}

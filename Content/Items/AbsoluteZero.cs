@@ -19,7 +19,7 @@ namespace PenumbraMod.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 140;
+			Item.damage = 120;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 70;
 			Item.height = 70;
@@ -40,9 +40,8 @@ namespace PenumbraMod.Content.Items
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.IceBlock, 25);
+			recipe.AddIngredient(ModContent.ItemType<GlacialChunk>(), 22);
 			recipe.AddIngredient(ItemID.IceBlade, 1);
-			recipe.AddIngredient(ItemID.SoulofFright, 7);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}

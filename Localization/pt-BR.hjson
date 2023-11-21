@@ -23,7 +23,7 @@ Mods: {
 			}
 
 			Autouse.Label: Habilite ou desabilite o uso automatico de itens
-			// ReaperBarModel.Label: Change the current model of the Reaper Energy bar
+			ReaperBarModel.Label: Mude o modelo atual da barra de energia ceifadora
 		}
 
 		DamageClasses.ReaperClass.DisplayName: danos por ataque ceifador
@@ -37,7 +37,7 @@ Mods: {
 					acessórios do modo perito
 					[c/ff0000:Escolha sabiamente.]
 					'''
-				// Close: Close
+				Close: Fechar
 			}
 
 			ReaperBar: Energia ceifadora
@@ -48,6 +48,72 @@ Mods: {
 			ExpertAccessoryHoverName4: Acessório Trancado
 			ExpertAccessoryHoverName5: Social Acessório Trancado
 			ExpertAccessoryHoverName6: Tingir Trancado
+		}
+
+		PostMechsOres.Text: "[c/00ffdf:Uma nova pedra apareceu nas áreas malígnas!]"
+
+		PenumbraLocalization: {
+			Bestiary: {
+				MeltedSkeleton: Este esqueleto amaldiçoado caiu no inferno e queimou, misteriosamente sobreviveu às queimaduras, sofrendo no inferno por causa de sua maldição desconhecida...
+				MarshSlime: Slime fofo que adora pular pelo mundo.
+				EyeStormProtector: Escudo protetor do olho tempestuoso, seu único objetivo é proteger seu dono a todo custo.
+				EyeStormShooter: Atirador protetor do olho tempestuoso, seu único objetivo é proteger seu dono a todo custo.
+				EyeStorm: Relíquia antiga usada para conter o poder de um feiticeiro caído que usou sua magia para garantir chuva nos desertos.
+			}
+
+			SetBonuses: {
+				PrismaArmor:
+					'''
+					Concede a capacidade de mudar de forma durante o dia/noite
+					Durante o dia, sua defesa aumenta em 3, e você tem uma aura prejudicial para ferir inimigos (não funciona no subsolo), e causa mais dano
+					A aura inflige raio prismático nos inimigos, causando dano extra a eles, e aumenta a energia da ceifadora para você
+					Durante a noite, você não ganha defesa/dano extra, mas quando é atingido, os inimigos também são atingidos
+					[c/b74bda:'Pela alma da imperatriz...']
+					'''
+				SandHunter: Imunidade a veneno e entoxicação e dano de ceifador inflige ambos
+				PerishedArmor:
+					'''
+					Dano de ceifador aumentado em 2+
+					Para cada golpe que você desferir, você ganha 5+ de energia de ceifador extra
+					Dê dois toques em uma direção para realizar um leve impulso
+					O impulso concede a você um aumento de 3+ no dano de ceifador por 5 segundos\nTem um tempo de recarga de 15 segundos
+					'''
+				OldBloodystoneArmor: Regeneração de vida aumentada significativamente
+				MeltedArmorWithoutKeybind: Selecione uma tecla para [Habilidade da Armadura Derretida] em Controles
+				MarshArmorWithoutKeybind: Selecione uma tecla para [Habilidade da Armadura de marshmellow] em Controles
+				BloodystoneArmorSummonner: Regeneração de vida aumentada significativamente, 15% de aumento no dano de invocações e +2 espaços para lacaios
+				BloodystoneArmorMelee: Regeneração de vida aumentada significativamente e 15% de dano de combate corpo a corpo
+				BloodystoneArmorMage:
+					'''
+					Regeneração de vida aumentada significativamente e 7% de aumento no dano mágico
+					50+ de mana máxima e 7% de redução no custo de mana
+					'''
+				BloodystoneArmorRanged: Regeneração de vida aumentada significativamente e 15% de dano a distância
+				RobeAqua: 6% de chance aumentada de acerto crítico mágico
+				RobePeridot: 10% de chance aumentada de acerto crítico mágico
+				RobeRoze: 8% de chance aumentada de acerto crítico mágico
+				// Peridot: Mods.PenumbraMod.PenumbraLocalization.SetBonuses.Peridot
+			}
+
+			ItemTooltips: {
+				DeathSickle: "[c/3b12d3:Habilidade Especial:] Aumenta a velocidade de golpe da foice, dispara projéteis extras mais rapidamente, com o custo de não aumentar a energia da ceifadora"
+				BeamSword: Clique direito para levantar um escudo à sua frente; ao ser atingido pelo inimigo, você receberá proteção divina para esquivar do próximo ataque e ganhará 10+ de defesa
+				IceSickle: "[c/ooa4ff:Habilidade Especial:] Aumenta a velocidade de golpe da foice e dispara foices de gelo adicionais"
+				MagebladeShards: "[c/178cff:Você possui todos os fragmentos, combine-os em um local especial.]"
+			}
+
+			CombatTexts: {
+				SoulBoosted: Alma Impulsionada!
+				MeltedBlasterGunMode: Modo arma
+				MeltedBlasterChargeMode: Modo de carga
+				MeltedBlasterOvercharge: SOBRECARREGANDO!
+			}
+
+			Structures: {
+				Marble: Melhorando o Mármore
+				ShimmerStructure: Criando um altar brilhante
+				LostSword: Escondendo uma relíquia
+			}
 		}
 
 		NPCs: {
@@ -82,7 +148,7 @@ Mods: {
 				DisplayName: Eye of the Storm
 
 				BossChecklistIntegration: {
-					SpawnInfo: Use um [i:8093] para atacar o vento e acordar o antigo Eye of the Storm.
+					SpawnInfo: Use um [i:8o93] para atacar o vento e acordar o antigo Eye of the Storm.
 					DespawnMessage: O Eye of the Storm voou para longe para as tempestades...
 				}
 			}
@@ -158,7 +224,7 @@ Mods: {
 				Description:
 					'''
 					Você sente que a sua foice esta leve
-					Velocidade da foice aumentada em 70%
+					Velocidade da foice aumentada em 7o%
 					'''
 			}
 
@@ -182,7 +248,7 @@ Mods: {
 				Description:
 					'''
 					Você sente que a sua foice esta muito leve
-					Velocidade da foice aumentada em 50%
+					Velocidade da foice aumentada em 5o%
 					'''
 			}
 
@@ -312,7 +378,7 @@ Mods: {
 				Description:
 					'''
 					Dano da foice aumentado em 5%
-					Velocidade de uso da foice aumentada em 10%
+					Velocidade de uso da foice aumentada em 1o%
 					Da a foices a chance de atirar em crânios
 					[c/ff6bf5:Maldição do velho senhor:] 5% de redução de chance crítica
 					'''
@@ -335,7 +401,7 @@ Mods: {
 
 			PrimeyeForce: {
 				DisplayName: Força Primeye
-				Description: 35% de aumento na aceleração de corrida e tempo de uso para a foice, com um tempo de espera de 30 segundos.
+				Description: 35% de aumento na aceleração de corrida e tempo de uso para a foice, com um tempo de espera de 3o segundos.
 			}
 
 			PrimeyeForceCooldown: {
@@ -355,7 +421,7 @@ Mods: {
 
 			TopazForce: {
 				DisplayName: Força Topázio
-				Description: +10% de aumento de velocidade para a foice
+				Description: +1o% de aumento de velocidade para a foice
 			}
 
 			BloodstainedForce: {
@@ -389,8 +455,8 @@ Mods: {
 				DisplayName: Força da Terra
 				Description:
 					'''
-										Estatísticas de armas ceifadoras aumentadas em: +20% tamanho, +7% velocidade, +10% empurrão, +3 penetração de armadura, +9% chance de crítico e +9% dano
-										Garante uma pequena regeneração de vida, +10 energia ceifadora e inflinge Inferno amaldiçoado
+										Estatísticas de armas ceifadoras aumentadas em: +2o% tamanho, +7% velocidade, +1o% empurrão, +3 penetração de armadura, +9% chance de crítico e +9% dano
+										Garante uma pequena regeneração de vida, +1o energia ceifadora e inflinge Inferno amaldiçoado
 										
 					'''
 			}
@@ -411,7 +477,7 @@ Mods: {
 			}
 
 			AblazedForce: {
-				Description: O empurrão da foice aumentou em 7%, a velocidade aumentou em 10% e queima os inimigos!
+				Description: O empurrão da foice aumentou em 7%, a velocidade aumentou em 1o% e queima os inimigos!
 				DisplayName: Força Flamejante
 			}
 
@@ -443,12 +509,12 @@ Mods: {
 
 			PrettyBuff: {
 				DisplayName: Coração deslizante
-				Description: 20% de chance de um inimigo deixar cair um coração extra ao ser morto
+				Description: 2o% de chance de um inimigo deixar cair um coração extra ao ser morto
 			}
 
 			SoulHunt: {
 				DisplayName: Caça às Almas
-				Description: Chance aumentada em 100% de dropar almas
+				Description: Chance aumentada em 1oo% de dropar almas
 			}
 
 			AquamarineForce: {
@@ -464,6 +530,16 @@ Mods: {
 			RozeQuartzForce: {
 				DisplayName: Força de Quartzo rosa
 				Description: Grante uma regeneração de vida sutil
+			}
+
+			NotADirtBlockGuy: {
+				// DisplayName: Not A Dirt Block Guy
+				// Description: Mods.PenumbraMod.Buffs.NotADirtBlockGuy.Description
+			}
+
+			OverpoweredDirt: {
+				// DisplayName: Overpowered Dirt
+				// Description: Mods.PenumbraMod.Buffs.OverpoweredDirt.Description
 			}
 		}
 
@@ -742,9 +818,11 @@ Mods: {
 			// PieceGlow6.DisplayName: Piece Glow
 			// PieceGlow7.DisplayName: Piece Glow7
 			// MagebladeGlowEx.DisplayName: Mageblade Glow Ex
-			// NatureGrassProj.DisplayName: Nature Grass Proj
+			// NatureGrassProj.DisplayName: Nature Grass
 			// GlacialArrow.DisplayName: Glacial Arrow
-			// DeathstrandingScytheS.DisplayName: Deathstranding Scythe S
+			// DeathstrandingScytheS.DisplayName: Deathstranding Scythe
+			// NotADirtBlockMan.DisplayName: Not A Dirt Block Man
+			// OverpoweredDirtPet.DisplayName: Overpowered Dirt Pet
 		}
 
 		Items: {
@@ -905,49 +983,62 @@ Mods: {
 			}
 
 			MarshmellowBody: {
-				// DisplayName: Marshmellow Body
-				/* Tooltip:
+				DisplayName: Corpo de Marshmellow
+				Tooltip:
 					'''
-					1% Increased damage
-					'Makes you feel comfortable!'
-					''' */
+					Aumenta o dano em 1%
+					'Te faz se sentir confortável!'
+					'''
 			}
 
 			MarshmellowHelm: {
-				// DisplayName: Marshmellow Helm
-				/* Tooltip:
+				DisplayName: Capacete de Marshmellow
+				Tooltip:
 					'''
-					Increases damage by 2%
-					'Its so fluffy!'
-					''' */
+					Aumenta o dano em 2%
+					'É tão fofinho!'
+					'''
+				SetBonus:
+					'''
+					[c/e0ffff:Pressione {0} para se proteger e ganhar 4+ de defesa por 10 segundos]
+					[c/c0c0c0:Isso tem um tempo de recarga de 30 segundos]
+					[c/7fffd4:'Você se sente tão confortável agora!']
+					'''
 			}
 
 			MarshmellowLeggings: {
-				// DisplayName: Marshmellow Leggings
-				/* Tooltip:
+				DisplayName: Perneiras de Marshmellow
+				Tooltip:
 					'''
-					2% increased movement speed
-					'Makes your legs feel fluffy'
-					''' */
+					Aumenta a velocidade de movimento em 2%
+					'Faz suas pernas se sentirem fofas'
+					'''
 			}
 
 			MeltedBreastplate: {
-				// DisplayName: Melted Breastplate
-				/* Tooltip:
+				DisplayName: Peitoral Derretido
+				Tooltip:
 					'''
-					10% Increased reaper damage
-					Grants you immunity to 'On Fire!' and lava
-					''' */
+					Aumenta o dano da ceifadora em 10%
+					Concede imunidade a 'Em Chamas!' e lava
+					'''
 			}
 
 			MeltedHelmet: {
-				// DisplayName: Melted Helmet
-				// Tooltip: Increases damage by 3%
+				DisplayName: Capacete derretido
+				Tooltip: Aumenta o dano em 3%
+				SetBonus:
+					'''
+					[c/ff0000:Pressione {0} para aumentar sua velocidade de movimento em 15%]
+					[c/ff0000:Aumenta a velocidade de ataque da ceifadora em 25% e o dano em 5% por 15 segundos; quando atingido, você explode, causando dano aos inimigos]
+					[c/ff0000:Este efeito possui um tempo de recarga de 60 segundos]
+					[c/ff5b00:'Por que usar armadura de obsidiana quando você tem isso?']
+					'''
 			}
 
 			MeltedLeggings: {
-				// DisplayName: Melted Leggings
-				// Tooltip: 7% Increased movement speed
+				DisplayName: Perneiras Derretidas
+				Tooltip: Aumenta a velocidade de movimento em 7%
 			}
 
 			OldBloodystoneBreastplate: {
@@ -2577,11 +2668,21 @@ Mods: {
 
 			AetheriumBlockModded: {
 				// DisplayName: Aetherium Block
-				// Tooltip: This block is only for the mageblade cutscene
+				// Tooltip: This block is only for the mageblade cutscene and Aetherial archangel
 			}
 
 			GlacialBow: {
 				// DisplayName: Glacial Bow
+				// Tooltip: Converts Wooden arrowns into Glacial arrows
+			}
+
+			OverpoweredDirtBlock: {
+				// DisplayName: Overpowered Dirt Block
+				// Tooltip: ""
+			}
+
+			GlacialChunk: {
+				// DisplayName: Glacial Chunk
 				// Tooltip: ""
 			}
 		}
@@ -2683,8 +2784,8 @@ Mods: {
 		}
 
 		PrefixesDescriptions: {
-			Deathly: +50 energia ceifadora
-			Darkening: +40 energia ceifadora
+			Deathly: +5o energia ceifadora
+			Darkening: +4o energia ceifadora
 		}
 	}
 }

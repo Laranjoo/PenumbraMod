@@ -47,8 +47,8 @@ namespace PenumbraMod.Content.Items.Armors
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Greately increased Life Regeneration"; // This is the setbonus tooltip
-			player.lifeRegen += 20;
+			player.setBonus = (string)PenumbraLocalization.OldBloodystoneArmor; // This is the setbonus tooltip
+			player.lifeRegen += 10;
 		}
 	}
 }

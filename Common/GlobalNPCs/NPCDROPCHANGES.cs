@@ -152,87 +152,87 @@ namespace PenumbraMod.Common.GlobalNPCs
             }
             if (npc.type == NPCID.BloodJelly)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.BloodFeeder)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.IchorSticker)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.BloodCrawler)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.Crimera)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.Crimslime)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.BrainofCthulhu)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.Herpling)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.FloatyGross)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.CrimsonAxe)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.BigMimicCrimson)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.BigCrimera)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.DesertGhoulCrimson)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             if (npc.type == NPCID.PigronCrimson)
             {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 20, 1));
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 20, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneBreastplate>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneHelmet>(), 525, 1));
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OldBloodystoneLeggings>(), 525, 1));
             }
             #endregion
             #endregion

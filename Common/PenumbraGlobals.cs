@@ -201,7 +201,7 @@ namespace PenumbraMod.Common
             {
                 if (Main.rand.NextBool(3) && !Player.HasBuff<SoulBoost>())
                 {
-                    CombatText.NewText(Player.getRect(), Color.LightBlue, "Soul Boosted!");
+                    CombatText.NewText(Player.getRect(), Color.LightBlue, (string)PenumbraLocalization.SoulBoosted);
                     Player.AddBuff(BuffType<SoulBoost>(), 180);
                 }     
             }
@@ -239,15 +239,15 @@ namespace PenumbraMod.Common
             // Here we add a tooltip to the gel to let the player know what will happen
             if (item.type == ItemID.DeathSickle)
             {
-                tooltips.Add(new(Mod, "", "[c/3b12d3:Special Ability:] Increases the swing speed of the scythe, shots faster extra projectiles, at cost of reaper energy not increases"));
+                tooltips.Add(new(Mod, "", (string)PenumbraLocalization.DeathSickle));
             }
             if (item.type == ItemID.IceSickle)
             {
-                tooltips.Add(new(Mod, "", "[c/00a4ff:Special Ability:] Increases the swing speed of the scythe, and shoots additional ice sickles"));
+                tooltips.Add(new(Mod, "", (string)PenumbraLocalization.IceSickle));
             }
             if (item.type == ItemID.BeamSword)
             {
-                tooltips.Add(new(Mod, "", "Right Click to stand a shield in your front, at enemy hits, you will gain holy protection to dodge the next attack and gain 10+ defense"));
+                tooltips.Add(new(Mod, "", (string)PenumbraLocalization.BeamSword));
             }
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<FirstShardOfTheMageblade>())
                    && Main.LocalPlayer.HasItem(ModContent.ItemType<SecondShardOfTheMageblade>())
@@ -258,7 +258,7 @@ namespace PenumbraMod.Common
                    || item.type == ItemType<ThirdShardOfTheMageblade>()
                    || item.type == ItemType<SecondShardOfTheMageblade>()
                    || item.type == ItemType<FirstShardOfTheMageblade>())
-                    tooltips.Add(new(Mod, "", "[c/178cff:You have all the shards, combine them into a special location.]"));
+                    tooltips.Add(new(Mod, "", (string)PenumbraLocalization.MagebladeShards));
             }
         }
     }
@@ -302,6 +302,8 @@ namespace PenumbraMod.Common
                 item.DamageType = GetInstance<ReaperClass>();
                 item.shoot = ProjectileType<IceSickle>();
                 item.shootSpeed = 14f;
+                item.damage = 80;
+                item.rare = ItemRarityID.Cyan;
             }
             if (item.type == ItemID.CursedFlames)
             {
@@ -462,6 +464,13 @@ namespace PenumbraMod.Common
             return true;
 
         }
+        public override void AddRecipes()
+        {
+            Recipe r = Recipe.Create(ItemID.IceSickle);
+            r.AddIngredient<GlacialChunk>(20);
+            r.AddTile(TileID.MythrilAnvil);
+            r.Register();
+        }
         public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             if (item.type == ItemID.CursedFlames)
@@ -537,7 +546,7 @@ namespace PenumbraMod.Common
         {
             if (item.type != ItemType<ShockWave>() && item.type != ItemID.Gladius && item.type != ItemID.CopperShortsword && item.type != ItemID.GoldShortsword && item.type != ItemID.IronShortsword && item.type != ItemID.LeadShortsword
                 && item.type != ItemID.PlatinumShortsword && item.type != ItemID.SilverShortsword && item.type != ItemID.TinShortsword && item.type != ItemID.TungstenShortsword && item.type != ItemType<CompositeSword>() &&
-                item.type != ItemType<Kusarigama>() && item.type != ItemType<BloodReaper>() && item.type != ItemType<CorrosionCannon>())
+                item.type != ItemType<Kusarigama>() && item.type != ItemType<BloodReaper>() && item.type != ItemType<CorrosionCannon>() && item.type != ItemType<DeathstrandingScythe>())
             {
                 item.useTurn = true;
             }

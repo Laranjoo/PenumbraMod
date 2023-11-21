@@ -50,8 +50,7 @@ namespace PenumbraMod.Content.Items.Armors
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Greately increased Life Regeneration and 7% increased magic damage"
-				+ "\n50+ Max mana and 7% reduced mana cost"; // This is the setbonus tooltip
+			player.setBonus = (string)PenumbraLocalization.BloodystoneArmorMage; // This is the setbonus tooltip
 			player.lifeRegen += 20;
 			player.GetDamage(DamageClass.Magic) += 0.7f;
 			player.manaCost -= 0.07f;

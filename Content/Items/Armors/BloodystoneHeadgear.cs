@@ -44,7 +44,7 @@ namespace PenumbraMod.Content.Items.Armors
 		// UpdateArmorSet allows you to give set bonuses to the armor.
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Greately increased Life Regeneration, 15% Increased summon damage and 2+ Minion slots"; // This is the setbonus tooltip
+			player.setBonus = (string)PenumbraLocalization.BloodystoneArmorSummonner; // This is the setbonus tooltip
 			player.lifeRegen += 20;
 			player.GetDamage(DamageClass.Summon) += 0.15f;
 			player.maxMinions += 2;

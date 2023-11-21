@@ -80,52 +80,36 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             {
                 if (TwistedStyle == 0)
                 {
-
-                    float launchSpeed = 120f;
                     float launchSpeed2 = 0f;
-                    float launchSpeed3 = 0f;
-
                     Vector2 mousePosition = Main.MouseWorld;
                     Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                     Vector2 Gun = direction * launchSpeed2;
-                    Vector2 Disk = direction * launchSpeed3;
                     Vector2 muzzleOffset = Vector2.Normalize(new Vector2(-10, -25)) * 0f;
                     position = new Vector2(position.X, position.Y);
                     if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                     {
                         position += muzzleOffset;
                     }
-
                     Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, Gun.X, Gun.Y, ModContent.ProjectileType<MeltedBlasterProj>(), 0, knockback, player.whoAmI);
-
-
                 }
 
                 if (TwistedStyle == 1)
                 {
-
-                    float launchSpeed = 120f;
                     float launchSpeed2 = 0f;
-                    float launchSpeed3 = 0f;
-
                     Vector2 mousePosition = Main.MouseWorld;
                     Vector2 direction = Vector2.Normalize(mousePosition - player.Center);
                     Vector2 Gun = direction * launchSpeed2;
-                    Vector2 Disk = direction * launchSpeed3;
                     Vector2 muzzleOffset = Vector2.Normalize(new Vector2(velocity.X, velocity.Y)) * 0f;
                     position = new Vector2(position.X, position.Y);
                     if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
                     {
                         position += muzzleOffset;
                     }
-
                     Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position.X, position.Y, Gun.X, Gun.Y, ModContent.ProjectileType<MeltedBlasterProj2>(), 0, knockback, player.whoAmI);
-
 
                 }
 
             }
-
             return false; // return false to stop vanilla from calling Projectile.NewProjectile.
         }
         public override bool? UseItem(Player player)/* tModPorter Suggestion: Return null instead of false */
@@ -140,7 +124,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
                 //Item.shoot = TwistedStyle + 120;
                 Vector2 velocity = new Vector2(0, 0);
                // int basic = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, velocity, ModContent.ProjectileType<GunMode>(), 0, 0, player.whoAmI);
-                CombatText.NewText(player.getRect(), Color.White, "Gun Mode");
+                CombatText.NewText(player.getRect(), Color.White, (string)PenumbraLocalization.MeltedBlasterGunMode);
                 SoundEngine.PlaySound(SoundID.Item149);
                 player.itemAnimation = 0;
                 player.itemTime = 0;
@@ -153,7 +137,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
                     TwistedStyle = 0;
                     Vector2 velocity = new Vector2(0, 0);
                     //int basic = Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), player.Center, velocity, ModContent.ProjectileType<Charging>(), 0, 0, player.whoAmI);
-                    CombatText.NewText(player.getRect(), Color.White, "Charging Mode");
+                    CombatText.NewText(player.getRect(), Color.White, (string)PenumbraLocalization.MeltedBlasterChargeMode);
                     SoundEngine.PlaySound(SoundID.Item149);
                     player.itemAnimation = 0;
                     player.itemTime = 0;
@@ -279,7 +263,7 @@ namespace PenumbraMod.Content.Items.MeltedBlaster
             if (text == true)
             {
                 Vector2 velocity9 = (Main.MouseWorld - Projectile.Center) / 99f;
-                CombatText.NewText(owner.getRect(), Color.Red, "OVERCHARGING!");
+                CombatText.NewText(owner.getRect(), Color.Red, (string)PenumbraLocalization.MeltedBlasterOvercharging);
                 // int basic23456 = Projectile.NewProjectile(Projectile.InheritSource(Projectile), owner.Center, velocity9, ModContent.ProjectileType<OVERCHARGING>(), 0, 0, owner.whoAmI);
                 SoundEngine.PlaySound(new SoundStyle("PenumbraMod/Assets/Sounds/Items/bop"));
             }

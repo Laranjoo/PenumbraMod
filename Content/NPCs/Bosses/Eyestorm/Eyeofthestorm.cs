@@ -2543,7 +2543,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             // Sets the description of this NPC that is listed in the bestiary
             bestiaryEntry.Info.AddRange(new List<IBestiaryInfoElement> {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert,
-                new FlavorTextBestiaryInfoElement("Ancient relic used to contain the power of a fallen sorcerer that used his magic to ensure rain in the deserts")
+                new FlavorTextBestiaryInfoElement((string)PenumbraLocalization.EyeStorm)
             });
         }
         bool n = false;

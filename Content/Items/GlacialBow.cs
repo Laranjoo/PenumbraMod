@@ -23,7 +23,7 @@ namespace PenumbraMod.Content.Items
             Item.useStyle = 5;
             Item.knockBack = 6;
             Item.value = 23000;
-            Item.rare = ItemRarityID.Orange;
+            Item.rare = ItemRarityID.Cyan;
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = true;
             Item.shoot = 1;
@@ -35,17 +35,17 @@ namespace PenumbraMod.Content.Items
 
         public override void AddRecipes()
         {
-            //Recipe recipe = CreateRecipe();
-           // recipe.AddTile(TileID.MythrilAnvil);
-            //recipe.Register();
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ModContent.ItemType<GlacialChunk>(), 16);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.Register();
         }
-
         public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (type == ProjectileID.WoodenArrowFriendly)
                 type = ModContent.ProjectileType<GlacialArrow>();
 
-            Vector2 muzzleOffset = Vector2.Normalize(velocity) * 50f;
+            Vector2 muzzleOffset = Vector2.Normalize(velocity) * 40f;
 
             if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
             {

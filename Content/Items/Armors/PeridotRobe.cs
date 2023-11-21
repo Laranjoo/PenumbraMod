@@ -44,7 +44,7 @@ namespace PenumbraMod.Content.Items.Armors
 		}
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "10% increased magic critical strike chance";
+            player.setBonus = (string)PenumbraLocalization.RobePeridot;
             player.GetCritChance(DamageClass.Magic) += 0.10f;
         }
         public override void SetMatch(bool male, ref int equipSlot, ref bool robes)

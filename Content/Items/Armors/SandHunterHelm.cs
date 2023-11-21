@@ -49,7 +49,7 @@ namespace PenumbraMod.Content.Items.Armors
             player.buffImmune[BuffID.Venom] = true;
             player.buffImmune[BuffID.Poisoned] = true;
             player.GetModPlayer<PenumbraGlobalPlayer>().sandhuntereff = true;
-            player.setBonus = "Immunity to venom and poison and reaper attacks inflicts both";
+            player.setBonus = (string)PenumbraLocalization.SandHunterArmor;
         }
 
 

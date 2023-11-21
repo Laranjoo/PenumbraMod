@@ -63,7 +63,7 @@ namespace PenumbraMod.Content.NPCs
 				
 
 				// Sets the description of this NPC that is listed in the bestiary.
-				new FlavorTextBestiaryInfoElement("Fluffy slime that loves to jump over the world."),
+				new FlavorTextBestiaryInfoElement((string)PenumbraLocalization.MarshSlime),
 
 
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface

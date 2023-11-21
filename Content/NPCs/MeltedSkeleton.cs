@@ -15,12 +15,12 @@ namespace PenumbraMod.Content.NPCs
 	{
 		public override void SetStaticDefaults()
 		{
-			// DisplayName.SetDefault("Melted Skeleton");
+            // DisplayName.SetDefault("Melted Skeleton");
 
-			Main.npcFrameCount[Type] = 3;
+            Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.Zombie];
 
 
-			NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
+            NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
 			{ // Influences how the NPC looks in the Bestiary
 				Velocity = 1f // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
 			};
@@ -48,27 +48,8 @@ namespace PenumbraMod.Content.NPCs
 			NPC.lavaImmune = true;
 			Banner = Item.NPCtoBanner(NPCID.Skeleton);
 			BannerItem = Item.BannerToItem(Banner); // Makes kills of this NPC go towards dropping the banner it's associated with.
-
-		}
-        public override void FindFrame(int frameHeight)
-        {
-            // This NPC animates with a simple "go from start frame to final frame, and loop back to start frame" rule
-            // In this case: First stage: 0-1-2-0-1-2, Second stage: 3-4-5-3-4-5, 5 being "total frame count - 1"
-            int startFrame = 0;
-            int finalFrame = 2;
-            int frameSpeed = 5;
-            NPC.frameCounter += 0.5f;
-            if (NPC.frameCounter > frameSpeed)
-            {
-                NPC.frameCounter = 0;
-                NPC.frame.Y += frameHeight;
-
-                if (NPC.frame.Y >= finalFrame * frameHeight)
-                {
-                    NPC.frame.Y = startFrame * frameHeight;
-                }
-            }
-        }
+            AnimationType = NPCID.Zombie;
+        }      
         public override void ModifyNPCLoot(NPCLoot npcLoot)
 		{
 			npcLoot.Add(ItemDropRule.Common(ItemID.Obsidian, 1, 3, 7));
@@ -94,7 +75,7 @@ namespace PenumbraMod.Content.NPCs
 				
 
 				// Sets the description of this NPC that is listed in the bestiary.
-				new FlavorTextBestiaryInfoElement("This cursed skeleton fell into the hell and burned, he misteriously survived to the burns, suffering in the hell because of its unknown curse..."),
+				new FlavorTextBestiaryInfoElement((string)PenumbraLocalization.MeltedSkeleton),
 
 
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheUnderworld

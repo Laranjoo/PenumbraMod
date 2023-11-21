@@ -87,14 +87,9 @@ namespace PenumbraMod.Content.Items.Armors
             if (!Main.dayTime)
             {
                 player.AddBuff(ModContent.BuffType<PrismThorns>(), 90000);
-                player.GetDamage(DamageClass.Generic) -= 0.05f;
                 player.ClearBuff(ModContent.BuffType<PrismAura2>());
             }
-            player.setBonus = "Grants the ability to change form during day/night\n" +
-                "When at daytime, your defense is increased by 3, and you have an damaging aura to hurt enemies (Doesn't work on underground), and deal more damage\n" +
-                "The aura inflict prismatic lightining on enemies, causing extra damage on them, and increases reaper energy for you\n" +
-                "When at nighttime, you do not gain extra defense, and you deal less damage, but when you get hit, enemies also get hit\n" +
-                "[c/b74bda:'By the empress soul...']";
+            player.setBonus = (string)PenumbraLocalization.PrismaArmor;
 
         }
     }

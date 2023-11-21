@@ -92,7 +92,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
 
 			bestiaryEntry.Info.AddRange(new List<IBestiaryInfoElement> {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert, // Plain black background
-				new FlavorTextBestiaryInfoElement("Protective shield of the stormy eye, their only objective is protect his owner at every cost.")
+				new FlavorTextBestiaryInfoElement((string)PenumbraLocalization.EyeStormProtector)
 			});
 		}
         public override void FindFrame(int frameHeight)
@@ -317,7 +317,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
 
             bestiaryEntry.Info.AddRange(new List<IBestiaryInfoElement> {
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Desert, // Plain black background
-				new FlavorTextBestiaryInfoElement("Protective shooter of the stormy eye, their only objective is protect his owner at every cost.")
+                                new FlavorTextBestiaryInfoElement((string)PenumbraLocalization.EyeStormShooter)
             });
         }
 

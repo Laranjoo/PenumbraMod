@@ -41,7 +41,8 @@ namespace PenumbraMod.Content.NPCs
 			NPC.aiStyle = NPCAIStyleID.Flying;
 			AIType = NPCID.Crimera;
 			NPC.noGravity = true;
-		}
+            SpawnModBiomes = new int[] { ModContent.GetInstance<AkuBiome>().Type };
+        }
         public override void FindFrame(int frameHeight)
         {
             // This NPC animates with a simple "go from start frame to final frame, and loop back to start frame" rule

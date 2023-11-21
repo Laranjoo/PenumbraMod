@@ -61,13 +61,10 @@ namespace PenumbraMod.Content.Items.Armors
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "[c/cccccc:Select a keybind for [Comfortably Protected Key] in Controls]";
+            player.setBonus = (string)PenumbraLocalization.MarshArmorNoKeybind;
             foreach (string key in MarshmellowKeybindSystem.MarshmellowArmorKeybind.GetAssignedKeys())
             {
-
-                player.setBonus = "[c/e0ffff:Press " + key + " To Protect yourself and gain 4+ defense for 10 seconds]\n" +
-                    "[c/c0c0c0:This has a 30 seconds cooldown]\n" +
-                    "[c/7fffd4:'You feel so comfortable now!']";
+                player.setBonus = this.GetLocalization("SetBonus").Format(key);
             }
 
         }

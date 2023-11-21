@@ -18,6 +18,7 @@ using Terraria.GameContent;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.WorldBuilding;
@@ -283,7 +284,7 @@ namespace PenumbraMod
             }
             #endregion
         }
-    }
+    }  
     public class LostSword : GenPass
     {
         public LostSword(string name, float loadWeight) : base(name, loadWeight)
@@ -294,7 +295,7 @@ namespace PenumbraMod
         {
             // progress.Message is the message shown to the user while the following code is running.
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
-            progress.Message = "Hiding a relic";
+            progress.Message = (string)PenumbraLocalization.LostSword;
             if (!Main.zenithWorld)
             {
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 905, Main.maxTilesX / 2 + 910);
@@ -326,7 +327,7 @@ namespace PenumbraMod
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
             if (Main.zenithWorld)
             {
-                progress.Message = "Enhancing Marble";
+                progress.Message = (string)PenumbraLocalization.Marble;
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer + 10, (int)Main.rockLayer + 30);
                 StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
@@ -337,7 +338,7 @@ namespace PenumbraMod
             }
             else
             {
-                progress.Message = "Enhancing Marble";
+                progress.Message = (string)PenumbraLocalization.Marble;
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
                 StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
@@ -359,7 +360,7 @@ namespace PenumbraMod
         {
             // progress.Message is the message shown to the user while the following code is running.
             // Try to make your message clear. You can be a little bit clever, but make sure it is descriptive enough for troubleshooting purposes.
-            progress.Message = "Making a shiny altar";
+            progress.Message = (string)PenumbraLocalization.ShimmerStructure;
             if (GenVars.shimmerPosition.X < Main.maxTilesX / 2)
             {
                 int x = (int)GenVars.shimmerPosition.X - 84;

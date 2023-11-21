@@ -140,7 +140,7 @@ namespace PenumbraMod.Content.Items
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 NPC npc = Main.npc[i];
-                if (!npc.friendly && !npc.boss)
+                if (!npc.friendly && !npc.boss && npc.type != NPCID.TargetDummy)
                     if (npc.Distance(Projectile.Center) < 300f)
                         npc.velocity = npc.DirectionTo(Projectile.Center) * 5f;
             }

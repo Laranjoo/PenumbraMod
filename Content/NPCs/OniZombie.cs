@@ -41,7 +41,8 @@ namespace PenumbraMod.Content.NPCs
 			NPC.knockBackResist = 1f;
 			NPC.aiStyle = -1;
 			NPC.noGravity = false;
-		}
+            SpawnModBiomes = new int[] { ModContent.GetInstance<AkuBiome>().Type };
+        }
         public override void FindFrame(int frameHeight)
         {
             // This NPC animates with a simple "go from start frame to final frame, and loop back to start frame" rule
@@ -75,7 +76,7 @@ namespace PenumbraMod.Content.NPCs
 		{
             if (spawnInfo.Player.InModBiome(ModContent.GetInstance<AkuBiome>()))
             {
-                return SpawnCondition.OverworldNightMonster.Chance * 0.9f;
+                return SpawnCondition.Overworld.Chance * 0.9f;
             }
             return 0f;
         }

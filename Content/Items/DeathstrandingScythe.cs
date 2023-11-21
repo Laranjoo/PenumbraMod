@@ -18,11 +18,6 @@ namespace PenumbraMod.Content.Items
 {
 	public class DeathstrandingScythe : ModItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Deathstranding Scythe"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            // Tooltip.SetDefault("[c/5e5e5e:Special ability:] When used, the scythe makes a blue explosion, damaging monsters nearby, and also gives 5+ defense for 5 seconds");
-        }
 
 		public override void SetDefaults()
 		{
@@ -41,7 +36,8 @@ namespace PenumbraMod.Content.Items
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<EMPTY>();
-			Item.shootSpeed = 1f;
+			Item.shootSpeed = 2f;
+            Item.useTurn = false;
 		}
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -49,7 +45,7 @@ namespace PenumbraMod.Content.Items
 			{
 				SoundEngine.PlaySound(SoundID.Item71, player.position);             
 				// Create a projectile.
-				Projectile.NewProjectileDirect(source, position, velocity * 12f, ModContent.ProjectileType<DeathStrandingSpecial>(), damage, knockback, player.whoAmI);
+				Projectile.NewProjectileDirect(source, position, velocity * 8f, ModContent.ProjectileType<DeathStrandingSpecial>(), damage, knockback, player.whoAmI);
 			}
             else
             {
@@ -75,7 +71,7 @@ namespace PenumbraMod.Content.Items
         {
             Projectile.width = 140;
             Projectile.height = 160;
-            Projectile.friendly = true;
+            Projectile.friendly = false;
             Projectile.timeLeft = 9999;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
@@ -108,22 +104,22 @@ namespace PenumbraMod.Content.Items
             hlende = hitLineEnd;
             // First check that our large rectangle intersects with the target hitbox.
             // Then we check to see if a line from the tip of the Jousting Lance to the "end" of the lance intersects with the target hitbox.
-            if (/*lanceHitboxBounds.Intersects(targetHitbox)
-                && */Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd, widthMultiplier, ref collisionPoint))
+            if (Projectile.friendly
+                && Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), Projectile.Center, hitLineEnd, widthMultiplier, ref collisionPoint))
             {
                 return true;
             }
             return false;
         }
         int charge;
-        int a;
+        float col = 0;
+        bool hasswung = false;
         public override void AI()
         {
             Projectile.Center = Main.player[Projectile.owner].Center;
             Player player = Main.player[Projectile.owner];
-            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+           
             player.SetDummyItemTime(2);
-            a++;
             if (dir == Vector2.Zero)
             {
                 dir = Main.MouseWorld;
@@ -131,42 +127,51 @@ namespace PenumbraMod.Content.Items
             }
             //FadeInAndOut();
             if (player.direction == 1)
+            {
+                player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation + 0.78f) + 90f);
                 Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((11 - Projectile.ai[0])));
+            }
+               
             if (player.direction == -1)
+            {
+                player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - 0.78f) + 90f);
                 Projectile.rotation -= (Projectile.ai[1] * MathHelper.ToRadians((11 - Projectile.ai[0])));
-
-            if (a <= 10)
-            {
-                Projectile.ai[0] -= 0.03f;
-                Projectile.ai[1] -= 0.03f;
-                Projectile.friendly = false;
             }
-            else
-            {
-                Projectile.ai[0] -= 0f;
-                Projectile.ai[1] -= 0f;
-            }
-            if (player.channel)
+              
+            if (Main.mouseLeft && !hasswung && player.controlUseItem)
                 Charge(player);
             else
                 Swing(player);
         }
         bool Charge(Player player)
         {
-            if (charge >= 100)
+            if (charge >= 101)
+            {
+                col = 1f;
+                return true;
+            }
+            if (charge == 100)
             {
                 SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 30; i++)
                 {
-                    int d = Dust.NewDust(Projectile.position, 0, 0, DustID.BlueTorch);
+                    int d = Dust.NewDust(player.position, player.width, player.height, DustID.BlueTorch);
                     Main.dust[d].noGravity = true;
                     Main.dust[d].velocity *= 8f;
                 }
+           
+            }
+            if (charge <= 99 && !Main.mouseLeft)
+            {
+                Main.mouseLeft = false;
+                Main.mouseLeftRelease = false;
+                player.controlUseItem = false;
+                hasswung = true;
                 return true;
             }
-            if (charge <= 99 && !player.channel)
-                return true;
+               
             charge++;
+
             if (charge > 50)
             {
                 if (Main.rand.NextBool(3))
@@ -175,6 +180,7 @@ namespace PenumbraMod.Content.Items
                     Main.dust[d].noGravity = true;
                     Main.dust[d].velocity.Y -= 8f;
                 }
+                col += 0.05f;
             }
             return false;
         }
@@ -183,7 +189,12 @@ namespace PenumbraMod.Content.Items
             if (!Charge(player))
                 return;
             Projectile.ai[2]++;
-            if (Projectile.ai[2] >= 13 && Projectile.ai[2] <= 17)
+            if (Projectile.ai[2] <= 10)
+            {
+                Projectile.ai[0] -= 0.03f;
+                Projectile.ai[1] -= 0.03f;
+            }
+            if (Projectile.ai[2] >= 13 && Projectile.ai[2] <= 20)
             {
                 Projectile.friendly = true;
                 Projectile.ai[0] += 1f;
@@ -192,15 +203,10 @@ namespace PenumbraMod.Content.Items
                 if (charge >= 100)
                     Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12f, ModContent.ProjectileType<DeathExplosion>(), Projectile.damage * (int)1.5f, Projectile.knockBack, player.whoAmI);
             }
-            if (Projectile.ai[2] >= 18 && Projectile.ai[2] <= 20)
-            {
-                Projectile.ai[0] += 0.01f;
-                Projectile.ai[1] += 0.01f;
-            }
             if (Projectile.ai[2] >= 21 && Projectile.ai[2] <= 25)
             {
-                Projectile.ai[0] -= 0.01f;
-                Projectile.ai[1] -= 0.01f;
+                Projectile.ai[0] -= 0.1f;
+                Projectile.ai[1] -= 0.1f;
             }
             if (Projectile.ai[2] > 26)
                 Projectile.Kill();
@@ -216,10 +222,10 @@ namespace PenumbraMod.Content.Items
             Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/DeathstrandingScytheSF").Value;
             Player player = Main.player[Projectile.owner];
 
-            if (charge > 90 && player.direction == 1)
-                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
-            if (charge > 90 && player.direction == -1)
-                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (player.direction == 1)
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White * col, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+            if (player.direction == -1)
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White * col, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
 
             if (player.direction == 1)
                 Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);

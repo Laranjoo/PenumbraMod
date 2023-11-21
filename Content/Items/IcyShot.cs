@@ -32,7 +32,6 @@ namespace PenumbraMod.Content.Items
             Projectile.timeLeft = 90;
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = true;
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
@@ -72,7 +71,12 @@ namespace PenumbraMod.Content.Items
             int dust = Dust.NewDust(Projectile.Center, 2, 1, DustID.IceRod, 0f, 0f, 0);
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 5.0f;
-            Main.dust[dust].scale = (float) Main.rand.Next(100, 150) * 0.012f;  
+            Main.dust[dust].scale = (float) Main.rand.Next(100, 150) * 0.012f;
+            Projectile.ai[0]++;
+            if (Projectile.ai[0] <= 10)
+                Projectile.tileCollide = false;
+            else
+                Projectile.tileCollide = true;
         }
         public override void OnKill(int timeLeft)
         {
