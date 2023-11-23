@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Common.Base;
+using PenumbraMod.Common.Players;
 using PenumbraMod.Common.Systems;
 using PenumbraMod.Content;
 using PenumbraMod.Content.DamageClasses;
@@ -119,6 +120,7 @@ namespace PenumbraMod
             if (ModLoader.TryGetMod("BossChecklist", out Mod bossChecklist))
             {
                 #region Eyeofstorm
+
                 var portrait = (SpriteBatch sb, Rectangle rect, Color color) =>
                 {
                     Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/NPCs/Bosses/Eyestorm/Eyeofthestorm_Preview").Value;
@@ -137,21 +139,20 @@ namespace PenumbraMod
                 ModContent.ItemType<EyestormBag>(),
                 ModContent.ItemType<EyestormRelic>()
                 };
-
                 bossChecklist.Call(
                     "LogBoss",
                     Instance,
-                    "EyeoftheStorm",
+                    nameof(Eyeofthestorm),
                     5.5f,
                     () => DownedBossSystem.downedEyestormBoss,
                     ModContent.NPCType<Eyeofthestorm>(),
                     new Dictionary<string, object>()
                     {
-                        ["spawnItems"] = ModContent.ItemType<Content.Items.Consumables.EyestormSummon>(),
+                        ["spawnItems"] = ItemType<EyestormSummon>(),
                         ["collectibles"] = collection,
                         ["customPortrait"] = portrait,
-                        ["spawnInfo"] = "Use a " + ModContent.ItemType<Content.Items.Consumables.EyestormSummon>() + " to rage the wind and wake the ancient Eye of the Storm.",
-                        ["despawnMessage"] = "The Eye of the Storm flew away for the storms..."
+                        ["spawnInfo"] = $"PenumbraMod.Eyeofthestorm.BossChecklistIntegration.SpawnInfo",
+                        ["despawnMessage"] = $"PenumbraMod.Eyeofthestorm.BossChecklistIntegration.DespawnMessage"
                     }
                 );
 

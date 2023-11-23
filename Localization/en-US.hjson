@@ -148,7 +148,7 @@ Mods: {
 				DisplayName: Eye of the Storm
 
 				BossChecklistIntegration: {
-					SpawnInfo: Use a [i:8093] to rage the wind and wake the ancient Eye of the Storm.
+					SpawnInfo: Use an Electrified Compass to rage the wind and wake the ancient Eye of the Storm.
 					DespawnMessage: The Eye of the Storm flew away for the storms...
 				}
 			}
@@ -2684,6 +2684,36 @@ Mods: {
 				DisplayName: Glacial Chunk
 				Tooltip: ""
 			}
+
+			OfflineRozeQuartzGemsparkWall: {
+				DisplayName: Offline Roze Quartz Gemspark Wall
+				Tooltip: ""
+			}
+
+			RozeQuartzGemsparkWall: {
+				DisplayName: Roze Quartz Gemspark Wall
+				Tooltip: ""
+			}
+
+			RozeQuartzStoneWall: {
+				DisplayName: Roze Quartz Stone Wall
+				Tooltip: ""
+			}
+
+			AquamarineGemsparkWall: {
+				DisplayName: Aquamarine Gemspark Wall
+				Tooltip: ""
+			}
+
+			AquamarineStoneWall: {
+				DisplayName: Aquamarine Stone Wall
+				Tooltip: ""
+			}
+
+			OfflineAquamarineGemsparkWall: {
+				DisplayName: Offline Aquamarine Gemspark Wall
+				Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2786,5 +2816,7 @@ Mods: {
 			Deathly: +5 reaper energy
 			Darkening: +4 reaper energy
 		}
+
+		Emotes.Vhcm.Command: vhcm
 	}
 }

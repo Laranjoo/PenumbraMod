@@ -6,12 +6,14 @@ using PenumbraMod.Content.Dusts;
 using PenumbraMod.Content.Items.Consumables;
 using PenumbraMod.Content.Items.PrismaticScythe;
 using System;
+using System.Threading;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.Graphics.CameraModifiers;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PenumbraMod.Content.Items
@@ -117,9 +119,10 @@ namespace PenumbraMod.Content.Items
         public override void AI()
         {
             Projectile.Center = Main.player[Projectile.owner].Center;
-            Player player = Main.player[Projectile.owner];
-           
+            Player player = Main.player[Projectile.owner];         
             player.SetDummyItemTime(2);
+            if (player.noItems || player.CCed || player.dead || !player.active)
+                Projectile.Kill();
             if (dir == Vector2.Zero)
             {
                 dir = Main.MouseWorld;
@@ -137,14 +140,16 @@ namespace PenumbraMod.Content.Items
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - 0.78f) + 90f);
                 Projectile.rotation -= (Projectile.ai[1] * MathHelper.ToRadians((11 - Projectile.ai[0])));
             }
-              
-            if (Main.mouseLeft && !hasswung && player.controlUseItem)
+
+            if (Main.mouseLeft && !hasswung)
                 Charge(player);
             else
                 Swing(player);
         }
         bool Charge(Player player)
         {
+            if (Main.mouseLeft && Projectile.ai[2] >= 2)
+                return true;
             if (charge >= 101)
             {
                 col = 1f;
@@ -163,9 +168,6 @@ namespace PenumbraMod.Content.Items
             }
             if (charge <= 99 && !Main.mouseLeft)
             {
-                Main.mouseLeft = false;
-                Main.mouseLeftRelease = false;
-                player.controlUseItem = false;
                 hasswung = true;
                 return true;
             }
@@ -180,7 +182,7 @@ namespace PenumbraMod.Content.Items
                     Main.dust[d].noGravity = true;
                     Main.dust[d].velocity.Y -= 8f;
                 }
-                col += 0.05f;
+                col += 0.02f;
             }
             return false;
         }
@@ -188,28 +190,38 @@ namespace PenumbraMod.Content.Items
         {
             if (!Charge(player))
                 return;
+            hasswung = true;
             Projectile.ai[2]++;
-            if (Projectile.ai[2] <= 10)
+            if (Projectile.ai[2] >= 1 && Projectile.ai[2] <= 12)
             {
                 Projectile.ai[0] -= 0.03f;
                 Projectile.ai[1] -= 0.03f;
+                player.channel = false;
+                col -= 0.05f;
             }
-            if (Projectile.ai[2] >= 13 && Projectile.ai[2] <= 20)
+            if (Projectile.ai[2] >= 13 && Projectile.ai[2] <= 21)
             {
                 Projectile.friendly = true;
                 Projectile.ai[0] += 1f;
-                Projectile.ai[1] += 1f;
+                Projectile.ai[1] += 1f;             
+                player.channel = false;
+            }
+            if (Projectile.ai[2] == 16)
+            {
                 SoundEngine.PlaySound(SoundID.Item71, Projectile.position);
                 if (charge >= 100)
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12f, ModContent.ProjectileType<DeathExplosion>(), Projectile.damage * (int)1.5f, Projectile.knockBack, player.whoAmI);
+                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12f, ModContent.ProjectileType<DeathExplosion>(), Projectile.damage * 2, Projectile.knockBack, player.whoAmI);
             }
-            if (Projectile.ai[2] >= 21 && Projectile.ai[2] <= 25)
+                
+            if (Projectile.ai[2] >= 22 && Projectile.ai[2] <= 25)
             {
-                Projectile.ai[0] -= 0.1f;
-                Projectile.ai[1] -= 0.1f;
+                Projectile.ai[0] -= 0.3f;
+                Projectile.ai[1] -= 0.3f;
+                player.channel = false;
             }
             if (Projectile.ai[2] > 26)
                 Projectile.Kill();
+
         }
         public static float easeInOutQuad(float x)
         {

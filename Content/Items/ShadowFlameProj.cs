@@ -20,14 +20,13 @@ namespace PenumbraMod.Content.Items
 
         public override void SetDefaults()
         { 
-            Projectile.width = 37;
-            Projectile.height = 37;
+            Projectile.width = 47;
+            Projectile.height = 45;
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 5;
             Projectile.light = 0.50f;
             Projectile.ignoreWater = false;
-            Projectile.tileCollide = true;
             Projectile.timeLeft = 60;
             Projectile.aiStyle = 0;
             Projectile.netImportant = true;
@@ -47,8 +46,7 @@ namespace PenumbraMod.Content.Items
         public override bool PreDraw(ref Color lightColor)
         {
             Main.instance.LoadProjectile(Projectile.type);
-            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
-
+            Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/ShadowFlameProj").Value;
             SpriteEffects spriteEffects = SpriteEffects.None;
             if (Projectile.spriteDirection == -1)
                 spriteEffects = SpriteEffects.FlipHorizontally;
@@ -82,6 +80,15 @@ namespace PenumbraMod.Content.Items
         {
             Projectile.velocity = Vector2.Zero;
             return false;
+        }
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+        {
+            hitbox.Inflate(47/2, 45/2);
+        }
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+
+            return base.Colliding(projHitbox, targetHitbox);
         }
         public override void AI()
         {

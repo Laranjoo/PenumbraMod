@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PenumbraMod.Common.Base;
-using PenumbraMod.Content.Buffs;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -21,9 +18,9 @@ namespace PenumbraMod.Content.Items
             Item.DamageType = DamageClass.Melee;
             Item.width = 42;
             Item.height = 42;
-            Item.useTime = 6;
+            Item.useTime = 5;
             Item.useAnimation = 10;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 8;
             Item.value = 30000;
             Item.rare = ItemRarityID.Lime;
@@ -54,7 +51,7 @@ namespace PenumbraMod.Content.Items
                 }
                 Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
             }
-               
+
             return false;
         }
         public override void AddRecipes()
@@ -76,8 +73,8 @@ namespace PenumbraMod.Content.Items
         }
         public override void SetDefaults()
         {
-            Projectile.width = 84;
-            Projectile.height = 84;
+            Projectile.width = 100;
+            Projectile.height = 100;
             //Projectile.aiStyle = 1;
             // AIType = ProjectileID.Bullet; // Act exactly like default Bullet
             Projectile.friendly = true;
@@ -100,7 +97,6 @@ namespace PenumbraMod.Content.Items
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D texture = ModContent.Request<Texture2D>("PenumbraMod/Content/Items/CorrosivePickaxeSF").Value;
-
             for (int k = 0; k < Projectile.oldPos.Length; k++)
             {
                 if (Projectile.oldPos[k] == Vector2.Zero)
@@ -115,10 +111,21 @@ namespace PenumbraMod.Content.Items
                     lerpedPos -= Main.screenPosition;
                     Color finalColor = lightColor * 0.5f * (1 - ((float)k / (float)Projectile.oldPos.Length));
                     finalColor.A = 0;//acts like additive blending without spritebatch stuff
-                    Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+                    if (Projectile.ai[1] == -1)
+                        Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+                    if (Projectile.ai[1] == 1)
+                        Main.EntitySpriteDraw(texture, lerpedPos, null, finalColor, lerpedAngle, texture.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
                 }
-            }
-            return true;
+            }         
+            return false;
+        }
+        public override void PostDraw(Color lightColor)
+        {
+            Texture2D proj = TextureAssets.Projectile[Type].Value;
+            if (Projectile.ai[1] == -1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            if (Projectile.ai[1] == 1)
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
         }
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
@@ -151,7 +158,6 @@ namespace PenumbraMod.Content.Items
             }
             return false;
         }
-        int a;
         public override void AI()
         {
             if (dir == Vector2.Zero)
@@ -160,16 +166,11 @@ namespace PenumbraMod.Content.Items
                 Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
             }
             Player player = Main.player[Projectile.owner];
-            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90);
+            player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, Projectile.rotation + 90 + 0.78f);
             Projectile.Center = Main.player[Projectile.owner].Center;
             Projectile.ai[0] += 1f;
-            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((30 - Projectile.ai[0])));
-            a++;
-            if (Projectile.ai[0] >= 2 && Projectile.ai[0] <= 4)
-                Projectile.scale += 0.06f;
-            if (Projectile.ai[0] >= 5 && Projectile.ai[0] <= 6)
-                Projectile.scale -= 0.06f;
-            if (a == 5)
+            Projectile.rotation += (Projectile.ai[1] * MathHelper.ToRadians((20 - Projectile.ai[0])));
+            if (Projectile.ai[0] == 1)
                 SoundEngine.PlaySound(SoundID.Item1, Projectile.Center);
             Lighting.AddLight(Projectile.Center, Color.Green.ToVector3() * 0.5f);
         }

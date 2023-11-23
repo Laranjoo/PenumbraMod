@@ -302,7 +302,7 @@ namespace PenumbraMod.Common
                 item.DamageType = GetInstance<ReaperClass>();
                 item.shoot = ProjectileType<IceSickle>();
                 item.shootSpeed = 14f;
-                item.damage = 80;
+                item.damage = 90;
                 item.rare = ItemRarityID.Cyan;
             }
             if (item.type == ItemID.CursedFlames)

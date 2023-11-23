@@ -1,4 +1,6 @@
-﻿using Terraria.Localization;
+﻿using Microsoft.Xna.Framework.Input;
+using PenumbraMod.Content.Items.Consumables;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PenumbraMod

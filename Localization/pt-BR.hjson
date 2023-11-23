@@ -145,11 +145,11 @@ Mods: {
 			EnergyConductorMinion2.DisplayName: Atirador de condutores de energia
 
 			Eyeofthestorm: {
-				DisplayName: Eye of the Storm
+				DisplayName: Olho da Tempestade
 
 				BossChecklistIntegration: {
-					SpawnInfo: Use um [i:8o93] para atacar o vento e acordar o antigo Eye of the Storm.
-					DespawnMessage: O Eye of the Storm voou para longe para as tempestades...
+					SpawnInfo: Use um Compasso Eletrificado para irritar o vento e acordar o antigo Olho da Tempestade
+					DespawnMessage: O Olho da Tempestade voou para longe nas tempestades...
 				}
 			}
 
@@ -2685,6 +2685,36 @@ Mods: {
 				// DisplayName: Glacial Chunk
 				// Tooltip: ""
 			}
+
+			OfflineRozeQuartzGemsparkWall: {
+				// DisplayName: Offline Roze Quartz Gemspark Wall
+				// Tooltip: ""
+			}
+
+			RozeQuartzGemsparkWall: {
+				// DisplayName: Roze Quartz Gemspark Wall
+				// Tooltip: ""
+			}
+
+			RozeQuartzStoneWall: {
+				// DisplayName: Roze Quartz Stone Wall
+				// Tooltip: ""
+			}
+
+			AquamarineGemsparkWall: {
+				// DisplayName: Aquamarine Gemspark Wall
+				// Tooltip: ""
+			}
+
+			AquamarineStoneWall: {
+				// DisplayName: Aquamarine Stone Wall
+				// Tooltip: ""
+			}
+
+			OfflineAquamarineGemsparkWall: {
+				// DisplayName: Offline Aquamarine Gemspark Wall
+				// Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2787,5 +2817,7 @@ Mods: {
 			Deathly: +5o energia ceifadora
 			Darkening: +4o energia ceifadora
 		}
+
+		// Emotes.Vhcm.Command: vhcm
 	}
 }
