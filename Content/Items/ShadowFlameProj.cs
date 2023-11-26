@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Drawing.Drawing2D;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -81,14 +82,11 @@ namespace PenumbraMod.Content.Items
             Projectile.velocity = Vector2.Zero;
             return false;
         }
-        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
         {
-            hitbox.Inflate(47/2, 45/2);
-        }
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-
-            return base.Colliding(projHitbox, targetHitbox);
+            width = 23;
+            height = 23;
+            return true;
         }
         public override void AI()
         {
