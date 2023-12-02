@@ -56,7 +56,7 @@ namespace PenumbraMod.Content.Items
         }
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 TwistedStyle = 1;
                 Item.useTime = 3;
@@ -84,7 +84,7 @@ namespace PenumbraMod.Content.Items
             if (TwistedStyle == 0)
             {
                 Item.CloneDefaults(ModContent.ItemType<DarkMatterPick>());
-                Item.useTime = 3;
+                Item.useTime = 1;
                 Item.useAnimation = 20;
                 Item.noUseGraphic = true;
                 Item.noMelee = true;
@@ -117,22 +117,17 @@ namespace PenumbraMod.Content.Items
                 Main.projectile[basic].rotation = Main.projectile[basic].DirectionTo(Main.MouseWorld).ToRotation();
                 TwistedStyle = 0;
             }
-            if (!player.channel || player.CCed || player.altFunctionUse == 2)
+            else if (TwistedStyle == 1)
             {
-                TwistedStyle = 1;
-                if (TwistedStyle == 1)
+                if (!player.channel || player.CCed || player.altFunctionUse != 2)
                 {
-                    Item.useTime = 3;
-                    Item.useAnimation = 3;
+                    TwistedStyle = 1;
+                    Item.useTime = 1;
+                    Item.useAnimation = 5;
                     Item.noUseGraphic = false;
                     Item.noMelee = false;
-
                 }
-
-
-            }
-
-
+            }        
             return false;
         }
         public override void AddRecipes()

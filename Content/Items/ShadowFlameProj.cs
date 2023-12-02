@@ -87,7 +87,7 @@ namespace PenumbraMod.Content.Items
             width = 23;
             height = 23;
             return true;
-        }
+        } 
         public override void AI()
         {
             if (Main.rand.NextBool(4))

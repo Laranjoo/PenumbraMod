@@ -1251,12 +1251,12 @@ Mods: {
 
 			StickOnMarshmellow: {
 				// DisplayName: Stick On Marshmellow
-				// Tooltip: ""
+				// Tooltip: "''Perfect for a camp with your friends!''"
 			}
 
 			CopperScythe: {
 				// DisplayName: Copper Scythe
-				// Tooltip: "[c/964316:Special ability:] When used, the player throws 1 copper scythe"
+				// Tooltip: "[c/964316:Special ability:] When used, the player throws a copper scythe"
 			}
 
 			DarkMatterItem: {
@@ -1285,7 +1285,8 @@ Mods: {
 					'''
 					Its so fast that can destroy the world
 					It create copies of itself for mass destruction
-					Right Click for normal swing
+					Left Click for normal swing
+					Right click for mass destruction
 					[c/ff0000:WARNING:] Can destroy your world, so be careful.
 					''' */
 			}
@@ -1965,7 +1966,7 @@ Mods: {
 				/* Tooltip:
 					'''
 					"Seems useful"
-					[c/38594c:Special ability:] Gives the owner +4 defense for 1m
+					[c/38594c:Special ability:] Gives the owner 4 defense for 1m
 					''' */
 			}
 
@@ -1988,7 +1989,6 @@ Mods: {
 				/* Tooltip:
 					'''
 					[c/808080:This scythe is the proof of your courage by choosing a new path]
-					[c/808080:You're full of courage by holding this]
 					[c/9b611b:Special ability:] When used, the scythe grows and stuns enemies.
 					''' */
 			}
@@ -2714,6 +2714,21 @@ Mods: {
 			OfflineAquamarineGemsparkWall: {
 				// DisplayName: Offline Aquamarine Gemspark Wall
 				// Tooltip: ""
+			}
+
+			LaranjooGift: {
+				// DisplayName: Laranjoo Gift
+				// Tooltip: "''Happy birthday Laranjoo!!''"
+			}
+
+			NeapolitanCake: {
+				// DisplayName: Neapolitan Cake
+				// Tooltip: "''Filled with the most delicious flavours!''"
+			}
+
+			TripleIceCream: {
+				// DisplayName: Triple Ice Cream
+				// Tooltip: "''Strawberry, Chocolate, my favorites!''"
 			}
 		}
 

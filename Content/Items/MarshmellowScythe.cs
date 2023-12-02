@@ -28,7 +28,7 @@ namespace PenumbraMod.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 18;
+			Item.damage = 12;
 			Item.DamageType = ModContent.GetInstance<ReaperClass>();
 			Item.width = 50;
 			Item.height = 38;
@@ -43,22 +43,7 @@ namespace PenumbraMod.Content.Items
             Item.shoot = ModContent.ProjectileType<EMPTY>();
             Item.shootSpeed = 1f;
             Item.noUseGraphic = false;
-        }
-       
-        public override bool CanUseItem(Player player)
-        {
-            if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
-            {
-                Item.useStyle = ItemUseStyleID.Swing;
-            }
-            else
-            {
-                Item.useStyle = ItemUseStyleID.Swing;
-            }
-            // Ensures no more than one spear can be thrown out, use this when using autoReuse
-            return true;
-        }
-       
+        }       
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
 
@@ -116,7 +101,6 @@ namespace PenumbraMod.Content.Items
                
             public override bool OnTileCollide(Vector2 oldVelocity)
             {
-                Vector2 vel = Vector2.Zero;
                 Projectile.velocity = Vector2.Zero;
                 Projectile.rotation += 0f;
                 Projectile.Kill();

@@ -64,6 +64,12 @@ namespace PenumbraMod.Content.Items
             }
             return true;
         }
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
+        {
+            width = Projectile.width / 2;
+            height = Projectile.height / 2;
+            return true;
+        }
         public override void AI()
         {
             Lighting.AddLight(Projectile.Center, Color.LightBlue.ToVector3() * 0.93f);
@@ -72,11 +78,6 @@ namespace PenumbraMod.Content.Items
             Main.dust[dust].noGravity = true;
             Main.dust[dust].velocity *= 5.0f;
             Main.dust[dust].scale = (float) Main.rand.Next(100, 150) * 0.012f;
-            Projectile.ai[0]++;
-            if (Projectile.ai[0] <= 10)
-                Projectile.tileCollide = false;
-            else
-                Projectile.tileCollide = true;
         }
         public override void OnKill(int timeLeft)
         {

@@ -42,7 +42,7 @@ namespace PenumbraMod.Content.Tiles
             }
             if (Lighting.Mode == Terraria.Graphics.Light.LightMode.White)
             {
-                if (++FrameCounter > 14)
+                if (++FrameCounter > 8)
                 {
                     Frame = (Frame + 1) % 15;
                     FrameCounter = 0;

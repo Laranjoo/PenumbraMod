@@ -19,8 +19,8 @@ namespace PenumbraMod.Content.Items
 			Item.DamageType = DamageClass.Ranged;
 			Item.width = 58;
 			Item.height = 22;
-			Item.useTime = 12;
-			Item.useAnimation = 12;
+			Item.useTime = 10;
+			Item.useAnimation = 10;
 			Item.useStyle = 5;
 			Item.knockBack = 6;
 			Item.value = 1000;
@@ -45,7 +45,6 @@ namespace PenumbraMod.Content.Items
             recipe.AddIngredient(ModContent.ItemType<MarshmellowCannon>(), 1);
             recipe.AddIngredient(ItemID.GoldBar, 15);
             recipe.AddIngredient(ItemID.Gatligator, 1);
-            recipe.AddIngredient(ModContent.ItemType<Marshmellow>(), 30);
             recipe.AddTile(TileID.Anvils);
             recipe.Register();
 		}

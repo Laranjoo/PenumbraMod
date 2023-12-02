@@ -20,12 +20,12 @@ namespace PenumbraMod.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 12;
+			Item.damage = 13;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 20;
 			Item.height = 20;
 			Item.value = 1500;
-			Item.rare = 0;
+			Item.rare = 1;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<MarshmellowBladeProj>();

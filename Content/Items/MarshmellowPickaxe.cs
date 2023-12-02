@@ -26,13 +26,11 @@ namespace PenumbraMod.Content.Items
 			Item.useStyle = 1;
 			Item.knockBack = 4;
 			Item.value = 1000;
-			Item.rare = 2;
+			Item.rare = 1;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.pick = 40;
 			Item.crit = 9;
-
-			
 		}
 
 		public override void AddRecipes()
