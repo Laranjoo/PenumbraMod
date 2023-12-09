@@ -24,6 +24,7 @@ Mods: {
 
 			Autouse.Label: Enable or disable player to auto reuse items
 			ReaperBarModel.Label: Change the current model of the Reaper Energy bar
+			ModelChange.Label: Draw gear for changing reaper bar model
 		}
 
 		DamageClasses.ReaperClass.DisplayName: reaper damage
@@ -42,6 +43,13 @@ Mods: {
 
 			ReaperBar: Reaper energy
 			ReaperBarJewel: Jewels
+			ReaperBarModel: Change the current style of the reaper bar
+			ReaperBarModelDelete: Remove this option (can be added again on the mod configurations)
+			Model1: Default
+			Model2: Classic
+			Model3: Fancy
+			Model4: Retro
+			Model5: Valkyrie
 			ExpertAccessoryHoverName1: Accessory
 			ExpertAccessoryHoverName2: Social Accessory
 			ExpertAccessoryHoverName3: Dye
@@ -2729,6 +2737,11 @@ Mods: {
 				DisplayName: Triple Ice Cream
 				Tooltip: "''Strawberry, Chocolate, my favorites!''"
 			}
+
+			GlacialChestplate: {
+				DisplayName: Glacial Chestplate
+				Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2797,6 +2810,7 @@ Mods: {
 
 				DisplayName: "{$Mods.PenumbraMod.Config.PenumbraConfig.Label}"
 				ReaperBarModel.Tooltip: ""
+				ModelChange.Tooltip: ""
 			}
 		}
 

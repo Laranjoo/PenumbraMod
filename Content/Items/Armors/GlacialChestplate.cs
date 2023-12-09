@@ -26,11 +26,8 @@ namespace PenumbraMod.Content.Items.Armors
 		}
 
 		public override void UpdateEquip(Player player) {
-			player.buffImmune[BuffID.OnFire] = true; // Make the player immune to Fire
+			player.buffImmune[BuffID.Frostburn] = true;
 			player.GetDamage(DamageClass.Generic) += 0.07f;
-			player.buffImmune[BuffID.Bleeding] = true;
-			
-			
 		}
 
 		// Please see Content/ExampleRecipes.cs for a detailed explanation of recipe creation.

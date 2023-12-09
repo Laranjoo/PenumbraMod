@@ -144,7 +144,7 @@ namespace PenumbraMod.Content.DamageClasses
                     {
                         Player.controlUseItem = true;
                         Player.AddBuff(ModContent.BuffType<ReaperControl>(), 5);
-                        Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 93);
+                        Player.AddBuff(ModContent.BuffType<ReaperControlDust>(), 60);
                         Timer = 0;
                     }
                 }

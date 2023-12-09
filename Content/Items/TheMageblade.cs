@@ -31,8 +31,8 @@ namespace PenumbraMod.Content.Items
             Item.DamageType = DamageClass.Melee;
             Item.width = 50;
             Item.height = 50;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.useTime = 28;
+            Item.useAnimation = 28;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 4;
             Item.value = 30450;

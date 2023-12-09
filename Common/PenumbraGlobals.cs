@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.Buffs;
 using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.Items;
+using PenumbraMod.Content.Items.Accessories;
 using PenumbraMod.Content.Items.Consumables;
 using PenumbraMod.Content.Items.ReaperJewels;
 using PenumbraMod.Content.NPCs.Bosses.Eyestorm;
@@ -41,6 +42,7 @@ namespace PenumbraMod.Common
             if (item == new Item())
             {
                 item.SetDefaults();
+                item.stack = 1;
             }
         }
 
@@ -285,9 +287,14 @@ namespace PenumbraMod.Common
                 item.shootSpeed = 11f;
             }
             if (item.type == ItemID.BottledWater)
-            {
                 ItemID.Sets.ShimmerTransformToItem[ItemID.BottledWater] = ItemType<BottledShimmer>(); 
-            }
+
+            if (item.type == ItemType<ReaperEmblem>())
+                ItemID.Sets.ShimmerTransformToItem[ItemType<ReaperEmblem>()] = ItemID.WarriorEmblem;
+
+            if (item.type == ItemID.SummonerEmblem)
+                ItemID.Sets.ShimmerTransformToItem[ItemID.SummonerEmblem] = ItemType<ReaperEmblem>();
+
             if (item.type == ItemID.BeamSword)
             {
                 item.useAnimation = 21;
@@ -546,7 +553,8 @@ namespace PenumbraMod.Common
         {
             if (item.type != ItemType<ShockWave>() && item.type != ItemID.Gladius && item.type != ItemID.CopperShortsword && item.type != ItemID.GoldShortsword && item.type != ItemID.IronShortsword && item.type != ItemID.LeadShortsword
                 && item.type != ItemID.PlatinumShortsword && item.type != ItemID.SilverShortsword && item.type != ItemID.TinShortsword && item.type != ItemID.TungstenShortsword && item.type != ItemType<CompositeSword>() &&
-                item.type != ItemType<Kusarigama>() && item.type != ItemType<BloodReaper>() && item.type != ItemType<CorrosionCannon>() && item.type != ItemType<DeathstrandingScythe>())
+                item.type != ItemType<Kusarigama>() && item.type != ItemType<BloodReaper>() && item.type != ItemType<CorrosionCannon>() && item.type != ItemType<DeathstrandingScythe>() && item.type != ItemType<TheMageblade>())
+
             {
                 item.useTurn = true;
             }

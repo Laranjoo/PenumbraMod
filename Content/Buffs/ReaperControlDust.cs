@@ -19,8 +19,8 @@ namespace PenumbraMod.Content.Buffs
             Main.dust[dust].velocity *= 12f;
             Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.012f;
             Main.dust[dust].noGravity = true;
-            if (player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy >= 0)
-                player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy -= 100;
+            if (player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy > 0)
+                player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy -= 200;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace PenumbraMod.Content.Items
 		{
 			Projectile.damage = 72;
 			Projectile.width = 18;
-			Projectile.height = 14;
+			Projectile.height = 18;
 			Projectile.aiStyle = 0;
 			Projectile.friendly = true;
 			Projectile.hostile = false;
@@ -68,13 +68,7 @@ namespace PenumbraMod.Content.Items
         }
         public override void AI()
 		{
-            Projectile.rotation = Projectile.velocity.ToRotation();
-            // Since our sprite has an orientation, we need to adjust rotation to compensate for the draw flipping
-            if (Projectile.spriteDirection == -1)
-            {
-                Projectile.rotation += MathHelper.Pi;
-                // For vertical sprites use MathHelper.PiOver2
-            }
+            Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2 - MathHelper.PiOver4 * Projectile.spriteDirection;
             Projectile.ai[0]++;
             if (Main.myPlayer == Projectile.owner)
             {

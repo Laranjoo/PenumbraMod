@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using PenumbraMod.Content.DamageClasses;
 using Terraria;
 using Terraria.Audio;
@@ -17,8 +18,8 @@ namespace PenumbraMod.Content.Items
         public override void SetDefaults()
         {
             Projectile.damage = 9;
-            Projectile.width = 20;
-            Projectile.height = 30;
+            Projectile.width = 41;
+            Projectile.height = 60;
             Projectile.aiStyle = 68;
             Projectile.friendly = true;
             Projectile.hostile = false;
@@ -30,7 +31,12 @@ namespace PenumbraMod.Content.Items
             Projectile.DamageType = ModContent.GetInstance<ReaperClass>();
 
         }
-
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
+        {
+            width = 30;
+            height = 30;
+            return true;
+        }
         public override void OnKill(int timeLeft)
         {
             // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.

@@ -24,6 +24,7 @@ Mods: {
 
 			Autouse.Label: Habilite ou desabilite o uso automatico de itens
 			ReaperBarModel.Label: Mude o modelo atual da barra de energia ceifadora
+			ModelChange.Label: Desenhar a engrenagem para mudar o estilo da barra de energia ceifadora
 		}
 
 		DamageClasses.ReaperClass.DisplayName: danos por ataque ceifador
@@ -42,6 +43,13 @@ Mods: {
 
 			ReaperBar: Energia ceifadora
 			ReaperBarJewel: Jóias
+			ReaperBarModel: Mude o estilo atual da barra de energia ceifadora
+			ReaperBarModelDelete: Remova essa opção (pode ser reabilitada nas configurações do mod)
+			Model1: Padrão
+			Model2: Clássico
+			Model3: Estiloso
+			Model4: Retro
+			Model5: Valquíria
 			ExpertAccessoryHoverName1: Acessório
 			ExpertAccessoryHoverName2: Social Acessório
 			ExpertAccessoryHoverName3: Tingir
@@ -2730,6 +2738,11 @@ Mods: {
 				// DisplayName: Triple Ice Cream
 				// Tooltip: "''Strawberry, Chocolate, my favorites!''"
 			}
+
+			GlacialChestplate: {
+				// DisplayName: Glacial Chestplate
+				// Tooltip: ""
+			}
 		}
 
 		Tiles: {
@@ -2798,6 +2811,7 @@ Mods: {
 
 				// DisplayName: "{$Mods.PenumbraMod.Config.PenumbraConfig.Label}"
 				// ReaperBarModel.Tooltip: ""
+				// ModelChange.Tooltip: ""
 			}
 		}
 

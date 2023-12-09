@@ -51,8 +51,13 @@ namespace PenumbraMod
         [LabelKeyAttribute("$Mods.PenumbraMod.Config.ReaperBarModel.Label")]
         [BackgroundColor(255, 0, 0)]
         [DefaultValue(typeof(int), "1")]
-        [Range(1, 3)]
+        [Range(1, 5)]
         public int ReaperBarModel;
+
+        [LabelKeyAttribute("$Mods.PenumbraMod.Config.ModelChange.Label")]// A label is the text displayed next to the option. This should usually be a short description of what it does./*/
+        [BackgroundColor(255, 0, 0)]// color
+        [DefaultValue(true)] // This sets the configs default value.
+        public bool ModelChange;
 
         #endregion
 
