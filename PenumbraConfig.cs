@@ -11,6 +11,7 @@ namespace PenumbraMod
     [BackgroundColor(20, 0, 38)]
     public class PenumbraConfig : ModConfig
     {
+        public static PenumbraConfig Instance;
         public override ConfigScope Mode => ConfigScope.ClientSide;
 
         // The "$" character before a name means it should interpret the name as a translation key and use the loaded translation with the same key.

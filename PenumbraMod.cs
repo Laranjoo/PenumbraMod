@@ -13,6 +13,7 @@ using PenumbraMod.Content.NPCs.Bosses.Eyestorm;
 using ReLogic.Content;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
@@ -21,6 +22,7 @@ using Terraria.ID;
 using Terraria.IO;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 using Terraria.UI;
 using Terraria.WorldBuilding;
 using static Terraria.ModLoader.ModContent;
@@ -182,6 +184,25 @@ namespace PenumbraMod
         /// Used for the composite sword line
         /// </summary>
         public static Color CompositeSword => BaseExtension.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Gray, Color.White * 0.6f, Color.Gray);
+
+        internal static void SaveConfig(PenumbraConfig cfg)
+        {
+            // There is no current way to manually save a mod configuration file in tModLoader.
+            // The method which saves mod config files is private in ConfigManager, so reflection is used to invoke it.
+            // Inspired from calamity
+            try
+            {
+                MethodInfo saveMethodInfo = typeof(ConfigManager).GetMethod("Save", BindingFlags.Static | BindingFlags.NonPublic);
+                if (saveMethodInfo is not null)
+                    saveMethodInfo.Invoke(null, new object[] { cfg });
+                else
+                    Instance.Logger.Error("TML ConfigManager.Save reflection failed. Method signature has changed. Notify Penumbra Devs if you see this in your log.");
+            }
+            catch
+            {
+                Instance.Logger.Error("An error occurred while manually saving Penumbra mod configuration. This may be due to a complex mod conflict. It is safe to ignore this error.");
+            }
+        }
     }
     public class PenumbraModSystem : ModSystem
     {

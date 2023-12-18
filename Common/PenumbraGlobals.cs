@@ -33,16 +33,16 @@ namespace PenumbraMod.Common
         public bool MagebladeCutscene;
         public Vector2 absolutepos;
         Vector2 scrcache;
-        public Item item = new(); // initialize a new item so that NullReferenceException doesn't occur when creating a new player / loading a player that doesn't have an item already saved
+        private CrystalSlots item = new(); // initialize a new item so that NullReferenceException doesn't occur when creating a new player / loading a player that doesn't have an item already saved
 
 
         public override void Load()
         {
             base.Load();
-            if (item == new Item())
+            if (item.Item == new Item())
             {
-                item.SetDefaults();
-                item.stack = 1;
+                item.Item.SetDefaults();
+                item.Item.stack = 1;
             }
         }
 
@@ -50,7 +50,7 @@ namespace PenumbraMod.Common
         {
             base.SaveData(tag);
 
-            tag.Add("item", item);
+            tag.Add("item", item.Item);
         }
 
         public override void LoadData(TagCompound tag)
@@ -59,9 +59,9 @@ namespace PenumbraMod.Common
 
             if (tag.TryGet("item", out Item savedItem))
             {
-                item = savedItem;
+                item.Item = savedItem;
                 var mo = Mod as PenumbraMod;
-                mo.Logger.Info(item);
+                mo.Logger.Info(item.Item);
             }
         }
         public float time;
@@ -150,6 +150,10 @@ namespace PenumbraMod.Common
                 KillFrags = false;
             }
             #endregion
+        }
+        public override void OnEnterWorld()
+        {
+
         }
         public override void ResetEffects()
         {
