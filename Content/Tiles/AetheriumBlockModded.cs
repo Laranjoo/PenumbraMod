@@ -22,7 +22,7 @@ namespace PenumbraMod.Content.Tiles
             DustType = DustID.ShimmerSpark;
             HitSound = SoundID.Tink;
             MineResist = 555f;
-            MinPick = 99999;
+            MinPick = 200;
         }
         public static bool cutscene;
         public override void AnimateIndividualTile(int type, int i, int j, ref int frameXOffset, ref int frameYOffset)

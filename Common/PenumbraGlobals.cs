@@ -438,16 +438,11 @@ namespace PenumbraMod.Common
                 {
                     const int NumProjectiles = 1;
                     for (int i = 0; i < NumProjectiles; i++)
-                    {
                         Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld) * 2f, ProjectileType<BeamSwordShield>(), 100, knockback, player.whoAmI);
-
-                    }
-
                     item.noUseGraphic = true;
                     item.noMelee = true;
                     item.useStyle = ItemUseStyleID.Shoot;
                 }
-
                 else
                 {
                     Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld) * 14f, ProjectileType<BeamSwordProj>(), 70, knockback, player.whoAmI);
@@ -461,15 +456,10 @@ namespace PenumbraMod.Common
             {
                 if (item.type == ItemID.DeathSickle)
                 {
-                    const int NumProjectiles = 1;
-                    for (int i = 0; i < NumProjectiles; i++)
-                    {
-                        Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld) * 16f, ProjectileType<SwordBeam>(), 100, knockback, player.whoAmI);
-                        Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld) * 12f, ProjectileID.DeathSickle, damage, knockback, player.whoAmI);
-
-                    }
+                    Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld).RotatedBy(10) * -16f, ProjectileID.DeathSickle, damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld) * 16f, ProjectileID.DeathSickle, damage, knockback, player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, player.DirectionTo(Main.MouseWorld).RotatedBy(-10) * -16f, ProjectileID.DeathSickle, damage, knockback, player.whoAmI);
                     return false;
-
                 }
             }
             return true;

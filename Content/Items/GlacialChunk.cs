@@ -17,8 +17,16 @@ namespace PenumbraMod.Content.Items
             Item.width = 28;
             Item.height = 28;
             Item.maxStack = 9999;
-            Item.value = 5250;
+            Item.value = 10250;
             Item.rare = ItemRarityID.Cyan;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTurn = true;
+            Item.useAnimation = 10;
+            Item.useTime = 10;
+            Item.autoReuse = true;
+            Item.maxStack = 999;
+            Item.consumable = true;
+            Item.createTile = ModContent.TileType<Tiles.GlacialChunkBlock>();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace PenumbraMod.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 72;
+			Item.damage = 192;
 			Item.DamageType = ModContent.GetInstance<ReaperClass>();
 			Item.width = 92;
 			Item.height = 70;
@@ -32,7 +32,7 @@ namespace PenumbraMod.Content.Items
 			Item.useStyle = 1;
 			Item.knockBack = 6;
 			Item.value = 23400;
-			Item.rare = 4;
+			Item.rare = ItemRarityID.Yellow;
             Item.channel = true;
 			Item.autoReuse = true;
             Item.noUseGraphic = true;
@@ -208,9 +208,15 @@ namespace PenumbraMod.Content.Items
             }
             if (Projectile.ai[2] == 16)
             {
-                SoundEngine.PlaySound(SoundID.Item71, Projectile.position);
+                SoundEngine.PlaySound(SoundID.Item71, Projectile.position);                
                 if (charge >= 100)
-                    Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, Projectile.DirectionTo(Main.MouseWorld) * 12f, ModContent.ProjectileType<DeathExplosion>(), Projectile.damage * 2, Projectile.knockBack, player.whoAmI);
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Vector2 velocity = Projectile.DirectionTo(Main.MouseWorld).RotatedByRandom(MathHelper.ToRadians(40));
+                        Projectile.NewProjectile(Projectile.InheritSource(Projectile), Projectile.Center, velocity * 22f, ModContent.ProjectileType<DeathstrandingBall>(), Projectile.damage, Projectile.knockBack, player.whoAmI);
+                    }
+                }              
             }
                 
             if (Projectile.ai[2] >= 22 && Projectile.ai[2] <= 25)

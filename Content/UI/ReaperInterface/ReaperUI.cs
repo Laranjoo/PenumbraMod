@@ -24,17 +24,28 @@ namespace PenumbraMod.Content.DamageClasses
         public static bool showModelChangeArrows = false;
         private UIText text;
         private UIText ModelText;
+
         private UIImage barFrame;
         private UIImage barFrameHover;
+        private UIImage barFrameFull;
+
         private UIImage barFrame2;
         private UIImage barFrameHover2;
+        private UIImage barFrameFull2;
+
         private UIImage barFrame3;
         private UIImage barFrameHover3;
+        private UIImage barFrameFull3;
+
         private UIImage barFrame4;
         private UIImage barFrame4Clicked;
         private UIImage barFrameHover4;
+        private UIImage barFrameFull4;
+
         private UIImage barFrame5;
         private UIImage barFrameHover5;
+        private UIImage barFrameFull5;
+
         #region Crystals
         // UI
         private UIImage AmethystCrystal;
@@ -184,6 +195,10 @@ namespace PenumbraMod.Content.DamageClasses
             barFrameHover.SetPadding(0);
             SetRectangle(barFrameHover, left: 0, top: 0, width: 96, height: 24);
 
+            barFrameFull = new UIImage(Request<Texture2D>(Path + "ReaperClassBarFull", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrameFull.SetPadding(0);
+            SetRectangle(barFrameFull, left: 0, top: 0, width: 96, height: 24);
+
             barFrame2 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar2", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrame2.SetPadding(0);
             SetRectangle(barFrame2, left: 0, top: 0, width: 92, height: 23);
@@ -192,6 +207,10 @@ namespace PenumbraMod.Content.DamageClasses
             barFrameHover2.SetPadding(0);
             SetRectangle(barFrameHover2, left: 0, top: 0, width: 96, height: 24);
 
+            barFrameFull2 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar2Full", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrameFull2.SetPadding(0);
+            SetRectangle(barFrameFull2, left: 0, top: 0, width: 96, height: 24);
+
             barFrame3 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrame3.SetPadding(0);
             SetRectangle(barFrame3, left: 0, top: 0, width: 92, height: 23);
@@ -199,6 +218,10 @@ namespace PenumbraMod.Content.DamageClasses
             barFrameHover3 = new UIImage(Request<Texture2D>(Path + "ReaperClassBarHover3", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrameHover3.SetPadding(0);
             SetRectangle(barFrameHover3, left: 0, top: 0, width: 96, height: 24);
+
+            barFrameFull3 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar3Full", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrameFull3.SetPadding(0);
+            SetRectangle(barFrameFull3, left: 0, top: 0, width: 96, height: 24);
 
             barFrame4 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar4", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrame4.SetPadding(0);
@@ -212,6 +235,10 @@ namespace PenumbraMod.Content.DamageClasses
             barFrameHover4.SetPadding(0);
             SetRectangle(barFrameHover4, left: 0, top: 0, width: 96, height: 24);
 
+            barFrameFull4 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar4Full", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrameFull4.SetPadding(0);
+            SetRectangle(barFrameFull4, left: 0, top: 0, width: 96, height: 24);
+
             barFrame5 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar5", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrame5.SetPadding(0);
             SetRectangle(barFrame5, left: 0, top: 0, width: 92, height: 23);
@@ -219,6 +246,10 @@ namespace PenumbraMod.Content.DamageClasses
             barFrameHover5 = new UIImage(Request<Texture2D>(Path + "ReaperClassBarHover5", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
             barFrameHover5.SetPadding(0);
             SetRectangle(barFrameHover5, left: 0, top: 0, width: 96, height: 24);
+
+            barFrameFull5 = new UIImage(Request<Texture2D>(Path + "ReaperClassBar5Full", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value);
+            barFrameFull5.SetPadding(0);
+            SetRectangle(barFrameFull5, left: 0, top: 0, width: 96, height: 24);
 
             #region BarSlots w/Models
 
@@ -544,15 +575,20 @@ namespace PenumbraMod.Content.DamageClasses
             // Models
             panel2.Append(barFrame);
             panel2.Append(barFrameHover);
+            panel2.Append(barFrameFull);
             panel2.Append(barFrame2);
             panel2.Append(barFrameHover2);
+            panel2.Append(barFrameFull2);
             panel2.Append(barFrame3);
             panel2.Append(barFrameHover3);
+            panel2.Append(barFrameFull3);
             panel2.Append(barFrame4);
             panel2.Append(barFrame4Clicked);
             panel2.Append(barFrameHover4);
+            panel2.Append(barFrameFull4);
             panel2.Append(barFrame5);
             panel2.Append(barFrameHover5);
+            panel2.Append(barFrameFull5);
 
             // Jewel Slots, the outlined ones
             panel2.Append(barSlotsNoJewel);
@@ -649,7 +685,6 @@ namespace PenumbraMod.Content.DamageClasses
                 SoundEngine.PlaySound(SoundID.MenuOpen);
                 showModelChangeArrows = true;
             }
-
         }
         private void DeleteModelButton(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -714,16 +749,20 @@ namespace PenumbraMod.Content.DamageClasses
         public bool peri2 = false;
         public bool roz2 = false;
         #endregion
+
         public override void Draw(SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
             // Another painful part
             if (Main.LocalPlayer.HeldItem.DamageType != GetInstance<ReaperClass>())
                 return;
-            int Model = GetInstance<PenumbraConfig>().ReaperBarModel;
             if (!Main.playerInventory)
                 clickedagain = false;
+
             SetRectangle(panel, left: panel2.GetDimensions().X, top: panel2.GetDimensions().Y, width: 120, height: 120); // Since the model change buttons need a "parent" panel to properly work, then make the panel follow the main one
+            int Model = GetInstance<PenumbraConfig>().ReaperBarModel;
+            var ReaperClassPlayer = Main.LocalPlayer.GetModPlayer<ReaperClassDPlayer>();
+            int ReaperEnergy = ReaperClassPlayer.ReaperEnergy;
+
             #region Bar
             #region OutlinedSlots
             if (clickedagain && Main.playerInventory && item.Item.type == ItemID.None && item2.Item.type == ItemID.None)
@@ -758,12 +797,19 @@ namespace PenumbraMod.Content.DamageClasses
                     SetRectangle(barFrameHover, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                if (ReaperEnergy > 9999)
+                {
+                    SetRectangle(barFrameFull, left: -1, top: -1, width: 92, height: 23);
+                }
+                else
+                    SetRectangle(barFrameFull, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             else
             {
                 SetRectangle(barFrame, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(barFrameHover, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                SetRectangle(barFrameFull, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             if (Model == 1 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
                 SetRectangle(barSlots, left: 20, top: 39, width: 0, height: 0);
@@ -780,12 +826,17 @@ namespace PenumbraMod.Content.DamageClasses
                     SetRectangle(barFrameHover2, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover2, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                if (ReaperEnergy > 9999)
+                    SetRectangle(barFrameFull2, left: -1, top: -1, width: 92, height: 23);
+                else
+                    SetRectangle(barFrameFull2, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             else
             {
                 SetRectangle(barFrame2, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton2, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(barFrameHover2, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                SetRectangle(barFrameFull2, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             if (Model == 2 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
                 SetRectangle(barSlots2, left: 20, top: 39, width: 0, height: 0);
@@ -802,12 +853,17 @@ namespace PenumbraMod.Content.DamageClasses
                     SetRectangle(barFrameHover3, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover3, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                if (ReaperEnergy > 9999)
+                    SetRectangle(barFrameFull3, left: -1, top: -1, width: 92, height: 23);
+                else
+                    SetRectangle(barFrameFull3, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             else
             {
                 SetRectangle(barFrame3, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton3, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(barFrameHover3, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                SetRectangle(barFrameFull3, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             if (Model == 3 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
                 SetRectangle(barSlots3, left: 20, top: 38, width: 0, height: 0);
@@ -836,6 +892,10 @@ namespace PenumbraMod.Content.DamageClasses
                     SetRectangle(barFrameHover4, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover4, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                if (ReaperEnergy > 9999)
+                    SetRectangle(barFrameFull4, left: -1, top: -1, width: 92, height: 23);
+                else
+                    SetRectangle(barFrameFull4, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             else
             {
@@ -844,6 +904,7 @@ namespace PenumbraMod.Content.DamageClasses
                 SetRectangle(CrystalButton4, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton4Clicked, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(barFrameHover4, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                SetRectangle(barFrameFull4, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             if (Model == 4 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
                 SetRectangle(barSlots4, left: 20, top: 38, width: 0, height: 0);
@@ -860,12 +921,17 @@ namespace PenumbraMod.Content.DamageClasses
                     SetRectangle(barFrameHover5, left: -1, top: -1, width: 92, height: 23);
                 else
                     SetRectangle(barFrameHover5, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                if (ReaperEnergy > 9999)
+                    SetRectangle(barFrameFull5, left: -1, top: -1, width: 92, height: 23);
+                else
+                    SetRectangle(barFrameFull5, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             else
             {
                 SetRectangle(barFrame5, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(CrystalButton5, left: 1235451, top: 13455143, width: 92, height: 23);
                 SetRectangle(barFrameHover5, left: 34663411346, top: 13464631346, width: 92, height: 23);
+                SetRectangle(barFrameFull5, left: 34663411346, top: 13464631346, width: 92, height: 23);
             }
             if (Model == 5 && clickedagain && Main.playerInventory) // This is separated because for some reason it was drawing everytime
                 SetRectangle(barSlots5, left: 20, top: 39, width: 0, height: 0);
@@ -1491,6 +1557,7 @@ namespace PenumbraMod.Content.DamageClasses
             }
 
             #endregion
+            base.Draw(spriteBatch);
         }
         protected override void DrawSelf(SpriteBatch spriteBatch)
         {

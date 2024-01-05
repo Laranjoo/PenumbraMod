@@ -66,7 +66,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             NPC.SpawnWithHigherTime(30);
             NPC.boss = true;
             NPC.npcSlots = 200f;
-            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/EyestormSong1");
+            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/EyestormSong1stPhase");
             SceneEffectPriority = SceneEffectPriority.BossLow;
         }
         int radius1 = 120;
@@ -1014,7 +1014,7 @@ namespace PenumbraMod.Content.NPCs.Bosses.Eyestorm
             float speed3 = 0f;
             NPC.defense = 28;
 
-            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/EyestormMusic");
+            Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/EyestormSong2ndPhase");
             if (NPC.ai[2] == 1)
             {
                 NPC.life = NPC.lifeMax / 2 - 2;

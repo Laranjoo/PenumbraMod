@@ -61,6 +61,7 @@ namespace PenumbraMod.Content.DamageClasses
         public float Timer;
         public bool FirstSlotActivate = false;
         public bool SecondSlotActivate = false;
+        public bool full = false;
         private ReaperUI bar;
         #region Crystals
         // 1st slot
@@ -118,6 +119,7 @@ namespace PenumbraMod.Content.DamageClasses
                     {
                         SoundEngine.PlaySound(SoundID.Item113, Player.position);
                         Player.controlUseItem = true;
+                        full = false;
                     }
                 }
              
@@ -139,7 +141,7 @@ namespace PenumbraMod.Content.DamageClasses
             if (ReaperEnergy > 9980)
             {
                 if (Player.HeldItem.CountsAsClass(GetInstance<ReaperClass>()) && !Player.ItemAnimationActive)
-                {
+                {  
                     if (ReaperClassSystem.ReaperClassKeybind.JustPressed && Player.active)
                     {
                         Player.controlUseItem = true;
@@ -149,6 +151,62 @@ namespace PenumbraMod.Content.DamageClasses
                     }
                 }
             }
+            if (ReaperEnergy >= 3000 && !FirstSlotActivate)
+            {
+                int Model = GetInstance<PenumbraConfig>().ReaperBarModel;
+                int type = DustID.LavaMoss;
+                if (Model == 1)
+                    type = DustID.LavaMoss;
+                if (Model == 2)
+                    type = DustID.PurpleMoss;
+                if (Model == 3)
+                    type = DustID.YellowTorch;
+                if (Model == 4)
+                    type = DustID.BlueMoss;
+                if (Model == 5)
+                    type = DustID.UnusedWhiteBluePurple;
+                for (int i = 0; i < 23; i++)
+                {
+                    int dust = Dust.NewDust(Player.position, Player.width, Player.height, type, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 12f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.012f;
+                    Main.dust[dust].noGravity = true;
+                }
+                SoundEngine.PlaySound(SoundID.Item4, Player.Center);
+            }
+            if (ReaperEnergy >= 7300 && !SecondSlotActivate)
+            {
+                int Model = GetInstance<PenumbraConfig>().ReaperBarModel;
+                int type = DustID.LavaMoss;
+                if (Model == 1)
+                    type = DustID.LavaMoss;
+                if (Model == 2)
+                    type = DustID.PurpleMoss;
+                if (Model == 3)
+                    type = DustID.YellowTorch;
+                if (Model == 4)
+                    type = DustID.BlueMoss;
+                if (Model == 5)
+                    type = DustID.UnusedWhiteBluePurple;
+                for (int i = 0; i < 23; i++)
+                {
+                    int dust = Dust.NewDust(Player.position, Player.width, Player.height, type, Player.velocity.X * 0f, Player.velocity.Y * 0f);
+                    Main.dust[dust].velocity *= 12f;
+                    Main.dust[dust].scale = (float)Main.rand.Next(80, 140) * 0.012f;
+                    Main.dust[dust].noGravity = true;
+                }             
+                SoundEngine.PlaySound(SoundID.Item4, Player.Center);
+            }
+            if (ReaperEnergy >= 9990 && !full)
+                SoundEngine.PlaySound(SoundID.Item45, Player.Center);
+
+            if (ReaperEnergy >= 9989)
+            {
+                full = true;
+            }
+            else
+                full = false;
+
             if (ReaperEnergy >= 3000)
             {
                 FirstSlotActivate = true;
@@ -591,11 +649,9 @@ namespace PenumbraMod.Content.DamageClasses
 
             if (Timer >= 40)
             {
-                if (ReaperEnergy > 0 && ReaperEnergy < (int)(ReaperEnergyMax * 0.95f))
+                if (ReaperEnergy > 0)
                     ReaperEnergy -= 10;
             }
-        
-
         }
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
@@ -605,6 +661,12 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 if (Main.rand.NextBool(4))
                     Projectile.NewProjectileDirect(source, position, Player.DirectionTo(Main.MouseWorld) * 8f, ProjectileID.BookOfSkullsSkull, damage, knockback, Player.whoAmI);
+            }
+
+            if (Player.HasBuff(BuffType<DarkenedForce>()) && item.DamageType == GetInstance<ReaperClass>())
+            {
+                if (Main.rand.NextBool(2))
+                    Projectile.NewProjectileDirect(source, position, Player.DirectionTo(Main.MouseWorld).RotatedByRandom(3) * 10f, ProjectileID.TinyEater, damage, knockback, Player.whoAmI);
             }
 
             // ----------------
@@ -626,7 +688,7 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 if (ReaperEnergy < ReaperEnergyMax)
                 {
-                    if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>())
+                    if (item.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>() || !Player.HasBuff<DeathSpeed>())
                     {
                         if (Player.name == "Reapermen" || Player.name == "Reaperman")
                             ReaperEnergy += 60;
@@ -649,7 +711,7 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 if (ReaperEnergy < ReaperEnergyMax)
                 {
-                    if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>())
+                    if (proj.DamageType.CountsAsClass(ModContent.GetInstance<ReaperClass>()) && !Player.HasBuff<ReaperControlDust>() || !Player.HasBuff<DeathSpeed>())
                     {
                         if (Player.name == "Reapermen" || Player.name == "Reaperman")
                             ReaperEnergy += 60;

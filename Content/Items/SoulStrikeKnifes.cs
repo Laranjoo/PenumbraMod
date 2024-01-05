@@ -38,15 +38,14 @@ namespace PenumbraMod.Content.Items
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            float NumProjectiles = Main.rand.NextFloat(2, 4);
+            float NumProjectiles = Main.rand.NextFloat(3, 5);
             for (float i = 0; i < NumProjectiles; i++)
             {
                 Vector2 newVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(20));
                 // Create a projectile.
                 Projectile.NewProjectileDirect(source, position, newVelocity, type, Item.damage, knockback, player.whoAmI);
             }
-            return true;
-
+            return false;
         }
     }
     public class SoulStrikeKnife : ModProjectile

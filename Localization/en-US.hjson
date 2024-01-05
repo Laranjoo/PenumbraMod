@@ -171,6 +171,7 @@ Mods: {
 			selfkillnpc.DisplayName: selfkillnpc
 			BloodystoneSlime.DisplayName: Bloodystone Slime
 			InfectedSlime.DisplayName: Infected Slime
+			TestNPC.DisplayName: Test NPC
 		}
 
 		Bestiary.vhcmnpc: He came from a misterious city... we dont know why he likes living in dark places, he likes dark vibes and rain, such strange...
@@ -541,12 +542,12 @@ Mods: {
 
 			NotADirtBlockGuy: {
 				DisplayName: Not A Dirt Block Guy
-				Description: Mods.PenumbraMod.Buffs.NotADirtBlockGuy.Description
+				Description: IM NOT A DIRT BLOCK GUY!!!!
 			}
 
 			OverpoweredDirt: {
 				DisplayName: Overpowered Dirt
-				Description: Mods.PenumbraMod.Buffs.OverpoweredDirt.Description
+				Description: You are front in front with the most powerful dirt block ever (it has even its own soul of Terraria inside lol)
 			}
 		}
 
@@ -829,7 +830,8 @@ Mods: {
 			GlacialArrow.DisplayName: Glacial Arrow
 			DeathstrandingScytheS.DisplayName: Deathstranding Scythe
 			NotADirtBlockMan.DisplayName: Not A Dirt Block Man
-			OverpoweredDirtPet.DisplayName: Overpowered Dirt Pet
+			OverpoweredDirtPet.DisplayName: Overpowered Dirt
+			DeathstrandingBall.DisplayName: Soul Ball
 		}
 
 		Items: {
@@ -1320,7 +1322,11 @@ Mods: {
 
 			DeathstrandingScythe: {
 				DisplayName: Deathstranding Scythe
-				Tooltip: "[c/5e5e5e:Special ability:] When used, throws the scythe and at a certain ditance, a blue explosion occurs"
+				Tooltip:
+					'''
+					Hold to charge the scythe, when fully charged, it shoot 3 soul balls
+					[c/5e5e5e:Special ability:] When used, throws the scythe and at a certain ditance, a blue explosion occurs
+					'''
 			}
 
 			DiamondSword: {
@@ -2277,7 +2283,7 @@ Mods: {
 				Tooltip:
 					'''
 					Increases reaper weapon crit by 5% and speed by 15%
-					You unleash tiny eaters
+					You unleash tiny eaters when using reaper weapons
 					'''
 			}
 
@@ -2285,7 +2291,7 @@ Mods: {
 				DisplayName: Slimy Jewel
 				Tooltip:
 					'''
-					Grants its owner +3 flat reaper damage
+					Grants its owner +3 reaper damage
 					Increases jump height
 					'''
 			}
@@ -2295,7 +2301,7 @@ Mods: {
 				Tooltip:
 					'''
 					Gives reaper weapons +20% size, +7% speed, +10% knockback, +3 armor penetration, +9% crit, and +9% damage
-					Grants a subtle life regen, +10 reaper energy and inflicts cursed flames
+					Grants a subtle life regen, +10 reaper energy on hit and inflicts cursed flames
 					'''
 			}
 
@@ -2601,12 +2607,12 @@ Mods: {
 
 			FireproofJewelMolder: {
 				DisplayName: Fireproof Jewel Molder
-				Tooltip: ""
+				Tooltip: Improoved version of the jewel molder, used to craft stronger jewels
 			}
 
 			JewelMolder: {
 				DisplayName: Jewel Molder
-				Tooltip: ""
+				Tooltip: Used for crafting jewels.
 			}
 
 			IndigoPhasesaber: {
@@ -2758,6 +2764,7 @@ Mods: {
 			EnchantedMushroom.MapEntry: Enchanted Mushroom
 			JewelMolder.MapEntry: Jewel Molder
 			AetheriumBlockModded.MapEntry: Aetherium Block
+			GlacialChunkBlock.MapEntry: Glacial Chunk
 		}
 
 		Keybinds: {
