@@ -290,7 +290,7 @@ namespace PenumbraMod.Content.Items.ReaperJewels
             recipe.AddIngredient(ItemID.SoulofFright, 20);
             recipe.AddIngredient(ItemID.Ruby, 1);
             recipe.AddIngredient(ItemID.HallowedBar, 15);
-            recipe.AddTile<Tiles.JewelMolder>();
+            recipe.AddTile<Tiles.FireproofJewelMolder>();
             recipe.Register();
         }
     }

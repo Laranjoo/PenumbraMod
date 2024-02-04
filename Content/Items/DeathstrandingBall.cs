@@ -29,7 +29,7 @@ namespace PenumbraMod.Content.Items
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 180;
+            Projectile.timeLeft = 240;
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
@@ -90,10 +90,10 @@ namespace PenumbraMod.Content.Items
                 return;
             float rotTarget = Utils.ToRotation(closestNPC.Center - Projectile.Center);
             float rotCur = Utils.ToRotation(Projectile.velocity);
-            float rotMax = MathHelper.ToRadians(5f);
+            float rotMax = MathHelper.ToRadians(8f);
             // If found, change the velocity of the projectile and turn it in the direction of the target
             // Use the SafeNormalize extension method to avoid NaNs returned by Vector2.Normalize when the vector is zero
-            if (Projectile.ai[1] > 20)
+            if (Projectile.ai[0] > 20)
                 Projectile.velocity = Utils.RotatedBy(Projectile.velocity, MathHelper.WrapAngle(MathHelper.WrapAngle(Utils.AngleTowards(rotCur, rotTarget, rotMax)) - Utils.ToRotation(Projectile.velocity)));
         }
         public NPC FindClosestNPC(float maxDetectDistance)

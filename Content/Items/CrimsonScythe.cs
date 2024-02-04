@@ -22,10 +22,14 @@ namespace PenumbraMod.Content.Items
             Item.value = 2170;
             Item.rare = ItemRarityID.Orange;
             Item.UseSound = SoundID.Item1;
-            Item.shoot = ModContent.ProjectileType<EMPTY>();
-            Item.shootSpeed = 8f;
             Item.autoReuse = true;
-
+        }
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            if (Main.rand.NextBool(2))
+            {
+                Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Blood);
+            }
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

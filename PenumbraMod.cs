@@ -189,7 +189,7 @@ namespace PenumbraMod
         {
             // There is no current way to manually save a mod configuration file in tModLoader.
             // The method which saves mod config files is private in ConfigManager, so reflection is used to invoke it.
-            // Inspired from calamity
+            // Inspired from calamity, im sorry again, but that was the way
             try
             {
                 MethodInfo saveMethodInfo = typeof(ConfigManager).GetMethod("Save", BindingFlags.Static | BindingFlags.NonPublic);

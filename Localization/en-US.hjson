@@ -225,14 +225,14 @@ Mods: {
 
 			EnergyConductor: {
 				DisplayName: Energy Conductor
-				Description: The Energy Conductor eill fight for you
+				Description: The Energy Conductor will fight for you
 			}
 
 			GoldSpeed: {
 				DisplayName: Gold Speed
 				Description:
 					'''
-					You feel like the scythe is light
+					You feel like the scythe is very light
 					Scythe speed increased by 70%
 					'''
 			}
@@ -549,6 +549,15 @@ Mods: {
 				DisplayName: Overpowered Dirt
 				Description: You are front in front with the most powerful dirt block ever (it has even its own soul of Terraria inside lol)
 			}
+
+			BloodHunter: {
+				DisplayName: Blood Hunter
+				Description:
+					'''
+					You feel a thirst of blood...
+					Grants a very subtle life regen on hit
+					'''
+			}
 		}
 
 		Projectiles: {
@@ -832,6 +841,10 @@ Mods: {
 			NotADirtBlockMan.DisplayName: Not A Dirt Block Man
 			OverpoweredDirtPet.DisplayName: Overpowered Dirt
 			DeathstrandingBall.DisplayName: Soul Ball
+			CorrosionHookProjectile.DisplayName: Corrosion Hook Projectile
+			CorrosionHookProjectile2.DisplayName: Corrosion Hook Projectile2
+			CorrosionHookProjectileFriendly.DisplayName: Corrosion Hook Projectile Friendly
+			CorrosionHookProjectile3.DisplayName: Corrosion Hook Projectile3
 		}
 
 		Items: {
@@ -2376,13 +2389,13 @@ Mods: {
 			}
 
 			CrimsonScythe: {
-				DisplayName: Crimson Scythe
-				Tooltip: ""
+				DisplayName: Blood Hunter
+				Tooltip: "[c/880015:Special ability:] Grants you a subtle lifesteal on hit for 10s"
 			}
 
 			DemoniteScythe: {
 				DisplayName: Demon Scythe
-				Tooltip: ""
+				Tooltip: "[c/5648a8:Special ability:] When used, you unleash tiny eaters"
 			}
 
 			HellfireScythe: {
@@ -2686,7 +2699,7 @@ Mods: {
 
 			GlacialBow: {
 				DisplayName: Glacial Bow
-				Tooltip: Converts Wooden arrowns into Glacial arrows
+				Tooltip: Converts Wooden arrows into Glacial arrows
 			}
 
 			OverpoweredDirtBlock: {
@@ -2746,6 +2759,11 @@ Mods: {
 
 			GlacialChestplate: {
 				DisplayName: Glacial Chestplate
+				Tooltip: ""
+			}
+
+			CorrosionHook: {
+				DisplayName: Corrosion Hook
 				Tooltip: ""
 			}
 		}

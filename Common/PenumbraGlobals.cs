@@ -177,7 +177,7 @@ namespace PenumbraMod.Common
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-                if (sandhuntereff)
+            if (sandhuntereff)
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     target.AddBuff(BuffID.Venom, 120);
             if (Player.HasBuff(BuffType<BloodstainedForce>()))
@@ -185,10 +185,12 @@ namespace PenumbraMod.Common
                 if (Main.rand.NextBool(2))
                 {
                     Player.Heal(1);
-                    Player.HealEffect(1);
                 }            
             }
-
+            if (Player.HasBuff(BuffType<BloodHunter>()))
+            {
+                Player.Heal(1);
+            }
             if (Player.HasBuff(BuffType<CorrosiveForce>()))
             {
                 target.AddBuff(BuffType<Corrosion>(), 120);
@@ -242,7 +244,6 @@ namespace PenumbraMod.Common
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            // Here we add a tooltip to the gel to let the player know what will happen
             if (item.type == ItemID.DeathSickle)
             {
                 tooltips.Add(new(Mod, "", (string)PenumbraLocalization.DeathSickle));
@@ -344,6 +345,22 @@ namespace PenumbraMod.Common
                     player.AddBuff(BuffType<DeathSpeed>(), 360);
                 }
             }
+            if (item.type == ItemType<LeadScythe>())
+            {
+                if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
+                {
+                    SoundEngine.PlaySound(SoundID.Item37, player.position);
+                    player.AddBuff(ModContent.BuffType<LeadForce>(), 899999);
+                }
+            }
+            if (item.type == ItemType<CrimsonScythe>())
+            {
+                if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
+                {
+                    player.AddBuff(ModContent.BuffType<BloodHunter>(), 600);
+                }
+            }
+
             if (player.HasBuff(BuffType<StunnedNPC>()))
                 return false;
             
@@ -479,6 +496,7 @@ namespace PenumbraMod.Common
                 spriteBatch.Draw(Request<Texture2D>("PenumbraMod/Content/Items/CursedFlameInv").Value, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0);
                 return false;
             }
+
             return true;
         }
         public override bool PreDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -508,7 +526,7 @@ namespace PenumbraMod.Common
         }
         public override void OnHitNPC(Item item, Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            // this exists because for some reason if the code on OnHit2() here wasnt working, so i did this lmao.
+            // this exists because for some reason, the code on OnHit2() here wasnt working, so i did this lmao.
             OnHit2(target, player);
             ItemhitNPC = true;
         }

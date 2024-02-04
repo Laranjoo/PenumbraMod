@@ -34,17 +34,6 @@ namespace PenumbraMod.Content.Items
 			Item.autoReuse = true;
 			
 		}
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (player.HasBuff(ModContent.BuffType<ReaperControl>()))
-            {
-                SoundEngine.PlaySound(SoundID.Item37, player.position);
-                player.AddBuff(ModContent.BuffType<LeadForce>(), 899999);
-			}
-               
-
-
-        }
         public override void AddRecipes()
 		{
 			CreateRecipe()

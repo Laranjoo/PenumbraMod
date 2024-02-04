@@ -74,8 +74,8 @@ namespace PenumbraMod.Content.Items
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.hostile = false;
-            Projectile.penetrate = 5;
-            Projectile.timeLeft = 600;
+            Projectile.penetrate = 3;
+            Projectile.timeLeft = 180;
             Projectile.light = 0.25f;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = true;

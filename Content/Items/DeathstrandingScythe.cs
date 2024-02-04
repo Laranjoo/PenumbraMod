@@ -123,12 +123,13 @@ namespace PenumbraMod.Content.Items
             player.SetDummyItemTime(2);
             if (player.noItems || player.CCed || player.dead || !player.active)
                 Projectile.Kill();
-            if (dir == Vector2.Zero)
+            if (!hasswung)
             {
                 dir = Main.MouseWorld;
-                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(Main.MouseWorld).ToRotation();
+                Projectile.rotation = (MathHelper.PiOver2 * Projectile.ai[1]) - MathHelper.PiOver4 + Projectile.DirectionTo(dir).ToRotation();
+                player.ChangeDir(Main.MouseWorld.X > player.Center.X ? 1 : -1);
             }
-            //FadeInAndOut();
+
             if (player.direction == 1)
             {
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation + 0.78f) + 90f);
@@ -140,7 +141,6 @@ namespace PenumbraMod.Content.Items
                 player.SetCompositeArmFront(true, Player.CompositeArmStretchAmount.Full, (Projectile.rotation - 0.78f) + 90f);
                 Projectile.rotation -= (Projectile.ai[1] * MathHelper.ToRadians((11 - Projectile.ai[0])));
             }
-
             if (Main.mouseLeft && !hasswung)
                 Charge(player);
             else
@@ -160,7 +160,7 @@ namespace PenumbraMod.Content.Items
                 SoundEngine.PlaySound(SoundID.Item30, Projectile.Center);
                 for (int i = 0; i < 30; i++)
                 {
-                    int d = Dust.NewDust(player.position, player.width, player.height, DustID.BlueTorch);
+                    int d = Dust.NewDust(player.position, player.width, player.height, DustID.BlueTorch, Scale: 1.5f);
                     Main.dust[d].noGravity = true;
                     Main.dust[d].velocity *= 8f;
                 }
@@ -178,7 +178,7 @@ namespace PenumbraMod.Content.Items
             {
                 if (Main.rand.NextBool(3))
                 {
-                    int d = Dust.NewDust(player.position, 30, player.height, DustID.BlueTorch);
+                    int d = Dust.NewDust(player.position, 30, player.height, DustID.BlueTorch, Scale: 1.5f);
                     Main.dust[d].noGravity = true;
                     Main.dust[d].velocity.Y -= 8f;
                 }
@@ -192,6 +192,7 @@ namespace PenumbraMod.Content.Items
                 return;
             hasswung = true;
             Projectile.ai[2]++;
+            dir = Vector2.Zero;
             if (Projectile.ai[2] >= 1 && Projectile.ai[2] <= 12)
             {
                 Projectile.ai[0] -= 0.03f;

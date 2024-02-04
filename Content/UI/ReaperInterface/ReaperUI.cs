@@ -1605,6 +1605,9 @@ namespace PenumbraMod.Content.DamageClasses
             // Setting the text per tick to update and show our resource values.
             if (GetInstance<PenumbraConfig>().UITEXT)
                 text.SetText(LocalizedTextForReaperBar.Text + $" {ReaperClassPlayer.ReaperEnergy / 10f} / {ReaperClassPlayer.ReaperEnergyMax / 10f}");
+            else
+                text.SetText("");
+
             if (GetInstance<PenumbraConfig>().ModelChange && showModelChangeArrows && clickedagain)
             {
                 if (Model == 1)

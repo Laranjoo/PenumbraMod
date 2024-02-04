@@ -217,6 +217,7 @@ namespace PenumbraMod.Content.ExpertAccessorySlot
             // Basically, when the player has an expert accessory on the mouse, make the accessory "not an accessory"
             // So when hovering the expert slot, the accessory can "be an accessory" again. (Meaning it can be equippied again, and ONLY the expert slot)
             // Lines 121 to 140.
+            // This shenanigan somehow worked
             orig(inv, context, slot);
             
             var item = Main.mouseItem;

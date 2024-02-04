@@ -111,7 +111,7 @@ namespace PenumbraMod.Content.DamageClasses
         #endregion
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (ReaperEnergy > 9980)
+            if (ReaperEnergy > 9996)
             {
                 if (Player.HeldItem.CountsAsClass(GetInstance<ReaperClass>()) && !Player.ItemAnimationActive)
                 {
@@ -135,10 +135,10 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 ReaperEnergy = ReaperEnergyMax;
             }
-            if (ReaperEnergy < -1)
+            if (ReaperEnergy < 0)
                 ReaperEnergy = 0;
          
-            if (ReaperEnergy > 9980)
+            if (ReaperEnergy > 9996)
             {
                 if (Player.HeldItem.CountsAsClass(GetInstance<ReaperClass>()) && !Player.ItemAnimationActive)
                 {  
@@ -197,10 +197,10 @@ namespace PenumbraMod.Content.DamageClasses
                 }             
                 SoundEngine.PlaySound(SoundID.Item4, Player.Center);
             }
-            if (ReaperEnergy >= 9990 && !full)
+            if (ReaperEnergy >= 9998 && !full)
                 SoundEngine.PlaySound(SoundID.Item45, Player.Center);
 
-            if (ReaperEnergy >= 9989)
+            if (ReaperEnergy >= 9997)
             {
                 full = true;
             }
@@ -646,12 +646,9 @@ namespace PenumbraMod.Content.DamageClasses
             #endregion
            
             Timer += 1;
-
-            if (Timer >= 40)
-            {
-                if (ReaperEnergy > 0)
+            if (ReaperEnergy < 9999)
+                if (Timer >= 40)
                     ReaperEnergy -= 10;
-            }
         }
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
