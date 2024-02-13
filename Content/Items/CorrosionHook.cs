@@ -40,6 +40,7 @@ namespace PenumbraMod.Content.Items
                 Item.useTime = 20;
                 Item.useAnimation = 20;
                 Item.useStyle = ItemUseStyleID.Shoot;
+                Item.UseSound = SoundID.Item1;
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosionHookProjectile>(), damage * 2, knockback, player.whoAmI);
                 launch = 1;
             }
@@ -56,6 +57,7 @@ namespace PenumbraMod.Content.Items
                 Item.useStyle = ItemUseStyleID.Shoot;
                 Item.useTime = 20;
                 Item.useAnimation = 20;
+                Item.UseSound = SoundID.Item152;
                 Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosionHookProjectile>(), damage * 2, knockback, player.whoAmI);
                 launch = 3;
             }
@@ -64,7 +66,8 @@ namespace PenumbraMod.Content.Items
                 Item.useStyle = ItemUseStyleID.Swing;
                 Item.useTime = 10;
                 Item.useAnimation = 10;
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosionHookProjectile3>(), damage, knockback, player.whoAmI);
+                Item.UseSound = SoundID.Item1;
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<CorrosionHookProjectile3>(), damage * 3, knockback, player.whoAmI);
                 launch = 0;
             }
             return false;

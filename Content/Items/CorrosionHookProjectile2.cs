@@ -53,20 +53,20 @@ namespace PenumbraMod.Content.Items
 
             if (Timer2 < swingTime / 1.43f)
                 Timer += 1;
-            if (Timer2 == swingTime / 1.33f)
+            if (Timer2 == 8)
             {  // Plays a whipcrack sound at the tip of the whip.
                 List<Vector2> points = Projectile.WhipPointsForCollision;
                 Projectile.FillWhipControlPoints(Projectile, points);
-                SoundEngine.PlaySound(SoundID.Item153, points[points.Count - 1]);
+                SoundEngine.PlaySound(SoundID.Item10, points[points.Count - 1]);
             }
-            if (Timer2 > swingTime / 1.3f)
+            if (Timer2 > swingTime / 1.28f)
                 Timer -= 1;
 
-            if (Timer2 >= swingTime || owner.itemAnimation <= 0) {
-				Projectile.Kill();
-				return;
-			}
-            Main.NewText(Timer);
+            if (Timer2 >= swingTime || owner.itemAnimation <= 0)
+            {
+                Projectile.Kill();
+                return;
+            }
 			owner.heldProj = Projectile.whoAmI;
         }
 
@@ -184,7 +184,7 @@ namespace PenumbraMod.Content.Items
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = -1;
             Projectile.WhipSettings.Segments = 30;
-            Projectile.WhipSettings.RangeMultiplier = 1.24f;
+            Projectile.WhipSettings.RangeMultiplier = 1.28f;
         }
 
         private float Timer
@@ -213,7 +213,7 @@ namespace PenumbraMod.Content.Items
 
             if (Timer2 < swingTime / 1.43f)
                 Timer -= 1;
-            if (Timer2 == swingTime / 1.33f)
+            if (Timer2 == 8)
             {  // Plays a whipcrack sound at the tip of the whip.
                 List<Vector2> points = Projectile.WhipPointsForCollision;
                 Projectile.FillWhipControlPoints(Projectile, points);
@@ -227,7 +227,6 @@ namespace PenumbraMod.Content.Items
                 Projectile.Kill();
                 return;
             }
-            Main.NewText(Timer);
             owner.heldProj = Projectile.whoAmI;
         }
 

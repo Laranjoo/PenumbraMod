@@ -180,49 +180,41 @@ namespace PenumbraMod.Common
             if (sandhuntereff)
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     target.AddBuff(BuffID.Venom, 120);
+
             if (Player.HasBuff(BuffType<BloodstainedForce>()))
-            {
                 if (Main.rand.NextBool(2))
-                {
                     Player.Heal(1);
-                }            
-            }
+
             if (Player.HasBuff(BuffType<BloodHunter>()))
-            {
                 Player.Heal(1);
-            }
+
             if (Player.HasBuff(BuffType<CorrosiveForce>()))
-            {
                 target.AddBuff(BuffType<Corrosion>(), 120);
-            }
+
             if (Player.HasBuff(BuffType<PeridotForce>()))
-            {
                 target.AddBuff(BuffID.Poisoned, 180);
-            }
+
             if (Player.HasBuff(BuffType<TerraForce>()))
             {
                 target.AddBuff(BuffID.CursedInferno, 240);
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 100;
             }
+
             if (Player.HasBuff<SpectreForce>())
-            {
                 if (Main.rand.NextBool(3) && !Player.HasBuff<SoulBoost>())
                 {
                     CombatText.NewText(Player.getRect(), Color.LightBlue, (string)PenumbraLocalization.SoulBoosted);
                     Player.AddBuff(BuffType<SoulBoost>(), 180);
                 }     
-            }
+
             if (Player.HasBuff<SoulBoost>())
-            {
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 70;
-            }
+
             if (Player.HasBuff<AquamarineForce>())
-            {
                 if (Player.HeldItem.DamageType == GetInstance<ReaperClass>())
                     Player.GetModPlayer<ReaperClassDPlayer>().ReaperEnergy += 50;
-            }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
