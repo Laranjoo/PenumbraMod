@@ -135,8 +135,8 @@ namespace PenumbraMod.Content.DamageClasses
             {
                 ReaperEnergy = ReaperEnergyMax;
             }
-            if (ReaperEnergy < 0)
-                ReaperEnergy = 0;
+            if (ReaperEnergy <= 0)
+                ReaperEnergy = 10;
          
             if (ReaperEnergy > 9996)
             {

@@ -133,8 +133,8 @@ namespace PenumbraMod.Content.DamageClasses
         // Model changing buttons
         private ReaperButton ChangeStyleArrowRight;
         private ReaperButton ChangeStyleArrowLeft;
-        private ReaperButton DeleteChangeStyleButton;
-        private ReaperButton ChangeStyleButton;
+        private CloseButton DeleteChangeStyleButton;
+        private ConfigButton ChangeStyleButton;
 
         // Jewel slots
         private UIImage barSlotsNoJewel;
@@ -516,13 +516,13 @@ namespace PenumbraMod.Content.DamageClasses
             CrystalButton5.SetVisibility(1f, 0.65f);
 
             Asset<Texture2D> ChangeStylebutton = ModContent.Request<Texture2D>(Path + "ChangeStyleButton");
-            ChangeStyleButton = new ReaperButton(ChangeStylebutton, "");
+            ChangeStyleButton = new ConfigButton(ChangeStylebutton, LocalizedTextForReaperBar.Text3);
             SetRectangle(ChangeStyleButton, left: 39, top: 12f, width: 10f, height: 13f);
             ChangeStyleButton.OnLeftClick += new MouseEvent(ModelClicked);
             ChangeStyleButton.SetVisibility(1f, 0.75f);
 
             Asset<Texture2D> DeleteChangeStylebutton = ModContent.Request<Texture2D>(Path + "DeleteChangeStyleButton");
-            DeleteChangeStyleButton = new ReaperButton(DeleteChangeStylebutton, "");
+            DeleteChangeStyleButton = new CloseButton(DeleteChangeStylebutton, LocalizedTextForReaperBar.Text4);
             SetRectangle(DeleteChangeStyleButton, left: 39, top: 12f, width: 10f, height: 13f);
             DeleteChangeStyleButton.OnLeftClick += new MouseEvent(DeleteModelButton);
             DeleteChangeStyleButton.SetVisibility(1f, 0.75f);
@@ -1662,6 +1662,64 @@ namespace PenumbraMod.Content.DamageClasses
             this.hoverText = hoverText;
         }
         public ReaperButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        {
+            text = Text;
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            // When you override UIElement methods, don't forget call the base method
+            // This helps to keep the basic behavior of the UIElement
+            base.DrawSelf(spriteBatch);
+
+            // IsMouseHovering becomes true when the mouse hovers over the current UIElement
+            if (IsMouseHovering)
+            {
+                Main.instance.MouseText(hoverText);
+                Main.instance.MouseText((string)text);
+            }
+
+        }
+    }
+    internal class CloseButton : UIImageButton
+    {
+        // Tooltip text that will be shown on hover
+        internal string hoverText;
+        internal static LocalizedText text;
+        public CloseButton(Asset<Texture2D> texture, string hoverText) : base(texture)
+        {
+            this.hoverText = hoverText;
+        }
+        public CloseButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        {
+            text = Text;
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            // When you override UIElement methods, don't forget call the base method
+            // This helps to keep the basic behavior of the UIElement
+            base.DrawSelf(spriteBatch);
+
+            // IsMouseHovering becomes true when the mouse hovers over the current UIElement
+            if (IsMouseHovering)
+            {
+                Main.instance.MouseText(hoverText);
+                Main.instance.MouseText((string)text);
+            }
+
+        }
+    }
+    internal class ConfigButton : UIImageButton
+    {
+        // Tooltip text that will be shown on hover
+        internal string hoverText;
+        internal static LocalizedText text;
+        public ConfigButton(Asset<Texture2D> texture, string hoverText) : base(texture)
+        {
+            this.hoverText = hoverText;
+        }
+        public ConfigButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
         {
             text = Text;
         }

@@ -846,6 +846,7 @@ Mods: {
 			// CorrosionHookProjectile2.DisplayName: Corrosion Hook Projectile2
 			// CorrosionHookProjectileFriendly.DisplayName: Corrosion Hook Projectile Friendly
 			// CorrosionHookProjectile3.DisplayName: Corrosion Hook Projectile3
+			// AchillesSpearProj.DisplayName: Achilles Spear Proj
 		}
 
 		Items: {
@@ -2766,6 +2767,17 @@ Mods: {
 			CorrosionHook: {
 				// DisplayName: Corrosion Hook
 				// Tooltip: ""
+			}
+
+			AchillesSpear: {
+				// DisplayName: Achilles Spear
+				/* Tooltip:
+					'''
+					Lost spear on the marble lands
+					Increases defense and move speed when held
+					Deals huge damage on critical hit
+					Deals even more damage on medusas
+					''' */
 			}
 		}
 

@@ -44,7 +44,7 @@ Mods: {
 			ReaperBar: Reaper energy
 			ReaperBarJewel: Jewels
 			ReaperBarModel: Change the current style of the reaper bar
-			ReaperBarModelDelete: Remove this option (can be added again on the mod configurations)
+			ReaperBarModelDelete: Remove this option (can be toggled on the mod configurations)
 			Model1: Default
 			Model2: Classic
 			Model3: Fancy
@@ -845,6 +845,7 @@ Mods: {
 			CorrosionHookProjectile2.DisplayName: Corrosion Hook Projectile2
 			CorrosionHookProjectileFriendly.DisplayName: Corrosion Hook Projectile Friendly
 			CorrosionHookProjectile3.DisplayName: Corrosion Hook Projectile3
+			AchillesSpearProj.DisplayName: Achilles Spear Proj
 		}
 
 		Items: {
@@ -2765,6 +2766,17 @@ Mods: {
 			CorrosionHook: {
 				DisplayName: Corrosion Hook
 				Tooltip: ""
+			}
+
+			AchillesSpear: {
+				DisplayName: Achilles Spear
+				Tooltip:
+					'''
+					Lost spear on the marble lands
+					Increases defense and move speed when held
+					Deals huge damage on critical hit
+					Deals even more damage on medusas
+					'''
 			}
 		}
 

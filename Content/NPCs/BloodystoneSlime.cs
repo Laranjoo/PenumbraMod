@@ -25,8 +25,8 @@ namespace PenumbraMod.Content.NPCs
 
         public override void SetDefaults()
         {
-            NPC.width = 30;
-            NPC.height = 44;
+            NPC.width = 56;
+            NPC.height = 42;
             NPC.damage = 66;
             NPC.defense = 24;
             NPC.lifeMax = 240;
