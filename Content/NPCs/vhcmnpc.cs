@@ -211,7 +211,7 @@ namespace PenumbraMod.Content.NPCs
         }
        
         public override void ModifyNPCLoot(NPCLoot npcLoot) {
-			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<vhcmknife>()));
+			npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.vhcmknife>()));
 		}
 
 		// Make this Town NPC teleport to the King and/or Queen statue when triggered.
@@ -229,7 +229,7 @@ namespace PenumbraMod.Content.NPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ModContent.ProjectileType<knifeproj>();
+            projType = ModContent.ProjectileType<Items.knifeproj>();
             attackDelay = 1;
         }
 
