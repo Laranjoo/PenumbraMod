@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PenumbraMod")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d26755c3f10eff3f86a4ae8c877f83371e4798f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d85d307d82585a50c4a1e1b04130e546130d374f")]
 [assembly: System.Reflection.AssemblyProductAttribute("PenumbraMod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PenumbraMod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

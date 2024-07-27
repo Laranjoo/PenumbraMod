@@ -78,8 +78,10 @@ namespace PenumbraMod
                 });
                 Main.instance.LoadItem(ItemID.CursedFlames);
                 Main.instance.LoadItem(ItemID.IceSickle);
-                TextureAssets.Item[ItemID.IceSickle] = Request<Texture2D>("PenumbraMod/Content/Items/IceSickleResprite");
-                TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>("PenumbraMod/Content/Items/CursedFlameInv");
+                Main.instance.LoadItem(ItemID.PlatinumCrown);
+                TextureAssets.Item[ItemID.IceSickle] = Request<Texture2D>("PenumbraMod/Content/Items/VanillaResprites/IceSickleResprite");
+                TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>("PenumbraMod/Content/Items/VanillaResprites/CursedFlameInv");
+                TextureAssets.Item[ItemID.PlatinumCrown] = Request<Texture2D>("PenumbraMod/Content/Items/VanillaResprites/PlatinumTiara");
             }
             if (Main.netMode != NetmodeID.Server)
             {
@@ -167,6 +169,7 @@ namespace PenumbraMod
         {
             TextureAssets.Item[ItemID.CursedFlames] = Request<Texture2D>($"Terraria/Images/Item_519");
             TextureAssets.Item[ItemID.IceSickle] = Request<Texture2D>($"Terraria/Images/Item_1306");
+            TextureAssets.Item[ItemID.PlatinumCrown] = Request<Texture2D>($"Terraria/Images/" + ItemID.PlatinumCrown);
         }
         /// <summary>
         /// Eye of the storm glomask effect

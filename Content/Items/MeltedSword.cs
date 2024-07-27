@@ -45,30 +45,21 @@ namespace PenumbraMod.Content.Items
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire, 120);
-            Hit(player, target, hit);
-            if (hit.Crit)
-            {
-                Item.shoot = ModContent.ProjectileType<MeltedShotEx>();
-                Vector2 newVelocity = target.velocity.RotatedByRandom(MathHelper.ToRadians(0));
-                // Decrease velocity randomly for nicer visuals.
-                newVelocity *= 10f - Main.rand.NextFloat(0.1f);
-                Projectile.NewProjectile(target.GetSource_FromThis(), target.position, newVelocity, ModContent.ProjectileType<MeltedShotEx>(), 50, 12, player.whoAmI);
-            }
-            else
-                Item.shoot = ModContent.ProjectileType<EMPTY>();
         }
-        void Hit(Player player, NPC target, NPC.HitInfo hit)
+        public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (hit.Crit)
+            modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
             {
-                Item.shoot = ModContent.ProjectileType<MeltedShotEx>();
-                Vector2 newVelocity = target.velocity.RotatedByRandom(MathHelper.ToRadians(0));
-                // Decrease velocity randomly for nicer visuals.
-                newVelocity *= 10f - Main.rand.NextFloat(0.1f);
-                Projectile.NewProjectile(target.GetSource_FromThis(), target.position, newVelocity, ModContent.ProjectileType<MeltedShotEx>(), 50, 12, player.whoAmI);
-            }
-            else
-                Item.shoot = ModContent.ProjectileType<EMPTY>();
+                if (hitInfo.Crit)
+                {
+                    hitInfo.Damage += 10;
+                    Vector2 newVelocity = target.velocity.RotatedByRandom(MathHelper.ToRadians(0));
+                    // Decrease velocity randomly for nicer visuals.
+                    newVelocity *= 10f - Main.rand.NextFloat(0.1f);
+                    Projectile.NewProjectile(target.GetSource_FromThis(), target.position, newVelocity, ModContent.ProjectileType<MeltedShotEx>(), 50, 12, player.whoAmI);
+                }
+            };
+
         }
         public override void AddRecipes()
         {

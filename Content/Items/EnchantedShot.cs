@@ -75,7 +75,9 @@ namespace PenumbraMod.Content.Items
                 Projectile.rotation += MathHelper.Pi;
                 // For vertical sprites use MathHelper.PiOver2
             }
-
+            Projectile.ai[0]++;
+            if (Projectile.ai[0] == 1)
+                SoundEngine.PlaySound(SoundID.Item8, Projectile.position);
         }
 
         public override void OnKill(int timeLeft)

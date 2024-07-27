@@ -1,0 +1,16 @@
+
+//essa coroa substui o sprite da coroa de platina do terraria e o crafting tmb
+
+sendo agora
+
+5 barras de platina 
+1 roze quartz
+
+//com ela voce pode fazer um metodo alternativo pra spawnar a queen slime (fora do hallow)
+
+com 20 gel rosa
+e a coroa de platina
+(na bigorna de mitrill)
+
+//se voce jogar essa coroa no shimmer ela vira a coroa de ouro, para caso o mundo
+nao tenha platina no mundo e queira spawnar o king slime, e vice versa

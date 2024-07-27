@@ -63,12 +63,6 @@ namespace PenumbraMod
         #endregion
 
         #region Player
-        [Header("$Mods.PenumbraMod.Config.Header2")]
-        [LabelKeyAttribute("$Mods.PenumbraMod.Config.VanillaChanges.Label")]
-        [BackgroundColor(130, 0, 155)]
-        [DefaultValue(true)]
-        [ReloadRequired]
-        public bool VanillaChanges { get; set; }
 
         [LabelKeyAttribute("$Mods.PenumbraMod.Config.UseTurn.Label")]
         [TooltipKeyAttribute("$Mods.PenumbraMod.Config.UseTurn.Tooltip")]

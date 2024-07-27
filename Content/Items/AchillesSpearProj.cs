@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.WorldBuilding;
 
 namespace PenumbraMod.Content.Items
 {
@@ -15,7 +16,7 @@ namespace PenumbraMod.Content.Items
 		{
 			Projectile.CloneDefaults(ProjectileID.Spear); // Clone the default values for a vanilla spear. Spear specific values set for width, height, aiStyle, friendly, penetrate, tileCollide, scale, hide, ownerHitCheck, and melee.
 			Projectile.width = 30;
-			Projectile.height = 92;
+			Projectile.height = 30;
 			Projectile.penetrate = 3;
 		}
 
@@ -65,28 +66,28 @@ namespace PenumbraMod.Content.Items
 			return false; // Don't execute vanilla AI.
 		}
 		const int radius1 = 30;
-		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
 		{
-			if (hit.Crit)
+			modifiers.ModifyHitInfo += (ref NPC.HitInfo hitInfo) =>
 			{
-				hit.Damage *= 3;
-				damageDone *= 3;
-				const int Repeats = 20;
-				for (int i = 0; i < Repeats; ++i)
+				if (hitInfo.Crit)
 				{
-					Vector2 position2 = Projectile.Center + new Vector2(radius1, 0).RotatedBy((i * MathHelper.PiOver2 / Repeats) * 4);
-					int c = Dust.NewDust(position2, 1, 1, DustID.YellowTorch, 0f, 0f, 0, default(Color), 1f);
-					Main.dust[c].noGravity = true;
-					Main.dust[c].velocity *= 8f;
-					Main.dust[c].rotation += 1.1f;
-				}
-			}
-			if (target.type == NPCID.Medusa)
-			{
-				hit.Damage *= 8;
-				damageDone *= 8;
-			}
-				
+                    hitInfo.Damage *= 3;
+                    const int Repeats = 20;
+                    for (int i = 0; i < Repeats; ++i)
+                    {
+                        Vector2 position2 = Projectile.Center + new Vector2(radius1, 0).RotatedBy((i * MathHelper.PiOver2 / Repeats) * 4);
+                        int c = Dust.NewDust(position2, 1, 1, DustID.YellowTorch, 0f, 0f, 0, default(Color), 1f);
+                        Main.dust[c].noGravity = true;
+                        Main.dust[c].velocity *= 8f;
+                        Main.dust[c].rotation += 1.1f;
+                    }
+                }
+                if (target.type == NPCID.Medusa)
+                {
+                    hitInfo.Damage *= 8;
+                }
+			};
 			Projectile.CritChance += 6;
 
 		}

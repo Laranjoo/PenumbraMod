@@ -27,19 +27,17 @@ namespace PenumbraMod.Content.Items
             Item.DamageType = DamageClass.Melee;
             Item.width = 42;
             Item.height = 42;
-            Item.useTime = 36;
+            Item.useTime = 38;
             Item.useAnimation = 28;
             Item.useStyle = 1;
             Item.knockBack = 4;
             Item.value = 1000;
             Item.rare = 3;
-            Item.UseSound = SoundID.Item8;
+            Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<EMPTY>();
             Item.shootSpeed = 10f;
             Item.crit = 9;
-
-
         }
         public override bool AltFunctionUse(Player player)
         {

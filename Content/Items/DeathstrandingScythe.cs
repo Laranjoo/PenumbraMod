@@ -121,6 +121,7 @@ namespace PenumbraMod.Content.Items
             Projectile.Center = Main.player[Projectile.owner].Center;
             Player player = Main.player[Projectile.owner];         
             player.SetDummyItemTime(2);
+            player.heldProj = Projectile.whoAmI;
             if (player.noItems || player.CCed || player.dead || !player.active)
                 Projectile.Kill();
             if (!hasswung)
@@ -234,7 +235,11 @@ namespace PenumbraMod.Content.Items
         {
             return x < 0.5 ? 2 * x * x : 1 - (float)Math.Pow(-2 * x + 2, 2) / 2;
         }
-        public override bool PreDraw(ref Color lightColor)
+        public override bool PreDraw(ref Color l)
+        {
+            return false;
+        }
+        public override void PostDraw(Color l)
         {
             Main.instance.LoadProjectile(Projectile.type);
             Texture2D proj = TextureAssets.Projectile[Type].Value;
@@ -242,16 +247,15 @@ namespace PenumbraMod.Content.Items
             Player player = Main.player[Projectile.owner];
 
             if (player.direction == 1)
-                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White * col, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+            {
+                Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition - new Vector2(8, 0), null, Color.White * col, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition - new Vector2(8, 0), null, l, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
+            }       
             if (player.direction == -1)
+            {
                 Main.EntitySpriteDraw(texture, Projectile.Center - Main.screenPosition, null, Color.White * col, Projectile.rotation - 0.78f, texture.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-
-            if (player.direction == 1)
-                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.FlipHorizontally, 0);
-            if (player.direction == -1)
-                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, lightColor, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
-
-            return false;
+                Main.EntitySpriteDraw(proj, Projectile.Center - Main.screenPosition, null, l, Projectile.rotation - 0.78f, proj.Size() / 2, Projectile.scale, SpriteEffects.None, 0);
+            }
         }
     }
     public class DeathStrandingSpecial : ModProjectile

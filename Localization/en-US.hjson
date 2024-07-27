@@ -15,7 +15,6 @@ Mods: {
 			HitEffectVelocity.Label: Change the velocity of the hit effect
 			UITEXT.Label: Enable or disable Reaper energy bar text
 			Header2: "[i:4]Player"
-			VanillaChanges.Label: Enable or disable item vanilla changes
 
 			UseTurn: {
 				Label: Enable or disable player rotation on item use
@@ -816,9 +815,9 @@ Mods: {
 			EarthreaperScytheSwing2.DisplayName: Earthreaper Scythe
 			EarthreaperScytheBeam2.DisplayName: Earthreaper Scythe Beam
 			FireRest.DisplayName: Fire Rest
-			FireRest2.DisplayName: Fire Rest2
-			FireRest3.DisplayName: Fire Rest3
-			FireRest4.DisplayName: Fire Rest4
+			FireRest2.DisplayName: Fire Rest
+			FireRest3.DisplayName: Fire Rest
+			FireRest4.DisplayName: Fire Rest
 			EarthreaperScytheBeam2ef.DisplayName: Earthreaper Scythe Beam
 			EarthreaperScytheBeam2eff.DisplayName: Earthreaper Scythe Beam
 			SlimyShieldCrown.DisplayName: Slimy Shield Crown
@@ -841,11 +840,13 @@ Mods: {
 			NotADirtBlockMan.DisplayName: Not A Dirt Block Man
 			OverpoweredDirtPet.DisplayName: Overpowered Dirt
 			DeathstrandingBall.DisplayName: Soul Ball
-			CorrosionHookProjectile.DisplayName: Corrosion Hook Projectile
-			CorrosionHookProjectile2.DisplayName: Corrosion Hook Projectile2
-			CorrosionHookProjectileFriendly.DisplayName: Corrosion Hook Projectile Friendly
-			CorrosionHookProjectile3.DisplayName: Corrosion Hook Projectile3
-			AchillesSpearProj.DisplayName: Achilles Spear Proj
+			CorrosionHookProjectile.DisplayName: Corrosion Hook
+			CorrosionHookProjectile2.DisplayName: Corrosion Hook
+			CorrosionHookProjectileFriendly.DisplayName: Corrosion Hook Projectile
+			CorrosionHookProjectile3.DisplayName: Corrosion Hook
+			AchillesSpearProj.DisplayName: Achilles Spear
+			AquamarineBolt.DisplayName: Aquamarine Bolt
+			ConfettiProj.DisplayName: Confetti
 		}
 
 		Items: {
@@ -2778,6 +2779,36 @@ Mods: {
 					Deals even more damage on medusas
 					'''
 			}
+
+			AquamarineStaff: {
+				DisplayName: Aquamarine Staff
+				Tooltip: ""
+			}
+
+			AquaPhaseblade: {
+				DisplayName: Aqua Phaseblade
+				Tooltip: ""
+			}
+
+			AquaPhasesaber: {
+				DisplayName: Aqua Phasesaber
+				Tooltip: ""
+			}
+
+			PinkPhaseblade: {
+				DisplayName: Pink Phaseblade
+				Tooltip: ""
+			}
+
+			PinkPhasesaber: {
+				DisplayName: Pink Phasesaber
+				Tooltip: ""
+			}
+
+			RozeQuartzStaff: {
+				Tooltip: Shoots cool looking conffeti!
+				DisplayName: Roze Quartz Staff
+			}
 		}
 
 		Tiles: {
@@ -2813,11 +2844,6 @@ Mods: {
 				UseTurn: {
 					Tooltip: "{$Mods.PenumbraMod.Config.UseTurn.Tooltip}"
 					Label: "{$Mods.PenumbraMod.Config.UseTurn.Label}"
-				}
-
-				VanillaChanges: {
-					Tooltip: ""
-					Label: "{$Mods.PenumbraMod.Config.VanillaChanges.Label}"
 				}
 
 				UITEXT: {

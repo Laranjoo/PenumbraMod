@@ -5,6 +5,7 @@ using PenumbraMod.Content.DamageClasses;
 using PenumbraMod.Content.Items;
 using PenumbraMod.Content.Items.Accessories;
 using PenumbraMod.Content.Items.Consumables;
+using PenumbraMod.Content.Items.Placeable;
 using PenumbraMod.Content.Items.ReaperJewels;
 using PenumbraMod.Content.NPCs.Bosses.Eyestorm;
 using PenumbraMod.Content.Prefixes;
@@ -230,10 +231,7 @@ namespace PenumbraMod.Common
     }
     public class PenumbraGlobalTooltips : GlobalItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return GetInstance<PenumbraConfig>().VanillaChanges;
-        }
+        public override bool InstancePerEntity => true;
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ItemID.DeathSickle)
@@ -264,10 +262,6 @@ namespace PenumbraMod.Common
 
     public class PenumbraGlobalItem : GlobalItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return GetInstance<PenumbraConfig>().VanillaChanges;
-        }
         public override bool InstancePerEntity => true;
         /// <summary>
         /// Useful to check if item hit NPC
@@ -292,6 +286,12 @@ namespace PenumbraMod.Common
             if (item.type == ItemID.SummonerEmblem)
                 ItemID.Sets.ShimmerTransformToItem[ItemID.SummonerEmblem] = ItemType<ReaperEmblem>();
 
+            if (item.type == ItemID.PlatinumCrown)
+                ItemID.Sets.ShimmerTransformToItem[ItemID.PlatinumCrown] = ItemID.GoldCrown;
+
+            if (item.type == ItemID.GoldCrown)
+                ItemID.Sets.ShimmerTransformToItem[ItemID.GoldCrown] = ItemID.PlatinumCrown;
+
             if (item.type == ItemID.BeamSword)
             {
                 item.useAnimation = 21;
@@ -304,7 +304,7 @@ namespace PenumbraMod.Common
             if (item.type == ItemID.IceSickle)
             {
                 item.DamageType = GetInstance<ReaperClass>();
-                item.shoot = ProjectileType<IceSickle>();
+                item.shoot = ProjectileType<Content.Items.VanillaResprites.IceSickle>();
                 item.shootSpeed = 14f;
                 item.damage = 90;
                 item.rare = ItemRarityID.Cyan;
@@ -320,7 +320,7 @@ namespace PenumbraMod.Common
             }
             if (item.type == ItemID.Gladius)
             {
-                item.shoot = ProjectileType<GladiusRework>();
+                item.shoot = ProjectileType<Content.Items.VanillaResprites.GladiusRework>();
                 item.shootSpeed = 7f;
                 item.useTime = 6;
                 item.useAnimation = 14;
@@ -420,7 +420,7 @@ namespace PenumbraMod.Common
         {
             if (item.type == ItemID.IceSickle)
             {
-                item.shoot = ProjectileType<IceSickle>();
+                item.shoot = ProjectileType<Content.Items.VanillaResprites.IceSickle>();
                 if (player.HasBuff(BuffType<ReaperControl>()))
                 {
                     item.shootSpeed = 18f;
@@ -431,7 +431,7 @@ namespace PenumbraMod.Common
                         // Decrease velocity randomly for nicer visuals.
                         newVelocity *= 1f - Main.rand.NextFloat(0.3f);
                         // Create a projectile.
-                        Projectile.NewProjectileDirect(source, position, newVelocity, ProjectileType<IceSickleExplosion>(), damage, knockback, player.whoAmI);
+                        Projectile.NewProjectileDirect(source, position, newVelocity, ProjectileType<Content.Items.VanillaResprites.IceSickleExplosion>(), damage, knockback, player.whoAmI);
 
                     }
                     return false;
@@ -439,7 +439,7 @@ namespace PenumbraMod.Common
             }
             if (item.type == ItemID.Gladius)
             {
-                item.shoot = ProjectileType<GladiusRework>();
+                item.shoot = ProjectileType<Content.Items.VanillaResprites.GladiusRework>();
             }
             if (item.type == ItemID.BeamSword)
             {
@@ -480,12 +480,17 @@ namespace PenumbraMod.Common
             r.AddIngredient<GlacialChunk>(20);
             r.AddTile(TileID.MythrilAnvil);
             r.Register();
+
+            Recipe tiara = Recipe.Create(ItemID.PlatinumCrown);
+            tiara.AddIngredient(ItemID.PlatinumBar, 5);
+            tiara.AddIngredient(ItemType<Content.Items.Placeable.RozeQuartz>(), 1);
+
         }
         public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             if (item.type == ItemID.CursedFlames)
             {
-                spriteBatch.Draw(Request<Texture2D>("PenumbraMod/Content/Items/CursedFlameInv").Value, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(Request<Texture2D>("PenumbraMod/Content/Items/VanillaResprites/CursedFlameInv").Value, position, null, Color.White, 0, origin, scale, SpriteEffects.None, 0);
                 return false;
             }
 
@@ -495,7 +500,7 @@ namespace PenumbraMod.Common
         {
             if (item.type == ItemID.CursedFlames)
             {
-                spriteBatch.Draw(Request<Texture2D>("PenumbraMod/Content/Items/CursedFlameInv").Value, item.position - Main.screenPosition, null, lightColor, rotation, new Vector2(0, 0), scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(Request<Texture2D>("PenumbraMod/Content/Items/VanillaResprites/CursedFlameInv").Value, item.position - Main.screenPosition, null, lightColor, rotation, new Vector2(0, 0), scale, SpriteEffects.None, 0);
                 return false;
             }
             return true;
@@ -566,6 +571,21 @@ namespace PenumbraMod.Common
         }
 
     }
+    public class PenumbraGlobalRecipes : ModSystem
+    {
+        public override void PostAddRecipes()
+        {
+            for (int i = 0; i < Recipe.numRecipes; i++)
+            {
+                Recipe recipe = Main.recipe[i];
+                if (recipe.HasResult(ItemID.PlatinumCrown))
+                {
+                    recipe.RemoveIngredient(ItemID.Ruby);
+                    recipe.AddIngredient(ModContent.ItemType<Content.Items.Placeable.RozeQuartz>(), 1);
+                }
+            }
+        }
+    }
     /* Removed since vanilla already has that option
     public class AutoReuse : GlobalItem
     {
@@ -587,10 +607,6 @@ namespace PenumbraMod.Common
     public class PenumbraGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return GetInstance<PenumbraConfig>().VanillaChanges;
-        }
         /// <summary>
         /// Useful to check if projectile hit NPC
         /// </summary>
