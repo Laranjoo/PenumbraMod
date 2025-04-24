@@ -55,9 +55,11 @@ Mods: {
 			ExpertAccessoryHoverName4: Acessório Trancado
 			ExpertAccessoryHoverName5: Social Acessório Trancado
 			ExpertAccessoryHoverName6: Tingir Trancado
+			Left: Próximo
+			Right: Anterior
 		}
 
-		PostMechsOres.Text: "[c/00ffdf:Uma nova pedra apareceu nas áreas malígnas!]"
+		PostMechsOres.Text: "[c/00ffdf:Uma nova pedra apareceu nas áreas malígnas]"
 
 		PenumbraLocalization: {
 			Bestiary: {

@@ -131,6 +131,14 @@ namespace PenumbraMod.Content.Items
         }
         public override void OnKill(int timeLeft)
         {
+            for (int i = 0; i < 40; i++)
+            {
+                int dust2 = Dust.NewDust(Projectile.Center, 0, 0, DustID.LavaMoss, 0f, 0f, 0);
+                Main.dust[dust2].noGravity = false;
+                Main.dust[dust2].velocity *= 4.4f;
+                Main.dust[dust2].scale = (float)Main.rand.Next(50, 80) * 0.010f;
+            }
+           
             // This code and the similar code above in OnTileCollide spawn dust from the tiles collided with. SoundID.Item10 is the bounce sound you hear.
             Collision.HitTiles(Projectile.position + Projectile.velocity, Projectile.velocity, Projectile.width, Projectile.height);
             SoundEngine.PlaySound(SoundID.Item70, Projectile.position);

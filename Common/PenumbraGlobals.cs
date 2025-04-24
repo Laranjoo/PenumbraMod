@@ -34,37 +34,7 @@ namespace PenumbraMod.Common
         public bool MagebladeCutscene;
         public Vector2 absolutepos;
         Vector2 scrcache;
-        private CrystalSlots item = new(); // initialize a new item so that NullReferenceException doesn't occur when creating a new player / loading a player that doesn't have an item already saved
-
-
-        public override void Load()
-        {
-            base.Load();
-            if (item.Item == new Item())
-            {
-                item.Item.SetDefaults();
-                item.Item.stack = 1;
-            }
-        }
-
-        public override void SaveData(TagCompound tag)
-        {
-            base.SaveData(tag);
-
-            tag.Add("item", item.Item);
-        }
-
-        public override void LoadData(TagCompound tag)
-        {
-            base.LoadData(tag);
-
-            if (tag.TryGet("item", out Item savedItem))
-            {
-                item.Item = savedItem;
-                var mo = Mod as PenumbraMod;
-                mo.Logger.Info(item.Item);
-            }
-        }
+       
         public float time;
         public bool KillFrags;
         public override void PostUpdate()
@@ -484,6 +454,12 @@ namespace PenumbraMod.Common
             Recipe tiara = Recipe.Create(ItemID.PlatinumCrown);
             tiara.AddIngredient(ItemID.PlatinumBar, 5);
             tiara.AddIngredient(ItemType<Content.Items.Placeable.RozeQuartz>(), 1);
+
+            Recipe queencrown = Recipe.Create(ItemID.QueenSlimeCrystal);
+            queencrown.AddIngredient(ItemID.PlatinumCrown);
+            queencrown.AddIngredient(ItemID.PinkGel, 20);
+            queencrown.AddTile(TileID.MythrilAnvil);
+            queencrown.Register();
 
         }
         public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)

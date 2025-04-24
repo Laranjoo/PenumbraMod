@@ -2,5 +2,4 @@ displayName = Penumbra Mod
 author = Laranjoo, Srplayertube and more.
 version = 0.1
 homepage = https://discord.gg/KCXjzuVzP7
-dllReferences = StructureHelper
 modReferences = StructureHelper

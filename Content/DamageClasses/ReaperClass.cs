@@ -34,7 +34,6 @@ namespace PenumbraMod.Content.DamageClasses
             );
 
         }
-
         public override bool GetEffectInheritance(DamageClass damageClass)
         {
             // This method allows you to make your damage class benefit from and be able to activate other classes' effects (e.g. Spectre bolts, Magma Stone) based on what returns true.

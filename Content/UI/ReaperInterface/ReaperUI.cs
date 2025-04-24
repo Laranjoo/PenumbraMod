@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using PenumbraMod.Content.Items.ReaperJewels;
 using ReLogic.Content;
 using System;
+using System.Configuration.Internal;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -131,8 +132,8 @@ namespace PenumbraMod.Content.DamageClasses
         private ReaperButton CrystalButton5;
 
         // Model changing buttons
-        private ReaperButton ChangeStyleArrowRight;
-        private ReaperButton ChangeStyleArrowLeft;
+        private ArrowButton2 ChangeStyleArrowRight;
+        private ArrowButton ChangeStyleArrowLeft;
         private CloseButton DeleteChangeStyleButton;
         private ConfigButton ChangeStyleButton;
 
@@ -472,7 +473,10 @@ namespace PenumbraMod.Content.DamageClasses
             ModelText.Left.Set(-40, 0f);
 
             // Jewel slots
-            item = new CrystalSlots();
+            item = new CrystalSlots(ItemSlot.Context.BankItem, 1)
+            {
+                ValidItemFunc = Item => Item.IsAir || !Item.IsAir
+            };
             SetRectangle(item, left: 1, top: 50, width: 52, height: 150);
 
             item2 = new CrystalSlots2();
@@ -528,13 +532,13 @@ namespace PenumbraMod.Content.DamageClasses
             DeleteChangeStyleButton.SetVisibility(1f, 0.75f);
 
             Asset<Texture2D> ArrowLeft = ModContent.Request<Texture2D>(Path + "ChangeStyleArrowLeft");
-            ChangeStyleArrowLeft = new ReaperButton(ArrowLeft, "");
+            ChangeStyleArrowLeft = new ArrowButton(ArrowLeft, LocalizedTextForReaperBar.Left);
             SetRectangle(ChangeStyleArrowLeft, left: 39, top: 12f, width: 10f, height: 13f);
             ChangeStyleArrowLeft.OnLeftClick += new MouseEvent(ArrowClickedLeft);
             ChangeStyleArrowLeft.SetVisibility(1f, 0.75f);
 
             Asset<Texture2D> ArrowRight = ModContent.Request<Texture2D>(Path + "ChangeStyleArrowRight");
-            ChangeStyleArrowRight = new ReaperButton(ArrowRight, "");
+            ChangeStyleArrowRight = new ArrowButton2(ArrowRight, LocalizedTextForReaperBar.Right);
             SetRectangle(ChangeStyleArrowRight, left: 39, top: 12f, width: 10f, height: 13f);
             ChangeStyleArrowRight.OnLeftClick += new MouseEvent(ArrowClickedRight);
             ChangeStyleArrowRight.SetVisibility(1f, 0.75f);
@@ -651,6 +655,7 @@ namespace PenumbraMod.Content.DamageClasses
             panel2.Append(Roz2);
             #endregion
         }
+        
         private void SetRectangle(UIElement uiElement, float left, float top, float width, float height)
         {
             uiElement.Left.Set(left, 0f);
@@ -1638,6 +1643,8 @@ namespace PenumbraMod.Content.DamageClasses
         public static LocalizedText Model3 { get; private set; }
         public static LocalizedText Model4 { get; private set; }
         public static LocalizedText Model5 { get; private set; }
+        public static LocalizedText Left { get; private set; }
+        public static LocalizedText Right { get; private set; }
         public override void Load()
         {
             string category = "UI";
@@ -1650,6 +1657,8 @@ namespace PenumbraMod.Content.DamageClasses
             Model3 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.Model3"));
             Model4 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.Model4"));
             Model5 ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.Model5"));
+            Left ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.Left"));
+            Right ??= Language.GetOrRegister(Mod.GetLocalizationKey($"{category}.Right"));
         }
     }
     internal class ReaperButton : UIImageButton
@@ -1662,6 +1671,64 @@ namespace PenumbraMod.Content.DamageClasses
             this.hoverText = hoverText;
         }
         public ReaperButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        {
+            text = Text;
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            // When you override UIElement methods, don't forget call the base method
+            // This helps to keep the basic behavior of the UIElement
+            base.DrawSelf(spriteBatch);
+
+            // IsMouseHovering becomes true when the mouse hovers over the current UIElement
+            if (IsMouseHovering)
+            {
+                Main.instance.MouseText(hoverText);
+                Main.instance.MouseText((string)text);
+            }
+
+        }
+    }
+    internal class ArrowButton : UIImageButton
+    {
+        // Tooltip text that will be shown on hover
+        internal string hoverText;
+        internal static LocalizedText text;
+        public ArrowButton(Asset<Texture2D> texture, string hoverText) : base(texture)
+        {
+            this.hoverText = hoverText;
+        }
+        public ArrowButton(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
+        {
+            text = Text;
+        }
+
+        protected override void DrawSelf(SpriteBatch spriteBatch)
+        {
+            // When you override UIElement methods, don't forget call the base method
+            // This helps to keep the basic behavior of the UIElement
+            base.DrawSelf(spriteBatch);
+
+            // IsMouseHovering becomes true when the mouse hovers over the current UIElement
+            if (IsMouseHovering)
+            {
+                Main.instance.MouseText(hoverText);
+                Main.instance.MouseText((string)text);
+            }
+
+        }
+    }
+    internal class ArrowButton2 : UIImageButton
+    {
+        // Tooltip text that will be shown on hover
+        internal string hoverText;
+        internal static LocalizedText text;
+        public ArrowButton2(Asset<Texture2D> texture, string hoverText) : base(texture)
+        {
+            this.hoverText = hoverText;
+        }
+        public ArrowButton2(Asset<Texture2D> texture, LocalizedText Text) : base(texture)
         {
             text = Text;
         }
@@ -1770,12 +1837,15 @@ namespace PenumbraMod.Content.DamageClasses
                     ItemSlot.Handle(ref Item, _context);
                 }
             }
+            Vector2 pos;
             // Draw draws the slot itself and Item. Depending on context, the color will change, as will drawing other things like stack counts.
             if (ReaperUI.clickedagain && Main.playerInventory)
-            {
-                ItemSlot.Draw(spriteBatch, ref Item, _context, rectangle.TopLeft());
-                spriteBatch.Draw(TextureAssets.Item[Item.type].Value, rectangle.TopLeft() + new Vector2(17, 6), Color.White);
-            }
+                pos = new Vector2(16, 6);
+            else
+                pos = new Vector2(34525234, 34522534);
+
+            ItemSlot.Draw(spriteBatch, ref Item, _context, rectangle.TopLeft());
+            spriteBatch.Draw(TextureAssets.Item[Item.type].Value, rectangle.TopLeft() + pos, Color.White);
 
             Main.inventoryScale = oldScale;
 
@@ -1788,7 +1858,7 @@ namespace PenumbraMod.Content.DamageClasses
         private readonly float _scale;
         internal Func<Item, bool> ValidItemFunc;
 
-        public CrystalSlots2(int context = ItemSlot.Context.BankItem, float scale = 0f)
+        public CrystalSlots2(int context = ItemSlot.Context.ChestItem, float scale = 0f)
         {
             _context = context;
             _scale = scale;
@@ -1813,12 +1883,14 @@ namespace PenumbraMod.Content.DamageClasses
                     ItemSlot.Handle(ref Item, _context);
                 }
             }
-            // Draw draws the slot itself and Item. Depending on context, the color will change, as will drawing other things like stack counts.
+            Vector2 pos;
             if (ReaperUI.clickedagain && Main.playerInventory)
-            {
-                ItemSlot.Draw(spriteBatch, ref Item, _context, rectangle.TopLeft());
-                spriteBatch.Draw(TextureAssets.Item[Item.type].Value, rectangle.TopLeft() + new Vector2(20, 6), Color.White);
-            }
+                pos = new Vector2(16, 6);
+            else
+                pos = new Vector2(34525234, 34522534);
+
+            ItemSlot.Draw(spriteBatch, ref Item, _context, rectangle.TopLeft());
+            spriteBatch.Draw(TextureAssets.Item[Item.type].Value, rectangle.TopLeft() + pos, Color.White);
 
             Main.inventoryScale = oldScale;
 

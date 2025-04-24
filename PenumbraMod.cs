@@ -325,19 +325,19 @@ namespace PenumbraMod
             {
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 905, Main.maxTilesX / 2 + 910);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer - 201, (int)Main.rockLayer - 200);
-                StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordSurface", new Point16(x, y), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/LostSwordSurface", new Point16(x, y), PenumbraMod.Instance);
             }
             else 
             {
                 int x22 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 405, Main.maxTilesX / 2 + 410);
                 int y22 = WorldGen.genRand.Next((int)Main.rockLayer + 20, (int)Main.rockLayer + 50);
-                StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordCavern", new Point16(x22, y22), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/LostSwordCavern", new Point16(x22, y22), PenumbraMod.Instance);
             }
                
 
             int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 405, Main.maxTilesX / 2 + 410);
             int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 20, (int)Main.rockLayer + 50);
-            StructureHelper.Generator.GenerateStructure("Content/Structures/LostSwordCavern", new Point16(x2, y2), PenumbraMod.Instance);
+            StructureHelper.API.Generator.GenerateStructure("Content/Structures/LostSwordCavern", new Point16(x2, y2), PenumbraMod.Instance);
         }
     }
     public class MarbleBiome : GenPass
@@ -355,22 +355,22 @@ namespace PenumbraMod
                 progress.Message = (string)PenumbraLocalization.Marble;
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer + 10, (int)Main.rockLayer + 30);
-                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
 
                 int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 1200, Main.maxTilesX / 2 - 800);
                 int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 5, (int)Main.rockLayer + 10);
-                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
             }
             else
             {
                 progress.Message = (string)PenumbraLocalization.Marble;
                 int x = WorldGen.genRand.Next(Main.maxTilesX / 2 - 200, Main.maxTilesX / 2 + 1400);
                 int y = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
-                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/MarbleBiome", new Point16(x, y), PenumbraMod.Instance);
 
                 int x2 = WorldGen.genRand.Next(Main.maxTilesX / 2 - 1200, Main.maxTilesX / 2 - 800);
                 int y2 = WorldGen.genRand.Next((int)Main.rockLayer + 200, (int)Main.rockLayer + 400);
-                StructureHelper.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/MarbleBiomeArena", new Point16(x2, y2), PenumbraMod.Instance);
             }
            
         }
@@ -390,13 +390,13 @@ namespace PenumbraMod
             {
                 int x = (int)GenVars.shimmerPosition.X - 84;
                 int y = (int)GenVars.shimmerPosition.Y - 18;
-                StructureHelper.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
             }
             else
             {
                 int x = (int)GenVars.shimmerPosition.X + 71;
                 int y = (int)GenVars.shimmerPosition.Y - 18;
-                StructureHelper.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
+                StructureHelper.API.Generator.GenerateStructure("Content/Structures/ShimmerStructure", new Point16(x, y), PenumbraMod.Instance);
             }
 
         }

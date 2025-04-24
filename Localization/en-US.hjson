@@ -55,9 +55,11 @@ Mods: {
 			ExpertAccessoryHoverName4: Locked Accessory
 			ExpertAccessoryHoverName5: Locked Social Accessory
 			ExpertAccessoryHoverName6: Locked Dye
+			Left: Previous
+			Right: Next
 		}
 
-		PostMechsOres.Text: "[c/00ffdf:A new stone has appeared on the evil lands!]"
+		PostMechsOres.Text: "[c/00ffdf:A new stone has emerged on the evil lands]"
 
 		PenumbraLocalization: {
 			Bestiary: {
@@ -83,7 +85,8 @@ Mods: {
 					2+ Increased flat reaper damage
 					For every hit you deal, you gain 5+ extra reaper energy
 					Double tap a direction to perform a slight dash
-					The dash grants you 3+ increased flat reaper damage for 5 seconds\nIt has a 15 seconds cooldown
+					The dash grants you 3+ increased flat reaper damage for 5 seconds
+					It has a 15 seconds cooldown
 					'''
 				OldBloodystoneArmor: Greatly increased Life Regeneration
 				MeltedArmorWithoutKeybind: Select a keybind for [Melted Armor Ability] in Controls
